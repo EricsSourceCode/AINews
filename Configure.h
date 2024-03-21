@@ -10,7 +10,7 @@
 
 
 
-// See https://ericinarizona.github.io/
+// See https://ericssourcecode.github.io/
 // For guides and information.
 
 
@@ -50,17 +50,17 @@ class Configure
 
   static const char* getDataDir( void )
     {
-    return "/AINewsDataTest/";
+    return "/AINewsData/";
     }
 
   static const char* getUrlFilesDir( void )
     {
-    return "/AINewsDataTest/UrlFiles/";
+    return "/AINewsData/UrlFiles/";
     }
 
   static const char* getUrlIndexName( void )
     {
-    return "/AINewsDataTest/UrlDictionary.txt";
+    return "/AINewsData/UrlDictionary.txt";
     }
 
   };

@@ -9,8 +9,9 @@
 
 
 
-// See https://ericinarizona.github.io/
+// See https://ericssourcecode.github.io/
 // For more information.
+
 
 
 #pragma once
@@ -18,8 +19,9 @@
 
 #include "../CppBase/BasicTypes.h"
 #include "../CppBase/CharBuf.h"
+#include "../Network/SocketsApi.h"
 #include "Configure.h"
-#include "URLFileDictionary.h"
+#include "URLFileDct.h"
 
 
 
@@ -28,7 +30,18 @@ class MainApp
   private:
   bool testForCopy = false;
   Configure config;
-  UrlFileDictionary urlFileDictionary;
+  UrlFileDct urlFileDct;
+
+  // The constructor for SocketsApi does
+  // WSAStartup() and the destructor does
+  // WSACleanup(). So the Windows dlls stay
+  // going for the life of this app.
+
+  // In BuildProj.bat use -lWs2_32.lib
+  // to link it with the Windows Sockets
+  // library.
+
+  SocketsApi socketsApi;
 
   public:
   MainApp( void )
@@ -50,7 +63,7 @@ class MainApp
 
   static const char* getVersionStr( void )
     {
-    return "2/14/2024";
+    return "3/21/2024";
     }
 
   // Int32 mainLoop( Int32 argc, char* argv[] );

@@ -24,7 +24,7 @@ rem -lWs2_32.lib
 rem -lwsock32.lib
 rem -Wno-unsafe-buffer-usage
 
-C:\LLVM\bin\clang++ *.cpp \Eric\Main\WinApi\*.cpp \Eric\Main\CppBase\*.cpp \Eric\Main\CppMem\*.cpp -o ainews.exe -Weverything -Wno-c++98-compat-pedantic -ftrapv -Ofast -Wl,-MAP -Wl,-STACK:10000000 2> Build.log
+C:\LLVM\bin\clang++ *.cpp \Eric\Main\Math\*.cpp \Eric\Main\CppInt\*.cpp \Eric\Main\CppBase\*.cpp \Eric\Main\CppMem\*.cpp \Eric\Main\Network\*.cpp \Eric\Main\CryptoBase\*.cpp \Eric\Main\Crt\*.cpp \Eric\Main\WinApi\*.cpp -o ainews.exe -Weverything -Wno-c++98-compat-pedantic -ftrapv -Ofast -Wl,-MAP -Wl,-STACK:10000000 -lWs2_32.lib 2> Build.log
 
 rem Show macros:
 rem Over 54,000 macros defined.

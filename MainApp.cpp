@@ -50,9 +50,7 @@ Signals::setupBadMemSignal();
 
 StIO::putS( "Initializing." );
 
-// ===== Do stuff here.
-
-urlFileDictionary.readFromFile();
+urlFileDct.readFromFile();
 
 // Markers.URLFileDelimit
 
