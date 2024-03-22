@@ -219,15 +219,6 @@ for( Int32 count = 0; count < last; count++ )
 
 
 /*
-    StrA fileS = FileUtility.readFileToStrA( mApp,
-                                 fileName,
-                                 false,
-                                 true );
-
-    // mApp.showStatusAsync( "Read file: " + fileS );
-    StrArray lines = fileS.splitChar( '\n' );
-    final int last = lines.length();
-    StrA badS = new StrA( "radiationnetwork.net" );
 
     for( int count = 0; count < last; count++ )
       {

@@ -20,6 +20,7 @@
 
 #include "../CppBase/BasicTypes.h"
 #include "../CppBase/Uint16Buf.h"
+#include "MarkersAI.h"
 
 
 
@@ -60,6 +61,7 @@ class URLFile
 
   void clear( void );
   void copy( const URLFile& toCopy );
+  void toCharBuf( Uint16Buf& outBuf );
 
   inline char getAnchorsPulled( void ) const
     {

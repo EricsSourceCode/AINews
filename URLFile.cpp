@@ -148,14 +148,14 @@ anchorsPulled = toCopy.anchorsPulled;
     return new StrA( result );
     }
 
+*/
 
 
-
-  public StrA toStrA()
-    {
-    StrABld sBld = new StrABld( 1024 * 4 );
-    sBld.appendStrA( url );
-    sBld.appendChar( Markers.URLFileDelimit );
+void URLFile::toCharBuf( Uint16Buf& outBuf )
+{
+outBuf.appendU16Buf( url );
+outBuf.appendU16( MarkersAI::URLFileDelimit );
+/*
     sBld.appendStrA( title );
     sBld.appendChar( Markers.URLFileDelimit );
     sBld.appendStrA( fileName );
@@ -164,11 +164,12 @@ anchorsPulled = toCopy.anchorsPulled;
     sBld.appendChar( Markers.URLFileDelimit );
     sBld.appendStrA( anchorsPulled );
     sBld.appendChar( Markers.URLFileDelimit );
+*/
+}
 
-    return sBld.toStrA();
-    }
 
 
+/*
   public void setFromStrA( StrA in )
     {
     // mApp.showStatusAsync( "in: " + in );

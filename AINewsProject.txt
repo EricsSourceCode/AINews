@@ -12,3 +12,4 @@ recentfile11	\Eric\Main\AINews\URLFile.cpp
 recentfile7	\Eric\Main\AINews\URLFileDct.cpp
 recentfile8	\Eric\Main\AINews\URLFileDctLine.h
 recentfile9	\Eric\Main\AINews\URLFileDctLine.cpp
+recentfile12	\Eric\Main\AINews\MarkersAI.h
