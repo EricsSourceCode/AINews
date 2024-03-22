@@ -20,9 +20,6 @@
 
 UrlFileDct::UrlFileDct( void )
 {
-// This calls the constructor for
-// each URLFileDctLine in the array.
-
 lineArray = new URLFileDctLine[
              Casting::i32ToU64( keySize )];
 }
@@ -48,7 +45,10 @@ delete[] lineArray;
 }
 
 
+
 #include "../CppMem/MemoryWarnTop.h"
+
+
 
 void UrlFileDct::clear( void )
 {
@@ -199,6 +199,7 @@ FileIO::readAll( Configure::getUrlIndexName(),
 // StIO::putCharBuf( charBuf );
 
 UTF8Str utf8Str;
+Uint16Buf fileBuf;
 
 utf8Str.charBufToU16Buf( charBuf, fileBuf );
 

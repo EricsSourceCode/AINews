@@ -37,8 +37,6 @@ dateTime.copy( toCopy.dateTime );
 anchorsPulled = toCopy.anchorsPulled;
 }
 
-===== Do this.
-Like string to object and all that.
 
 
 /*
@@ -191,6 +189,3 @@ Like string to object and all that.
     anchorsPulled = fields.getStrAt( 4 );
     }
 */
-
-
-

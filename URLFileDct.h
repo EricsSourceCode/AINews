@@ -21,14 +21,13 @@
 
 
 
-class UrlFileDct // File Dictionary
+class UrlFileDct // Dictionary of URLs.
   {
   private:
   bool testForCopy = false;
 
   URLFileDctLine* lineArray;
   static const Int32 keySize = 0xFFF;
-  Uint16Buf fileBuf;
 
   public:
   UrlFileDct( void );

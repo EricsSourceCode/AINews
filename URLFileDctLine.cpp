@@ -22,7 +22,7 @@
 URLFileDctLine::URLFileDctLine( void )
 {
 valueArray = new URLFile[
-             Casting::i32ToU64( valArraySize )];
+             Casting::i32ToU64( arraySize )];
 
 }
 
@@ -32,7 +32,7 @@ URLFileDctLine::URLFileDctLine(
                     const URLFileDctLine& in )
 {
 valueArray = new URLFile[
-             Casting::i32ToU64( valArraySize )];
+             Casting::i32ToU64( arraySize )];
 
 if( in.testForCopy )
   return;
@@ -54,8 +54,8 @@ URLFileDctLine::~URLFileDctLine( void )
 
 void URLFileDctLine::clear()
 {
-for( Int32 count = 0; count < valArraySize;
-                                      count++ )
+const Int32 last = arraySize;
+for( Int32 count = 0; count < last; count++ )
   valueArray[count].clear();
 
 }
