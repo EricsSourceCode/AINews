@@ -39,5 +39,3 @@ class URLFileDctLine
   void clear();
 
   };
-
-

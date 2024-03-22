@@ -39,7 +39,7 @@ class URLFile
   Uint16Buf fileName;
   Uint16Buf url;
   Uint16Buf dateTime;
-  char anchorsPulled = 'f';
+  bool anchorsPulled = false;
 
 
   public:
@@ -61,22 +61,23 @@ class URLFile
 
   void clear( void );
   void copy( const URLFile& toCopy );
-  void toCharBuf( Uint16Buf& outBuf );
+  void toU16Buf( Uint16Buf& outBuf );
+  void setFromU16Buf( const Uint16Buf& u16Buf );
 
-  inline char getAnchorsPulled( void ) const
+  inline bool getAnchorsPulled( void ) const
     {
     return anchorsPulled;
     }
 
   inline void setAnchorsPulledTrue( void )
     {
-    anchorsPulled = 't';
+    anchorsPulled = true;
     }
 
 
   inline void setAnchorsPulledFalse( void )
     {
-    anchorsPulled = 'f';
+    anchorsPulled = false;
     }
 
   };

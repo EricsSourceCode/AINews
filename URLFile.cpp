@@ -23,7 +23,7 @@ title.clear();
 fileName.clear();
 url.clear();
 dateTime.clear();
-anchorsPulled = 'f';
+anchorsPulled = false;
 }
 
 
@@ -151,42 +151,82 @@ anchorsPulled = toCopy.anchorsPulled;
 */
 
 
-void URLFile::toCharBuf( Uint16Buf& outBuf )
+void URLFile::toU16Buf( Uint16Buf& outBuf )
 {
 outBuf.appendU16Buf( url );
 outBuf.appendU16( MarkersAI::URLFileDelimit );
-/*
-    sBld.appendStrA( title );
-    sBld.appendChar( Markers.URLFileDelimit );
-    sBld.appendStrA( fileName );
-    sBld.appendChar( Markers.URLFileDelimit );
-    sBld.appendStrA( dateTime );
-    sBld.appendChar( Markers.URLFileDelimit );
-    sBld.appendStrA( anchorsPulled );
-    sBld.appendChar( Markers.URLFileDelimit );
-*/
+outBuf.appendU16Buf( title );
+outBuf.appendU16( MarkersAI::URLFileDelimit );
+outBuf.appendU16Buf( fileName );
+outBuf.appendU16( MarkersAI::URLFileDelimit );
+outBuf.appendU16Buf( dateTime );
+outBuf.appendU16( MarkersAI::URLFileDelimit );
+
+if( anchorsPulled )
+  outBuf.appendU16( 't' & 0xFF );
+else
+  outBuf.appendU16( 'f' & 0xFF );
+
+outBuf.appendU16( MarkersAI::URLFileDelimit );
 }
 
 
 
-/*
-  public void setFromStrA( StrA in )
-    {
-    // mApp.showStatusAsync( "in: " + in );
+void URLFile::setFromU16Buf( 
+                     const Uint16Buf& u16Buf )
+{
+Int32 startAt = 0;
 
-    StrArray fields = in.splitChar( Markers.URLFileDelimit );
-    final int last = fields.length();
-    if( last < 5 )
-      {
-      mApp.showStatusAsync( "URLFile: Fields < 5 in setFromStrA()." );
-      // mApp.showStatusAsync( "in: " + in );
-      return;
-      }
+startAt = u16Buf.getField( url, startAt,
+                 MarkersAI::URLFileDelimit );
 
-    url = fields.getStrAt( 0 );
-    title = fields.getStrAt( 1 );
-    fileName = fields.getStrAt( 2 );
-    dateTime = fields.getStrAt( 3 );
-    anchorsPulled = fields.getStrAt( 4 );
-    }
-*/
+if( startAt < 0 )
+  return;
+
+startAt++; // Go past the delimiter it found.
+
+startAt = u16Buf.getField( title, startAt,
+                 MarkersAI::URLFileDelimit );
+
+if( startAt < 0 )
+  return;
+
+startAt++;
+
+startAt = u16Buf.getField( fileName, startAt,
+                 MarkersAI::URLFileDelimit );
+
+if( startAt < 0 )
+  return;
+
+startAt++;
+
+startAt = u16Buf.getField( dateTime, startAt,
+                 MarkersAI::URLFileDelimit );
+
+if( startAt < 0 )
+  return;
+
+startAt++;
+
+Uint16Buf anchors;
+
+u16Buf.getField( anchors, startAt,
+                 MarkersAI::URLFileDelimit );
+
+if( anchors.getLast() < 1 )
+  {  
+  anchorsPulled = false;
+  }
+else
+  {
+  if( anchors.getVal( 0 ) == ('t' & 0xFF) )
+    anchorsPulled = true;
+  else
+    anchorsPulled = false;
+
+  }
+}
+
+
+
