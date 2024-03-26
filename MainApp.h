@@ -20,8 +20,12 @@
 #include "../CppBase/BasicTypes.h"
 #include "../CppBase/CharBuf.h"
 #include "../Network/SocketsApi.h"
+#include "../CryptoBase/Rsa.h"
+#include "../Crt/Garner.h"
+#include "../Crt/GarnerCrt.h"
 #include "Configure.h"
 #include "URLFileDct.h"
+#include "../CppBase/CircleBuf.h"
 
 
 
@@ -31,6 +35,20 @@ class MainApp
   bool testForCopy = false;
   Configure config;
   UrlFileDct urlFileDct;
+  CircleBuf appOutBuf;
+
+  // Constructors that take a while:
+  IntegerMath intMath;
+  SPrimes sPrimes; // makeArray in constructor.
+  Mod mod;
+  QuadRes quadRes;
+  MultInv multInv;
+  FindFacSm findFacSm; // Makes arrays here.
+  // FindFacQr findFacQr;
+  Rsa rsa;
+  CrtMath crtMath;
+  Garner garner;
+  GarnerCrt garnerCrt;
 
   // The constructor for SocketsApi does
   // WSAStartup() and the destructor does
@@ -46,6 +64,7 @@ class MainApp
   public:
   MainApp( void )
     {
+    appOutBuf.setSize( 1024 * 64 );
     }
 
 
@@ -63,10 +82,11 @@ class MainApp
 
   static const char* getVersionStr( void )
     {
-    return "3/21/2024";
+    return "3/26/2024";
     }
 
   // Int32 mainLoop( Int32 argc, char* argv[] );
   Int32 mainLoop( void );
+  void testTls( void );
 
   };

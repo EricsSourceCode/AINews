@@ -1,4 +1,4 @@
-// Copyright Eric Chauvin, 2024.
+// Copyright Eric Chauvin, 2021 - 2024.
 
 
 
@@ -20,6 +20,14 @@
 #include "../WinApi/Signals.h"
 // #include "../LinuxApi/Signals.h"
 
+// #include "../CryptoBase/Sha256.h"
+// #include "../CryptoBase/Base64.h"
+// #include "../CryptoBase/AesGalois.h"
+
+#include "../CryptoBase/SPrimes.h"
+#include "../CryptoBase/RsaTest.h"
+#include "../Network/ClientTls.h"
+
 
 // int MainApp::mainLoop( int argc, char* argv[] )
 int MainApp::mainLoop( void )
@@ -31,6 +39,7 @@ try
 BasicTypes::thingsAreRight();
 
 StIO::putLF();
+StIO::putS( "AI News." );
 StIO::putS( "Programming by Eric Chauvin." );
 StIO::printF( "Version date: " );
 StIO::putS( getVersionStr() );
@@ -50,9 +59,25 @@ Signals::setupBadMemSignal();
 
 StIO::putS( "Initializing." );
 
-urlFileDct.readFromFile();
+quadRes.init( sPrimes );
+multInv.init( sPrimes );
+// findFacQr.init( intMath, sPrimes );
+crtMath.init( intMath,
+              sPrimes );
+garnerCrt.setUpConstants( sPrimes, intMath );
 
-// Markers.URLFileDelimit
+
+// StIO::putS( "Starting RSA test." );
+// RsaTest rsaTest;
+// rsaTest.test( rsa, mod, sPrimes, intMath,
+//              findFacSm, //findFacQr,
+//              multInv, // quadRes,
+//              crtMath, garnerCrt );
+
+
+testTls();
+
+// urlFileDct.readFromFile();
 
 
 StIO::putS( "End of the test." );
@@ -85,3 +110,72 @@ catch( ... )
   return 1;
   }
 }
+
+
+
+
+void MainApp::testTls( void )
+{
+StIO::putS( "Starting TLS test." );
+
+
+ClientTls clientTls;
+
+
+// ==== Add other news sites like Leadville,
+// The Economist, etc.
+
+// "https://www.msnbc.com/"
+// "https://www.foxnews.com/"
+
+// if( !clientTls.startHandshake(
+//                        "durangoherald.com",
+//                        "443" ))
+
+// if( !clientTls.startHandshake( "127.0.0.1",
+//                               "443" ))
+
+if( !clientTls.startTestVecHandshake(
+                             "127.0.0.1",
+                             "443" ))
+  {
+  StIO::putS(
+        "ClientTls false on startHandshake." );
+
+  return;
+  }
+
+CharBuf appDataToSend;
+appDataToSend.setFromCharPoint( 
+       "This will go out after the handshake." );
+
+appOutBuf.addCharBuf( appDataToSend );
+
+for( Int32 count = 0; count < 100; count++ )
+  {
+  if( Signals::getControlCSignal())
+    {
+    StIO::putS( "Closing on Ctrl-C." );
+    break;
+    }
+
+  StIO::putS( 
+        "Top of MainApp.processData loop()." );
+  Int32 status = clientTls.processData( 
+                                  appOutBuf );
+
+  // Shut it down immediately.
+  if( status < 0 )
+    break;
+
+  // Let it time out so it can send things.
+  // if( status == 0 )
+    // break;
+
+  Threads::sleep( 1000 );
+  }
+
+StIO::putS( "Finished TLS test." );
+}
+
+

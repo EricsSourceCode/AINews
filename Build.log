@@ -1,0 +1,4 @@
+\Eric\Main\Network\TlsMainCl.cpp:22:37: warning: unused parameter 'appOutBuf' [-Wunused-parameter]
+                         CircleBuf& appOutBuf )
+                                    ^
+1 warning generated.

@@ -172,7 +172,7 @@ outBuf.appendU16( MarkersAI::URLFileDelimit );
 
 
 
-void URLFile::setFromU16Buf( 
+void URLFile::setFromU16Buf(
                      const Uint16Buf& u16Buf )
 {
 Int32 startAt = 0;
@@ -215,7 +215,7 @@ u16Buf.getField( anchors, startAt,
                  MarkersAI::URLFileDelimit );
 
 if( anchors.getLast() < 1 )
-  {  
+  {
   anchorsPulled = false;
   }
 else
@@ -227,6 +227,3 @@ else
 
   }
 }
-
-
-
