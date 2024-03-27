@@ -128,16 +128,16 @@ ClientTls clientTls;
 // "https://www.msnbc.com/"
 // "https://www.foxnews.com/"
 
-// if( !clientTls.startHandshake(
-//                        "durangoherald.com",
-//                        "443" ))
+if( !clientTls.startHandshake(
+                        "durangoherald.com",
+                        "443" ))
 
 // if( !clientTls.startHandshake( "127.0.0.1",
 //                               "443" ))
 
-if( !clientTls.startTestVecHandshake(
-                             "127.0.0.1",
-                             "443" ))
+// if( !clientTls.startTestVecHandshake(
+//                             "127.0.0.1",
+//                             "443" ))
   {
   StIO::putS(
         "ClientTls false on startHandshake." );
@@ -145,10 +145,18 @@ if( !clientTls.startTestVecHandshake(
   return;
   }
 
-CharBuf appDataToSend;
-appDataToSend.setFromCharPoint(
-       "This will go out after the handshake." );
+=======
 
+const char* getRequest = "GET / HTTP/1.1\r\n"
+               "Host: www.durangoherald.com\r\n"
+               "User-Agent: AINews\r\n"
+               "Connection: keep-alive\r\n"
+               "\r\n";
+
+CharBuf appDataToSend;
+appDataToSend.setFromCharPoint( getRequest );
+
+// This will go out after the handshake.
 appOutBuf.addCharBuf( appDataToSend );
 
 for( Int32 count = 0; count < 100; count++ )
