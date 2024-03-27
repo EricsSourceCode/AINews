@@ -36,6 +36,7 @@ class MainApp
   Configure config;
   UrlFileDct urlFileDct;
   CircleBuf appOutBuf;
+  CircleBuf appInBuf;
 
   // Constructors that take a while:
   IntegerMath intMath;
@@ -65,6 +66,7 @@ class MainApp
   MainApp( void )
     {
     appOutBuf.setSize( 1024 * 64 );
+    appInBuf.setSize( 1024 * 1024 * 64 );
     }
 
 

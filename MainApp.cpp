@@ -145,8 +145,6 @@ if( !clientTls.startHandshake(
   return;
   }
 
-=======
-
 const char* getRequest = "GET / HTTP/1.1\r\n"
                "Host: www.durangoherald.com\r\n"
                "User-Agent: AINews\r\n"
@@ -159,7 +157,7 @@ appDataToSend.setFromCharPoint( getRequest );
 // This will go out after the handshake.
 appOutBuf.addCharBuf( appDataToSend );
 
-for( Int32 count = 0; count < 100; count++ )
+for( Int32 count = 0; count < 10000; count++ )
   {
   if( Signals::getControlCSignal())
     {
@@ -170,7 +168,8 @@ for( Int32 count = 0; count < 100; count++ )
   StIO::putS(
         "Top of MainApp.processData loop()." );
   Int32 status = clientTls.processData(
-                                  appOutBuf );
+                                  appOutBuf,
+                                  appInBuf );
 
   // Shut it down immediately.
   if( status < 0 )
@@ -180,7 +179,7 @@ for( Int32 count = 0; count < 100; count++ )
   // if( status == 0 )
     // break;
 
-  Threads::sleep( 1000 );
+  Threads::sleep( 250 );
   }
 
 StIO::putS( "Finished TLS test." );
