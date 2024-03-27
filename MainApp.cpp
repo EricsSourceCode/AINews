@@ -146,7 +146,7 @@ if( !clientTls.startTestVecHandshake(
   }
 
 CharBuf appDataToSend;
-appDataToSend.setFromCharPoint( 
+appDataToSend.setFromCharPoint(
        "This will go out after the handshake." );
 
 appOutBuf.addCharBuf( appDataToSend );
@@ -159,9 +159,9 @@ for( Int32 count = 0; count < 100; count++ )
     break;
     }
 
-  StIO::putS( 
+  StIO::putS(
         "Top of MainApp.processData loop()." );
-  Int32 status = clientTls.processData( 
+  Int32 status = clientTls.processData(
                                   appOutBuf );
 
   // Shut it down immediately.
@@ -177,5 +177,3 @@ for( Int32 count = 0; count < 100; count++ )
 
 StIO::putS( "Finished TLS test." );
 }
-
-
