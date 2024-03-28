@@ -75,12 +75,9 @@ garnerCrt.setUpConstants( sPrimes, intMath );
 //              crtMath, garnerCrt );
 
 
-testTls();
-
 // urlFileDct.readFromFile();
 
-
-StIO::putS( "End of the test." );
+getWebPage();
 
 
 StIO::putS( "End of main app." );
@@ -114,23 +111,18 @@ catch( ... )
 
 
 
-void MainApp::testTls( void )
+void MainApp::getWebPage( void )
 {
-StIO::putS( "Starting TLS test." );
-
+StIO::putS( "Getting web page." );
 
 ClientTls clientTls;
 
 
-// ==== Add other news sites like Leadville,
+// Add other news sites like Leadville,
 // The Economist, etc.
 
 // "https://www.msnbc.com/"
 // "https://www.foxnews.com/"
-
-if( !clientTls.startHandshake(
-                        "durangoherald.com",
-                        "443" ))
 
 // if( !clientTls.startHandshake( "127.0.0.1",
 //                               "443" ))
@@ -138,6 +130,12 @@ if( !clientTls.startHandshake(
 // if( !clientTls.startTestVecHandshake(
 //                             "127.0.0.1",
 //                             "443" ))
+
+
+
+if( !clientTls.startHandshake(
+                        "durangoherald.com",
+                        "443" ))
   {
   StIO::putS(
         "ClientTls false on startHandshake." );
@@ -166,21 +164,29 @@ for( Int32 count = 0; count < 10000; count++ )
     }
 
   StIO::putS(
-        "Top of MainApp.processData loop()." );
+      "\nTop of MainApp.processData loop()." );
   Int32 status = clientTls.processData(
                                   appOutBuf,
                                   appInBuf );
 
-  // Shut it down immediately.
-  if( status < 0 )
+  if( status <= 0 )
     break;
 
-  // Let it time out so it can send things.
-  // if( status == 0 )
-    // break;
+  // Content-Length := length
+=====
+Look for  "\r\n\r\n"
 
-  Threads::sleep( 250 );
+  appInBuf.appendToCharBuf( CharBuf& toGet,
+                      const Int32 howMany )
+
+ ====== if It hasn't found it yet
+  // What is in the appInBuf?
+  Int32 where = appInBuf.findText(
+                        "Content-Length",
+                        0 );
+
+  Threads::sleep( 50 );
   }
 
-StIO::putS( "Finished TLS test." );
+StIO::putS( "Finished getting web page." );
 }
