@@ -1,0 +1,8 @@
+buildfile	\Eric\Main\AINews\BuildProj.bat
+executablefile	\Eric\Main\AINews\bin\Release\AINews.exe
+projectdirectory	\Eric\Main\AINews
+recentfile1	\Eric\Main\AINews\MainForm.cs
+recentfile2	\Eric\Main\Docs\Notes.txt
+recentfile3	\Eric\Main\AINews\BuildProj.bat
+recentfile4	\Eric\Main\AINews\Program.cs
+recentfile5	\Eric\Main\AINews\AINews.csproj
