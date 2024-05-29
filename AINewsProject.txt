@@ -6,3 +6,5 @@ recentfile2	\Eric\Main\Docs\Notes.txt
 recentfile3	\Eric\Main\AINews\BuildProj.bat
 recentfile4	\Eric\Main\AINews\Program.cs
 recentfile5	\Eric\Main\AINews\AINews.csproj
+recentfile6	\MinlabNewGG55\MainForm.cs
+recentfile7	\Eric\Main\AINews\MainFormComp.cs

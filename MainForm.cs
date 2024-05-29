@@ -32,19 +32,14 @@ private System.Threading.Mutex
                     SingleInstanceMutex = null;
 
 private bool IsSingleInstance = false;
-// private MenuEvents MEvents;
 private bool IsClosing = false;
 private bool Cancelled = false;
 
-/*
-  private string DataDirectory = "";
-  // private ConfigureFile ConfigFile;
-  // private ThreeDForm ThreeDF;
-*/
-
-private TextBox MainTextBox;
+internal MainFormComp MFormComp;
 
 
+private string DataDirectory = "";
+// private ConfigureFile ConfigFile;
 private System.Windows.Forms.Timer
                           SingleInstanceTimer;
 
@@ -52,7 +47,6 @@ private System.Windows.Forms.Timer
 
 public MainForm()
 {
-// MEvents = new MenuEvents( this );
 InitializeGuiComponents();
 
 if( !CheckSingleInstance())
@@ -60,57 +54,51 @@ if( !CheckSingleInstance())
 
 IsSingleInstance = true;
 
+///////////
+// Keep this at the top.
+SetupDirectories();
 
-/*
-    ///////////
-    // Keep this at the top.
-    SetupDirectories();
+MFormComp = new MainFormComp( this );
+this.Controls.Add( MFormComp.MainPanel );
 
+// ShowStatus( "Version Date: " + VersionDate );
 
-    ShowStatus( "Version Date now: " + VersionDate );
-    // ShowStatus( "ThreeDScene.MoveToEarthView() is" );
-    // ShowStatus( "set to -x, 0, 0." );
-    // ShowStatus( "That points from the sun to the earth" );
-    // ShowStatus( "(it's negative x) at Spring Equinox." );
-
-
-
-    // DrawBitmap DrawBMap = new DrawBitmap( this );
-    // DrawBMap.MakeImageFile( "C:\\Eric\\ClimateModel\\bin\\Release\\Earth.jpg" );
-
-    // JPLHorizonsData JPLData = new JPLHorizonsData( this );
-    // string FileName = "C:\\Eric\\ClimateModel\\EphemerisData\\JPLSpaceStation.txt";
-    // string FileName = "C:\\Eric\\ClimateModel\\EphemerisData\\JPLSun.txt";
-    // JPLData.ReadFromTextFile( FileName );
-*/
+// DrawBitmap DrawBMap = new DrawBitmap( this );
+// DrawBMap.MakeImageFile( 
+//  "C:\\Eric\\so on...jpg" );
 }
 
 
 
-/*
-  internal string GetDataDirectory()
-    {
-    return DataDirectory;
-    }
+
+internal string GetDataDirectory()
+{
+return DataDirectory;
+}
 
 
 
-  private void SetupDirectories()
-    {
-    try
-    {
-    DataDirectory = Application.StartupPath + "\\Data\\";
-    if( !Directory.Exists( DataDirectory ))
-      Directory.CreateDirectory( DataDirectory );
+private void SetupDirectories()
+{
+try
+{
+DataDirectory = Application.StartupPath +
+                            "\\Data\\";
+if( !Directory.Exists( DataDirectory ))
+  Directory.CreateDirectory( DataDirectory );
 
-    }
-    catch( Exception )
-      {
-      MessageBox.Show( "Error: The directory could not be created.", MessageBoxTitle, MessageBoxButtons.OK);
-      return;
-      }
-    }
-*/
+}
+catch( Exception )
+  {
+  MessageBox.Show( 
+        "The directory could not be created.",
+        "AINews", 
+       MessageBoxButtons.OK);
+
+  return;
+  }
+}
+
 
 
 
@@ -217,44 +205,22 @@ return true;
 
 
 
-/*
-  internal void ShowEarthScene()
-    {
-    try
-    {
-    if( ThreeDF == null )
-      ThreeDF = new ThreeDForm( this );
 
-    if( ThreeDF.IsDisposed )
-      ThreeDF = new ThreeDForm( this );
+private void FreeEverything()
+{
+// MEvents.FreeEverything();
 
-    ThreeDF.Show();
-    ThreeDF.WindowState = FormWindowState.Maximized;
-    ThreeDF.BringToFront();
-    }
-    catch( Exception Except )
-      {
-      MessageBox.Show( "Exception in MainForm.ShowEarthScene(): " + Except.Message, MessageBoxTitle, MessageBoxButtons.OK);
-      return;
-      }
-    }
+// MainTextBox.Dispose();
+SingleInstanceTimer.Dispose();
+}
 
-
-
-  private void FreeEverything()
-    {
-    // MEvents.FreeEverything();
-
-    MainTextBox.Dispose();
-    SingleInstanceTimer.Dispose();
-    }
-*/
 
 
 
 private void MainForm_FormClosing(
          object sender, FormClosingEventArgs e )
 {
+/*
 if( IsSingleInstance )
   {
   if( DialogResult.Yes != MessageBox.Show(
@@ -267,6 +233,7 @@ if( IsSingleInstance )
     return;
     }
   }
+*/
 
 IsClosing = true;
 
@@ -276,21 +243,20 @@ if( IsSingleInstance )
   // DisposeOfEverything();
   }
 
-// FreeEverything();
+FreeEverything();
 }
 
 
 
 /*
-  internal void ShowStatus( string Status )
-    {
-    if( IsClosing )
-      return;
+internal void ShowStatus( string Status )
+{
+if( IsClosing )
+  return;
 
-    MainTextBox.AppendText( Status + "\r\n" );
-    }
+MainTextBox.AppendText( Status + "\r\n" );
+}
 */
-
 
 
 
@@ -301,10 +267,11 @@ private void InitializeGuiComponents()
 SingleInstanceTimer = new
                   System.Windows.Forms.Timer();
 
-MainTextBox = new System.Windows.Forms.TextBox();
+// MainTextBox = new System.Windows.Forms.TextBox();
 
 SuspendLayout();
 
+/*
 MainTextBox.Dock = System.Windows.Forms.
                           DockStyle.Fill;
 MainTextBox.Location = new System.Drawing.
@@ -317,6 +284,8 @@ MainTextBox.ScrollBars = System.Windows.Forms.
 MainTextBox.Size = new System.Drawing.
                             Size(715, 383);
 MainTextBox.TabIndex = 1;
+*/
+
 
 SingleInstanceTimer.Tick += new System.
      EventHandler(this.SingleInstanceTimer_Tick);
@@ -328,7 +297,7 @@ this.BackColor = System.Drawing.Color.Black;
 this.ClientSize = new System.Drawing.
                              Size(715, 411);
 
-this.Controls.Add(this.MainTextBox);
+// this.Controls.Add(this.MainTextBox);
 
 /*
 this.Controls.Add( MEvents.menuStrip1 );
@@ -355,12 +324,14 @@ this.Font = new System.Drawing.Font(
                System.Drawing.GraphicsUnit.Pixel,
                ((byte)(0)));
 
+/*
 MainTextBox.Font = new System.Drawing.
                     Font( "Consolas", 54.0F,
                     System.Drawing.FontStyle.
                     Regular, System.Drawing.
                     GraphicsUnit.Pixel,
                     ((byte)(0)));
+*/
 
 // MEvents.ResumeLayout();
 this.ResumeLayout(false);

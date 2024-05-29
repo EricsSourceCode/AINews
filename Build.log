@@ -1,16 +1,24 @@
-Build started 5/29/2024 12:34:03 PM.
+Build started 5/29/2024 1:46:32 PM.
 Project "C:\Eric\Main\AINews\AINews.csproj" on node 1 (default targets).
 GenerateTargetFrameworkMonikerAttribute:
 Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
 CoreCompile:
-  C:\Windows\Microsoft.NET\Framework\v4.0.30319\Csc.exe /noconfig /nowarn:1701,1702 /nostdlib+ /platform:x64 /errorreport:prompt /warn:4 /highentropyva+ /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\Microsoft.CSharp.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\mscorlib.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\PresentationCore.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\PresentationFramework.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Core.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Data.DataSetExtensions.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Data.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Deployment.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Drawing.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Windows.Forms.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Xaml.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Xml.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\UIAutomationProvider.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\WindowsBase.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\WindowsFormsIntegration.dll" /debug- /filealign:512 /optimize+ /out:obj\Release\AINews.exe /subsystemversion:6.00 /target:winexe /utf8output Program.cs MainForm.cs "C:\Users\EricC\AppData\Local\Temp\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs"
+  C:\Windows\Microsoft.NET\Framework\v4.0.30319\Csc.exe /noconfig /nowarn:1701,1702 /nostdlib+ /platform:x64 /errorreport:prompt /warn:4 /highentropyva+ /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\Microsoft.CSharp.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\mscorlib.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Core.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Data.DataSetExtensions.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Data.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Deployment.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Drawing.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Windows.Forms.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Xaml.dll" /debug- /filealign:512 /optimize+ /out:obj\Release\AINews.exe /subsystemversion:6.00 /target:winexe /utf8output MainFormComp.cs Program.cs MainForm.cs "C:\Users\EricC\AppData\Local\Temp\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs"
+MainFormComp.cs(58,39): warning CS0649: Field 'AINews.MainFormComp.UpperPanel' is never assigned to, and will always have its default value null [C:\Eric\Main\AINews\AINews.csproj]
+MainFormComp.cs(60,32): warning CS0649: Field 'AINews.MainFormComp.MainTextPanel' is never assigned to, and will always have its default value null [C:\Eric\Main\AINews\AINews.csproj]
 CopyFilesToOutputDirectory:
   Copying file from "obj\Release\AINews.exe" to "bin\Release\AINews.exe".
   AINews -> C:\Eric\Main\AINews\bin\Release\AINews.exe
 Done Building Project "C:\Eric\Main\AINews\AINews.csproj" (default targets).
 
 Build succeeded.
-    0 Warning(s)
+
+"C:\Eric\Main\AINews\AINews.csproj" (default target) (1) ->
+(CoreCompile target) -> 
+  MainFormComp.cs(58,39): warning CS0649: Field 'AINews.MainFormComp.UpperPanel' is never assigned to, and will always have its default value null [C:\Eric\Main\AINews\AINews.csproj]
+  MainFormComp.cs(60,32): warning CS0649: Field 'AINews.MainFormComp.MainTextPanel' is never assigned to, and will always have its default value null [C:\Eric\Main\AINews\AINews.csproj]
+
+    2 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:00.55
+Time Elapsed 00:00:00.47
