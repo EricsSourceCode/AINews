@@ -1,4 +1,4 @@
-Build started 5/29/2024 1:46:32 PM.
+Build started 5/30/2024 2:43:28 PM.
 Overriding target "GetFrameworkPaths" in project "C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.targets" with target "GetFrameworkPaths" from project "C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.NETFramework.targets".
 Overriding target "SatelliteDllsProjectOutputGroup" in project "C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.targets" with target "SatelliteDllsProjectOutputGroup" from project "C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.WinFX.targets".
 Project "C:\Eric\Main\AINews\AINews.csproj" on node 1 (default targets).
@@ -78,11 +78,7 @@ Task "ResolveAssemblyReference"
       v4.0.30319
   Assemblies:
       System
-      System.Xaml
-      System.Data.DataSetExtensions
       Microsoft.CSharp
-      System.Data
-      System.Deployment
       System.Drawing
       System.Windows.Forms
       System.Core
@@ -147,39 +143,11 @@ Task "ResolveAssemblyReference"
           Considered "C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.winmd", but it didn't exist.
       This reference is not "CopyLocal" because it's a prerequisite file.
       The ImageRuntimeVersion for this reference is "v4.0.30319".
-  Primary reference "System.Xaml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089".
-      Resolved file path is "C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Xaml.dll".
-      Reference found at search path location "{TargetFrameworkDirectory}".
-          For SearchPath "{TargetFrameworkDirectory}".
-          Considered "C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Xaml.winmd", but it didn't exist.
-      This reference is not "CopyLocal" because it's a prerequisite file.
-      The ImageRuntimeVersion for this reference is "v4.0.30319".
-  Primary reference "System.Data.DataSetExtensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089".
-      Resolved file path is "C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Data.DataSetExtensions.dll".
-      Reference found at search path location "{TargetFrameworkDirectory}".
-          For SearchPath "{TargetFrameworkDirectory}".
-          Considered "C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Data.DataSetExtensions.winmd", but it didn't exist.
-      This reference is not "CopyLocal" because it's a prerequisite file.
-      The ImageRuntimeVersion for this reference is "v4.0.30319".
   Primary reference "Microsoft.CSharp, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
       Resolved file path is "C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\Microsoft.CSharp.dll".
       Reference found at search path location "{TargetFrameworkDirectory}".
           For SearchPath "{TargetFrameworkDirectory}".
           Considered "C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\Microsoft.CSharp.winmd", but it didn't exist.
-      This reference is not "CopyLocal" because it's a prerequisite file.
-      The ImageRuntimeVersion for this reference is "v4.0.30319".
-  Primary reference "System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089".
-      Resolved file path is "C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Data.dll".
-      Reference found at search path location "{TargetFrameworkDirectory}".
-          For SearchPath "{TargetFrameworkDirectory}".
-          Considered "C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Data.winmd", but it didn't exist.
-      This reference is not "CopyLocal" because it's a prerequisite file.
-      The ImageRuntimeVersion for this reference is "v4.0.30319".
-  Primary reference "System.Deployment, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
-      Resolved file path is "C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Deployment.dll".
-      Reference found at search path location "{TargetFrameworkDirectory}".
-          For SearchPath "{TargetFrameworkDirectory}".
-          Considered "C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Deployment.winmd", but it didn't exist.
       This reference is not "CopyLocal" because it's a prerequisite file.
       The ImageRuntimeVersion for this reference is "v4.0.30319".
   Primary reference "System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
@@ -326,10 +294,10 @@ Done building target "PreXsdCodeGen" in project "AINews.csproj".
 Target "XsdCodeGen" skipped, due to false condition; ( '$(XsdCodeGenPreCondition)' == 'True' ) was evaluated as ( 'False' == 'True' ).
 Target "CoreCompile" in file "C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.CSharp.targets" from project "C:\Eric\Main\AINews\AINews.csproj" (target "Compile" depends on it):
 Building target "CoreCompile" completely.
-Input file "MainFormComp.cs" is newer than output file "obj\Release\AINews.exe".
+Input file "MainData.cs" is newer than output file "obj\Release\AINews.exe".
 Using "Csc" task from assembly "Microsoft.Build.Tasks.v4.0, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
 Task "Csc"
-  C:\Windows\Microsoft.NET\Framework\v4.0.30319\Csc.exe /noconfig /nowarn:1701,1702 /nostdlib+ /platform:x64 /errorreport:prompt /warn:4 /highentropyva+ /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\Microsoft.CSharp.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\mscorlib.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Core.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Data.DataSetExtensions.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Data.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Deployment.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Drawing.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Windows.Forms.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Xaml.dll" /debug- /filealign:512 /optimize+ /out:obj\Release\AINews.exe /subsystemversion:6.00 /target:winexe /utf8output MainFormComp.cs Program.cs MainForm.cs "C:\Users\EricC\AppData\Local\Temp\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs"
+  C:\Windows\Microsoft.NET\Framework\v4.0.30319\Csc.exe /noconfig /nowarn:1701,1702 /nostdlib+ /platform:x64 /errorreport:prompt /warn:4 /highentropyva+ /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\Microsoft.CSharp.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\mscorlib.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Core.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Drawing.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Windows.Forms.dll" /debug- /filealign:512 /optimize+ /out:obj\Release\AINews.exe /subsystemversion:6.00 /target:winexe /utf8output MainData.cs MainFormComp.cs Program.cs MainForm.cs "C:\Users\EricC\AppData\Local\Temp\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs"
   Microsoft (R) Visual C# Compiler version 4.8.9232.0
   
   for C# 5
@@ -339,8 +307,6 @@ Task "Csc"
   
   This compiler is provided as part of the Microsoft (R) .NET Framework, but only supports language versions up to C# 5, which is no longer the latest version. For compilers that support newer versions of the C# programming language, see http://go.microsoft.com/fwlink/?LinkID=533240
   
-MainFormComp.cs(58,39): warning CS0649: Field 'AINews.MainFormComp.UpperPanel' is never assigned to, and will always have its default value null [C:\Eric\Main\AINews\AINews.csproj]
-MainFormComp.cs(60,32): warning CS0649: Field 'AINews.MainFormComp.MainTextPanel' is never assigned to, and will always have its default value null [C:\Eric\Main\AINews\AINews.csproj]
 Done executing task "Csc".
 Task "CallTarget" skipped, due to false condition; ('$(TargetsTriggeredByCompilation)' != '') was evaluated as ('' != '').
 Done building target "CoreCompile" in project "AINews.csproj".
@@ -462,13 +428,7 @@ Done building target "Build" in project "AINews.csproj".
 Done Building Project "C:\Eric\Main\AINews\AINews.csproj" (default targets).
 
 Build succeeded.
-
-"C:\Eric\Main\AINews\AINews.csproj" (default target) (1) ->
-(CoreCompile target) -> 
-  MainFormComp.cs(58,39): warning CS0649: Field 'AINews.MainFormComp.UpperPanel' is never assigned to, and will always have its default value null [C:\Eric\Main\AINews\AINews.csproj]
-  MainFormComp.cs(60,32): warning CS0649: Field 'AINews.MainFormComp.MainTextPanel' is never assigned to, and will always have its default value null [C:\Eric\Main\AINews\AINews.csproj]
-
-    2 Warning(s)
+    0 Warning(s)
     0 Error(s)
 
 Time Elapsed 00:00:00.47

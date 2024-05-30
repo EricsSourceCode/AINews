@@ -15,7 +15,7 @@ using System.Drawing;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-using System.IO;
+// using System.IO;
 
 
 
@@ -26,7 +26,7 @@ namespace AINews
 public class MainForm : Form
 {
 internal const string VersionDate =
-                               "5/29/2024";
+                               "5/30/2024";
 internal const int VersionNumber = 09; // 0.9
 private System.Threading.Mutex
                     SingleInstanceMutex = null;
@@ -34,15 +34,10 @@ private System.Threading.Mutex
 private bool IsSingleInstance = false;
 private bool IsClosing = false;
 private bool Cancelled = false;
-
 internal MainFormComp MFormComp;
-
-
-private string DataDirectory = "";
-// private ConfigureFile ConfigFile;
 private System.Windows.Forms.Timer
                           SingleInstanceTimer;
-
+internal MainData mainData;
 
 
 public MainForm()
@@ -54,49 +49,13 @@ if( !CheckSingleInstance())
 
 IsSingleInstance = true;
 
-///////////
-// Keep this at the top.
-SetupDirectories();
+mainData = new MainData( this );
 
 MFormComp = new MainFormComp( this );
 this.Controls.Add( MFormComp.MainPanel );
 
-// ShowStatus( "Version Date: " + VersionDate );
-
-// DrawBitmap DrawBMap = new DrawBitmap( this );
-// DrawBMap.MakeImageFile( 
-//  "C:\\Eric\\so on...jpg" );
-}
-
-
-
-
-internal string GetDataDirectory()
-{
-return DataDirectory;
-}
-
-
-
-private void SetupDirectories()
-{
-try
-{
-DataDirectory = Application.StartupPath +
-                            "\\Data\\";
-if( !Directory.Exists( DataDirectory ))
-  Directory.CreateDirectory( DataDirectory );
-
-}
-catch( Exception )
-  {
-  MessageBox.Show( 
-        "The directory could not be created.",
-        "AINews", 
-       MessageBoxButtons.OK);
-
-  return;
-  }
+ShowStatus( "Programming by Eric Chauvin." );
+ShowStatus( "Version Date: " + VersionDate );
 }
 
 
@@ -208,10 +167,8 @@ return true;
 
 private void FreeEverything()
 {
-// MEvents.FreeEverything();
-
-// MainTextBox.Dispose();
 SingleInstanceTimer.Dispose();
+MFormComp.FreeAll();
 }
 
 
@@ -240,7 +197,6 @@ IsClosing = true;
 if( IsSingleInstance )
   {
   // SaveAllFiles();
-  // DisposeOfEverything();
   }
 
 FreeEverything();
@@ -248,44 +204,23 @@ FreeEverything();
 
 
 
-/*
 internal void ShowStatus( string Status )
 {
 if( IsClosing )
   return;
 
-MainTextBox.AppendText( Status + "\r\n" );
+MFormComp.ShowStatus( Status );
 }
-*/
+
 
 
 
 private void InitializeGuiComponents()
 {
-// MEvents.InitializeGuiComponents();
-
 SingleInstanceTimer = new
                   System.Windows.Forms.Timer();
 
-// MainTextBox = new System.Windows.Forms.TextBox();
-
 SuspendLayout();
-
-/*
-MainTextBox.Dock = System.Windows.Forms.
-                          DockStyle.Fill;
-MainTextBox.Location = new System.Drawing.
-                         Point(0, 28);
-MainTextBox.Multiline = true;
-MainTextBox.Name = "MainTextBox";
-MainTextBox.ReadOnly = true;
-MainTextBox.ScrollBars = System.Windows.Forms.
-                            ScrollBars.Vertical;
-MainTextBox.Size = new System.Drawing.
-                            Size(715, 383);
-MainTextBox.TabIndex = 1;
-*/
-
 
 SingleInstanceTimer.Tick += new System.
      EventHandler(this.SingleInstanceTimer_Tick);
@@ -297,19 +232,6 @@ this.BackColor = System.Drawing.Color.Black;
 this.ClientSize = new System.Drawing.
                              Size(715, 411);
 
-// this.Controls.Add(this.MainTextBox);
-
-/*
-this.Controls.Add( MEvents.menuStrip1 );
-this.ForeColor = System.Drawing.Color.White;
-this.MainMenuStrip = MEvents.menuStrip1;
-this.MainMenuStrip.Font = new System.
-          Drawing.Font("Segoe UI", 38F,
-          System.Drawing.FontStyle.Regular,
-          System.Drawing.GraphicsUnit.Pixel,
-          ((byte)(0)));
-*/
-
 this.Name = "MainForm";
 this.StartPosition = System.Windows.Forms.
                FormStartPosition.CenterScreen;
@@ -318,25 +240,20 @@ this.FormClosing += new System.Windows.
              Forms.FormClosingEventHandler(
              this.MainForm_FormClosing);
 
-this.Font = new System.Drawing.Font(
-               "Consolas", 34.0F,
-               System.Drawing.FontStyle.Regular,
-               System.Drawing.GraphicsUnit.Pixel,
-               ((byte)(0)));
+// this.Font = 
 
-/*
-MainTextBox.Font = new System.Drawing.
-                    Font( "Consolas", 54.0F,
-                    System.Drawing.FontStyle.
-                    Regular, System.Drawing.
-                    GraphicsUnit.Pixel,
-                    ((byte)(0)));
-*/
-
-// MEvents.ResumeLayout();
 this.ResumeLayout(false);
 this.PerformLayout();
 }
+
+
+
+internal void exitToolStripMenuItem_Click(
+                     object sender, EventArgs e)
+{
+Close();
+}
+
 
 
 } // Class
