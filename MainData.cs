@@ -10,51 +10,53 @@
 
 
 using System;
-using System.ComponentModel;
-using System.Drawing;
-using System.Text;
-using System.Threading;
+// using System.Text;
+// Application, MessageBox, etc.
 using System.Windows.Forms;
-using System.IO;
+// using System.IO;
 
 
 
-namespace AINews
-{
+// namespace
 
 
 public class MainData
 {
-private string DataDirectory = "";
-// private ConfigureFile ConfigFile;
-private MainForm MForm;
+private string dataDirectory = "";
+// private ConfigureFile configFile;
+private MainForm mForm;
+internal SysIO sysIO;
 
 
-internal MainData( MainForm UseForm )
+
+internal MainData( MainForm useForm )
 {
-MForm = UseForm;
+mForm = useForm;
 
-SetupDirectories();
+sysIO = new SysIO();
+
+setupDirectories();
 }
 
 
 
 
-internal string GetDataDirectory()
+internal string getDataDirectory()
 {
-return DataDirectory;
+return dataDirectory;
 }
 
 
 
-private void SetupDirectories()
+private void setupDirectories()
 {
 try
 {
-DataDirectory = Application.StartupPath +
-                            "\\Data\\";
-if( !Directory.Exists( DataDirectory ))
-  Directory.CreateDirectory( DataDirectory );
+// dataDirectory = Application.StartupPath +
+dataDirectory = "\\AIData\\";
+
+// If it doesn't already exist.
+sysIO.createDirectory( dataDirectory );
 
 }
 catch( Exception )
@@ -71,8 +73,3 @@ catch( Exception )
 
 
 } // Class
-} // Namespace
-
-
-
-

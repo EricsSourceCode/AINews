@@ -19,14 +19,13 @@ using System.Windows.Forms;
 
 
 
-namespace AINews
-{
+// namespace
 
 
 public class MainForm : Form
 {
 internal const string VersionDate =
-                               "5/30/2024";
+                               "5/31/2024";
 internal const int VersionNumber = 09; // 0.9
 private System.Threading.Mutex
                     SingleInstanceMutex = null;
@@ -240,7 +239,7 @@ this.FormClosing += new System.Windows.
              Forms.FormClosingEventHandler(
              this.MainForm_FormClosing);
 
-// this.Font = 
+// this.Font =
 
 this.ResumeLayout(false);
 this.PerformLayout();
@@ -257,4 +256,3 @@ Close();
 
 
 } // Class
-} // Namespace

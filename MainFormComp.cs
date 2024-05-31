@@ -19,8 +19,8 @@ using System.Resources;
 
 
 
-namespace AINews
-{
+// namespace
+
 
 public class MainFormComp
 {
@@ -150,7 +150,7 @@ MainTextBox.Font = new System.Drawing.
 
 
 UpperPanel.BackColor = System.Drawing.
-                           Color.Red;
+                           Color.Black;
 UpperPanel.BorderStyle = System.Windows.
                    Forms.BorderStyle.FixedSingle;
 
@@ -261,5 +261,3 @@ MainTextBox.AppendText( Status + "\r\n" );
 
 
 } // Class
-
-} // Namespace
