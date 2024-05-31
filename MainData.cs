@@ -22,10 +22,15 @@ using System.Windows.Forms;
 
 public class MainData
 {
+internal const string VersionDate =
+                              "5/31/2024";
+internal const int VersionNumber = 09; // 0.9
 private string dataDirectory = "";
 // private ConfigureFile configFile;
 private MainForm mForm;
 internal SysIO sysIO;
+private bool cancelled = false;
+private bool isClosing = false;
 
 
 
@@ -36,6 +41,9 @@ mForm = useForm;
 sysIO = new SysIO();
 
 setupDirectories();
+
+showStatus( "Programming by Eric Chauvin." );
+showStatus( "Version Date: " + VersionDate );
 }
 
 
@@ -68,6 +76,36 @@ catch( Exception )
 
   return;
   }
+}
+
+
+
+internal bool CheckEvents()
+{
+if( isClosing )
+  return false;
+
+Application.DoEvents();
+
+if( cancelled )
+  return false;
+
+return true;
+}
+
+
+
+internal void freeEverything()
+{
+
+
+}
+
+
+
+internal void showStatus( string status )
+{
+mForm.showStatus( status );
 }
 
 

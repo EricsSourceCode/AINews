@@ -24,9 +24,9 @@ using System.Resources;
 
 public class MainFormComp
 {
-private MainForm MForm;
-internal Panel MainPanel;
-internal TextBox MainTextBox;
+private MainForm mForm;
+internal Panel mainPanel;
+internal TextBox mainTextBox;
 internal System.Windows.Forms.MenuStrip
                                    menuStrip1;
 internal System.Windows.Forms.ToolStripMenuItem
@@ -34,15 +34,15 @@ internal System.Windows.Forms.ToolStripMenuItem
 internal System.Windows.Forms.ToolStripMenuItem
                         exitToolStripMenuItem;
 
-internal System.Windows.Forms.Panel UpperPanel;
+internal System.Windows.Forms.Panel upperPanel;
 internal System.Windows.Forms.Panel
-                               MainTextPanel;
+                               mainTextPanel;
 
 
 
 internal MainFormComp( MainForm UseForm )
 {
-MForm = UseForm;
+mForm = UseForm;
 
 InitializeComponents();
 }
@@ -51,26 +51,27 @@ InitializeComponents();
 
 private void InitializeComponents()
 {
-MainPanel = new System.Windows.Forms.Panel();
-MainTextBox = new System.Windows.Forms.TextBox();
+mForm.SuspendLayout();
+
+mainPanel = new System.Windows.Forms.Panel();
+mainTextBox = new System.Windows.Forms.TextBox();
 menuStrip1 = new System.Windows.Forms.MenuStrip();
 fileToolStripMenuItem = new System.Windows.
                       Forms.ToolStripMenuItem();
 exitToolStripMenuItem = new System.Windows.
                       Forms.ToolStripMenuItem();
-UpperPanel = new System.Windows.Forms.Panel();
-MainTextPanel = new System.Windows.Forms.Panel();
+upperPanel = new System.Windows.Forms.Panel();
+mainTextPanel = new System.Windows.Forms.Panel();
 
-
-MainPanel.BorderStyle = System.Windows.Forms.
+mainPanel.BorderStyle = System.Windows.Forms.
                       BorderStyle.FixedSingle;
-MainPanel.Dock = System.Windows.Forms.
+mainPanel.Dock = System.Windows.Forms.
                       DockStyle.Fill;
-MainPanel.Location = new System.Drawing.
+mainPanel.Location = new System.Drawing.
                       Point(0, 478);
-MainPanel.Name = "MainPanel";
-MainPanel.Size = new System.Drawing.Size(779, 36);
-MainPanel.BackColor = System.Drawing.Color.Black;
+mainPanel.Name = "MainPanel";
+mainPanel.Size = new System.Drawing.Size(779, 36);
+mainPanel.BackColor = System.Drawing.Color.Black;
 
 menuStrip1 = new System.Windows.Forms.
                                   MenuStrip();
@@ -79,7 +80,7 @@ fileToolStripMenuItem = new System.
 exitToolStripMenuItem = new System.
              Windows.Forms.ToolStripMenuItem();
 
-MainPanel.SuspendLayout();
+mainPanel.SuspendLayout();
 
 menuStrip1.ImageScalingSize = new
                     System.Drawing.Size(20, 20);
@@ -125,136 +126,123 @@ exitToolStripMenuItem.Size = new
 exitToolStripMenuItem.Text = "E&xit";
 exitToolStripMenuItem.Click += new
              System.EventHandler(
-             MForm.exitToolStripMenuItem_Click);
+             mForm.exitToolStripMenuItem_Click);
 
 
-MainTextBox.Dock = System.Windows.Forms.
+mainTextBox.Dock = System.Windows.Forms.
                           DockStyle.Fill;
-MainTextBox.Location = new System.Drawing.
+mainTextBox.Location = new System.Drawing.
                          Point(0, 28);
-MainTextBox.Multiline = true;
-MainTextBox.Name = "MainTextBox";
-MainTextBox.ReadOnly = false;
-MainTextBox.ScrollBars = System.Windows.Forms.
+mainTextBox.Multiline = true;
+mainTextBox.Name = "MainTextBox";
+mainTextBox.ReadOnly = false;
+mainTextBox.ScrollBars = System.Windows.Forms.
                             ScrollBars.Vertical;
-MainTextBox.Size = new System.Drawing.
+mainTextBox.Size = new System.Drawing.
                             Size(715, 383);
-MainTextBox.TabIndex = 1;
+mainTextBox.TabIndex = 1;
 
-MainTextBox.Font = new System.Drawing.
+mainTextBox.Font = new System.Drawing.
                     Font( "Consolas", 40.0F,
                     System.Drawing.FontStyle.
                     Regular, System.Drawing.
                     GraphicsUnit.Pixel,
                     ((byte)(0)));
 
-
-UpperPanel.BackColor = System.Drawing.
+upperPanel.BackColor = System.Drawing.
                            Color.Black;
-UpperPanel.BorderStyle = System.Windows.
+upperPanel.BorderStyle = System.Windows.
                    Forms.BorderStyle.FixedSingle;
 
-UpperPanel.Dock = System.Windows.Forms.
+upperPanel.Dock = System.Windows.Forms.
                               DockStyle.Top;
-UpperPanel.Location = new System.Drawing.
+upperPanel.Location = new System.Drawing.
                               Point(0, 72);
-UpperPanel.Name = "UpperPanel";
-UpperPanel.Size = new System.Drawing.
+upperPanel.Name = "UpperPanel";
+upperPanel.Size = new System.Drawing.
                                Size(962, 68);
-UpperPanel.TabIndex = 2;
+upperPanel.TabIndex = 2;
 
-MainTextPanel.BackColor = System.Drawing.
+mainTextPanel.BackColor = System.Drawing.
                            Color.Green;
-MainTextPanel.BorderStyle = System.Windows.
+mainTextPanel.BorderStyle = System.Windows.
                    Forms.BorderStyle.FixedSingle;
 
-MainTextPanel.Dock = System.Windows.Forms.
+mainTextPanel.Dock = System.Windows.Forms.
                               DockStyle.Fill;
-// MainTextPanel.Location = new System.Drawing.
-//                              Point(0, 72);
-MainTextPanel.Name = "MainTextPanel";
-// MainTextPanel.Size = new System.Drawing.
-//                              Size(962, 168);
-MainTextPanel.TabIndex = 3;
+mainTextPanel.Name = "MainTextPanel";
+mainTextPanel.TabIndex = 3;
 
-
-
-
-MForm.AutoScaleMode = System.Windows.Forms.
+mForm.AutoScaleMode = System.Windows.Forms.
                            AutoScaleMode.None;
-MForm.ClientSize = new System.Drawing.
+
+mForm.ClientSize = new System.Drawing.
                            Size(962, 505);
 
-MainTextPanel.Controls.Add( MainTextBox );
+mainTextPanel.Controls.Add( mainTextBox );
 
 // They are added in reverse order.
-MainPanel.Controls.Add( MainTextPanel );
-MainPanel.Controls.Add( UpperPanel );
+mainPanel.Controls.Add( mainTextPanel );
+mainPanel.Controls.Add( upperPanel );
 //   MainPanel.Controls.Add(this.ButtonPanel);
-MainPanel.Controls.Add( menuStrip1 );
+mainPanel.Controls.Add( menuStrip1 );
 
-MForm.Font = new System.Drawing.Font(
+mForm.Font = new System.Drawing.Font(
              "Microsoft Sans Serif", 36F,
              System.Drawing.FontStyle.Regular,
              System.Drawing.GraphicsUnit.Pixel,
              ((byte)(0)));
 
-// MForm.ForeColor = System.Drawing.Color.Black;
-// MForm.BackColor = System.Drawing.Color.Silver;
-
-//   MForm.Icon = ((System.Drawing.Icon)
+//   mForm.Icon = ((System.Drawing.Icon)
 //        (resources.GetObject("$this.Icon")));
 
-MForm.KeyPreview = true;
-MForm.MainMenuStrip = menuStrip1;
-MForm.Name = "MainForm";
-MForm.StartPosition = System.Windows.Forms.
+mForm.KeyPreview = true;
+mForm.MainMenuStrip = menuStrip1;
+mForm.Name = "MainForm";
+mForm.StartPosition = System.Windows.Forms.
                FormStartPosition.CenterScreen;
-MForm.Text = "AI News";
-MForm.WindowState = System.Windows.Forms.
+mForm.Text = "AI News";
+mForm.WindowState = System.Windows.Forms.
                      FormWindowState.Maximized;
 
-/*
-MForm.FormClosing += new System.Windows.
-          Forms.FormClosingEventHandler(
-          MForm.MainForm_FormClosing);
-MForm.Shown += new System.EventHandler(
-                         MForm.MainForm_Shown);
-MForm.KeyDown += new System.Windows.Forms.
-      KeyEventHandler(MForm.MainForm_KeyDown);
-MForm.Resize += new System.EventHandler(
-                     MForm.MainForm_Resize);
-*/
+mForm.BackColor = System.Drawing.Color.Black;
+// mForm.ForeColor = System.Drawing.Color.Black;
+
 
 menuStrip1.ResumeLayout(false);
 menuStrip1.PerformLayout();
 
 // ButtonPanel.ResumeLayout(false);
 // ButtonPanel.PerformLayout();
-UpperPanel.ResumeLayout(false);
 
-MainPanel.ResumeLayout(false);
-MainPanel.PerformLayout();
+upperPanel.ResumeLayout(false);
+upperPanel.PerformLayout();
+
+mainPanel.ResumeLayout(false);
+mainPanel.PerformLayout();
+
+mForm.ResumeLayout(false);
+mForm.PerformLayout();
 }
 
 
 
-internal void FreeAll()
+internal void freeEverything()
 {
 menuStrip1.Dispose();
 fileToolStripMenuItem.Dispose();
 exitToolStripMenuItem.Dispose();
-UpperPanel.Dispose();
-MainTextBox.Dispose();
-MainTextPanel.Dispose();
-MainPanel.Dispose();
+upperPanel.Dispose();
+mainTextBox.Dispose();
+mainTextPanel.Dispose();
+mainPanel.Dispose();
 }
 
 
 
-internal void ShowStatus( string Status )
+internal void showStatus( string status )
 {
-MainTextBox.AppendText( Status + "\r\n" );
+mainTextBox.AppendText( status + "\r\n" );
 }
 
 

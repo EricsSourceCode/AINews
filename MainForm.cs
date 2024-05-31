@@ -11,11 +11,10 @@
 
 using System;
 using System.ComponentModel;
-using System.Drawing;
+// using System.Drawing;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-// using System.IO;
 
 
 
@@ -24,54 +23,52 @@ using System.Windows.Forms;
 
 public class MainForm : Form
 {
-internal const string VersionDate =
-                               "5/31/2024";
-internal const int VersionNumber = 09; // 0.9
 private System.Threading.Mutex
                     SingleInstanceMutex = null;
 
-private bool IsSingleInstance = false;
-private bool IsClosing = false;
-private bool Cancelled = false;
-internal MainFormComp MFormComp;
+private bool isSingleInstance = false;
+internal MainFormComp mFormComp;
 private System.Windows.Forms.Timer
                           SingleInstanceTimer;
 internal MainData mainData;
 
 
+
+
 public MainForm()
 {
-InitializeGuiComponents();
+SingleInstanceTimer = new
+                  System.Windows.Forms.Timer();
+
+SingleInstanceTimer.Tick += new System.
+     EventHandler(this.SingleInstanceTimer_Tick);
+
+
+FormClosing += new System.Windows.
+          Forms.FormClosingEventHandler(
+          MainForm_FormClosing );
+
+/*
+Shown += new System.EventHandler(
+                       MainForm_Shown);
+KeyDown += new System.Windows.Forms.
+      KeyEventHandler( MainForm_KeyDown );
+Resize += new System.EventHandler(
+                     MainForm_Resize);
+*/
+
 
 if( !CheckSingleInstance())
   return;
 
-IsSingleInstance = true;
+isSingleInstance = true;
+
+mFormComp = new MainFormComp( this );
+this.Controls.Add( mFormComp.mainPanel );
 
 mainData = new MainData( this );
-
-MFormComp = new MainFormComp( this );
-this.Controls.Add( MFormComp.MainPanel );
-
-ShowStatus( "Programming by Eric Chauvin." );
-ShowStatus( "Version Date: " + VersionDate );
 }
 
-
-
-
-internal bool CheckEvents()
-{
-if( IsClosing )
-  return false;
-
-Application.DoEvents();
-
-if( Cancelled )
-  return false;
-
-return true;
-}
 
 
 
@@ -164,12 +161,16 @@ return true;
 
 
 
-private void FreeEverything()
+private void freeEverything()
 {
 SingleInstanceTimer.Dispose();
-MFormComp.FreeAll();
-}
 
+if( !isSingleInstance )
+  return;
+
+// mainData.freeEverything();
+mFormComp.freeEverything();
+}
 
 
 
@@ -177,7 +178,7 @@ private void MainForm_FormClosing(
          object sender, FormClosingEventArgs e )
 {
 /*
-if( IsSingleInstance )
+if( isSingleInstance )
   {
   if( DialogResult.Yes != MessageBox.Show(
             "Close the program?",
@@ -191,59 +192,9 @@ if( IsSingleInstance )
   }
 */
 
-IsClosing = true;
-
-if( IsSingleInstance )
-  {
-  // SaveAllFiles();
-  }
-
-FreeEverything();
+freeEverything();
 }
 
-
-
-internal void ShowStatus( string Status )
-{
-if( IsClosing )
-  return;
-
-MFormComp.ShowStatus( Status );
-}
-
-
-
-
-private void InitializeGuiComponents()
-{
-SingleInstanceTimer = new
-                  System.Windows.Forms.Timer();
-
-SuspendLayout();
-
-SingleInstanceTimer.Tick += new System.
-     EventHandler(this.SingleInstanceTimer_Tick);
-
-this.AutoScaleMode = System.Windows.Forms.
-                             AutoScaleMode.None;
-
-this.BackColor = System.Drawing.Color.Black;
-this.ClientSize = new System.Drawing.
-                             Size(715, 411);
-
-this.Name = "MainForm";
-this.StartPosition = System.Windows.Forms.
-               FormStartPosition.CenterScreen;
-this.Text = "AINews";
-this.FormClosing += new System.Windows.
-             Forms.FormClosingEventHandler(
-             this.MainForm_FormClosing);
-
-// this.Font =
-
-this.ResumeLayout(false);
-this.PerformLayout();
-}
 
 
 
@@ -253,6 +204,11 @@ internal void exitToolStripMenuItem_Click(
 Close();
 }
 
+
+internal void showStatus( string status )
+{
+mFormComp.showStatus( status );
+}
 
 
 } // Class
