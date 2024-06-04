@@ -13,7 +13,6 @@ using System;
 // using System.Text;
 // Application, MessageBox, etc.
 using System.Windows.Forms;
-// using System.IO;
 
 
 
@@ -23,7 +22,7 @@ using System.Windows.Forms;
 public class MainData
 {
 internal const string VersionDate =
-                              "5/31/2024";
+                              "6/4/2024";
 internal const int VersionNumber = 09; // 0.9
 private string dataDirectory = "";
 // private ConfigureFile configFile;
@@ -95,7 +94,7 @@ return true;
 
 
 
-internal void freeEverything()
+internal void freeAll()
 {
 
 

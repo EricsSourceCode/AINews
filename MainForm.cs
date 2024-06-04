@@ -9,10 +9,15 @@
 
 
 
+// See https://ericssourcecode.github.io/
+// For guides and information.
+
+
+
 using System;
-using System.ComponentModel;
+// using System.ComponentModel;
 // using System.Drawing;
-using System.Text;
+// using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -161,15 +166,19 @@ return true;
 
 
 
-private void freeEverything()
+private void freeAll()
 {
 SingleInstanceTimer.Dispose();
 
 if( !isSingleInstance )
   return;
 
-// mainData.freeEverything();
-mFormComp.freeEverything();
+if( mainData != null )
+  mainData.freeAll();
+
+if( mFormComp != null )
+  mFormComp.freeAll();
+
 }
 
 
@@ -192,7 +201,10 @@ if( isSingleInstance )
   }
 */
 
-freeEverything();
+// Do freeAll() instead of a ~Destructor or
+// Finalize.  Call Dispose() from there.
+
+freeAll();
 }
 
 

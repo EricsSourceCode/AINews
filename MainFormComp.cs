@@ -11,11 +11,11 @@
 
 
 using System;
-using System.ComponentModel;
+// using System.ComponentModel;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using System.Resources;
+// using System.Resources;
 
 
 
@@ -227,7 +227,7 @@ mForm.PerformLayout();
 
 
 
-internal void freeEverything()
+internal void freeAll()
 {
 menuStrip1.Dispose();
 fileToolStripMenuItem.Dispose();

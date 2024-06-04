@@ -42,10 +42,10 @@
   <ItemGroup>
 <!--
     <Compile Include="ConfigureFile.cs" />
-    <Compile Include="DrawBitmap.cs" />
-    <Compile Include="ECTime.cs" />
 -->
 
+    <Compile Include="MarkersAI.cs" />
+    <Compile Include="URLFile.cs" />
     <Compile Include="\Eric\Main\CsBase\SysIO.cs" />
     <Compile Include="MainData.cs" />
     <Compile Include="MainFormComp.cs" />

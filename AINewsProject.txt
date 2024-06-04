@@ -7,3 +7,6 @@ recentfile3	\Eric\Main\AINews\AINews.csproj
 recentfile4	\Eric\Main\AINews\MainFormComp.cs
 recentfile5	\Eric\Main\AINews\MainData.cs
 recentfile6	\Eric\Main\CsBase\SysIO.cs
+recentfile7	\MinlabNewGG55\AllStations.cs
+recentfile8	\Eric\Main\AINews\URLFile.cs
+recentfile9	\Eric\Main\AINews\MarkersAI.cs
