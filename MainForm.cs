@@ -15,9 +15,6 @@
 
 
 using System;
-// using System.ComponentModel;
-// using System.Drawing;
-// using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -210,17 +207,11 @@ freeAll();
 
 
 
-internal void exitToolStripMenuItem_Click(
-                     object sender, EventArgs e)
-{
-Close();
-}
-
-
 internal void showStatus( string status )
 {
 mFormComp.showStatus( status );
 }
+
 
 
 } // Class

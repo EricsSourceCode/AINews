@@ -33,6 +33,8 @@ internal System.Windows.Forms.ToolStripMenuItem
                         fileToolStripMenuItem;
 internal System.Windows.Forms.ToolStripMenuItem
                         exitToolStripMenuItem;
+internal System.Windows.Forms.ToolStripMenuItem
+                        testToolStripMenuItem;
 
 internal System.Windows.Forms.Panel upperPanel;
 internal System.Windows.Forms.Panel
@@ -60,6 +62,10 @@ fileToolStripMenuItem = new System.Windows.
                       Forms.ToolStripMenuItem();
 exitToolStripMenuItem = new System.Windows.
                       Forms.ToolStripMenuItem();
+testToolStripMenuItem = new System.Windows.
+                      Forms.ToolStripMenuItem();
+
+
 upperPanel = new System.Windows.Forms.Panel();
 mainTextPanel = new System.Windows.Forms.Panel();
 
@@ -73,13 +79,6 @@ mainPanel.Name = "MainPanel";
 mainPanel.Size = new System.Drawing.Size(779, 36);
 mainPanel.BackColor = System.Drawing.Color.Black;
 
-menuStrip1 = new System.Windows.Forms.
-                                  MenuStrip();
-fileToolStripMenuItem = new System.
-             Windows.Forms.ToolStripMenuItem();
-exitToolStripMenuItem = new System.
-             Windows.Forms.ToolStripMenuItem();
-
 mainPanel.SuspendLayout();
 
 menuStrip1.ImageScalingSize = new
@@ -88,9 +87,6 @@ menuStrip1.Items.AddRange(new
          System.Windows.Forms.ToolStripItem[] {
             fileToolStripMenuItem // ,
             // this.userSetupToolStripMenuItem,
-            // this.viewToolStripMenuItem,
-            // this.networkToolStripMenuItem,
-            // this.graphPRMToolStripMenuItem,
             // this.helpToolStripMenuItem
             });
 
@@ -110,6 +106,7 @@ menuStrip1.Font = new System.Drawing.Font(
 
 fileToolStripMenuItem.DropDownItems.AddRange(
   new System.Windows.Forms.ToolStripItem[] {
+            testToolStripMenuItem,
             exitToolStripMenuItem
             });
 
@@ -119,6 +116,7 @@ fileToolStripMenuItem.Size = new
                     System.Drawing.Size(64, 36);
 fileToolStripMenuItem.Text = "&File";
 
+
 exitToolStripMenuItem.Name =
                       "exitToolStripMenuItem";
 exitToolStripMenuItem.Size = new
@@ -126,7 +124,17 @@ exitToolStripMenuItem.Size = new
 exitToolStripMenuItem.Text = "E&xit";
 exitToolStripMenuItem.Click += new
              System.EventHandler(
-             mForm.exitToolStripMenuItem_Click);
+             exitToolStripMenuItem_Click);
+
+
+testToolStripMenuItem.Name =
+                      "testToolStripMenuItem";
+testToolStripMenuItem.Size = new
+                   System.Drawing.Size(433, 36);
+testToolStripMenuItem.Text = "&Test";
+testToolStripMenuItem.Click += new
+             System.EventHandler(
+             testToolStripMenuItem_Click );
 
 
 mainTextBox.Dock = System.Windows.Forms.
@@ -245,6 +253,21 @@ internal void showStatus( string status )
 mainTextBox.AppendText( status + "\r\n" );
 }
 
+
+
+private void exitToolStripMenuItem_Click(
+                     object sender, EventArgs e)
+{
+mForm.Close();
+}
+
+
+
+private void testToolStripMenuItem_Click(
+                     object sender, EventArgs e)
+{
+mForm.mainData.test();
+}
 
 
 

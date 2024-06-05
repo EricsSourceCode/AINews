@@ -22,7 +22,7 @@ using System.Windows.Forms;
 public class MainData
 {
 internal const string VersionDate =
-                              "6/4/2024";
+                              "6/5/2024";
 internal const int VersionNumber = 09; // 0.9
 private string dataDirectory = "";
 // private ConfigureFile configFile;
@@ -37,6 +37,7 @@ internal MainData( MainForm useForm )
 {
 mForm = useForm;
 
+// Do a separate one for each file.
 sysIO = new SysIO();
 
 setupDirectories();
@@ -105,6 +106,13 @@ internal void freeAll()
 internal void showStatus( string status )
 {
 mForm.showStatus( status );
+}
+
+
+
+internal void test()
+{
+mForm.showStatus( "Testing here." );
 }
 
 
