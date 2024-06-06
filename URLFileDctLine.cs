@@ -24,10 +24,44 @@ using System;
 
 public class URLFileDctLine
 {
-
-// URLFile* valueArray;
-// int arraySize = 2;
+private MainData mData;
+private URLFile[] valueArray;
 private int arrayLast = 0;
+
+
+
+private URLFileDctLine()
+{
+}
+
+
+
+internal URLFileDctLine( MainData useMainData )
+{
+mData = useMainData;
+
+try
+{
+valueArray = new URLFile[2];
+}
+catch( Exception Except )
+  {
+  freeAll();
+  mData.showStatus( 
+     "Not enough memory for URLFileDct." );
+  mData.showStatus( Except.Message );
+  // return;
+  }
+}
+
+
+internal void freeAll()
+{
+arrayLast = 0;
+valueArray = null;
+}
+
+
 
 internal int getArrayLast()
 {
@@ -36,73 +70,35 @@ return arrayLast;
 
 
 
-/*
-URLFileDctLine::URLFileDctLine( void )
-{
-valueArray = new URLFile[
-              Casting::i32ToU64( arraySize )];
-
-}
-
-
-
-URLFileDctLine::URLFileDctLine(
-                    const URLFileDctLine& in )
-{
-valueArray = new URLFile[
-              Casting::i32ToU64( arraySize )];
-
-if( in.testForCopy )
-  return;
-
-throw "URLFileDctLine copy constructor.";
-}
-
-
-
-URLFileDctLine::~URLFileDctLine( void )
-{
-delete[] valueArray;
-}
-
-
-
-
-void URLFileDctLine::clear()
+void clear()
 {
 arrayLast = 0;
-
-// const Int32 last = arraySize;
-// for( Int32 count = 0; count < last; count++ )
-  // valueArray[count].clear();
-
 }
 
 
 
-void URLFileDctLine::resizeArrays(
-                           const Int32 toAdd )
+void resizeArrays( int toAdd )
 {
-if( arrayLast > arraySize )
-  throw
-     "URLFileDctLine::resizeArrays arrayLast";
+int arraySize = valueArray.Length;
+int newSize = arraySize + toAdd;
 
-const Int32 newSize = arraySize + toAdd;
-
-URLFile* newValueArray;
-newValueArray = new URLFile[
-             Casting::i32ToU64( newSize )];
-
-const Int32 max = arrayLast;
-for( Int32 count = 0; count < max; count++ )
-  newValueArray[count].copy( valueArray[count] );
-
-arraySize = newSize;
-delete[] valueArray;
-valueArray = newValueArray;
+try
+{
+Array.Resize( ref valueArray, newSize );
+}
+catch( Exception Except )
+  {
+  freeAll();
+  mData.showStatus( 
+         "Not enough memory for URLFileDct." );
+  mData.showStatus( Except.Message );
+  // return;
+  }
 }
 
 
+
+/*
 
 Int32 URLFileDctLine::getIndexOfUrl(
                    const CharBuf& url ) const
@@ -222,4 +218,3 @@ valueArray[where].showDateTime();
 
 
 } // Class
-
