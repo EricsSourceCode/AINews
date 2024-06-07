@@ -27,7 +27,7 @@ internal const int VersionNumber = 09; // 0.9
 private string dataDirectory = "";
 // private ConfigureFile configFile;
 private MainForm mForm;
-internal SysIO sysIO;
+// internal SysIO sysIO;
 private bool cancelled = false;
 private bool isClosing = false;
 
@@ -36,9 +36,6 @@ private bool isClosing = false;
 internal MainData( MainForm useForm )
 {
 mForm = useForm;
-
-// Do a separate one for each file.
-sysIO = new SysIO();
 
 setupDirectories();
 
@@ -64,7 +61,7 @@ try
 dataDirectory = "\\AIData\\";
 
 // If it doesn't already exist.
-sysIO.createDirectory( dataDirectory );
+SysIO.createDirectory( dataDirectory );
 
 }
 catch( Exception )

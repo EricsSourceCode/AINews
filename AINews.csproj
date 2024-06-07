@@ -40,6 +40,8 @@
 
 
   <ItemGroup>
+    <Compile Include="\Eric\Main\CsCrypto\Sha256.cs" />
+    <Compile Include="\Eric\Main\CsBase\RangeT.cs" />
     <Compile Include="\Eric\Main\CsBase\Str.cs" />
     <Compile Include="\Eric\Main\CsBase\StrAr.cs" />
     <Compile Include="MarkersAI.cs" />

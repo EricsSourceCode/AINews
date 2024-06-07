@@ -47,7 +47,7 @@ valueArray = new URLFile[2];
 catch( Exception Except )
   {
   freeAll();
-  mData.showStatus( 
+  mData.showStatus(
      "Not enough memory for URLFileDct." );
   mData.showStatus( Except.Message );
   // return;
@@ -89,7 +89,7 @@ Array.Resize( ref valueArray, newSize );
 catch( Exception Except )
   {
   freeAll();
-  mData.showStatus( 
+  mData.showStatus(
          "Not enough memory for URLFileDct." );
   mData.showStatus( Except.Message );
   // return;
