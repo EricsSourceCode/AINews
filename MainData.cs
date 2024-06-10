@@ -11,7 +11,7 @@
 
 using System;
 // using System.Text;
-// Application, MessageBox, etc.
+// For Application.
 using System.Windows.Forms;
 
 
@@ -22,8 +22,8 @@ using System.Windows.Forms;
 public class MainData
 {
 internal const string VersionDate =
-                              "6/5/2024";
-internal const int VersionNumber = 09; // 0.9
+                              "6/10/2024";
+// internal const int VersionNumber = 09; // 0.9
 private string dataDirectory = "";
 // private ConfigureFile configFile;
 private MainForm mForm;
@@ -66,12 +66,10 @@ SysIO.createDirectory( dataDirectory );
 }
 catch( Exception )
   {
-  MessageBox.Show(
-        "The directory could not be created.",
-        "AINews",
-       MessageBoxButtons.OK);
+  string showS =
+    "The data directory could not be created.";
 
-  return;
+  throw new Exception( showS );
   }
 }
 

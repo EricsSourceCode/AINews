@@ -9,10 +9,6 @@
 
 
 
-// See https://ericssourcecode.github.io/
-// For guides and information.
-
-
 
 using System;
 using System.Threading;
@@ -88,15 +84,14 @@ string ErrorString = t.Exception.Message;
 
 try
 {
-string ShowString = "There was an unexpected" +
+string showS = "There was an unexpected" +
      " error:\r\n\r\n" +
-     "The program will close now.\r\n\r\n" +
      ErrorString;
 
-MessageBox.Show( ShowString,
-           "Program Error",
-           MessageBoxButtons.OK,
-           MessageBoxIcon.Stop );
+MessageBox.Show( showS, "AINews",
+                      MessageBoxButtons.OK,
+                      MessageBoxIcon.Stop );
+
 }
 finally
   {
