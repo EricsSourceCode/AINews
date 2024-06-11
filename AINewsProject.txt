@@ -3,14 +3,14 @@ executablefile	\Eric\Main\AINews\bin\Release\AINews.exe
 projectdirectory	\Eric\Main\AINews
 recentfile1	\Eric\Main\Docs\Notes.txt
 recentfile2	\Eric\Main\AINews\MainData.cs
-recentfile3	\Eric\Main\AINews\URLFile.cs
-recentfile4	\Eric\Main\CsBase\UTF8Str.cs
-recentfile5	\MinlabNewGG55\Airports.cs
-recentfile6	\Eric\Main\AINews\AINews.csproj
-recentfile7	\Eric\Main\AINews\URLFileDctLine.cs
-recentfile8	\Eric\Main\AINews\URLFileDct.cs
-recentfile10	\Eric\Main\CsMem\Uint32Array.cs
-recentfile9	\Eric\Main\CsCrypto\Sha256.cs
+recentfile3	\Eric\Main\AINews\AINews.csproj
+recentfile4	\Eric\Main\AINews\URLFileDctLine.cs
+recentfile5	\Eric\Main\AINews\URLFileDct.cs
+recentfile6	\Eric\Main\CsCrypto\Sha256.cs
+recentfile7	\Eric\Main\CsMem\Uint32Array.cs
+recentfile8	\Eric\Main\CsMem\ByteArray.cs
+recentfile10	
+recentfile9	\Eric\Main\CsBase\ByteBuf.cs
 recentfile11	
 recentfile12	
 recentfile13	
