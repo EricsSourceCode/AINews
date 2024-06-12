@@ -9,25 +9,5 @@ recentfile5	\Eric\Main\AINews\URLFileDct.cs
 recentfile6	\Eric\Main\CsCrypto\Sha256.cs
 recentfile7	\Eric\Main\CsMem\Uint32Array.cs
 recentfile8	\Eric\Main\CsMem\ByteArray.cs
-recentfile10	
 recentfile9	\Eric\Main\CsBase\ByteBuf.cs
-recentfile11	
-recentfile12	
-recentfile13	
-recentfile14	
-recentfile15	
-recentfile16	
-recentfile17	
-recentfile18	
-recentfile19	
-recentfile20	
-recentfile21	
-recentfile22	
-recentfile23	
-recentfile24	
-recentfile25	
-recentfile26	
-recentfile27	
-recentfile28	
-recentfile29	
-recentfile30	
+recentfile10	\Eric\Main\CsBase\ByteHex.cs
