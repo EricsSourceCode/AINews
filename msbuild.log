@@ -1,4 +1,4 @@
-Build started 6/12/2024 12:59:40 PM.
+Build started 6/13/2024 2:32:38 PM.
 Overriding target "GetFrameworkPaths" in project "C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.targets" with target "GetFrameworkPaths" from project "C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.NETFramework.targets".
 Overriding target "SatelliteDllsProjectOutputGroup" in project "C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.targets" with target "SatelliteDllsProjectOutputGroup" from project "C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.WinFX.targets".
 Project "C:\Eric\Main\AINews\AINews.csproj" on node 1 (default targets).
@@ -307,6 +307,8 @@ Task "Csc"
   
   This compiler is provided as part of the Microsoft (R) .NET Framework, but only supports language versions up to C# 5, which is no longer the latest version. For compilers that support newer versions of the C# programming language, see http://go.microsoft.com/fwlink/?LinkID=533240
   
+c:\Eric\Main\CsCrypto\Sha256.cs(425,11): warning CS0219: The variable 'B' is assigned but its value is never used [C:\Eric\Main\AINews\AINews.csproj]
+c:\Eric\Main\CsCrypto\Sha256.cs(426,11): warning CS0219: The variable 'L' is assigned but its value is never used [C:\Eric\Main\AINews\AINews.csproj]
 Done executing task "Csc".
 Task "CallTarget" skipped, due to false condition; ('$(TargetsTriggeredByCompilation)' != '') was evaluated as ('' != '').
 Done building target "CoreCompile" in project "AINews.csproj".
@@ -428,7 +430,13 @@ Done building target "Build" in project "AINews.csproj".
 Done Building Project "C:\Eric\Main\AINews\AINews.csproj" (default targets).
 
 Build succeeded.
-    0 Warning(s)
+
+"C:\Eric\Main\AINews\AINews.csproj" (default target) (1) ->
+(CoreCompile target) -> 
+  c:\Eric\Main\CsCrypto\Sha256.cs(425,11): warning CS0219: The variable 'B' is assigned but its value is never used [C:\Eric\Main\AINews\AINews.csproj]
+  c:\Eric\Main\CsCrypto\Sha256.cs(426,11): warning CS0219: The variable 'L' is assigned but its value is never used [C:\Eric\Main\AINews\AINews.csproj]
+
+    2 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:00.48
+Time Elapsed 00:00:00.47
