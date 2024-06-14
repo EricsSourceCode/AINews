@@ -22,6 +22,9 @@ public class URLFileDct // Dictionary of URLs.
 private MainData mData;
 private URLFileDctLine[] lineArray;
 private static const int keySize = 0xFFFF;
+private ByteBuf hash;
+private ByteBuf resultHash;
+private ByteBuf message;
 
 
 private URLFileDct( void )
@@ -37,6 +40,10 @@ mData = useMainData;
 try
 {
 lineArray = new URLFileDctLine[keySize];
+hash = new ByteBuf();
+resultHash = new ByteBuf();
+message = new ByteBuf();
+
 }
 catch( Exception Except )
   {
@@ -68,17 +75,16 @@ for( int count = 0; count < keySize; count++ )
 
 
 
-/*
-Int32 URLFileDct::getIndex( const CharBuf& url )
+internal int getIndex( string url )
 {
-const Int32 lastUrl = url.getLast();
+int lastUrl = url.getLast();
 if( lastUrl == 0 )
   return 0;
 
-CharBuf hash;
-
-Sha256 sha256;
-sha256.makeHash( hash, url );
+message.setFromAsciiStr( url );
+mData.sha256.makeHash( resultHash, message );
+// string showS = resultHash.getHexStr();
+// mData.showStatus( showS );
 
 Int32 index = hash.getU8( 0 );
 index <<= 8;
@@ -94,7 +100,7 @@ return index;
 
 
 
-
+/*
 ////////
 Java:
   public void setValue( StrA key, URLFile value )
@@ -211,12 +217,17 @@ Java:
 
 
 
-/*
-void URLFileDct::readFromFile( void )
+internal void readFromFile( void )
 {
-StIO::putS( "Reading from URL index file." );
+mData.showStatus(
+             "Reading from URL index file." );
 
 clear();
+
+/*
+string fileStr = SysIO.readAllText( 
+                        string fromFile )
+
 
 CharBuf cBuf;
 FileIO::readAll( Configure::getOldUrlIndexName(),
@@ -255,10 +266,12 @@ for( Int32 count = 0; count < 1000000; count++ )
   Int32 index = getIndex( url );
   lineArray[index].setValue( urlFile );
   }
+*/
 }
 
 
 
+/*
 void URLFileDct::doSearch( void )
 {
 =====

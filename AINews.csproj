@@ -40,6 +40,7 @@
 
 
   <ItemGroup>
+    <Compile Include="\Eric\Main\AINews\Configure.cs" />
     <Compile Include="\Eric\Main\CsBase\ByteHex.cs" />
     <Compile Include="\Eric\Main\CsBase\ByteBuf.cs" />
     <Compile Include="\Eric\Main\CsMem\ByteArray.cs" />
