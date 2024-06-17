@@ -10,7 +10,6 @@
 
 
 using System;
-// using System.Text;
 // For Application.
 using System.Windows.Forms;
 
@@ -22,15 +21,15 @@ using System.Windows.Forms;
 public class MainData
 {
 internal const string VersionDate =
-                              "6/14/2024";
+                              "6/17/2024";
 // internal const int VersionNumber = 09; // 0.9
 private string dataDirectory = "";
-// private ConfigureFile configFile;
+internal Configure config;
 private MainForm mForm;
-// internal SysIO sysIO;
 private bool cancelled = false;
 private bool isClosing = false;
 internal Sha256 sha256;
+internal URLFileDct uRLFileDct;
 
 
 
@@ -39,8 +38,13 @@ internal MainData( MainForm useForm )
 mForm = useForm;
 
 setupDirectories();
+config = new Configure( this, dataDirectory +
+                   "Config.txt" );
+
+// config.clearAllOptions();
 
 sha256 = new Sha256( this );
+uRLFileDct = new URLFileDct( this );
 
 showStatus( "Programming by Eric Chauvin." );
 showStatus( "Version Date: " + VersionDate );
@@ -111,7 +115,11 @@ mForm.showStatus( status );
 internal void test()
 {
 mForm.showStatus( "Testing here." );
-sha256.test();
+// sha256.test();
+
+uRLFileDct.readFromFile();
+
+
 }
 
 

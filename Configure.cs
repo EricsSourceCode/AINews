@@ -13,6 +13,7 @@
 using System;
 using System.Text;
 using System.IO;
+using System.Collections.Generic;
 
 
 
@@ -32,178 +33,168 @@ private const int maxLength = 1024 * 4;
 private Configure()
 {
 }
-  
 
-internal Configure( MainData seMainData,
+
+internal Configure( MainData useMainData,
                     string fileToUseName )
 {
-mData = UseMainData;
+mData = useMainData;
 fileName = fileToUseName;
 // UEncoding = new UTF8Encoding();
 CDictionary = new Dictionary<string, string>();
 
 readFromTextFile();
+// mData.showStatus( "Config is: " + fileName );
 }
 
 
 
-/*
-  internal int GetCount()
+internal int GetCount()
+{
+return CDictionary.Count;
+}
+
+
+
+internal string getString( string keyWord,
+                           int length )
+{
+keyWord = keyWord.ToLower().Trim();
+
+string value = "";
+if( CDictionary.TryGetValue( keyWord, out value ))
+  {
+  // value = Utility.GetCleanAsciiString(
+  //                Value, Length );
+  return value;
+  }
+
+return "";
+}
+
+
+
+internal void setString( string keyWord,
+                         string value,
+                         bool writeFile )
+{
+keyWord = keyWord.ToLower().Trim();
+
+if( keyWord == "" )
+  return;
+  // "Can't add an empty keyword to the
+  //  dictionary in Configure.cs."
+
+CDictionary[keyWord] = value;
+
+if( writeFile )
+  WriteToTextFile();
+
+}
+
+
+
+internal void clearAllOptions()
+{
+CDictionary.Clear();
+setString( "KeyTest", "This and that.", true );
+WriteToTextFile();
+}
+
+
+
+private bool readFromTextFile()
+{
+CDictionary.Clear();
+
+if( !File.Exists( fileName ))
+  return false;
+
+try
+{
+string Line = "";
+using( StreamReader SReader = new
+                 StreamReader( fileName  ))
+  {
+  while( SReader.Peek() >= 0 )
     {
-    return CDictionary.Count;
-    }
+    Line = SReader.ReadLine();
+    if( Line == null )
+      continue;
 
+    Line = Line.Trim();
+    if( Line == "" )
+      continue;
 
+    if( !Line.Contains( "\t" ))
+      continue;
 
+    string[] SplitString = Line.Split(
+                       new Char[] { '\t' } );
+    if( SplitString.Length < 2 )
+      continue;
 
-
-  // Someone can edit the config text file with another editor
-  // and then open it with this program.
-  internal string GetString( string KeyWord, int Length )
-    {
-    KeyWord = KeyWord.ToLower().Trim();
-
-    string Value;
-    if( CDictionary.TryGetValue( KeyWord, out Value ))
-      {
-      Value = Utility.GetCleanAsciiString( Value, Length );
-      return Value;
-      }
-    else
-      return "";
-
-    }
-
-
-
-
-  internal void SetString( string KeyWord, string Value )
-    {
-    KeyWord = Utility.GetCleanAsciiString( KeyWord.ToLower().Trim(), 100 );
+    string KeyWord = SplitString[0].Trim();
+    string Value = SplitString[1].Trim();
+    // KeyWord = Utility.GetCleanAsciiString(
+    //                          KeyWord, 100 );
+    // Value = Utility.GetCleanAsciiString(
+    //             Value, MaxLength );
 
     if( KeyWord == "" )
-      MessageBox.Show( "Can't add an empty keyword to the dictionary in Configure.cs.", MainForm.MessageBoxTitle, MessageBoxButtons.OK );
+      continue;
 
-    // Value = Utility.GetCleanAsciiString( Value, Length );
-    Value = Utility.GetCleanAsciiString( Value, MaxLength );
     CDictionary[KeyWord] = Value;
+    // try
+    // CDictionary.Add( KeyWord, Value );
     }
+  }
+
+return true;
+}
+catch( Exception ) // Except )
+  {
+  // ECTime RightNow = new ECTime();
+  // RightNow.SetToNow();
+  // MForm.Show
+  return false;
+  }
+}
 
 
 
 
-  internal void ClearAllOptions()
+internal bool WriteToTextFile()
+{
+try
+{
+using( StreamWriter SWriter = new
+                     StreamWriter( fileName  ))
+  {
+  foreach( KeyValuePair<string, string> Kvp
+                               in CDictionary )
     {
-    CDictionary.Clear();
-
-    SetString( "File Cleared", "Nada" );
-    WriteToTextFile2();
+    string Line = Kvp.Key + "\t" + Kvp.Value;
+    SWriter.WriteLine( Line );
     }
 
+  SWriter.WriteLine( " " );
+  }
 
+return true;
 
+}
+catch( Exception ) // Except )
+  {
+  // ECTime RightNow = new ECTime();
+  // RightNow.SetToNow();
+  // MForm.Show
+  return false;
+  }
+}
 
-  private bool ReadFromTextFile()
-    {
-    CDictionary.Clear();
-
-    if( !File.Exists( FileName ))
-      return false;
-
-    try
-    {
-    string Line;
-    using( StreamReader SReader = new StreamReader( FileName  ))
-      {
-      while( SReader.Peek() >= 0 )
-        {
-        Line = SReader.ReadLine();
-        if( Line == null )
-          continue;
-
-        Line = Line.Trim();
-        if( Line == "" )
-          continue;
-
-        // if( Encrypt != null )
-          // Line = Encrypt.DecryptString( Line );
-
-        if( !Line.Contains( "\t" ))
-          continue;
-
-        string[] SplitString = Line.Split( new Char[] { '\t' } );
-        if( SplitString.Length < 2 )
-          continue;
-
-        string KeyWord = SplitString[0].Trim();
-        string Value = SplitString[1].Trim();
-        KeyWord = Utility.GetCleanAsciiString( KeyWord, 100 );
-        Value = Utility.GetCleanAsciiString( Value, MaxLength );
-
-        if( KeyWord == "" )
-          continue;
-
-        CDictionary[KeyWord] = Value;
-        // try
-        // CDictionary.Add( KeyWord, Value );
-        }
-      }
-
-    return true;
-
-    }
-    catch( Exception Except )
-      {
-      ECTime RightNow = new ECTime();
-      RightNow.SetToNow();
-      MForm.ShowRNMsgStatus( " " );
-      MForm.ShowRNMsgStatus( RightNow.ToLocalDateString() + " at " + RightNow.ToLocalTimeString() );
-      MForm.ShowRNMsgStatus( "Error: Could not write the configuration data to the file.\r\n" + Except.Message );
-      MForm.ShowRNMsgStatus( " " );
-      return false;
-      }
-    }
-
-
-
-
-
-  internal bool WriteToTextFile2()
-    {
-    try
-    {
-    using( StreamWriter SWriter = new StreamWriter( FileName  ))
-      {
-      foreach( KeyValuePair<string, string> Kvp in CDictionary )
-        {
-        string Line = Kvp.Key + "\t" + Kvp.Value;
-        // if( Encrypt != null )
-          // Line = Encrypt.EncryptString( Line );
-
-        SWriter.WriteLine( Line );
-        }
-
-      SWriter.WriteLine( " " );
-      }
-
-    return true;
-
-    }
-    catch( Exception Except )
-      {
-      ECTime RightNow = new ECTime();
-      RightNow.SetToNow();
-      MForm.ShowRNMsgStatus( " " );
-      MForm.ShowRNMsgStatus( RightNow.ToLocalDateString() + " at " + RightNow.ToLocalTimeString() );
-      MForm.ShowRNMsgStatus( "Error: Could not write the configuration data to the file.\r\n" + Except.Message );
-      MForm.ShowRNMsgStatus( " " );
-      return false;
-      }
-    }
-*/
 
 
 
 
 } // Class
-

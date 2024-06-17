@@ -21,13 +21,13 @@ public class URLFileDct // Dictionary of URLs.
 {
 private MainData mData;
 private URLFileDctLine[] lineArray;
-private static const int keySize = 0xFFFF;
+private const int keySize = 0xFFFF;
 private ByteBuf hash;
 private ByteBuf resultHash;
 private ByteBuf message;
 
 
-private URLFileDct( void )
+private URLFileDct()
 {
 }
 
@@ -77,8 +77,7 @@ for( int count = 0; count < keySize; count++ )
 
 internal int getIndex( string url )
 {
-int lastUrl = url.getLast();
-if( lastUrl == 0 )
+if( url.Length == 0 )
   return 0;
 
 message.setFromAsciiStr( url );
@@ -217,7 +216,7 @@ Java:
 
 
 
-internal void readFromFile( void )
+internal void readFromFile()
 {
 mData.showStatus(
              "Reading from URL index file." );
@@ -225,7 +224,7 @@ mData.showStatus(
 clear();
 
 /*
-string fileStr = SysIO.readAllText( 
+string fileStr = SysIO.readAllText(
                         string fromFile )
 
 

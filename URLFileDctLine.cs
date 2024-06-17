@@ -65,7 +65,7 @@ return arrayLast;
 
 
 
-void clear()
+internal void clear()
 {
 arrayLast = 0;
 }
