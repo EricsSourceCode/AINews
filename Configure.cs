@@ -1,3 +1,5 @@
+/*
+
 // Copyright Eric Chauvin 2024.
 
 
@@ -198,3 +200,5 @@ catch( Exception ) // Except )
 
 
 } // Class
+*/
+

@@ -22,7 +22,6 @@ public class URLFileDct // Dictionary of URLs.
 private MainData mData;
 private URLFileDctLine[] lineArray;
 private const int keySize = 0xFFFF;
-private ByteBuf hash;
 private ByteBuf resultHash;
 private ByteBuf message;
 
@@ -40,7 +39,9 @@ mData = useMainData;
 try
 {
 lineArray = new URLFileDctLine[keySize];
-hash = new ByteBuf();
+for( int count = 0; count < keySize; count++ )
+  lineArray[count] = new URLFileDctLine( mData );
+
 resultHash = new ByteBuf();
 message = new ByteBuf();
 
@@ -58,16 +59,13 @@ catch( Exception Except )
 
 void freeAll()
 {
-lineArray = null;
+// lineArray = null;
 }
 
 
 
 void clear()
 {
-if( lineArray == null )
-  return;
-
 for( int count = 0; count < keySize; count++ )
   lineArray[count].clear();
 
@@ -85,9 +83,9 @@ mData.sha256.makeHash( resultHash, message );
 // string showS = resultHash.getHexStr();
 // mData.showStatus( showS );
 
-Int32 index = hash.getU8( 0 );
+int index = resultHash.getU8( 0 );
 index <<= 8;
-index |= hash.getU8( 1 );
+index |= resultHash.getU8( 1 );
 
 index = index & keySize;
 if( index >= keySize )
@@ -98,56 +96,52 @@ return index;
 
 
 
+internal void setValue( string key,
+                        URLFile value )
+{
+try
+{
+if( key == null )
+  return;
+
+key = Str.toLower( key );
+if( key == "" )
+  return;
+
+int index = getIndex( key );
+
+lineArray[index].setValue( value );
+}
+catch( Exception )
+  {
+  throw new Exception(
+       "URLFileDct Exception in setValue()." );
+  }
+}
+
+
+
+internal void getValue( string key,
+                        URLFile toGet )
+{
+toGet.clear();
+if( key == null )
+  return;
+
+key = Str.toLower( key );
+if( key == "" )
+  return;
+
+int index = getIndex( key );
+if( lineArray[index].getArrayLast() == 0 )
+  return;
+
+lineArray[index].getValue( key, toGet );
+}
+
+
 
 /*
-////////
-Java:
-  public void setValue( StrA key, URLFile value )
-    {
-    try
-    {
-    if( key == null )
-      return;
-
-    key = key.toLowerCase();
-    if( key.length() < 1 )
-      return;
-
-    // mApp.showStatusAsync( "Setting value: " + key );
-
-    int index = getIndex( key );
-    if( lineArray[index] == null )
-      lineArray[index] = new URLFileDictionaryLine( mApp );
-
-    lineArray[index].setValue( key, value );
-    }
-    catch( Exception e )
-      {
-      mApp.showStatusAsync( "Exception in setValue()." );
-      mApp.showStatusAsync( e.getMessage() );
-      }
-    }
-
-
-
-  public URLFile getValue( StrA key )
-    {
-    if( key == null )
-      return null;
-
-    key = key.toLowerCase();
-    if( key.length() < 1 )
-      return null;
-
-    int index = getIndex( key );
-    if( lineArray[index] == null )
-      return null;
-
-    return lineArray[index].getValue( key );
-    }
-
-
-
   public StrA makeKeysValuesStrA()
     {
     try
@@ -216,147 +210,112 @@ Java:
 
 
 
-internal void readFromFile()
+internal void readFromFile( string fileName )
 {
 mData.showStatus(
              "Reading from URL index file." );
+mData.showStatus( fileName );
 
 clear();
 
-/*
-string fileStr = SysIO.readAllText(
-                        string fromFile )
+string fileStr = SysIO.readAllText( fileName );
 
+StrAr lines = new StrAr();
+lines.split( fileStr, '\n' );
+int last = lines.getLast();
 
-CharBuf cBuf;
-FileIO::readAll( Configure::getOldUrlIndexName(),
-                 cBuf );
+mData.showStatus( "Links: " + last );
 
-UTF8Str utf8Str;
-Uint16Buf fileBuf;
-utf8Str.charBufToU16Buf( cBuf, fileBuf );
-
-// const Int32 last = fileBuf.getLast();
-
-Uint16Buf lineBuf;
-Int32 where = 0;
-Int32 howMany = 0;
-for( Int32 count = 0; count < 1000000; count++ )
+for( int count = 0; count < last; count++ )
   {
-  where = fileBuf.getField( lineBuf,
-                            where, '\n' );
+  string line = lines.getStrAt( count );
+  line = Str.trim( line );
 
-  howMany++;
-  if( where < 0 )
-    {
-    StIO::printF( "\n\nLinks: " );
-    StIO::printFD( howMany );
-    StIO::putLF();
-    return;
-    }
+  URLFile urlFile = new URLFile( mData );
+  urlFile.setFromStr( line );
 
-  where++;
+  string url = urlFile.getUrl();
+  mData.showStatus( urlFile.toString());
 
-  URLFile urlFile;
-  urlFile.setFromU16Buf( lineBuf );
+  int index = getIndex( url );
+  mData.showStatus( "index: " + index );
+  if( count > 50 )
+    break;
 
-  CharBuf url;
-  urlFile.getUrl( url );
-  Int32 index = getIndex( url );
   lineArray[index].setValue( urlFile );
+
+  URLFile testUrlFile = new URLFile( mData );
+  getValue( url, testUrlFile );
+======
+  mData.showStatus( "here: " );
+  mData.showStatus( testUrlFile.toString());
   }
-*/
 }
 
 
 
 /*
-void URLFileDct::doSearch( void )
+internal void doSearch()
 {
-=====
-StIO::putS( "Doing search." );
+mData.showStatus( "Doing search." );
 
-Int32 howMany = 0;
+int howMany = 0;
 
-Uint16Buf toFind;
-toFind.setFromCharPoint( "trump" );
+// string toFind = "trump";
 
-Uint16Buf toFindUrl;
-// toFindUrl.setFromCharPoint( "msnbc" );
-toFindUrl.setFromCharPoint( "foxnews" );
+// string toFindUrl = "msnbc";
+// string toFindUrl = "foxnews";
 
-for( Int32 count = 0; count < keySize; count++ )
+URLFile urlFile = new URLFile( mData );
+
+for( int count = 0; count < keySize; count++ )
   {
-  if( howMany > 50 )
-    break;
+  // if( howMany > 50 )
+    // break;
 
-  Int32 last = lineArray[count].getArrayLast();
+  int last = lineArray[count].getArrayLast();
   if( last < 1 )
     continue;
 
-  for( Int32 countR = 0; countR < last; countR++ )
+  for( int countR = 0; countR < last; countR++ )
     {
-    lineArray[count].showDateAt( countR );
+    lineArray[countR].getCopyURLFileAt(
+                                    urlFile,
+                                    countR );
+
+    // string showS = urlFile.toString();
+    // mData.showStatus( "Right here." );
+    // mData.showStatus( showS );
+
+
+
+////////////
+    string url = urlFile.getUrl();
+    url = Str.toLower( url );
+    // if( !Str.contains( url, toFindUrl ))
+      // continue;
+
+    string linkText = urlFile.getLinkText();
+    linkText = Str.toLower( linkText );
+    mData.showStatus( linkText );
+
+    // if( !Str.contains( linkText, toFind ))
+      // continue;
+
+    mData.showStatus( linkText );
+    // lineArray[count].showDateAt( countR );
+
+//////////
+
     howMany++;
     }
-
-
-
-///////////
-=====
-  where = fileBuf.getField( lineBuf,
-                            where, '\n' );
-
-  if( where < 0 )
-    {
-    StIO::printF( "\n\nLinks: " );
-    StIO::printFD( howMany );
-    StIO::putLF();
-    return;
-    }
-
-  where++;
-
-  URLFile urlFile;
-  urlFile.setFromU16Buf( lineBuf );
-
-  Uint16Buf url;
-  urlFile.getUrl( url );
-  Int32 index = getIndex( url );
-
-  lineArray[index].setValue( urlFile );
-
-  // if( howMany < 200 )
-    {
-    // StIO::putLF();
-    Uint16Buf showLinkText;
-    urlFile.getLinkText( showLinkText );
-
-    if( url.findText( toFindUrl, 0 ) >= 0 )
-      {
-      if( showLinkText.findText( toFind, 0 )
-                                    >= 0 )
-        {
-        showLinkText.showAscii();
-        }
-      }
-
-    // url.showAscii();
-    // StIO::printF( "URL index is: " );
-    // StIO::printFD( index );
-    // StIO::putLF();
-    }
-
-  howMany++;
-////////////
-
   }
 
-StIO::printF( "\n\nLinks: " );
-StIO::printFD( howMany );
-StIO::putLF();
+mData.showStatus( "\r\nMatching links: " +
+                                     howMany );
 }
 */
+
 
 
 } // Class

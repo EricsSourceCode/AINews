@@ -37,7 +37,11 @@ mData = useMainData;
 
 try
 {
-valueArray = new URLFile[2];
+valueArray = new URLFile[1];
+
+// An array of structs would get initialized,
+// but not an array of objects.
+valueArray[0] = new URLFile( mData );
 }
 catch( Exception Except )
   {
@@ -53,7 +57,7 @@ catch( Exception Except )
 internal void freeAll()
 {
 arrayLast = 0;
-valueArray = null;
+resizeArrays( 1 );
 }
 
 
@@ -72,14 +76,24 @@ arrayLast = 0;
 
 
 
-void resizeArrays( int toAdd )
+void resizeArrays( int newSize )
 {
-int arraySize = valueArray.Length;
-int newSize = arraySize + toAdd;
+int oldSize = valueArray.Length;
 
 try
 {
 Array.Resize( ref valueArray, newSize );
+
+if( newSize > oldSize )
+  {
+  for( int count = oldSize; count < newSize;
+                                    count++ )
+    {
+    // An array of structs would get initialized,
+    // but not an array of objects.
+    valueArray[count] = new URLFile( mData );
+    }
+  }
 }
 catch( Exception Except )
   {
@@ -93,16 +107,13 @@ catch( Exception Except )
 
 
 
-/*
-
-Int32 URLFileDctLine::getIndexOfUrl(
-                   const CharBuf& url ) const
+private int getIndexOfUrl( string url )
 {
 if( arrayLast < 1 )
   return -1;
 
-const Int32 max = arrayLast;
-for( Int32 count = 0; count < max; count++ )
+int max = arrayLast;
+for( int count = 0; count < max; count++ )
   {
   if( valueArray[count].urlIsEqual( url ))
     return count;
@@ -114,24 +125,24 @@ return -1;
 
 
 
-void URLFileDctLine::setValue(
-                         const URLFile& value )
+
+internal void setValue( URLFile value )
 {
 // This sets the URLFile to the new value
 // whether it's already there or not.
 
-CharBuf url;
-value.getUrl( url );
+string url = value.getUrl();
 
-Int32 index = getIndexOfUrl( url );
+int index = getIndexOfUrl( url );
 if( index >= 0 )
   {
   valueArray[index].copy( value );
   }
 else
   {
+  int arraySize = valueArray.Length;
   if( arrayLast >= arraySize )
-    resizeArrays( 16 );
+    resizeArrays( arraySize + 16 );
 
   valueArray[arrayLast].copy( value );
   arrayLast++;
@@ -139,12 +150,13 @@ else
 }
 
 
-void URLFileDctLine::getValue(
-                          const CharBuf& url,
-                          URLFile& urlFile ) const
+
+
+internal void getValue( string url,
+                        URLFile urlFile )
 {
 urlFile.clear();
-Int32 index = getIndexOfUrl( url );
+int index = getIndexOfUrl( url );
 if( index < 0 )
   return;
 
@@ -152,8 +164,30 @@ urlFile.copy( valueArray[index] );
 }
 
 
-void URLFileDctLine::showDateAt(
-                     const Int32 where ) const
+
+/*
+internal void getCopyURLFileAt( URLFile urlFile,
+                                int where )
+{
+urlFile.clear();
+
+mData.showStatus( "arrayLast: " + arrayLast );
+
+if( where < 0 )
+  return;
+
+if( where >= arrayLast )
+  return;
+
+string showS = valueArray[where].toString();
+mData.showStatus( showS );
+urlFile.copy( valueArray[where] );
+}
+*/
+
+
+
+internal void showDateAt( int where )
 {
 if( where < 0 )
   return;
@@ -167,6 +201,7 @@ valueArray[where].showDateTime();
 
 
 
+/*
 ====
 // Java:
 

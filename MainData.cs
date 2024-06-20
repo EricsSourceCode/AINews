@@ -21,10 +21,10 @@ using System.Windows.Forms;
 public class MainData
 {
 internal const string VersionDate =
-                              "6/17/2024";
+                              "6/20/2024";
 // internal const int VersionNumber = 09; // 0.9
 private string dataDirectory = "";
-internal Configure config;
+// internal Configure config;
 private MainForm mForm;
 private bool cancelled = false;
 private bool isClosing = false;
@@ -38,8 +38,8 @@ internal MainData( MainForm useForm )
 mForm = useForm;
 
 setupDirectories();
-config = new Configure( this, dataDirectory +
-                   "Config.txt" );
+// config = new Configure( this, dataDirectory +
+//                   "Config.txt" );
 
 // config.clearAllOptions();
 
@@ -48,6 +48,7 @@ uRLFileDct = new URLFileDct( this );
 
 showStatus( "Programming by Eric Chauvin." );
 showStatus( "Version Date: " + VersionDate );
+showStatus( " " );
 }
 
 
@@ -58,6 +59,12 @@ internal string getDataDirectory()
 return dataDirectory;
 }
 
+
+
+internal string getOldUrlFileName()
+{
+return "\\AINewsData\\UrlDictionary.txt";
+}
 
 
 private void setupDirectories()
@@ -117,9 +124,11 @@ internal void test()
 mForm.showStatus( "Testing here." );
 // sha256.test();
 
-uRLFileDct.readFromFile();
+uRLFileDct.readFromFile( getOldUrlFileName() );
+// uRLFileDct.doSearch();
 
-
+mForm.showStatus( " " );
+mForm.showStatus( "Finished test." );
 }
 
 

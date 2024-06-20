@@ -7,8 +7,8 @@ recentfile3	\Eric\Main\AINews\AINews.csproj
 recentfile4	\Eric\Main\AINews\URLFileDctLine.cs
 recentfile5	\Eric\Main\AINews\URLFileDct.cs
 recentfile6	\Eric\Main\AINews\URLFile.cs
-recentfile7	\Eric\Main\CsBase\SysIO.cs
-recentfile8	\Eric\Main\AINews\Configure.cs
+recentfile7	
+recentfile8	
 recentfile9	
 recentfile10	
 recentfile11	

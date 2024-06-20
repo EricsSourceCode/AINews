@@ -33,6 +33,7 @@ private URLFile()
 }
 
 
+
 internal URLFile( MainData useMainData )
 {
 mData = useMainData;
@@ -84,14 +85,14 @@ return dateTime;
 
 
 
-void showDateTime()
+internal void showDateTime()
 {
 mData.showStatus( dateTime );
 }
 
 
 
-bool urlIsEqual( string toCheck )
+internal bool urlIsEqual( string toCheck )
 {
 if( url == toCheck )
   return true;
@@ -101,7 +102,7 @@ return false;
 
 
 
-void clear()
+internal void clear()
 {
 linkText = "";
 fileName = "";
@@ -113,7 +114,7 @@ titleHtml = "";
 
 
 
-void copy( URLFile toCopy )
+internal void copy( URLFile toCopy )
 {
 linkText = toCopy.linkText;
 fileName = toCopy.fileName;
@@ -190,23 +191,23 @@ titleHtml = toCopy.titleHtml;
 
 
 
-string toString()
+internal string toString()
 {
 string anchors = "f";
 if( anchorsPulled )
   anchors = "t";
 
-string result = url +
+string result = Str.trim( url ) +
          MarkersAI.URLFileDelimit +
-         linkText +
+         Str.trim( linkText ) +
          MarkersAI.URLFileDelimit +
-         fileName +
+         Str.trim( fileName ) +
          MarkersAI.URLFileDelimit +
-         dateTime +
+         Str.trim( dateTime ) +
          MarkersAI.URLFileDelimit +
          anchors +
          MarkersAI.URLFileDelimit +
-         titleHtml +
+         Str.trim( titleHtml ) +
          MarkersAI.URLFileDelimit;
 
 return result;
@@ -214,7 +215,7 @@ return result;
 
 
 
-void setFromStr( string setFrom )
+internal void setFromStr( string setFrom )
 {
 clear();
 
@@ -224,19 +225,19 @@ int last = fields.getLast();
 if( last < 1 )
   return;
 
-url = fields.getStrAt( 0 );
+url = Str.trim( fields.getStrAt( 0 ));
 if( last < 2 )
   return;
 
-linkText = fields.getStrAt( 1 );
+linkText = Str.trim( fields.getStrAt( 1 ));
 if( last < 3 )
   return;
 
-fileName = fields.getStrAt( 2 );
+fileName = Str.trim( fields.getStrAt( 2 ));
 if( last < 4 )
   return;
 
-dateTime = fields.getStrAt( 3 );
+dateTime = Str.trim( fields.getStrAt( 3 ));
 if( last < 5 )
   return;
 
@@ -247,7 +248,7 @@ if( Str.contains( anchors, "t" ))
 if( last < 6 )
   return;
 
-titleHtml = fields.getStrAt( 5 );
+titleHtml = Str.trim( fields.getStrAt( 5 ));
 }
 
 
