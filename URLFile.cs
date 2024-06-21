@@ -23,7 +23,7 @@ private MainData mData;
 private string linkText = "";
 private string fileName = "";
 private string url = "";
-private string dateTime = "";
+private TimeEC dateTime;
 private bool anchorsPulled = false;
 private string titleHtml = "";
 
@@ -37,6 +37,7 @@ private URLFile()
 internal URLFile( MainData useMainData )
 {
 mData = useMainData;
+dateTime = new TimeEC();
 }
 
 
@@ -78,18 +79,20 @@ return url;
 }
 
 
-internal string getDateTime()
+internal string getDateTimeStr()
 {
-return dateTime;
+return dateTime.getLocalYear() + ";"; // +
+
+// 2024;3;7;10;13;17;877828000;
 }
 
 
-
+/*
 internal void showDateTime()
 {
-mData.showStatus( dateTime );
+mData.showStatus( getDateTimeStr());
 }
-
+*/
 
 
 internal bool urlIsEqual( string toCheck )
@@ -107,7 +110,7 @@ internal void clear()
 linkText = "";
 fileName = "";
 url = "";
-dateTime = "";
+dateTime.setToYear1900();
 anchorsPulled = false;
 titleHtml = "";
 }
@@ -203,7 +206,7 @@ string result = Str.trim( url ) +
          MarkersAI.URLFileDelimit +
          Str.trim( fileName ) +
          MarkersAI.URLFileDelimit +
-         Str.trim( dateTime ) +
+         dateTime.toDelimStr() +
          MarkersAI.URLFileDelimit +
          anchors +
          MarkersAI.URLFileDelimit +
@@ -237,7 +240,10 @@ fileName = Str.trim( fields.getStrAt( 2 ));
 if( last < 4 )
   return;
 
-dateTime = Str.trim( fields.getStrAt( 3 ));
+string timeS = fields.getStrAt( 3 );
+// mData.showStatus( "setFromDelim: " + timeS );
+
+dateTime.setFromDelim( timeS );
 if( last < 5 )
   return;
 
@@ -249,6 +255,23 @@ if( last < 6 )
   return;
 
 titleHtml = Str.trim( fields.getStrAt( 5 ));
+}
+
+
+
+internal int getYear()
+{
+return dateTime.getYear();
+}
+
+internal int getMonth()
+{
+return dateTime.getMonth();
+}
+
+internal int getDay()
+{
+return dateTime.getDay();
 }
 
 

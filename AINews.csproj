@@ -40,6 +40,7 @@
 
 
   <ItemGroup>
+    <Compile Include="\Eric\Main\CsBase\TimeEC.cs" />
     <Compile Include="Configure.cs" />
     <Compile Include="\Eric\Main\CsBase\ByteHex.cs" />
     <Compile Include="\Eric\Main\CsBase\ByteBuf.cs" />

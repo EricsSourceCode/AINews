@@ -165,13 +165,11 @@ urlFile.copy( valueArray[index] );
 
 
 
-/*
+
 internal void getCopyURLFileAt( URLFile urlFile,
                                 int where )
 {
 urlFile.clear();
-
-mData.showStatus( "arrayLast: " + arrayLast );
 
 if( where < 0 )
   return;
@@ -179,14 +177,12 @@ if( where < 0 )
 if( where >= arrayLast )
   return;
 
-string showS = valueArray[where].toString();
-mData.showStatus( showS );
 urlFile.copy( valueArray[where] );
 }
-*/
 
 
 
+/*
 internal void showDateAt( int where )
 {
 if( where < 0 )
@@ -197,7 +193,7 @@ if( where >= arrayLast )
 
 valueArray[where].showDateTime();
 }
-
+*/
 
 
 

@@ -21,7 +21,7 @@ public class URLFileDct // Dictionary of URLs.
 {
 private MainData mData;
 private URLFileDctLine[] lineArray;
-private const int keySize = 0xFFFF;
+private const int keySize = 0xFF;
 private ByteBuf resultHash;
 private ByteBuf message;
 
@@ -88,8 +88,15 @@ index <<= 8;
 index |= resultHash.getU8( 1 );
 
 index = index & keySize;
-if( index >= keySize )
-  index = keySize - 1;
+if( index == keySize )
+  {
+  // Distribute those last two at keySize
+  // and keySize - 1 more evenly.
+  // index = keySize - 1;
+  int lastB = message.getLast();
+  byte lastByte = message.getU8( lastB - 1 );
+  index = index - lastByte;
+  }
 
 return index;
 }
@@ -235,86 +242,103 @@ for( int count = 0; count < last; count++ )
   urlFile.setFromStr( line );
 
   string url = urlFile.getUrl();
-  mData.showStatus( urlFile.toString());
+  // mData.showStatus( urlFile.toString());
 
   int index = getIndex( url );
-  mData.showStatus( "index: " + index );
-  if( count > 50 )
-    break;
+  // mData.showStatus( "index: " + index );
+  // if( count > 50 )
+    // break;
 
   lineArray[index].setValue( urlFile );
 
-  URLFile testUrlFile = new URLFile( mData );
-  getValue( url, testUrlFile );
-======
-  mData.showStatus( "here: " );
-  mData.showStatus( testUrlFile.toString());
+  // URLFile testUrlFile = new URLFile( mData );
+  // getValue( url, testUrlFile );
+  // mData.showStatus( "here: " );
+  // mData.showStatus( testUrlFile.toString());
   }
 }
 
 
 
-/*
+
 internal void doSearch()
 {
 mData.showStatus( "Doing search." );
 
 int howMany = 0;
 
-// string toFind = "trump";
+string toFind = "trump";
 
 // string toFindUrl = "msnbc";
-// string toFindUrl = "foxnews";
+string toFindUrl = "foxnews";
 
 URLFile urlFile = new URLFile( mData );
+TimeEC timeEC = new TimeEC();
 
 for( int count = 0; count < keySize; count++ )
   {
-  // if( howMany > 50 )
-    // break;
+  if( howMany > 50 )
+    break;
 
   int last = lineArray[count].getArrayLast();
   if( last < 1 )
     continue;
 
+  // mData.showStatus( "Last: " + last );
   for( int countR = 0; countR < last; countR++ )
     {
-    lineArray[countR].getCopyURLFileAt(
+    lineArray[count].getCopyURLFileAt(
                                     urlFile,
                                     countR );
 
+    // string linkDate = urlFile.
+     //                    getDateTimeStr();
+
     // string showS = urlFile.toString();
-    // mData.showStatus( "Right here." );
     // mData.showStatus( showS );
 
+    if( urlFile.getYear() < 2024 )
+      continue;
 
+    if( urlFile.getMonth() < 6 )
+      continue;
 
-////////////
+    if( urlFile.getDay() < 15 )
+      continue;
+
     string url = urlFile.getUrl();
+    string showUrl = url;
     url = Str.toLower( url );
-    // if( !Str.contains( url, toFindUrl ))
-      // continue;
+    if( !Str.contains( url, toFindUrl ))
+      continue;
 
     string linkText = urlFile.getLinkText();
+    string showLinkText = linkText;
     linkText = Str.toLower( linkText );
-    mData.showStatus( linkText );
+    if( !Str.contains( linkText, toFind ))
+      continue;
 
-    // if( !Str.contains( linkText, toFind ))
-      // continue;
+    mData.showStatus( " " );
+    mData.showStatus( " " );
+    mData.showStatus( " " );
+    // mData.showStatus( "Year: " + 
+    //                      urlFile.getYear());
 
-    mData.showStatus( linkText );
+    mData.showStatus( showLinkText );
+    mData.showStatus( showUrl );
     // lineArray[count].showDateAt( countR );
 
-//////////
-
     howMany++;
+    if( howMany > 50 )
+      break;
+
     }
   }
 
 mData.showStatus( "\r\nMatching links: " +
                                      howMany );
 }
-*/
+
 
 
 
