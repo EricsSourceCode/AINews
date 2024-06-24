@@ -269,8 +269,8 @@ int howMany = 0;
 
 string toFind = "trump";
 
-// string toFindUrl = "msnbc";
-string toFindUrl = "foxnews";
+string toFindUrl = "msnbc";
+// string toFindUrl = "foxnews";
 
 URLFile urlFile = new URLFile( mData );
 TimeEC timeEC = new TimeEC();
@@ -321,16 +321,34 @@ for( int count = 0; count < keySize; count++ )
     mData.showStatus( " " );
     mData.showStatus( " " );
     mData.showStatus( " " );
-    // mData.showStatus( "Year: " + 
+    // mData.showStatus( "Year: " +
     //                      urlFile.getYear());
 
     mData.showStatus( showLinkText );
     mData.showStatus( showUrl );
     // lineArray[count].showDateAt( countR );
 
-    howMany++;
-    if( howMany > 50 )
-      break;
+    string fileName = urlFile.getFileName();
+    string fullPath = mData.
+                    getOldDataDirectory() +
+                    "URLFiles\\" + fileName;
+
+    if( !SysIO.fileExists( fullPath ))
+      continue;
+
+    HtmlFile htmlFile = new HtmlFile( mData,
+                                      showUrl,
+                                      fullPath );
+
+    htmlFile.markUpFile();
+
+    mData.showStatus(
+                "\r\nFinished Html file." );
+
+    return;
+    // howMany++;
+    // if( howMany > 50 )
+      // break;
 
     }
   }

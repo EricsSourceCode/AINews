@@ -21,7 +21,7 @@ using System.Windows.Forms;
 public class MainData
 {
 internal const string VersionDate =
-                              "6/21/2024";
+                              "6/24/2024";
 // internal const int VersionNumber = 09; // 0.9
 private string dataDirectory = "";
 // internal Configure config;
@@ -64,6 +64,12 @@ return dataDirectory;
 internal string getOldUrlFileName()
 {
 return "\\AINewsData\\UrlDictionary.txt";
+}
+
+
+internal string getOldDataDirectory()
+{
+return "\\AINewsData\\";
 }
 
 

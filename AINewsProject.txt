@@ -7,10 +7,10 @@ recentfile3	\Eric\Main\AINews\AINews.csproj
 recentfile4	\Eric\Main\AINews\URLFileDctLine.cs
 recentfile5	\Eric\Main\AINews\URLFileDct.cs
 recentfile6	\Eric\Main\AINews\URLFile.cs
-recentfile7	
-recentfile8	
-recentfile9	
-recentfile10	
+recentfile7	\Eric\Main\AINews\HtmlFile.cs
+recentfile8	\Eric\Main\CsBase\SBuilder.cs
+recentfile9	\Eric\Main\AINews\MarkersAI.cs
+recentfile10	\Eric\Main\CsBase\Str.cs
 recentfile11	
 recentfile12	
 recentfile13	

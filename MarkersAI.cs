@@ -46,18 +46,15 @@ using System;
 
 public class MarkersAI
   {
-  public const char Begin = '\x2700';
-
-/*
-  static const Uint16 End = 0x2701;
-  static const Uint16 ErrorPoint = 0x2702;
-  static const Uint16 BeginCData = 0x2703;
-  static const Uint16 EndCData = 0x2704;
-  static const Uint16 BeginScript = 0x2705;
-  static const Uint16 EndScript = 0x2706;
-  static const Uint16 BeginHtmlComment =
-                                  0x2707;
-  static const Uint16 EndHtmlComment = 0x2708;
+  // public const char Begin = '\x2700';
+  // static const Uint16 End = 0x2701;
+  //  static const Uint16 ErrorPoint = 0x2702;
+  public const char BeginCData = '\x2703';
+  public const char EndCData = '\x2704';
+  public const char BeginScript = '\x2705';
+  public const char EndScript = '\x2706';
+  public const char BeginHtmlComment = '\x2707';
+  public const char EndHtmlComment = '\x2708';
 
 
 //                        0x2709;
@@ -70,13 +67,12 @@ public class MarkersAI
 //                        0x2710;
 //                        0x2711;
 
-*/
-
 public const char URLFileDelimit = '\x2712';
 
 
 
 /*
+I will be parsing Javascript:
   EscapedSingleQuote
   EscapedDoubleQuote
   TypeString
