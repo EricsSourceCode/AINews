@@ -340,7 +340,9 @@ for( int count = 0; count < keySize; count++ )
                                       showUrl,
                                       fullPath );
 
-    htmlFile.markUpFile();
+    htmlFile.readFileS();
+    htmlFile.markupSections();
+    htmlFile.processNewAnchorTags();
 
     mData.showStatus(
                 "\r\nFinished Html file." );

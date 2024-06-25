@@ -40,9 +40,9 @@
 
 
   <ItemGroup>
+    <Compile Include="UrlParse.cs" />
     <Compile Include="\Eric\Main\CsBase\SBuilder.cs" />
     <Compile Include="HtmlFile.cs" />
-    <Compile Include="AnalyzeLinks.cs" />
     <Compile Include="\Eric\Main\CsBase\TimeEC.cs" />
     <Compile Include="Configure.cs" />
     <Compile Include="\Eric\Main\CsBase\ByteHex.cs" />

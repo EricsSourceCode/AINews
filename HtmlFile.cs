@@ -21,32 +21,24 @@ public class HtmlFile
 {
 private MainData mData;
 private string fileName = "";
-private string inURL = "";
-// private URLParse urlParse;
+private string fileS = "";
+private string inUrl = "";
+private UrlParse urlParse;
 private string markedUpS = "";
 private string htmlS = "";
+private string javaS = "";
+private string cDataS = "";
 
 
-/*
-  private static final StrA TagTitleStart = new
-                                      StrA( "title" );
+private const string tagTitleStart = "title";
+private const string tagTitleEnd = "/title";
+private const string tagAnchorStart = "a";
+private const string tagAnchorEnd = "/a";
+private const string tagHeadStart = "head";
+private const string tagHeadEnd = "/head";
 
-  private static final StrA TagTitleEnd = new
-                                      StrA( "/title" );
 
-  private static final StrA TagAnchorStart = new
-                                         StrA( "a" );
 
-  private static final StrA TagAnchorEnd = new
-                                         StrA( "/a" );
-
-  private static final StrA TagHeadStart = new
-                                       StrA( "head" );
-
-  private static final StrA TagHeadEnd = new
-                                       StrA( "/head" );
-
-*/
 
 private HtmlFile()
 {
@@ -58,22 +50,22 @@ public HtmlFile( MainData useMData,
                  string fileNameToUse )
 {
 mData = useMData;
-inURL = useUrl;
-// urlParse = new URLParse( mApp, baseURL );
+inUrl = useUrl;
+urlParse = new UrlParse( mData, inUrl );
 fileName = fileNameToUse;
 }
 
 
 
 
-internal void markUpFile()
+internal void readFileS()
 {
 if( fileName.Length == 0 )
   return;
 
 mData.showStatus( " " );
 mData.showStatus( "Reading: " + fileName );
-mData.showStatus( "Came from URL " + inURL );
+mData.showStatus( "Came from URL " + inUrl );
 
 if( !SysIO.fileExists( fileName ))
   {
@@ -82,26 +74,24 @@ if( !SysIO.fileExists( fileName ))
   return;
   }
 
-string fileS = SysIO.readAllText( fileName );
+fileS = SysIO.readAllText( fileName );
 
 if( fileS.Length < 2 )
   {
   mData.showStatus( "File length zero." );
   return;
   }
-
-markupSections( fileS );
 }
 
 
 
+internal void processNewAnchorTags()
+{
+bool isInsideAnchor = false;
+
+urlParse.clear();
+
 /*
-  public void processNewAnchorTags()
-    {
-    boolean isInsideAnchor = false;
-
-    urlParse.clear();
-
     // if( inURL.containsStrA( new StrA( "/classified" )))
       // mApp.showStatusAsync( "\n\nClassified: " + htmlS );
 
@@ -207,11 +197,13 @@ markupSections( fileS );
           }
         }
       }
-    }
+
+*/
+}
 
 
 
-
+/*
   public StrA getTitle()
     {
     boolean isInsideHeader = false;
@@ -330,10 +322,12 @@ markupSections( fileS );
 
 
 
-private void markupSections( string inS )
+internal void markupSections()
 {
 SBuilder scrBuild = new SBuilder();
 SBuilder htmlBuild = new SBuilder();
+SBuilder javaBuild = new SBuilder();
+SBuilder cDataBuild = new SBuilder();
 
 // CData can be commented out within a script:
 // slash star  ]]><![CDATA[  star slash.
@@ -348,26 +342,27 @@ SBuilder htmlBuild = new SBuilder();
 // the ending --> comment marker.
 // Or a script tag followed by: <!--
 
+
 // Replacing things in the right order here.
 
-string result = inS;
+string result = fileS;
 result = Str.replace( result, "<![CDATA[",
                "" + MarkersAI.BeginCData );
 
 result = Str.replace( result, "]]>",
-               "" + MarkersAI.EndCData );
+            "\r\n\r\n\r\n" + MarkersAI.EndCData );
 
 result = Str.replace( result, "<script",
                "" + MarkersAI.BeginScript );
 
 result = Str.replace( result, "</script>",
-               "" + MarkersAI.EndScript );
+        "\r\n\r\n\r\n" + MarkersAI.EndScript );
 
 result = Str.replace( result, "<!--",
                "" + MarkersAI.BeginHtmlComment );
 
 result = Str.replace( result, "-->",
-               "" + MarkersAI.EndHtmlComment );
+     "\r\n\r\n\r\n" + MarkersAI.EndHtmlComment );
 
 bool isInsideCData = false;
 bool isInsideScript = false;
@@ -419,6 +414,16 @@ for( int count = 0; count < last; count++ )
     continue;
     }
 
+  if( isInsideScript )
+    {
+    javaBuild.appendChar( testC );
+    }
+
+  if( isInsideCData )
+    {
+    cDataBuild.appendChar( testC );
+    }
+
   if( !(isInsideCData ||
         isInsideScript ||
         isInsideHtmlComment ))
@@ -429,10 +434,23 @@ for( int count = 0; count < last; count++ )
 
 htmlS = htmlBuild.toString();
 markedUpS = result;
-=====
-mData.showStatus( " " );
-mData.showStatus( "htmlS:" );
-mData.showStatus( htmlS );
+
+// mData.showStatus( " " );
+// mData.showStatus( "htmlS:" );
+// mData.showStatus( htmlS );
+// mData.showStatus( "markedUpS:" );
+// mData.showStatus( markedUpS );
+
+javaS = javaBuild.toString();
+cDataS = cDataBuild.toString();
+
+// mData.showStatus( " " );
+// mData.showStatus( "javaS:" );
+// mData.showStatus( javaS );
+
+// mData.showStatus( " " );
+// mData.showStatus( "cData:" );
+// mData.showStatus( cDataS );
 }
 
 
@@ -954,8 +972,8 @@ public class HtmlFileSpanish
     }
 
 
-
-  public boolean markUpFile()
+=========
+internal   public boolean readFileS()
     {
     if( fileName.length() == 0 )
       return true; // false;
@@ -974,7 +992,6 @@ public class HtmlFileSpanish
       return true; // false;
       }
 
-    markupSections( fileS );
     return true;
     }
 
