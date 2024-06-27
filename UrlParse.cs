@@ -17,25 +17,17 @@ using System;
 // namespace
 
 
+
 public class UrlParse
 {
 private MainData mData;
 private string baseURL = "";
+private SBuilder rawTagBld;
+private string linkText = "";
+private string link = "";
+private string baseDomain = "";
+private string baseHttpS = "";
 
-
-/*
-  private StrABld rawTagBld;
-  private StrArray badLinkArray;
-  private StrA linkText = StrA.Empty;
-  private StrA link = StrA.Empty;
-  private StrA baseDomain = StrA.Empty;
-
-
-  private static final StrA HrefStart = new
-                                  StrA( "href=" );
-
-
-*/
 
 
 private UrlParse()
@@ -48,208 +40,195 @@ internal UrlParse( MainData mDataToUse,
 {
 mData = mDataToUse;
 baseURL = useBaseURL;
-
-/*
-    baseDomain = getDomainFromLink( baseURL );
-    StrA baseHttpS = new StrA( "https://" );
-    baseDomain = baseHttpS.concat( baseDomain );
-
-    rawTagBld = new StrABld( 1024 * 4 );
-    setupBadLinkArray();
-*/
+rawTagBld = new SBuilder();
+baseDomain = getDomainFromLink( baseURL );
+baseHttpS = "https://" + baseDomain;
 }
 
 
-/*
-  public StrA getLink()
-    {
-    return link;
-    }
+
+internal string getLink()
+{
+return link;
+}
 
 
-
-  public StrA getLinkText()
-    {
-    return linkText;
-    }
-
+internal string getLinkText()
+{
+return linkText;
+}
 
 
-  public void addRawText( StrA in )
-    {
-    rawTagBld.appendStrA( in );
-    }
-*/
+internal void addRawText( string inS )
+{
+rawTagBld.appendStr( inS );
+}
+
 
 
 internal void clear()
 {
-/*
-    rawTagBld.clear();
-    linkText = StrA.Empty;
-    link = StrA.Empty;
-*/
+rawTagBld.clear();
+linkText = "";
+link = "";
 }
 
 
 
+internal bool processLink()
+{
+mData.showStatus( " " );
+mData.showStatus( " " );
+
+string text = rawTagBld.toString();
+if( text.Length == 0 )
+  return false;
+
+if( !Str.contains( text, "href=" ))
+  return false;
+
+// An empty reference:
+if( Str.contains( text, "href=\"\"" ))
+  return false;
+
+if( Str.contains( text, "onclick" ))
+  return false;
+
+// mData.showStatus( "Raw: " + text );
+
+StrAr lineParts = new StrAr();
+lineParts.split( text, '>' );
+int lastPart = lineParts.getLast();
+if( lastPart == 0 )
+  {
+  mData.showStatus(
+     "The anchor tag doesn't have any parts." );
+  mData.showStatus( "Text: " + text );
+  return false;
+  }
+
+if( lastPart > 2 )
+  {
+  mData.showStatus( "Anchor tag lastPart > 2." );
+  mData.showStatus( "text: " + text );
+  return false;
+  }
+
+linkText = "";
+if( lastPart >= 2 )
+  linkText = lineParts.getStrAt( 1 );
+
+// cleanUnicodeField();
+
+linkText = Str.trim( linkText );
+
+
+string insideTag = lineParts.getStrAt( 0 );
+// mData.showStatus( "insideTag: " + insideTag );
+
+StrAr tagAttr = new StrAr();
+tagAttr.split( insideTag, ' ' );
+int lastAttr = tagAttr.getLast();
+if( lastAttr == 0 )
+  {
+  mData.showStatus(
+        "URLParse: lastAttr is zero." );
+  return false;
+  }
+
+link = "";
+for( int count = 0; count < lastAttr; count++ )
+  {
+  string attr = tagAttr.getStrAt( count );
+  if( Str.contains( attr, "href=" ))
+    {
+    link = attr;
+    break;
+    }
+  }
+
+link = Str.replace( link, "href=", "" );
+link = Str.replace( link, "\"", " " );
+link = Str.replace( link, "\'", "" );
+// link = link.cleanUnicodeField().trim();
+link = fixupLink( link );
+if( link.Length == 0 )
+  return false;
+
+if( isBadLink( link ))
+  return false;
+
+mData.showStatus( "linkText: " + linkText );
+mData.showStatus( "Link: " + link );
+return true;
+}
+
+
+
+internal static string getDomainFromLink(
+                                string linkIn )
+{
+if( linkIn.Length == 0 )
+  return "";
+
+StrAr linkParts = new StrAr();
+linkParts.split( linkIn, '/' );
+int last = linkParts.getLast();
+for( int count = 0; count < last; count++ )
+  {
+  string part = linkParts.getStrAt( count );
+  // Get the first thing that contains
+  // a dot.  Like .com, .org, and so on.
+  if( Str.contains( part, "." ))
+    {
+    return part;
+    }
+  }
+
+return "";
+}
+
+
+
+
+private string fixupLink( string inS )
+{
+if( inS.Length < 2 )
+  return "";
+
+// if( base.endsWithChar( '/' ))
+  // base = base.substring( 0, base.length()
+//                                       - 2 );
+
+string result = inS;
+
+StrAr paramParts = new StrAr();
+paramParts.split( result, '?' );
+int lastParam = paramParts.getLast();
+if( lastParam == 0 )
+  {
+  mData.showStatus(
+             "URLParse: lastParam is zero." );
+  return "";
+  }
+
+result = paramParts.getStrAt( 0 );
+
+string twoSlashes = "//";
+string httpS = "https:";
+
+if( Str.startsWith( result, twoSlashes ))
+  result = httpS + result;
+
+if( Str.startsWith( result, "/" ))
+  result = baseDomain + result;
+
+return result;
+}
+
+
+======
 /*
-  public boolean processLink()
-    {
-    StrA text = rawTagBld.toStrA();
-    if( text.length() == 0 )
-      {
-      // mApp.showStatusAsync( "Raw text length is zero." );
-      return false;
-      }
-
-    if( !text.containsStrA( HrefStart ))
-      return false;
-
-    if( text.containsStrA( new StrA( "href=\"\"" )))
-      return false;
-
-    if( text.containsStrA( new StrA( "onclick" )))
-      return false;
-
-    // mApp.showStatusAsync( "\n\nRaw: " + text );
-
-    StrArray lineParts = text.splitChar( '>' );
-    final int lastPart = lineParts.length();
-    if( lastPart == 0 )
-      {
-      mApp.showStatusAsync(
-           "The anchor tag doesn't have any parts." );
-      mApp.showStatusAsync( "Text: " + text );
-      return false;
-      }
-
-    if( lastPart > 2 )
-      {
-      mApp.showStatusAsync( "Anchor tag lastPart > 2." );
-      mApp.showStatusAsync( "text: " + text );
-      return false;
-      }
-
-    linkText = StrA.Empty;
-    if( lastPart >= 2 )
-      linkText = lineParts.getStrAt( 1 );
-
-    linkText = linkText.cleanUnicodeField().trim();
-    linkText = HtmlFile.fixAmpersandChars( linkText );
-
-    // mApp.showStatusAsync( "\nlinkText: " + linkText );
-
-    StrA insideTag = lineParts.getStrAt( 0 );
-
-    // mApp.showStatusAsync( "insideTag: " + insideTag );
-
-    StrArray tagAttr = insideTag.splitChar( ' ' );
-    final int lastAttr = tagAttr.length();
-    if( lastAttr == 0 )
-      {
-      mApp.showStatusAsync( "URLParse: lastAttr is zero." );
-      return false;
-      }
-
-    link = StrA.Empty;
-    for( int count = 0; count < lastAttr; count++ )
-      {
-      StrA attr = tagAttr.getStrAt( count );
-      if( attr.containsStrA( HrefStart ))
-        {
-        link = attr;
-        break;
-        }
-      }
-
-    link = link.replace( HrefStart, StrA.Empty );
-    link = link.replaceChar( '"', ' ' );
-    link = link.replace( new StrA( "\'" ),
-                                  StrA.Empty );
-    link = link.cleanUnicodeField().trim();
-    link = fixupLink( link );
-    if( link.length() == 0 )
-      return false;
-
-    if( isBadLink( link ))
-      return false;
-
-    // Don't add new Spanish links.
-    // if( isSpanish( link ))
-      // return false;
-
-    // mApp.showStatusAsync( "Link: " + link );
-
-    return true;
-    }
-
-
-
-
-  private StrA getDomainFromLink( StrA link )
-    {
-    if( link.length() == 0 )
-      return StrA.Empty;
-
-    StrA dotCom = new StrA( ".com" );
-    StrA dotMex = new StrA( ".mx" );
-    StrA dotOrg = new StrA( ".org" );
-    StrA dotGov = new StrA( ".gov" );
-
-    StrArray linkParts = link.splitChar( '/' );
-    final int last = linkParts.length();
-    for( int count = 0; count < last; count++ )
-      {
-      StrA part = linkParts.getStrAt( count );
-      if( (part.containsStrA( dotCom )) ||
-          (part.containsStrA( dotMex )) ||
-          (part.containsStrA( dotOrg )) ||
-          (part.containsStrA( dotGov )) )
-        {
-        return part;
-        }
-      }
-
-    return StrA.Empty;
-    }
-
-
-
-  private StrA fixupLink( StrA in )
-    {
-    if( in.length() < 2 )
-      return StrA.Empty;
-
-    // if( base.endsWithChar( '/' ))
-      // base = base.substring( 0, base.length() - 2 );
-
-    StrA result = in;
-
-    StrArray paramParts = result.splitChar( '?' );
-    final int lastParam = paramParts.length();
-    if( lastParam == 0 )
-      {
-      mApp.showStatusAsync( "URLParse: lastParam is zero." );
-      return StrA.Empty;
-      }
-
-    result = paramParts.getStrAt( 0 );
-
-    StrA twoSlashes = new StrA( "//" );
-    StrA httpS = new StrA( "https:" );
-
-    if( result.startsWith( twoSlashes ))
-      result = httpS.concat( result );
-
-    if( result.startsWithChar( '/' ))
-      result = baseDomain.concat( result );
-
-    return result;
-    }
-
-
-
   private void setupBadLinkArray()
     {
     badLinkArray = new StrArray();
@@ -434,20 +413,21 @@ internal void clear()
 
     return false;
     }
+*/
 
 
 
-  public boolean isBadLink( StrA link )
-    {
-    // wa.me is WhatsApp.
-    // Messaging app owned by Facebook.
+internal bool isBadLink( string link )
+{
+// wa.me is WhatsApp.
 
-    if( link.containsStrA( new StrA( "https://wa.me/" )))
-      return true;
+if( Str.contains( link, "https://wa.me/" ))
+  return true;
 
-    if( link.containsStrA( new StrA( "mailto:" )))
-      return true;
+if( Str.contains( link, "mailto:" ))
+  return true;
 
+/*
     if( link.containsStrA( new StrA( "ftp://" )))
       return true;
 
@@ -468,11 +448,11 @@ internal void clear()
         return true;
 
       }
-
-    return false;
-    }
 */
+
+return false;
+}
+
 
 
 } // Class
-

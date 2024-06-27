@@ -91,114 +91,119 @@ bool isInsideAnchor = false;
 
 urlParse.clear();
 
-/*
-    // if( inURL.containsStrA( new StrA( "/classified" )))
-      // mApp.showStatusAsync( "\n\nClassified: " + htmlS );
+// The link tag is for style sheets.
 
-    // The link tag is for style sheets.
+StrAr tagParts = new StrAr();
+tagParts.split( htmlS, '<' );
+int last = tagParts.getLast();
 
-    StrArray tagParts = htmlS.splitChar( '<' );
-    final int last = tagParts.length();
-    // mApp.showStatusAsync( "Before first tag: " + tagParts.getStrAt( 0 ));
+string beforeFirst = tagParts.getStrAt( 0 );
+mData.showStatus( "Before first: " +
+                                beforeFirst );
+for( int count = 1; count < last; count++ )
+  {
+  string line = tagParts.getStrAt( count );
 
-    for( int count = 1; count < last; count++ )
+  string lowerLine = Str.toLower( line );
+  if( !( Str.startsWith( lowerLine,
+                           tagAnchorStart ) ||
+         Str.startsWith( lowerLine,
+                           tagAnchorEnd ) ))
+    continue;
+
+  StrAr lineParts = new StrAr();
+  lineParts.split( line, '>' );
+  int lastPart = lineParts.getLast();
+  if( lastPart == 0 )
+    {
+    mData.showStatus(
+           "The tag doesn't have any parts." );
+    mData.showStatus( "line: " + line );
+    return;
+    }
+
+  if( lastPart > 2 )
+    {
+    // line: /span> Posting">Post comment
+    // mApp.showStatusAsync( "lastPart > 2." );
+    // mApp.showStatusAsync( "line: " + line );
+    continue;
+    }
+
+  string tag = lineParts.getStrAt( 0 );
+  // It's a short tag that I don't want to
+  // deal with yet.
+  if( Str.endsWith( tag, "/" ))
+    {
+    // if( tag.startsWithChar( 'a' ))
+    // mApp.showStatusAsync( "Short tag: " + tag );
+    continue;
+    }
+
+  // mApp.showStatusAsync( "tag: " + tag );
+  StrAr tagAttr = new StrAr();
+  tagAttr.split( tag, ' ' );
+  int lastAttr = tagAttr.getLast();
+  if( lastAttr == 0 )
+    {
+    mData.showStatus(
+              "lastAttr is zero for the tag." );
+    mData.showStatus( "tag: " + tag );
+    return;
+    }
+
+  string tagName = tagAttr.getStrAt( 0 );
+  tagName = Str.toLower( tagName );
+  // mApp.showStatusAsync( "\n\ntagName: " +
+  //                                 tagName );
+
+  if( tagName == tagAnchorStart )
+    {
+    // It is called an anchor tag.
+    isInsideAnchor = true;
+    urlParse.clear();
+
+    for( int countA = 1; countA < lastAttr;
+                                    countA++ )
       {
-      StrA line = tagParts.getStrAt( count );
-
-      StrA lowerLine = line.toLowerCase();
-      if( !( lowerLine.startsWith( TagAnchorStart ) ||
-             lowerLine.startsWith( TagAnchorEnd ) ))
-        continue;
-
-      StrArray lineParts = line.splitChar( '>' );
-      final int lastPart = lineParts.length();
-      if( lastPart == 0 )
-        {
-        mApp.showStatusAsync( "The tag doesn't have any parts." );
-        mApp.showStatusAsync( "line: " + line );
-        return;
-        }
-
-      if( lastPart > 2 )
-        {
-        // line: /span> Posting">Post comment
-
-        // mApp.showStatusAsync( "lastPart > 2." );
-        // mApp.showStatusAsync( "line: " + line );
-        continue;
-        }
-
-      StrA tag = lineParts.getStrAt( 0 );
-      // It's a short tag that I don't want to
-      // deal with yet.
-      if( tag.endsWithChar( '/' ))
-        {
-        // if( tag.startsWithChar( 'a' ))
-          // mApp.showStatusAsync( "Short tag: " + tag );
-
-        continue;
-        }
-
-      // mApp.showStatusAsync( "tag: " + tag );
-      StrArray tagAttr = tag.splitChar( ' ' );
-      final int lastAttr = tagAttr.length();
-      if( lastAttr == 0 )
-        {
-        mApp.showStatusAsync( "lastAttr is zero for the tag." );
-        mApp.showStatusAsync( "tag: " + tag );
-        return;
-        }
-
-      StrA tagName = tagAttr.getStrAt( 0 );
-      tagName = tagName.toLowerCase();
-      // mApp.showStatusAsync( "\n\ntagName: " + tagName );
-
-      if( tagName.equalTo( TagAnchorStart ))
-        {
-        // It is called an anchor tag.
-        isInsideAnchor = true;
-        urlParse.clear();
-
-        for( int countA = 1; countA < lastAttr; countA++ )
-          {
-          StrA attr = tagAttr.getStrAt( countA );
-          attr = attr.concat( new StrA( " " ));
-          urlParse.addRawText( attr );
-          }
-
-        urlParse.addRawText( new StrA( " >" ));
-        }
-
-      if( tagName.equalTo( TagAnchorEnd ))
-        {
-        if( urlParse.processLink())
-          {
-          StrA link = urlParse.getLink();
-          StrA linkText = urlParse.getLinkText();
-          if( linkText.length() > 0 )
-            {
-            if( !urlFileDictionary.keyExists( link ))
-              {
-              mApp.showStatusAsync( "\n\nLinkText: " + linkText );
-              mApp.showStatusAsync( "Link: " + link );
-              URLFile uFile = new URLFile( mApp,
-                                     linkText, link );
-              urlFileDictionary.setValue( link, uFile );
-              }
-            }
-          }
-        }
-
-      if( isInsideAnchor )
-        {
-        if( lastPart >= 2 )
-          {
-          urlParse.addRawText( lineParts.getStrAt( 1 ));
-          }
-        }
+      string attr = tagAttr.getStrAt( countA );
+      attr = attr += " ";
+      urlParse.addRawText( attr );
       }
 
-*/
+    urlParse.addRawText( " >" );
+    }
+
+  if( tagName == tagAnchorEnd )
+    {
+    if( urlParse.processLink())
+      {
+      string link = urlParse.getLink();
+      string linkText = urlParse.getLinkText();
+      if( linkText.Length > 0 )
+        {
+        // ======= Put these in an array?
+        mData.showStatus( "After UrlParse:" );
+        mData.showStatus( "LinkText: "
+                                 + linkText );
+        mData.showStatus( "Link: " + link );
+        // URLFile uFile = new URLFile( mApp,
+        //                   linkText, link );
+        // urlFileDictionary.setValue(
+        //      link, uFile );
+        }
+      }
+    }
+
+  if( isInsideAnchor )
+    {
+    if( lastPart >= 2 )
+      {
+      urlParse.addRawText(
+                    lineParts.getStrAt( 1 ));
+      }
+    }
+  }
 }
 
 
