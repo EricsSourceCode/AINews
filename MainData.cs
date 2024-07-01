@@ -21,7 +21,7 @@ using System.Windows.Forms;
 public class MainData
 {
 internal const string VersionDate =
-                              "6/27/2024";
+                              "7/1/2024";
 // internal const int VersionNumber = 09; // 0.9
 private string dataDirectory = "";
 // internal Configure config;
@@ -95,7 +95,7 @@ catch( Exception )
 
 
 
-internal bool CheckEvents()
+internal bool checkEvents()
 {
 if( isClosing )
   return false;
@@ -131,7 +131,8 @@ mForm.showStatus( "Testing here." );
 // sha256.test();
 
 uRLFileDct.readFromFile( getOldUrlFileName() );
-uRLFileDct.doSearch();
+// uRLFileDct.titleSearch();
+uRLFileDct.htmlSearch();
 
 mForm.showStatus( " " );
 mForm.showStatus( "Finished test." );

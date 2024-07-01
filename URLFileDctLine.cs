@@ -95,13 +95,12 @@ if( newSize > oldSize )
     }
   }
 }
-catch( Exception Except )
+catch( Exception ) // Except )
   {
   freeAll();
-  mData.showStatus(
+  throw new Exception(
          "Not enough memory for URLFileDct." );
-  mData.showStatus( Except.Message );
-  // return;
+
   }
 }
 

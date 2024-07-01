@@ -87,6 +87,8 @@ if( fileS.Length < 2 )
 
 internal void processNewAnchorTags()
 {
+mData.showStatus( "processNewAnchorTags()" );
+
 bool isInsideAnchor = false;
 
 urlParse.clear();
@@ -140,7 +142,6 @@ for( int count = 1; count < last; count++ )
     continue;
     }
 
-  // mApp.showStatusAsync( "tag: " + tag );
   StrAr tagAttr = new StrAr();
   tagAttr.split( tag, ' ' );
   int lastAttr = tagAttr.getLast();
@@ -154,12 +155,11 @@ for( int count = 1; count < last; count++ )
 
   string tagName = tagAttr.getStrAt( 0 );
   tagName = Str.toLower( tagName );
-  // mApp.showStatusAsync( "\n\ntagName: " +
-  //                                 tagName );
+
+  // mData.showStatus( "tagName: " + tagName );
 
   if( tagName == tagAnchorStart )
     {
-    // It is called an anchor tag.
     isInsideAnchor = true;
     urlParse.clear();
 
@@ -443,6 +443,7 @@ markedUpS = result;
 // mData.showStatus( " " );
 // mData.showStatus( "htmlS:" );
 // mData.showStatus( htmlS );
+
 // mData.showStatus( "markedUpS:" );
 // mData.showStatus( markedUpS );
 

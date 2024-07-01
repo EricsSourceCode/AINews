@@ -27,6 +27,7 @@ private string linkText = "";
 private string link = "";
 private string baseDomain = "";
 private string baseHttpS = "";
+private StrAr badLinkArray;
 
 
 
@@ -43,6 +44,7 @@ baseURL = useBaseURL;
 rawTagBld = new SBuilder();
 baseDomain = getDomainFromLink( baseURL );
 baseHttpS = "https://" + baseDomain;
+badLinkArray = new StrAr();
 }
 
 
@@ -77,8 +79,8 @@ link = "";
 
 internal bool processLink()
 {
-mData.showStatus( " " );
-mData.showStatus( " " );
+// mData.showStatus( " " );
+// mData.showStatus( " " );
 
 string text = rawTagBld.toString();
 if( text.Length == 0 )
@@ -151,6 +153,7 @@ link = Str.replace( link, "href=", "" );
 link = Str.replace( link, "\"", " " );
 link = Str.replace( link, "\'", "" );
 // link = link.cleanUnicodeField().trim();
+
 link = fixupLink( link );
 if( link.Length == 0 )
   return false;
@@ -213,97 +216,97 @@ if( lastParam == 0 )
   }
 
 result = paramParts.getStrAt( 0 );
+result = Str.trim( result );
 
-string twoSlashes = "//";
-string httpS = "https:";
+// mData.showStatus( "top result: " + result );
 
-if( Str.startsWith( result, twoSlashes ))
-  result = httpS + result;
+if( Str.startsWith( result, "//" ))
+  result = "https:" + result;
 
 if( Str.startsWith( result, "/" ))
   result = baseDomain + result;
+
+// mData.showStatus(
+//           "In fixup result: " + result );
 
 return result;
 }
 
 
-======
-/*
-  private void setupBadLinkArray()
-    {
-    badLinkArray = new StrArray();
-    badLinkArray.append( new StrA( "/radio." ));
-    badLinkArray.append( new StrA( "/video." ));
 
-    badLinkArray.append( new StrA( "/privacy-policy" ));
+private void setupBadLinkArray()
+{
+badLinkArray.append( "/radio." );
 
-    badLinkArray.append( new StrA( "obituary" ));
+badLinkArray.append( "/video." );
 
-    badLinkArray.append( new StrA(
-  ".foxnews.com/media/" ));
+badLinkArray.append( "/privacy-policy" );
 
-    badLinkArray.append( new StrA(
-  ".foxbusiness.com/lifestyle/" ));
+badLinkArray.append( "obituary" );
 
-    badLinkArray.append( new StrA(
-    ".foxnews.com/opinion/" ));
+badLinkArray.append( ".foxnews.com/media/" );
 
-    badLinkArray.append( new StrA(
-      "libertystreeteconomics.newyorkfed.org/" ));
+badLinkArray.append( 
+              ".foxbusiness.com/lifestyle/" );
 
-    badLinkArray.append( new StrA(
-   ".foxnews.com/video/" ));
+badLinkArray.append( ".foxnews.com/opinion/" );
 
-    badLinkArray.append( new StrA(
-  ".foxnews.com/lifestyle/" ));
+badLinkArray.append( ".foxnews.com/video/" );
 
-    badLinkArray.append( new StrA(
-  ".foxbusiness.com/entertainment/" ));
+badLinkArray.append( 
+               ".foxnews.com/lifestyle/" );
 
+badLinkArray.append( 
+        ".foxbusiness.com/entertainment/" );
 
-    badLinkArray.append( new StrA(
-   ".foxnews.com/health/" ));
+badLinkArray.append( ".foxnews.com/health/" );
 
-  // B.S. ads.
-    badLinkArray.append( new StrA(
-    ".foxbusiness.com/personal-finance/" ));
+// B.S. ads.
+badLinkArray.append( 
+       ".foxbusiness.com/personal-finance/" );
 
+badLinkArray.append( 
+              ".foxnews.com/entertainment/" );
 
+badLinkArray.append( "www.foxnews.com/shows" );
 
+badLinkArray.append( 
+             "www.foxnews.com/official-polls" );
 
-    badLinkArray.append( new StrA(
-                     ".foxnews.com/entertainment/" ));
+badLinkArray.append( 
+       ".foxbusiness.com/closed-captioning/" );
 
-    badLinkArray.append( new StrA(
-                           "www.foxnews.com/shows" ));
-    badLinkArray.append( new StrA(
-                   "www.foxnews.com/official-polls" ));
-    badLinkArray.append( new StrA(
-                 ".foxbusiness.com/closed-captioning/" ));
-    badLinkArray.append( new StrA(
-                            ".foxnews.com/about/rss/" ));
-    badLinkArray.append( new StrA(
-                      ".foxnews.com/category/media/" ));
-    badLinkArray.append( new StrA(
-                            "help.foxbusiness.com" ));
-    badLinkArray.append( new StrA(
-                          "press.foxbusiness.com/" ));
-    badLinkArray.append( new StrA( "press.foxnews.com/" ));
-    badLinkArray.append( new StrA( ".foxnews.com/rss/" ));
+badLinkArray.append( 
+                ".foxnews.com/about/rss/" ));
 
-    badLinkArray.append( new StrA( ".foxnews.com/sports/" ));
+badLinkArray.append(
+             ".foxnews.com/category/media/" );
 
-    badLinkArray.append( new StrA(
-                         ".foxnews.com/newsletters" ));
-    badLinkArray.append( new StrA(
-               ".foxnews.com/accessibility-statement" ));
-    badLinkArray.append( new StrA(
-                              ".foxnews.com/contact" ));
-    badLinkArray.append( new StrA(
-                             "nation.foxnews.com/" ));
-    badLinkArray.append( new StrA(
-                          ".foxnews.com/compliance" ));
-    badLinkArray.append( new StrA(
+badLinkArray.append( "help.foxbusiness.com" );
+
+badLinkArray.append( "press.foxbusiness.com/" );
+
+badLinkArray.append( "press.foxnews.com/" );
+
+badLinkArray.append( ".foxnews.com/rss/" );
+
+badLinkArray.append( ".foxnews.com/sports/" );
+
+badLinkArray.append( 
+            ".foxnews.com/newsletters" );
+
+badLinkArray.append( 
+     ".foxnews.com/accessibility-statement" );
+
+badLinkArray.append( ".foxnews.com/contact" );
+
+badLinkArray.append( "nation.foxnews.com/" );
+
+badLinkArray.append( 
+            ".foxnews.com/compliance" );
+
+========
+badLinkArray.append( new StrA(
                    ".foxbusiness.com/terms-of-use" ));
     badLinkArray.append( new StrA(
                              "facebook.com/" ));
@@ -337,88 +340,76 @@ return result;
     badLinkArray.append( new StrA( ".foxnews.com/entertainment/" ));
 
     // badLinkArray.append( new StrA( "" ));
-    }
-
-
-
-  private boolean hasValidDomain( StrA link )
-    {
-    if( link.containsStrA( new StrA(
-        "/site/forms/" )))
-      return false;
-
-    if( link.containsStrA( new StrA(
-        "/users/admin/" )))
-      return false;
-
-    if( link.containsStrA( new StrA(
-        "/users/login/" )))
-      return false;
-
-    if( link.containsStrA( new StrA(
-        "/users/signup/" )))
-      return false;
-
-    if( link.containsStrA( new StrA(
-        "/classifieds/" )))
-      return false;
-
-    if( link.containsStrA( new StrA(
-        "/place_an_ad/" )))
-      return false;
-
-    if( link.containsStrA( new StrA(
-        "application/pdf" )))
-      return false;
-
-    if( link.containsStrA( new StrA(
-      "coloradomtn.edu/download/" )))
-      return false;
-
-    if( link.endsWith( new StrA(
-           ".pdf" )))
-      return false;
-
-    if( link.endsWith( new StrA(
-           ".php" )))
-      return false;
-
-    if( link.containsStrA( new StrA(
-           "&quot" )))
-      return false;
-
-    if( link.containsStrA( new StrA(
-           "/../" )))
-      return false;
-
-    if( link.endsWith( new StrA(
-           ".aspx" )))
-      return false;
-
-    if( link.containsStrA( new StrA(
-           "leadvilleherald.com" )))
-      return false;
-
-    if( link.containsStrA( new StrA(
-           "coloradomtn.edu/" )))
-      return false;
-
-    if( link.containsStrA( new StrA(
-                       ".foxnews.com/" )))
-      return true;
-
-    if( link.containsStrA( new StrA(
-                       ".msnbc.com/" )))
-      return true;
-
-    return false;
-    }
 */
+}
+
+
+
+
+private bool hasValidDomain( string link )
+{
+if( Str.contains( link, "/site/forms/" ))
+  return false;
+
+if( Str.contains( link, "/users/admin/" ))
+  return false;
+
+if( Str.contains( link, "/users/login/" ))
+  return false;
+
+if( Str.contains( link, "/users/signup/" ))
+  return false;
+
+if( Str.contains( link, "/classifieds/" ))
+  return false;
+
+if( Str.contains( link, "/place_an_ad/" ))
+  return false;
+
+if( Str.contains( link, "application/pdf" ))
+  return false;
+
+if( Str.contains( link, 
+                "coloradomtn.edu/download/" ))
+  return false;
+
+if( Str.endsWith( link, ".pdf" ))
+  return false;
+
+if( Str.endsWith( link, ".php" ))
+  return false;
+
+if( Str.contains( link, "&quot" ))
+  return false;
+
+if( Str.contains( link, "/../" ))
+  return false;
+
+if( Str.endsWith( link, ".aspx" ))
+  return false;
+
+if( Str.contains( link, "leadvilleherald.com" ))
+  return false;
+
+if( Str.contains( link, "coloradomtn.edu/" ))
+  return false;
+
+if( Str.contains( link, ".foxnews.com/" ))
+  return true;
+
+if( Str.contains( link, ".msnbc.com/" ))
+  return true;
+
+return false;
+}
+
 
 
 
 internal bool isBadLink( string link )
 {
+// mData.showStatus( "isBadLink(): " + link );
+
 // wa.me is WhatsApp.
 
 if( Str.contains( link, "https://wa.me/" ))
@@ -427,27 +418,27 @@ if( Str.contains( link, "https://wa.me/" ))
 if( Str.contains( link, "mailto:" ))
   return true;
 
+if( Str.contains( link, "ftp://" ))
+  return true;
+
+if( Str.contains( link, "sms:" ))
+  return true;
+
+if( !hasValidDomain( link ))
+  return true;
+
+if( Str.endsWith( link, ".pdf" ))
+  return true;
+
 /*
-    if( link.containsStrA( new StrA( "ftp://" )))
-      return true;
+int last = badLinkArray.getLast();
+for( int count = 0; count < last; count++ )
+  {
+  string text = badLinkArray.getStrAt( count );
+  if( Str.contains( link, text ))
+    return true;
 
-    if( link.containsStrA( new StrA( "sms:" )))
-      return true;
-
-    if( !hasValidDomain( link ))
-      return true;
-
-    if( link.endsWith( new StrA( ".pdf" )))
-      return true;
-
-    final int last = badLinkArray.length();
-    for( int count = 0; count < last; count++ )
-      {
-      StrA text = badLinkArray.getStrAt( count );
-      if( link.containsStrA( text ))
-        return true;
-
-      }
+  }
 */
 
 return false;

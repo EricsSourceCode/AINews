@@ -261,22 +261,30 @@ for( int count = 0; count < last; count++ )
 
 
 
-internal void doSearch()
+internal void titleSearch()
 {
-mData.showStatus( "Doing search." );
+mData.showStatus( "Doing title search." );
 
 int howMany = 0;
 
-string toFind = "trump";
+// string toFind = "trump";
+string toFind = "biden";
 
-string toFindUrl = "msnbc";
-// string toFindUrl = "foxnews";
+// string toFindUrl = "msnbc";
+string toFindUrl = "foxnews";
 
 URLFile urlFile = new URLFile( mData );
 TimeEC timeEC = new TimeEC();
 
 for( int count = 0; count < keySize; count++ )
   {
+  if( (count % 10) == 0 )
+    {
+    if( !mData.checkEvents())
+      return;
+
+    }
+
   if( howMany > 50 )
     break;
 
@@ -303,8 +311,8 @@ for( int count = 0; count < keySize; count++ )
     if( urlFile.getMonth() < 6 )
       continue;
 
-    if( urlFile.getDay() < 15 )
-      continue;
+    // if( urlFile.getDay() < 15 )
+      // continue;
 
     string url = urlFile.getUrl();
     string showUrl = url;
@@ -328,6 +336,82 @@ for( int count = 0; count < keySize; count++ )
     mData.showStatus( showUrl );
     // lineArray[count].showDateAt( countR );
 
+    howMany++;
+    if( howMany > 50 )
+      break;
+
+    }
+  }
+
+mData.showStatus( "\r\nMatching links: " +
+                                     howMany );
+}
+
+
+
+
+internal void htmlSearch()
+{
+mData.showStatus( "Doing HTML search." );
+
+int howMany = 0;
+
+// string toFind = "trump";
+string toFind = "biden";
+
+// string toFindUrl = "msnbc";
+string toFindUrl = "foxnews";
+
+URLFile urlFile = new URLFile( mData );
+TimeEC timeEC = new TimeEC();
+
+for( int count = 0; count < keySize; count++ )
+  {
+  if( (count % 10) == 0 )
+    {
+    if( !mData.checkEvents())
+      return;
+
+    }
+
+  // if( howMany > 50 )
+    // break;
+
+  int last = lineArray[count].getArrayLast();
+  if( last < 1 )
+    continue;
+
+  // mData.showStatus( "Last: " + last );
+  for( int countR = 0; countR < last; countR++ )
+    {
+    lineArray[count].getCopyURLFileAt(
+                                    urlFile,
+                                    countR );
+
+    // string linkDate = urlFile.
+     //                    getDateTimeStr();
+
+    if( urlFile.getYear() < 2024 )
+      continue;
+
+    if( urlFile.getMonth() < 6 )
+      continue;
+
+    // if( urlFile.getDay() < 15 )
+      // continue;
+
+    string url = urlFile.getUrl();
+    string showUrl = url;
+    url = Str.toLower( url );
+    if( !Str.contains( url, toFindUrl ))
+      continue;
+
+    string linkText = urlFile.getLinkText();
+    string showLinkText = linkText;
+    linkText = Str.toLower( linkText );
+    if( !Str.contains( linkText, toFind ))
+      continue;
+
     string fileName = urlFile.getFileName();
     string fullPath = mData.
                     getOldDataDirectory() +
@@ -347,11 +431,9 @@ for( int count = 0; count < keySize; count++ )
     mData.showStatus(
                 "\r\nFinished Html file." );
 
-    return;
     // howMany++;
-    // if( howMany > 50 )
-      // break;
 
+    return;
     }
   }
 
