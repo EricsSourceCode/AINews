@@ -22,7 +22,10 @@ public class HtmlFile
 private MainData mData;
 private string fileName = "";
 private string fileS = "";
-private string inUrl = "";
+
+// Where this HTML file came from:
+private string fromUrl = "";
+
 private UrlParse urlParse;
 private string markedUpS = "";
 private string htmlS = "";
@@ -50,8 +53,8 @@ public HtmlFile( MainData useMData,
                  string fileNameToUse )
 {
 mData = useMData;
-inUrl = useUrl;
-urlParse = new UrlParse( mData, inUrl );
+fromUrl = useUrl;
+urlParse = new UrlParse( mData, fromUrl );
 fileName = fileNameToUse;
 }
 
@@ -65,7 +68,7 @@ if( fileName.Length == 0 )
 
 mData.showStatus( " " );
 mData.showStatus( "Reading: " + fileName );
-mData.showStatus( "Came from URL " + inUrl );
+mData.showStatus( "Came from URL " + fromUrl );
 
 if( !SysIO.fileExists( fileName ))
   {
@@ -182,7 +185,9 @@ for( int count = 1; count < last; count++ )
       string linkText = urlParse.getLinkText();
       if( linkText.Length > 0 )
         {
-        // ======= Put these in an array?
+ ======= Now what?
+I have the fromURL.
+
         mData.showStatus( "After UrlParse:" );
         mData.showStatus( "LinkText: "
                                  + linkText );

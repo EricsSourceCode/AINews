@@ -26,6 +26,8 @@ private string url = "";
 private TimeEC dateTime;
 private bool anchorsPulled = false;
 private string titleHtml = "";
+private string urlFrom = "";
+
 
 
 private URLFile()
@@ -79,6 +81,13 @@ return url;
 }
 
 
+
+internal string getUrlFrom()
+{
+return urlFrom;
+}
+
+
 internal string getDateTimeStr()
 {
 return dateTime.getLocalYear() + ";"; // +
@@ -113,6 +122,7 @@ url = "";
 dateTime.setToYear1900();
 anchorsPulled = false;
 titleHtml = "";
+urlFrom = "";
 }
 
 
@@ -125,6 +135,7 @@ url = toCopy.url;
 dateTime = toCopy.dateTime;
 anchorsPulled = toCopy.anchorsPulled;
 titleHtml = toCopy.titleHtml;
+urlFrom = toCopy.urlFrom;
 }
 
 
@@ -210,6 +221,8 @@ string result = Str.trim( url ) +
          MarkersAI.URLFileDelimit +
          anchors +
          MarkersAI.URLFileDelimit +
+         Str.trim( urlFrom ) +
+         MarkersAI.URLFileDelimit +
          Str.trim( titleHtml ) +
          MarkersAI.URLFileDelimit;
 
@@ -254,7 +267,12 @@ if( Str.contains( anchors, "t" ))
 if( last < 6 )
   return;
 
-titleHtml = Str.trim( fields.getStrAt( 5 ));
+urlFrom = Str.trim( fields.getStrAt( 5 ));
+
+if( last < 7 )
+  return;
+
+titleHtml = Str.trim( fields.getStrAt( 6 ));
 }
 
 
@@ -264,10 +282,12 @@ internal int getYear()
 return dateTime.getYear();
 }
 
+
 internal int getMonth()
 {
 return dateTime.getMonth();
 }
+
 
 internal int getDay()
 {

@@ -268,7 +268,7 @@ mData.showStatus( "Doing title search." );
 int howMany = 0;
 
 // string toFind = "trump";
-string toFind = "biden";
+// string toFind = "biden";
 
 // string toFindUrl = "msnbc";
 string toFindUrl = "foxnews";
@@ -323,8 +323,8 @@ for( int count = 0; count < keySize; count++ )
     string linkText = urlFile.getLinkText();
     string showLinkText = linkText;
     linkText = Str.toLower( linkText );
-    if( !Str.contains( linkText, toFind ))
-      continue;
+    // if( !Str.contains( linkText, toFind ))
+      // continue;
 
     mData.showStatus( " " );
     mData.showStatus( " " );
@@ -357,7 +357,7 @@ mData.showStatus( "Doing HTML search." );
 int howMany = 0;
 
 // string toFind = "trump";
-string toFind = "biden";
+// string toFind = "biden";
 
 // string toFindUrl = "msnbc";
 string toFindUrl = "foxnews";
@@ -391,17 +391,17 @@ for( int count = 0; count < keySize; count++ )
     // string linkDate = urlFile.
      //                    getDateTimeStr();
 
-    if( urlFile.getYear() < 2024 )
-      continue;
+    // if( urlFile.getYear() < 2024 )
+      // continue;
 
-    if( urlFile.getMonth() < 6 )
-      continue;
+    // if( urlFile.getMonth() < 6 )
+      // continue;
 
     // if( urlFile.getDay() < 15 )
       // continue;
 
     string url = urlFile.getUrl();
-    string showUrl = url;
+    string urlFrom = url;
     url = Str.toLower( url );
     if( !Str.contains( url, toFindUrl ))
       continue;
@@ -409,8 +409,8 @@ for( int count = 0; count < keySize; count++ )
     string linkText = urlFile.getLinkText();
     string showLinkText = linkText;
     linkText = Str.toLower( linkText );
-    if( !Str.contains( linkText, toFind ))
-      continue;
+    // if( !Str.contains( linkText, toFind ))
+      // continue;
 
     string fileName = urlFile.getFileName();
     string fullPath = mData.
@@ -421,7 +421,7 @@ for( int count = 0; count < keySize; count++ )
       continue;
 
     HtmlFile htmlFile = new HtmlFile( mData,
-                                      showUrl,
+                                      urlFrom,
                                       fullPath );
 
     htmlFile.readFileS();

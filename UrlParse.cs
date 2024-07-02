@@ -21,7 +21,7 @@ using System;
 public class UrlParse
 {
 private MainData mData;
-private string baseURL = "";
+private string fromURL = "";
 private SBuilder rawTagBld;
 private string linkText = "";
 private string link = "";
@@ -40,9 +40,9 @@ internal UrlParse( MainData mDataToUse,
                    string useBaseURL )
 {
 mData = mDataToUse;
-baseURL = useBaseURL;
+fromURL = useBaseURL;
 rawTagBld = new SBuilder();
-baseDomain = getDomainFromLink( baseURL );
+baseDomain = getDomainFromLink( fromURL );
 baseHttpS = "https://" + baseDomain;
 badLinkArray = new StrAr();
 }
@@ -73,6 +73,7 @@ internal void clear()
 rawTagBld.clear();
 linkText = "";
 link = "";
+// Leave fromURL alone.
 }
 
 
@@ -161,8 +162,12 @@ if( link.Length == 0 )
 if( isBadLink( link ))
   return false;
 
+
+mData.showStatus( " " );
+mData.showStatus( "In UrlParse." );
 mData.showStatus( "linkText: " + linkText );
 mData.showStatus( "Link: " + link );
+mData.showStatus( "fromURL: " + fromURL );
 return true;
 }
 
@@ -246,38 +251,38 @@ badLinkArray.append( "obituary" );
 
 badLinkArray.append( ".foxnews.com/media/" );
 
-badLinkArray.append( 
+badLinkArray.append(
               ".foxbusiness.com/lifestyle/" );
 
 badLinkArray.append( ".foxnews.com/opinion/" );
 
 badLinkArray.append( ".foxnews.com/video/" );
 
-badLinkArray.append( 
+badLinkArray.append(
                ".foxnews.com/lifestyle/" );
 
-badLinkArray.append( 
+badLinkArray.append(
         ".foxbusiness.com/entertainment/" );
 
 badLinkArray.append( ".foxnews.com/health/" );
 
 // B.S. ads.
-badLinkArray.append( 
+badLinkArray.append(
        ".foxbusiness.com/personal-finance/" );
 
-badLinkArray.append( 
+badLinkArray.append(
               ".foxnews.com/entertainment/" );
 
 badLinkArray.append( "www.foxnews.com/shows" );
 
-badLinkArray.append( 
+badLinkArray.append(
              "www.foxnews.com/official-polls" );
 
-badLinkArray.append( 
+badLinkArray.append(
        ".foxbusiness.com/closed-captioning/" );
 
-badLinkArray.append( 
-                ".foxnews.com/about/rss/" ));
+badLinkArray.append(
+                ".foxnews.com/about/rss/" );
 
 badLinkArray.append(
              ".foxnews.com/category/media/" );
@@ -292,55 +297,47 @@ badLinkArray.append( ".foxnews.com/rss/" );
 
 badLinkArray.append( ".foxnews.com/sports/" );
 
-badLinkArray.append( 
+badLinkArray.append(
             ".foxnews.com/newsletters" );
 
-badLinkArray.append( 
+badLinkArray.append(
      ".foxnews.com/accessibility-statement" );
 
 badLinkArray.append( ".foxnews.com/contact" );
 
 badLinkArray.append( "nation.foxnews.com/" );
 
-badLinkArray.append( 
+badLinkArray.append(
             ".foxnews.com/compliance" );
 
-========
-badLinkArray.append( new StrA(
-                   ".foxbusiness.com/terms-of-use" ));
-    badLinkArray.append( new StrA(
-                             "facebook.com/" ));
-    badLinkArray.append( new StrA( "twitter.com/" ));
+badLinkArray.append( 
+            ".foxbusiness.com/terms-of-use" );
 
-    badLinkArray.append( new StrA(
-                         "instagram.com/" ));
+badLinkArray.append( "facebook.com/" );
 
-    badLinkArray.append( new StrA(
-        "ballantinecommunicationsinc.com/" ));
+badLinkArray.append( "twitter.com/" );
 
+badLinkArray.append( "instagram.com/" );
 
-    badLinkArray.append( new StrA(
-          "4cornersjobs.com/" ));
+badLinkArray.append( 
+        "ballantinecommunicationsinc.com/" );
 
-    badLinkArray.append( new StrA(
-                "dgomag.com" ));
+badLinkArray.append( "4cornersjobs.com/" );
 
-    badLinkArray.append( new StrA(
-       "/directoryplus.com" ));
+badLinkArray.append( "dgomag.com" );
 
-    badLinkArray.append( new StrA(
-    "durangoherald-co.newsmemory.com/" ));
+badLinkArray.append( "/directoryplus.com" );
 
-    badLinkArray.append( new StrA(
-        "/bcimedia.com" ));
+badLinkArray.append( 
+      "durangoherald-co.newsmemory.com/" );
 
-    badLinkArray.append( new StrA(
-         ".fourcornersexpos.com" ));
+badLinkArray.append( "/bcimedia.com" );
 
-    badLinkArray.append( new StrA( ".foxnews.com/entertainment/" ));
+badLinkArray.append( ".fourcornersexpos.com" );
 
-    // badLinkArray.append( new StrA( "" ));
-*/
+badLinkArray.append( 
+         ".foxnews.com/entertainment/" );
+
 }
 
 
@@ -369,7 +366,7 @@ if( Str.contains( link, "/place_an_ad/" ))
 if( Str.contains( link, "application/pdf" ))
   return false;
 
-if( Str.contains( link, 
+if( Str.contains( link,
                 "coloradomtn.edu/download/" ))
   return false;
 
@@ -389,6 +386,10 @@ if( Str.endsWith( link, ".aspx" ))
   return false;
 
 if( Str.contains( link, "leadvilleherald.com" ))
+  return false;
+
+if( Str.contains( link,  
+          ".foxnews.com/category/sports/" ))
   return false;
 
 if( Str.contains( link, "coloradomtn.edu/" ))
