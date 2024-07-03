@@ -185,9 +185,6 @@ for( int count = 1; count < last; count++ )
       string linkText = urlParse.getLinkText();
       if( linkText.Length > 0 )
         {
- ======= Now what?
-I have the fromURL.
-
         mData.showStatus( "After UrlParse:" );
         mData.showStatus( "LinkText: "
                                  + linkText );

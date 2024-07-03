@@ -40,6 +40,7 @@
 
 
   <ItemGroup>
+    <Compile Include="GoodLink.cs" />
     <Compile Include="UrlParse.cs" />
     <Compile Include="\Eric\Main\CsBase\SBuilder.cs" />
     <Compile Include="HtmlFile.cs" />
