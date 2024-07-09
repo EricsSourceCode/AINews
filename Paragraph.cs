@@ -18,45 +18,44 @@ using System;
 
 
 
-public class UrlParse
+public class Paragraph
 {
 private MainData mData;
 private string fromURL = "";
 private SBuilder rawTagBld;
+
+private string paraStr = "";
+
+/*
 private string linkText = "";
 private string link = "";
 private string baseDomain = "";
 private string baseHttpS = "";
+*/
 
 
-
-private UrlParse()
+private Paragraph()
 {
 }
 
 
-internal UrlParse( MainData mDataToUse,
+internal Paragraph( MainData mDataToUse,
                    string useBaseURL )
 {
 mData = mDataToUse;
 fromURL = useBaseURL;
 rawTagBld = new SBuilder();
-baseDomain = getDomainFromLink( fromURL );
-baseHttpS = "https://" + baseDomain;
+// baseDomain = getDomainFromLink( fromURL );
+// baseHttpS = "https://" + baseDomain;
 }
 
 
 
-internal string getLink()
+internal string getParaStr()
 {
-return link;
+return paraStr;
 }
 
-
-internal string getLinkText()
-{
-return linkText;
-}
 
 
 internal void addRawText( string inS )
@@ -69,32 +68,30 @@ rawTagBld.appendStr( inS );
 internal void clear()
 {
 rawTagBld.clear();
-linkText = "";
-link = "";
+paraStr = "";
 // Leave fromURL alone.
 }
 
 
 
-internal bool processLink()
+internal void processPara()
 {
+paraStr = rawTagBld.toString();
+if( Str.contains( paraStr,
+                  "class=\"copyright\"" ) ||
+    Str.contains( paraStr,
+               "class=\"subscribed hide\"" ) ||
+    Str.contains( paraStr,
+               "class=\"success hide\"" ) ||
+    Str.contains( paraStr,
+               "class=\"dek\"" ))
+  {
+  paraStr = "";
+  return;
+  }
+
+/*
 // mData.showStatus( " " );
-// mData.showStatus( "UrlParse.processLink()." );
-
-string text = rawTagBld.toString();
-if( text.Length == 0 )
-  return false;
-
-if( !Str.contains( text, "href=" ))
-  return false;
-
-// An empty reference:
-if( Str.contains( text, "href=\"\"" ))
-  return false;
-
-if( Str.contains( text, "onclick" ))
-  return false;
-
 // mData.showStatus( "Raw: " + text );
 
 StrAr lineParts = new StrAr();
@@ -184,74 +181,11 @@ if( !GoodLink.isGoodLink( link ))
 // mData.showStatus( "linkText: " + linkText );
 // mData.showStatus( "Link: " + link );
 // mData.showStatus( "fromURL: " + fromURL );
-return true;
+*/
+
 }
 
 
-
-internal static string getDomainFromLink(
-                                string linkIn )
-{
-if( linkIn.Length == 0 )
-  return "";
-
-StrAr linkParts = new StrAr();
-linkParts.split( linkIn, '/' );
-int last = linkParts.getLast();
-for( int count = 0; count < last; count++ )
-  {
-  string part = linkParts.getStrAt( count );
-  // Get the first thing that contains
-  // a dot.  Like .com, .org, and so on.
-  if( Str.contains( part, "." ))
-    {
-    return part;
-    }
-  }
-
-return "";
-}
-
-
-
-
-private string fixupLink( string inS )
-{
-if( inS.Length < 2 )
-  return "";
-
-// if( base.endsWithChar( '/' ))
-  // base = base.substring( 0, base.length()
-//                                       - 2 );
-
-string result = inS;
-
-StrAr paramParts = new StrAr();
-paramParts.split( result, '?' );
-int lastParam = paramParts.getLast();
-if( lastParam == 0 )
-  {
-  mData.showStatus(
-             "URLParse: lastParam is zero." );
-  return "";
-  }
-
-result = paramParts.getStrAt( 0 );
-result = Str.trim( result );
-
-// mData.showStatus( "top result: " + result );
-
-if( Str.startsWith( result, "//" ))
-  result = "https:" + result;
-
-if( Str.startsWith( result, "/" ))
-  result = baseDomain + result;
-
-// mData.showStatus(
-//           "In fixup result: " + result );
-
-return result;
-}
 
 
 

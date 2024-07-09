@@ -426,7 +426,8 @@ for( int count = 0; count < keySize; count++ )
 
     htmlFile.readFileS();
     htmlFile.markupSections();
-    htmlFile.processNewAnchorTags();
+    // htmlFile.processNewAnchorTags();
+    htmlFile.processParagraphs();
 
     mData.showStatus(
                 "\r\nFinished Html file." );

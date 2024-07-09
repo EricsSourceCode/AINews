@@ -25,7 +25,7 @@ private string fileS = "";
 
 // Where this HTML file came from:
 private string fromUrl = "";
-
+private Paragraph paragraph;
 private UrlParse urlParse;
 private string markedUpS = "";
 private string htmlS = "";
@@ -39,6 +39,8 @@ private const string tagAnchorStart = "a";
 private const string tagAnchorEnd = "/a";
 private const string tagHeadStart = "head";
 private const string tagHeadEnd = "/head";
+private const string tagParaStart = "p";
+private const string tagParaEnd = "/p";
 
 
 
@@ -55,6 +57,7 @@ public HtmlFile( MainData useMData,
 mData = useMData;
 fromUrl = useUrl;
 urlParse = new UrlParse( mData, fromUrl );
+paragraph = new Paragraph( mData, fromUrl );
 fileName = fileNameToUse;
 }
 
@@ -87,7 +90,7 @@ if( fileS.Length < 2 )
 }
 
 
-
+/*
 internal void processNewAnchorTags()
 {
 mData.showStatus( "processNewAnchorTags()" );
@@ -102,9 +105,10 @@ StrAr tagParts = new StrAr();
 tagParts.split( htmlS, '<' );
 int last = tagParts.getLast();
 
-string beforeFirst = tagParts.getStrAt( 0 );
-mData.showStatus( "Before first: " +
-                                beforeFirst );
+// string beforeFirst = tagParts.getStrAt( 0 );
+// mData.showStatus( "Before first: " +
+//                              beforeFirst );
+
 for( int count = 1; count < last; count++ )
   {
   string line = tagParts.getStrAt( count );
@@ -202,6 +206,121 @@ for( int count = 1; count < last; count++ )
     if( lastPart >= 2 )
       {
       urlParse.addRawText(
+                    lineParts.getStrAt( 1 ));
+      }
+    }
+  }
+}
+*/
+
+
+
+internal void processParagraphs()
+{
+mData.showStatus( "processParagraphs()" );
+
+bool isInsidePara = false;
+
+// The link tag is for style sheets.
+
+StrAr tagParts = new StrAr();
+tagParts.split( htmlS, '<' );
+int last = tagParts.getLast();
+
+// string beforeFirst = tagParts.getStrAt( 0 );
+// mData.showStatus( "Before first: " +
+//                              beforeFirst );
+
+for( int count = 1; count < last; count++ )
+  {
+  string line = tagParts.getStrAt( count );
+  string lowerLine = Str.toLower( line );
+  if( !( Str.startsWith( lowerLine,
+                           tagParaStart ) ||
+         Str.startsWith( lowerLine,
+                           tagParaEnd ) ))
+    continue;
+
+  StrAr lineParts = new StrAr();
+  lineParts.split( line, '>' );
+  int lastPart = lineParts.getLast();
+  if( lastPart == 0 )
+    {
+    mData.showStatus(
+           "The tag doesn't have any parts." );
+    mData.showStatus( "line: " + line );
+    return;
+    }
+
+  if( lastPart > 2 )
+    {
+    // line: /span> Posting">Post comment
+    // mApp.showStatusAsync( "lastPart > 2." );
+    // mApp.showStatusAsync( "line: " + line );
+    continue;
+    }
+
+  string tag = lineParts.getStrAt( 0 );
+
+  // It's a short tag that I don't want to
+  // deal with yet.
+  if( Str.endsWith( tag, "/" ))
+    {
+    // if( tag.startsWithChar( 'a' ))
+    // mApp.showStatusAsync( "Short tag: " + tag );
+    continue;
+    }
+
+  StrAr tagAttr = new StrAr();
+  tagAttr.split( tag, ' ' );
+  int lastAttr = tagAttr.getLast();
+  if( lastAttr == 0 )
+    {
+    mData.showStatus(
+              "lastAttr is zero for the tag." );
+    mData.showStatus( "tag: " + tag );
+    return;
+    }
+
+  string tagName = tagAttr.getStrAt( 0 );
+  tagName = Str.toLower( tagName );
+
+  // mData.showStatus( "tagName: " + tagName );
+
+  if( tagName == tagParaStart )
+    {
+    isInsidePara = true;
+
+    paragraph.clear();
+
+    for( int countA = 1; countA < lastAttr;
+                                    countA++ )
+      {
+      string attr = tagAttr.getStrAt( countA );
+      attr = attr += " ";
+      paragraph.addRawText( attr );
+      }
+
+    // paragraph.addRawText( " >" );
+    }
+
+  if( tagName == tagParaEnd )
+    {
+    paragraph.processPara();
+    string paraS = paragraph.getParaStr();
+
+    if( paraS.Length > 0 )
+      {
+      mData.showStatus( " " );
+      mData.showStatus( "paraS: " + paraS );
+      }
+    }
+
+  if( isInsidePara )
+    {
+    if( lastPart >= 2 )
+      {
+      paragraph.addRawText(
                     lineParts.getStrAt( 1 ));
       }
     }
@@ -440,6 +559,10 @@ for( int count = 0; count < last; count++ )
   }
 
 htmlS = htmlBuild.toString();
+htmlS = Str.replace( htmlS, "\r", " " );
+htmlS = Str.replace( htmlS, "\n", " " );
+htmlS = Str.cleanAscii( htmlS );
+
 markedUpS = result;
 
 // mData.showStatus( " " );

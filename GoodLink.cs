@@ -85,114 +85,112 @@ if( Str.contains( link, "ftp://" ))
 if( Str.contains( link, "sms:" ))
   return false;
 
-if( Str.contains( link, "/radio." ))
-  return false;
-
-if( Str.contains( link, "/video." ))
-  return false;
-
 if( Str.contains( link, "/privacy-policy" ))
   return false;
 
-if( Str.contains( link, "obituary" ))
+if( Str.contains( link, "/obituary" ))
   return false;
 
 if( Str.contains( link, ".foxnews.com/media/" ))
   return false;
 
-if( Str.contains( link, 
+if( Str.contains( link,
             ".foxbusiness.com/lifestyle/" ))
   return false;
 
-if( Str.contains( link, 
+if( Str.contains( link,
                   ".foxnews.com/opinion/" ))
   return false;
 
 if( Str.contains( link, ".foxnews.com/video/" ))
   return false;
 
-if( Str.contains( link, 
+if( Str.contains( link,
                   ".foxnews.com/lifestyle/" ))
   return false;
 
-if( Str.contains( link, 
+if( Str.contains( link,
           ".foxbusiness.com/entertainment/" ))
   return false;
 
-if( Str.contains( link, 
+if( Str.contains( link,
                    ".foxnews.com/health/" ))
   return false;
 
 // B.S. ads.
-if( Str.contains( link, 
+if( Str.contains( link,
        ".foxbusiness.com/personal-finance/" ))
   return false;
 
-if( Str.contains( link, 
+if( Str.contains( link,
            ".foxnews.com/entertainment/" ))
   return false;
 
-if( Str.contains( link, 
-                  "www.foxnews.com/shows" ))
+if( Str.contains( link,
+                  "www.foxnews.com/shows/" ))
   return false;
 
-if( Str.contains( link, 
+if( Str.contains( link,
          "www.foxnews.com/official-polls" ))
   return false;
 
-if( Str.contains( link, 
+if( Str.contains( link,
       ".foxbusiness.com/closed-captioning/" ))
   return false;
 
-if( Str.contains( link, 
+if( Str.contains( link,
                  ".foxnews.com/about/rss/" ))
   return false;
 
-if( Str.contains( link, 
+if( Str.contains( link,
            ".foxnews.com/category/media/" ))
   return false;
 
-if( Str.contains( link, 
+if( Str.contains( link,
                  "help.foxbusiness.com" ))
   return false;
 
-if( Str.contains( link, 
+if( Str.contains( link,
                 "press.foxbusiness.com/" ))
   return false;
 
-if( Str.contains( link, 
+if( Str.contains( link,
                   "press.foxnews.com/" ))
   return false;
 
 if( Str.contains( link, ".foxnews.com/rss/" ))
   return false;
 
-if( Str.contains( link, 
+if( Str.contains( link,
                   ".foxnews.com/sports/" ))
   return false;
 
-if( Str.contains( link, 
+if( Str.contains( link,
                ".foxnews.com/newsletters" ))
   return false;
 
-if( Str.contains( link, 
+if( Str.contains( link,
     ".foxnews.com/accessibility-statement" ))
   return false;
 
-if( Str.contains( link, 
+if( Str.contains( link,
                  ".foxnews.com/contact" ))
   return false;
 
-if( Str.contains( link, 
+if( Str.contains( link,
                    "nation.foxnews.com/" ))
   return false;
 
-if( Str.contains( link, 
+if( Str.contains( link,
               ".foxnews.com/compliance" ))
   return false;
 
-if( Str.contains( link, 
+if( Str.contains( link,
           ".foxbusiness.com/terms-of-use" ))
+  return false;
+
+if( Str.contains( link,
+          ".foxnews.com/terms-of-use" ))
   return false;
 
 if( Str.contains( link, "facebook.com/" ))
@@ -204,7 +202,7 @@ if( Str.contains( link, "twitter.com/" ))
 if( Str.contains( link, "instagram.com/" ))
   return false;
 
-if( Str.contains( link, 
+if( Str.contains( link,
        "ballantinecommunicationsinc.com/" ))
   return false;
 
@@ -217,19 +215,31 @@ if( Str.contains( link, "dgomag.com" ))
 if( Str.contains( link, "/directoryplus.com" ))
   return false;
 
-if( Str.contains( link, 
+if( Str.contains( link,
      "durangoherald-co.newsmemory.com/" ))
   return false;
 
 if( Str.contains( link, "/bcimedia.com" ))
   return false;
 
-if( Str.contains( link, 
+if( Str.contains( link,
                   ".fourcornersexpos.com" ))
   return false;
 
-if( Str.contains( link, 
+if( Str.contains( link,
            ".foxnews.com/entertainment/" ))
+  return false;
+
+if( Str.contains( link,
+           "privacy.foxnews.com/" ))
+  return false;
+
+if( Str.contains( link,
+           "-rss-feeds" ))
+  return false;
+
+if( Str.contains( link,
+           "/closed-captioning" ))
   return false;
 
 
@@ -246,7 +256,3 @@ return false;
 
 
 } // Class
-
-
-
-
