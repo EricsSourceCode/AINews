@@ -374,8 +374,8 @@ for( int count = 0; count < keySize; count++ )
 
     }
 
-  // if( howMany > 50 )
-    // break;
+  if( howMany > 5 )
+    break;
 
   int last = lineArray[count].getArrayLast();
   if( last < 1 )
@@ -402,6 +402,7 @@ for( int count = 0; count < keySize; count++ )
 
     string url = urlFile.getUrl();
     string urlFrom = url;
+    /*
     url = Str.toLower( url );
     if( !Str.contains( url, toFindUrl ))
       continue;
@@ -411,6 +412,7 @@ for( int count = 0; count < keySize; count++ )
     linkText = Str.toLower( linkText );
     // if( !Str.contains( linkText, toFind ))
       // continue;
+    */
 
     string fileName = urlFile.getFileName();
     string fullPath = mData.
@@ -432,9 +434,9 @@ for( int count = 0; count < keySize; count++ )
     mData.showStatus(
                 "\r\nFinished Html file." );
 
-    // howMany++;
+    howMany++;
 
-    return;
+    // return;
     }
   }
 

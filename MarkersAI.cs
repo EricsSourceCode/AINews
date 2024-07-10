@@ -55,12 +55,12 @@ public class MarkersAI
   public const char EndScript = '\x2706';
   public const char BeginHtmlComment = '\x2707';
   public const char EndHtmlComment = '\x2708';
+  public const char BeginParagraph = '\x2709';
+  public const char EndParagraph = '\x270A';
+  public const char BeginAnchor = '\x270B';
+  public const char EndAnchor = '\x270C';
 
 
-//                        0x2709;
-//                        0x270A;
-//                        0x270B;
-//                        0x270C;
 //                        0x270D;
 //                        0x270E;
 //                        0x270F;
