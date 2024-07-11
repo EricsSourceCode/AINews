@@ -359,8 +359,8 @@ int howMany = 0;
 // string toFind = "trump";
 // string toFind = "biden";
 
-// string toFindUrl = "msnbc";
-string toFindUrl = "foxnews";
+string toFindUrl = "msnbc";
+// string toFindUrl = "foxnews";
 
 URLFile urlFile = new URLFile( mData );
 TimeEC timeEC = new TimeEC();
@@ -374,7 +374,7 @@ for( int count = 0; count < keySize; count++ )
 
     }
 
-  if( howMany > 5 )
+  if( howMany > 15 )
     break;
 
   int last = lineArray[count].getArrayLast();
@@ -402,13 +402,14 @@ for( int count = 0; count < keySize; count++ )
 
     string url = urlFile.getUrl();
     string urlFrom = url;
-    /*
     url = Str.toLower( url );
     if( !Str.contains( url, toFindUrl ))
       continue;
 
     string linkText = urlFile.getLinkText();
     string showLinkText = linkText;
+
+/*
     linkText = Str.toLower( linkText );
     // if( !Str.contains( linkText, toFind ))
       // continue;
@@ -429,7 +430,8 @@ for( int count = 0; count < keySize; count++ )
     htmlFile.readFileS();
     htmlFile.markupSections();
     // htmlFile.processNewAnchorTags();
-    htmlFile.processParagraphs();
+    Story story = new Story( mData, urlFrom );
+    htmlFile.makeStory( story );
 
     mData.showStatus(
                 "\r\nFinished Html file." );

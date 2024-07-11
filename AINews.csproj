@@ -40,6 +40,7 @@
 
 
   <ItemGroup>
+    <Compile Include="Story.cs" />
     <Compile Include="\Eric\Main\CsHtml\Ampersand.cs" />
     <Compile Include="Paragraph.cs" />
     <Compile Include="GoodLink.cs" />
