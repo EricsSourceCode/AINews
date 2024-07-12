@@ -45,25 +45,25 @@ using System;
 
 
 public class MarkersAI
-  {
-  // public const char Begin = '\x2700';
-  // static const Uint16 End = 0x2701;
-  //  static const Uint16 ErrorPoint = 0x2702;
-  public const char BeginCData = '\x2703';
-  public const char EndCData = '\x2704';
-  public const char BeginScript = '\x2705';
-  public const char EndScript = '\x2706';
-  public const char BeginHtmlComment = '\x2707';
-  public const char EndHtmlComment = '\x2708';
-  public const char BeginParagraph = '\x2709';
-  public const char EndParagraph = '\x270A';
-  public const char BeginAnchor = '\x270B';
-  public const char EndAnchor = '\x270C';
+{
+// public const char Begin = '\x2700';
+// static const Uint16 End = 0x2701;
+//  static const Uint16 ErrorPoint = 0x2702;
+public const char BeginCData = '\x2703';
+public const char EndCData = '\x2704';
+public const char BeginScript = '\x2705';
+public const char EndScript = '\x2706';
+public const char BeginHtmlComment = '\x2707';
+public const char EndHtmlComment = '\x2708';
+public const char BeginParagraphTag = '\x2709';
+public const char EndParagraphTag = '\x270A';
+public const char BeginAnchorTag = '\x270B';
+public const char EndAnchorTag = '\x270C';
+public const char BeginSpanTag = '\x270D';
 
+//  '\x270E';
+//  '\x270F';
 
-//                        0x270D;
-//                        0x270E;
-//                        0x270F;
 //                        0x2710;
 //                        0x2711;
 

@@ -25,7 +25,6 @@ private string fileName = "";
 private string url = "";
 private TimeEC dateTime;
 private bool anchorsPulled = false;
-private string titleHtml = "";
 private string urlFrom = "";
 
 
@@ -56,11 +55,6 @@ void setAnchorsPulled( bool setTo )
 anchorsPulled = setTo;
 }
 
-
-internal string getTitleHtml()
-{
-return titleHtml;
-}
 
 
 internal string getFileName()
@@ -121,7 +115,6 @@ fileName = "";
 url = "";
 dateTime.setToYear1900();
 anchorsPulled = false;
-titleHtml = "";
 urlFrom = "";
 }
 
@@ -134,7 +127,6 @@ fileName = toCopy.fileName;
 url = toCopy.url;
 dateTime = toCopy.dateTime;
 anchorsPulled = toCopy.anchorsPulled;
-titleHtml = toCopy.titleHtml;
 urlFrom = toCopy.urlFrom;
 }
 
@@ -222,8 +214,6 @@ string result = Str.trim( url ) +
          anchors +
          MarkersAI.URLFileDelimit +
          Str.trim( urlFrom ) +
-         MarkersAI.URLFileDelimit +
-         Str.trim( titleHtml ) +
          MarkersAI.URLFileDelimit;
 
 return result;
@@ -268,11 +258,6 @@ if( last < 6 )
   return;
 
 urlFrom = Str.trim( fields.getStrAt( 5 ));
-
-if( last < 7 )
-  return;
-
-titleHtml = Str.trim( fields.getStrAt( 6 ));
 }
 
 

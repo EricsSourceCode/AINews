@@ -359,8 +359,8 @@ int howMany = 0;
 // string toFind = "trump";
 // string toFind = "biden";
 
-string toFindUrl = "msnbc";
-// string toFindUrl = "foxnews";
+// string toFindUrl = "msnbc";
+string toFindUrl = "foxnews";
 
 URLFile urlFile = new URLFile( mData );
 TimeEC timeEC = new TimeEC();
@@ -374,7 +374,7 @@ for( int count = 0; count < keySize; count++ )
 
     }
 
-  if( howMany > 15 )
+  if( howMany > 50 )
     break;
 
   int last = lineArray[count].getArrayLast();
@@ -391,11 +391,11 @@ for( int count = 0; count < keySize; count++ )
     // string linkDate = urlFile.
      //                    getDateTimeStr();
 
-    // if( urlFile.getYear() < 2024 )
-      // continue;
+    if( urlFile.getYear() < 2024 )
+      continue;
 
-    // if( urlFile.getMonth() < 6 )
-      // continue;
+    if( urlFile.getMonth() < 6 )
+      continue;
 
     // if( urlFile.getDay() < 15 )
       // continue;
@@ -430,6 +430,8 @@ for( int count = 0; count < keySize; count++ )
     htmlFile.readFileS();
     htmlFile.markupSections();
     // htmlFile.processNewAnchorTags();
+===== Give it the linkText.
+There is no title.
     Story story = new Story( mData, urlFrom );
     htmlFile.makeStory( story );
 

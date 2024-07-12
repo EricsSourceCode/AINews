@@ -7,8 +7,27 @@ recentfile3	\Eric\Main\AINews\AINews.csproj
 recentfile4	\Eric\Main\AINews\URLFileDctLine.cs
 recentfile5	\Eric\Main\AINews\URLFileDct.cs
 recentfile6	\Eric\Main\AINews\URLFile.cs
-recentfile7	\Eric\Main\AINews\GoodLink.cs
-recentfile8	\Eric\Main\AINews\UrlParse.cs
-recentfile9	\Eric\Main\CsHtml\HtmlFile.cs
-recentfile10	\Eric\Main\AINews\Story.cs
-recentfile11	\Eric\Main\CsBase\StrAr.cs
+recentfile7	\Eric\Main\AINews\UrlParse.cs
+recentfile8	\Eric\Main\CsHtml\HtmlFile.cs
+recentfile9	\Eric\Main\AINews\Story.cs
+recentfile10	\Eric\Main\AINews\MarkersAI.cs
+recentfile11	
+recentfile12	
+recentfile13	
+recentfile14	
+recentfile15	
+recentfile16	
+recentfile17	
+recentfile18	
+recentfile19	
+recentfile20	
+recentfile21	
+recentfile22	
+recentfile23	
+recentfile24	
+recentfile25	
+recentfile26	
+recentfile27	
+recentfile28	
+recentfile29	
+recentfile30	
