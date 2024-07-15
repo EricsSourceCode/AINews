@@ -13,6 +13,9 @@
 using System;
 using System.Threading;
 using System.Windows.Forms;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 
 
 
@@ -25,10 +28,15 @@ private System.Threading.Mutex
                     SingleInstanceMutex = null;
 
 private bool isSingleInstance = false;
+private bool shownOnce = false;
+
 internal MainFormComp mFormComp;
 private System.Windows.Forms.Timer
                           SingleInstanceTimer;
 internal MainData mainData;
+private Bitmap mainBitmap;
+private int mainScreenWidth = 1024; // Default
+private int mainScreenHeight = 768;
 
 
 
@@ -46,9 +54,10 @@ FormClosing += new System.Windows.
           Forms.FormClosingEventHandler(
           MainForm_FormClosing );
 
-/*
 Shown += new System.EventHandler(
                        MainForm_Shown);
+
+/*
 KeyDown += new System.Windows.Forms.
       KeyEventHandler( MainForm_KeyDown );
 Resize += new System.EventHandler(
@@ -99,6 +108,18 @@ finally
   }
 }
 
+
+
+internal int getMainScreenWidth()
+{
+return mainScreenWidth;
+}
+
+
+internal int getMainScreenHeight()
+{
+return mainScreenHeight;
+}
 
 
 
@@ -205,6 +226,77 @@ freeAll();
 internal void showStatus( string status )
 {
 mFormComp.showStatus( status );
+}
+
+
+
+// Do drawToBitmap() when ever something
+// changes like
+//    if( e.KeyCode == Keys.Right )
+
+
+
+private void drawToBitmap()
+{
+// if( !IsEnabled )
+//   return;
+
+if( mainBitmap == null )
+  return;
+
+try
+{
+Size sz = mFormComp.upperPanel.Size;
+if( sz.Width < 10 )
+  return;
+
+if( sz.Height < 10 )
+  return;
+
+using( Graphics bitGraph = Graphics.FromImage(
+                             mainBitmap ))
+  {
+  if( bitGraph == null )
+    return;
+
+  // WMap.Draw( Sz.Width,
+  //                Sz.Height,
+  //                bitGraph );
+
+  }
+
+mFormComp.mainPictureBox.Image = mainBitmap;
+}
+catch( Exception ) // Except )
+  {
+  throw new Exception( "Can't draw bitmap." );
+  }
+}
+
+
+
+
+internal void MainForm_Shown( object sender,
+                              EventArgs e)
+{
+if( !isSingleInstance )
+  return;
+
+if( shownOnce )
+  return;
+
+shownOnce = true;
+
+Screen mainScreen = Screen.FromControl( this );
+Rectangle wArea = mainScreen.WorkingArea;
+mainScreenWidth = wArea.Width;
+mainScreenHeight = wArea.Height;
+
+mainBitmap = new Bitmap(
+           mainScreenWidth, mainScreenHeight );
+           // PixelFormat.Canonical );
+
+mFormComp.mainPictureBox.Image = mainBitmap;
 }
 
 

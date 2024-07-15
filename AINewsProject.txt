@@ -11,8 +11,8 @@ recentfile7	\Eric\Main\AINews\UrlParse.cs
 recentfile8	\Eric\Main\CsHtml\HtmlFile.cs
 recentfile9	\Eric\Main\AINews\Story.cs
 recentfile10	\Eric\Main\AINews\MarkersAI.cs
-recentfile11	
-recentfile12	
+recentfile11	\Eric\Main\AINews\MainForm.cs
+recentfile12	\Eric\Main\AINews\MainFormComp.cs
 recentfile13	
 recentfile14	
 recentfile15	

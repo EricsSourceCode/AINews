@@ -430,8 +430,9 @@ for( int count = 0; count < keySize; count++ )
     htmlFile.readFileS();
     htmlFile.markupSections();
     // htmlFile.processNewAnchorTags();
-===== Give it the linkText.
-There is no title.
+
+// ===== Give it the linkText.
+// There is no title.
     Story story = new Story( mData, urlFrom );
     htmlFile.makeStory( story );
 

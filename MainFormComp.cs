@@ -13,6 +13,8 @@
 using System;
 // using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.Text;
 using System.Windows.Forms;
 // using System.Resources;
@@ -39,7 +41,8 @@ internal System.Windows.Forms.ToolStripMenuItem
 internal System.Windows.Forms.Panel upperPanel;
 internal System.Windows.Forms.Panel
                                mainTextPanel;
-
+internal System.Windows.Forms.PictureBox
+                                mainPictureBox;
 
 
 internal MainFormComp( MainForm UseForm )
@@ -68,6 +71,41 @@ testToolStripMenuItem = new System.Windows.
 
 upperPanel = new System.Windows.Forms.Panel();
 mainTextPanel = new System.Windows.Forms.Panel();
+
+mainPictureBox = new System.Windows.
+                           Forms.PictureBox();
+((System.ComponentModel.ISupportInitialize)
+              (mainPictureBox)).BeginInit();
+
+mainPictureBox.BorderStyle = System.Windows.
+                 Forms.BorderStyle.FixedSingle;
+
+mainPictureBox.Dock = System.Windows.
+                         Forms.DockStyle.Fill;
+mainPictureBox.Location = new System.
+                           Drawing.Point(0, 0);
+mainPictureBox.Name = "mainPictureBox";
+mainPictureBox.Size = new System.
+                   Drawing.Size(372, 208);
+mainPictureBox.TabIndex = 0;
+mainPictureBox.TabStop = false;
+
+/*
+mainPictureBox.MouseDoubleClick += new
+                    System.Windows.Forms.
+                    MouseEventHandler(
+    mainDrawPanel_MouseDoubleClick );
+mainPictureBox.MouseDown += new System.
+          Windows.Forms.MouseEventHandler(
+          mainDrawPanel_MouseDown );
+mainPictureBox.MouseMove += new System.
+             Windows.Forms.MouseEventHandler(
+          mainDrawPanel_MouseMove );
+*/
+
+((System.ComponentModel.ISupportInitialize)(
+                      mainPictureBox)).EndInit();
+
 
 mainPanel.BorderStyle = System.Windows.Forms.
                       BorderStyle.FixedSingle;
@@ -170,6 +208,9 @@ upperPanel.Name = "UpperPanel";
 upperPanel.Size = new System.Drawing.
                                Size(962, 68);
 upperPanel.TabIndex = 2;
+
+upperPanel.Controls.Add( mainPictureBox );
+
 
 mainTextPanel.BackColor = System.Drawing.
                            Color.Green;
