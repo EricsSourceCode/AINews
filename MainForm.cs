@@ -34,7 +34,7 @@ internal MainFormComp mFormComp;
 private System.Windows.Forms.Timer
                           SingleInstanceTimer;
 internal MainData mainData;
-private Bitmap mainBitmap;
+private Bitmap guiBitmap;
 private int mainScreenWidth = 1024; // Default
 private int mainScreenHeight = 768;
 
@@ -241,7 +241,7 @@ private void drawToBitmap()
 // if( !IsEnabled )
 //   return;
 
-if( mainBitmap == null )
+if( guiBitmap == null )
   return;
 
 try
@@ -254,7 +254,7 @@ if( sz.Height < 10 )
   return;
 
 using( Graphics bitGraph = Graphics.FromImage(
-                             mainBitmap ))
+                             guiBitmap ))
   {
   if( bitGraph == null )
     return;
@@ -265,7 +265,7 @@ using( Graphics bitGraph = Graphics.FromImage(
 
   }
 
-mFormComp.mainPictureBox.Image = mainBitmap;
+mFormComp.guiPictureBox.Image = guiBitmap;
 }
 catch( Exception ) // Except )
   {
@@ -292,11 +292,11 @@ Rectangle wArea = mainScreen.WorkingArea;
 mainScreenWidth = wArea.Width;
 mainScreenHeight = wArea.Height;
 
-mainBitmap = new Bitmap(
+guiBitmap = new Bitmap(
            mainScreenWidth, mainScreenHeight );
            // PixelFormat.Canonical );
 
-mFormComp.mainPictureBox.Image = mainBitmap;
+mFormComp.guiPictureBox.Image = guiBitmap;
 }
 
 

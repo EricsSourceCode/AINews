@@ -42,7 +42,7 @@ internal System.Windows.Forms.Panel upperPanel;
 internal System.Windows.Forms.Panel
                                mainTextPanel;
 internal System.Windows.Forms.PictureBox
-                                mainPictureBox;
+                                guiPictureBox;
 
 
 internal MainFormComp( MainForm UseForm )
@@ -72,39 +72,39 @@ testToolStripMenuItem = new System.Windows.
 upperPanel = new System.Windows.Forms.Panel();
 mainTextPanel = new System.Windows.Forms.Panel();
 
-mainPictureBox = new System.Windows.
+guiPictureBox = new System.Windows.
                            Forms.PictureBox();
 ((System.ComponentModel.ISupportInitialize)
-              (mainPictureBox)).BeginInit();
+              (guiPictureBox)).BeginInit();
 
-mainPictureBox.BorderStyle = System.Windows.
+guiPictureBox.BorderStyle = System.Windows.
                  Forms.BorderStyle.FixedSingle;
 
-mainPictureBox.Dock = System.Windows.
+guiPictureBox.Dock = System.Windows.
                          Forms.DockStyle.Fill;
-mainPictureBox.Location = new System.
+guiPictureBox.Location = new System.
                            Drawing.Point(0, 0);
-mainPictureBox.Name = "mainPictureBox";
-mainPictureBox.Size = new System.
+guiPictureBox.Name = "mainPictureBox";
+guiPictureBox.Size = new System.
                    Drawing.Size(372, 208);
-mainPictureBox.TabIndex = 0;
-mainPictureBox.TabStop = false;
+guiPictureBox.TabIndex = 0;
+guiPictureBox.TabStop = false;
 
 /*
-mainPictureBox.MouseDoubleClick += new
+guiPictureBox.MouseDoubleClick += new
                     System.Windows.Forms.
                     MouseEventHandler(
     mainDrawPanel_MouseDoubleClick );
-mainPictureBox.MouseDown += new System.
+guiPictureBox.MouseDown += new System.
           Windows.Forms.MouseEventHandler(
           mainDrawPanel_MouseDown );
-mainPictureBox.MouseMove += new System.
+guiPictureBox.MouseMove += new System.
              Windows.Forms.MouseEventHandler(
           mainDrawPanel_MouseMove );
 */
 
 ((System.ComponentModel.ISupportInitialize)(
-                      mainPictureBox)).EndInit();
+                    guiPictureBox)).EndInit();
 
 
 mainPanel.BorderStyle = System.Windows.Forms.
@@ -209,7 +209,7 @@ upperPanel.Size = new System.Drawing.
                                Size(962, 68);
 upperPanel.TabIndex = 2;
 
-upperPanel.Controls.Add( mainPictureBox );
+upperPanel.Controls.Add( guiPictureBox );
 
 
 mainTextPanel.BackColor = System.Drawing.
