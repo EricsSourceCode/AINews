@@ -40,6 +40,8 @@
 
 
   <ItemGroup>
+    <Compile Include="\Eric\Main\CsGui\RecBtn.cs" />
+    <Compile Include="\Eric\Main\CsGui\GuiMain.cs" />
     <Compile Include="Story.cs" />
     <Compile Include="\Eric\Main\CsHtml\Ampersand.cs" />
     <Compile Include="Paragraph.cs" />

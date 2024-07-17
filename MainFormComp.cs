@@ -29,18 +29,23 @@ public class MainFormComp
 private MainForm mForm;
 internal Panel mainPanel;
 internal TextBox mainTextBox;
-internal System.Windows.Forms.MenuStrip
-                                   menuStrip1;
-internal System.Windows.Forms.ToolStripMenuItem
-                        fileToolStripMenuItem;
-internal System.Windows.Forms.ToolStripMenuItem
-                        exitToolStripMenuItem;
-internal System.Windows.Forms.ToolStripMenuItem
-                        testToolStripMenuItem;
+internal TextBox searchTextBox;
 
-internal System.Windows.Forms.Panel upperPanel;
+// internal System.Windows.Forms.
+//              MenuStrip menuStrip1;
+// internal System.Windows.Forms.
+//     ToolStripMenuItem fileToolStripMenuItem;
+// internal System.Windows.Forms.
+//    ToolStripMenuItem exitToolStripMenuItem;
+// internal System.Windows.Forms.
+//   ToolStripMenuItem testToolStripMenuItem;
+
+internal System.Windows.Forms.Panel guiPanel;
 internal System.Windows.Forms.Panel
                                mainTextPanel;
+internal System.Windows.Forms.Panel
+                               searchTextPanel;
+
 internal System.Windows.Forms.PictureBox
                                 guiPictureBox;
 
@@ -60,6 +65,9 @@ mForm.SuspendLayout();
 
 mainPanel = new System.Windows.Forms.Panel();
 mainTextBox = new System.Windows.Forms.TextBox();
+searchTextBox = new System.Windows.Forms.TextBox();
+
+/*
 menuStrip1 = new System.Windows.Forms.MenuStrip();
 fileToolStripMenuItem = new System.Windows.
                       Forms.ToolStripMenuItem();
@@ -67,9 +75,10 @@ exitToolStripMenuItem = new System.Windows.
                       Forms.ToolStripMenuItem();
 testToolStripMenuItem = new System.Windows.
                       Forms.ToolStripMenuItem();
+*/
 
-
-upperPanel = new System.Windows.Forms.Panel();
+guiPanel = new System.Windows.Forms.Panel();
+searchTextPanel = new System.Windows.Forms.Panel();
 mainTextPanel = new System.Windows.Forms.Panel();
 
 guiPictureBox = new System.Windows.
@@ -90,14 +99,19 @@ guiPictureBox.Size = new System.
 guiPictureBox.TabIndex = 0;
 guiPictureBox.TabStop = false;
 
+
 /*
 guiPictureBox.MouseDoubleClick += new
                     System.Windows.Forms.
                     MouseEventHandler(
     mainDrawPanel_MouseDoubleClick );
+*/
+
 guiPictureBox.MouseDown += new System.
           Windows.Forms.MouseEventHandler(
-          mainDrawPanel_MouseDown );
+          mForm.guiPictureBox_MouseDown );
+
+/*
 guiPictureBox.MouseMove += new System.
              Windows.Forms.MouseEventHandler(
           mainDrawPanel_MouseMove );
@@ -119,6 +133,7 @@ mainPanel.BackColor = System.Drawing.Color.Black;
 
 mainPanel.SuspendLayout();
 
+/*
 menuStrip1.ImageScalingSize = new
                     System.Drawing.Size(20, 20);
 menuStrip1.Items.AddRange(new
@@ -173,6 +188,7 @@ testToolStripMenuItem.Text = "&Test";
 testToolStripMenuItem.Click += new
              System.EventHandler(
              testToolStripMenuItem_Click );
+*/
 
 
 mainTextBox.Dock = System.Windows.Forms.
@@ -195,21 +211,66 @@ mainTextBox.Font = new System.Drawing.
                     GraphicsUnit.Pixel,
                     ((byte)(0)));
 
-upperPanel.BackColor = System.Drawing.
+
+searchTextBox.Dock = System.Windows.Forms.
+                          DockStyle.Fill;
+searchTextBox.Location = new System.Drawing.
+                         Point(0, 28);
+
+// Make it fill the panel space.
+searchTextBox.Multiline = true;
+
+
+searchTextBox.Name = "SearchTextBox";
+searchTextBox.ReadOnly = false;
+searchTextBox.ScrollBars = System.Windows.Forms.
+                            ScrollBars.None;
+// searchTextBox.Size = new System.Drawing.
+//                             Size( 5, 5 );
+searchTextBox.TabIndex = 1;
+
+searchTextBox.Font = new System.Drawing.
+                    Font( "Consolas", 40.0F,
+                    System.Drawing.FontStyle.
+                    Regular, System.Drawing.
+                    GraphicsUnit.Pixel,
+                    ((byte)(0)));
+
+
+guiPanel.BackColor = System.Drawing.
                            Color.Black;
-upperPanel.BorderStyle = System.Windows.
+guiPanel.BorderStyle = System.Windows.
                    Forms.BorderStyle.FixedSingle;
 
-upperPanel.Dock = System.Windows.Forms.
+guiPanel.Dock = System.Windows.Forms.
                               DockStyle.Top;
-upperPanel.Location = new System.Drawing.
+guiPanel.Location = new System.Drawing.
                               Point(0, 72);
-upperPanel.Name = "UpperPanel";
-upperPanel.Size = new System.Drawing.
+guiPanel.Name = "guiPanel";
+guiPanel.Size = new System.Drawing.
                                Size(962, 68);
-upperPanel.TabIndex = 2;
+guiPanel.TabIndex = 2;
 
-upperPanel.Controls.Add( guiPictureBox );
+guiPanel.Controls.Add( guiPictureBox );
+
+
+
+searchTextPanel.BackColor = System.Drawing.
+                           Color.Red;
+searchTextPanel.BorderStyle = System.Windows.
+                   Forms.BorderStyle.FixedSingle;
+
+searchTextPanel.Dock = System.Windows.Forms.
+                              DockStyle.Top;
+searchTextPanel.Location = new System.Drawing.
+                              Point(0, 72);
+searchTextPanel.Name = "searchTextPanel";
+searchTextPanel.Size = new System.Drawing.
+                               Size(62, 68);
+searchTextPanel.TabIndex = 2;
+
+searchTextPanel.Controls.Add( searchTextBox );
+
 
 
 mainTextPanel.BackColor = System.Drawing.
@@ -232,9 +293,10 @@ mainTextPanel.Controls.Add( mainTextBox );
 
 // They are added in reverse order.
 mainPanel.Controls.Add( mainTextPanel );
-mainPanel.Controls.Add( upperPanel );
+mainPanel.Controls.Add( searchTextPanel );
+mainPanel.Controls.Add( guiPanel );
 //   MainPanel.Controls.Add(this.ButtonPanel);
-mainPanel.Controls.Add( menuStrip1 );
+// mainPanel.Controls.Add( menuStrip1 );
 
 mForm.Font = new System.Drawing.Font(
              "Microsoft Sans Serif", 36F,
@@ -246,7 +308,7 @@ mForm.Font = new System.Drawing.Font(
 //        (resources.GetObject("$this.Icon")));
 
 mForm.KeyPreview = true;
-mForm.MainMenuStrip = menuStrip1;
+// mForm.MainMenuStrip = menuStrip1;
 mForm.Name = "MainForm";
 mForm.StartPosition = System.Windows.Forms.
                FormStartPosition.CenterScreen;
@@ -258,14 +320,14 @@ mForm.BackColor = System.Drawing.Color.Black;
 // mForm.ForeColor = System.Drawing.Color.Black;
 
 
-menuStrip1.ResumeLayout(false);
-menuStrip1.PerformLayout();
+// menuStrip1.ResumeLayout(false);
+// menuStrip1.PerformLayout();
 
 // ButtonPanel.ResumeLayout(false);
 // ButtonPanel.PerformLayout();
 
-upperPanel.ResumeLayout(false);
-upperPanel.PerformLayout();
+guiPanel.ResumeLayout(false);
+guiPanel.PerformLayout();
 
 mainPanel.ResumeLayout(false);
 mainPanel.PerformLayout();
@@ -278,12 +340,15 @@ mForm.PerformLayout();
 
 internal void freeAll()
 {
-menuStrip1.Dispose();
-fileToolStripMenuItem.Dispose();
-exitToolStripMenuItem.Dispose();
-upperPanel.Dispose();
+// menuStrip1.Dispose();
+// fileToolStripMenuItem.Dispose();
+// exitToolStripMenuItem.Dispose();
+
+guiPanel.Dispose();
 mainTextBox.Dispose();
+searchTextBox.Dispose();
 mainTextPanel.Dispose();
+searchTextPanel.Dispose();
 mainPanel.Dispose();
 }
 
@@ -295,19 +360,34 @@ mainTextBox.AppendText( status + "\r\n" );
 }
 
 
+internal void clearStatus()
+{
+mainTextBox.Text = "";
+}
 
+
+
+/*
 private void exitToolStripMenuItem_Click(
                      object sender, EventArgs e)
 {
 mForm.Close();
 }
+*/
 
 
-
+/*
 private void testToolStripMenuItem_Click(
                      object sender, EventArgs e)
 {
 mForm.mainData.test();
+}
+*/
+
+
+internal string getSearchText()
+{
+return searchTextBox.Text.Trim();
 }
 
 

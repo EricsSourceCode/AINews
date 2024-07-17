@@ -95,6 +95,13 @@ catch( Exception )
 
 
 
+internal bool getIsClosing()
+{
+return isClosing;
+}
+
+
+
 internal bool checkEvents()
 {
 if( isClosing )
@@ -124,15 +131,26 @@ mForm.showStatus( status );
 }
 
 
-
-internal void test()
+internal void clearStatus()
 {
-mForm.showStatus( "Testing here." );
+mForm.clearStatus();
+}
+
+
+
+
+internal void test( string toFindUrl,
+                    string toFind )
+{
+// string toFindUrl = "msnbc";
+// string toFindUrl = "foxnews";
+
+// mForm.showStatus( "Testing here." );
 // sha256.test();
 
 uRLFileDct.readFromFile( getOldUrlFileName() );
 // uRLFileDct.titleSearch();
-uRLFileDct.htmlSearch();
+uRLFileDct.htmlSearch( toFindUrl, toFind );
 
 mForm.showStatus( " " );
 mForm.showStatus( "Finished test." );

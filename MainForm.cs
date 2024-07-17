@@ -29,7 +29,8 @@ private System.Threading.Mutex
 
 private bool isSingleInstance = false;
 private bool shownOnce = false;
-
+private int mouseX = 0;
+private int mouseY = 0;
 internal MainFormComp mFormComp;
 private System.Windows.Forms.Timer
                           SingleInstanceTimer;
@@ -37,6 +38,7 @@ internal MainData mainData;
 private Bitmap guiBitmap;
 private int mainScreenWidth = 1024; // Default
 private int mainScreenHeight = 768;
+private GuiMain guiMain;
 
 
 
@@ -74,6 +76,8 @@ mFormComp = new MainFormComp( this );
 this.Controls.Add( mFormComp.mainPanel );
 
 mainData = new MainData( this );
+guiMain = new GuiMain( mainData );
+// Not here.  guiMain.drawToBitmap();
 }
 
 
@@ -229,6 +233,12 @@ mFormComp.showStatus( status );
 }
 
 
+internal void clearStatus()
+{
+mFormComp.clearStatus();
+}
+
+
 
 // Do drawToBitmap() when ever something
 // changes like
@@ -246,7 +256,7 @@ if( guiBitmap == null )
 
 try
 {
-Size sz = mFormComp.upperPanel.Size;
+Size sz = mFormComp.guiPanel.Size;
 if( sz.Width < 10 )
   return;
 
@@ -259,9 +269,9 @@ using( Graphics bitGraph = Graphics.FromImage(
   if( bitGraph == null )
     return;
 
-  // WMap.Draw( Sz.Width,
-  //                Sz.Height,
-  //                bitGraph );
+  guiMain.draw( sz.Width,
+                sz.Height,
+                bitGraph );
 
   }
 
@@ -296,8 +306,56 @@ guiBitmap = new Bitmap(
            mainScreenWidth, mainScreenHeight );
            // PixelFormat.Canonical );
 
+drawToBitmap();
+
 mFormComp.guiPictureBox.Image = guiBitmap;
 }
+
+
+
+internal void guiPictureBox_MouseDown(
+              object sender, MouseEventArgs e )
+{
+if( e.Button == MouseButtons.Left )
+  {
+  // showStatus( "Left button." );
+  mouseX = e.X;
+  mouseY = e.Y;
+
+  if( guiMain.isInsideDemocratBtn( mouseX,
+                                   mouseY ))
+    {
+    clearStatus();
+    showStatus( " " );
+    showStatus( "Searching MSNBC." );
+    mainData.test( "msnbc", 
+                    mFormComp.getSearchText());
+    }
+
+  if( guiMain.isInsideRepubBtn( mouseX,
+                                mouseY ))
+    {
+    clearStatus();
+    showStatus( " " );
+    showStatus( "Searching FOXNEWS." );
+    mainData.test( "foxnews",
+                   mFormComp.getSearchText());
+    }
+  }
+
+if( e.Button == MouseButtons.Right )
+  {
+  showStatus( "Right button." );
+  }
+
+//  Size Sz = PIP1PictureBox.Size;
+//  Sz.Height,
+//  Sz.Width,
+// e.X,
+// e.Y,
+
+}
+
 
 
 

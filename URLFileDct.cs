@@ -219,9 +219,9 @@ lineArray[index].getValue( key, toGet );
 
 internal void readFromFile( string fileName )
 {
-mData.showStatus(
-             "Reading from URL index file." );
-mData.showStatus( fileName );
+// mData.showStatus(
+//         "Reading from URL index file." );
+// mData.showStatus( fileName );
 
 clear();
 
@@ -350,16 +350,17 @@ mData.showStatus( "\r\nMatching links: " +
 
 
 
-internal void htmlSearch()
+internal void htmlSearch( string toFindUrl,
+                          string toFind )
 {
-mData.showStatus( "Doing HTML search." );
+// mData.showStatus( "Doing HTML search." );
 
 int howMany = 0;
 
 // string toFind = "trump";
 // string toFind = "biden";
 
-string toFindUrl = "msnbc";
+// string toFindUrl = "msnbc";
 // string toFindUrl = "foxnews";
 
 URLFile urlFile = new URLFile( mData );
@@ -397,7 +398,7 @@ for( int count = 0; count < keySize; count++ )
     if( urlFile.getMonth() < 7 )
       continue;
 
-    if( urlFile.getDay() < 8 )
+    if( urlFile.getDay() < 14 )
       continue;
 
     string url = urlFile.getUrl();
@@ -436,7 +437,7 @@ for( int count = 0; count < keySize; count++ )
 // ===== Give it the linkText.
 // There is no title.
     Story story = new Story( mData, urlFrom );
-    htmlFile.makeStory( story );
+    htmlFile.makeStory( story, toFind );
 
     // mData.showStatus(
     //            "\r\nFinished Html file." );

@@ -26,13 +26,19 @@ namespace AINews
     static void Main()
     {
     Application.EnableVisualStyles();
-    Application.SetCompatibleTextRenderingDefault(false);
+    Application.SetCompatibleTextRenderingDefault(
+                                        false);
 
-    Application.ThreadException += new ThreadExceptionEventHandler( MainForm.UIThreadException );
-    Application.SetUnhandledExceptionMode( UnhandledExceptionMode.CatchException );
+    Application.ThreadException += new 
+                ThreadExceptionEventHandler(
+                MainForm.UIThreadException );
+    Application.SetUnhandledExceptionMode(
+         UnhandledExceptionMode.CatchException );
 
-    // AppDomain.CurrentDomain.UnhandledException +=
-       //  new UnhandledExceptionEventHandler( CurrentDomain_UnhandledException );
+    // AppDomain.CurrentDomain.UnhandledException
+    //  +=
+    //  new UnhandledExceptionEventHandler(
+    // CurrentDomain_UnhandledException );
 
     Application.Run(new MainForm());
     }
