@@ -231,7 +231,7 @@ StrAr lines = new StrAr();
 lines.split( fileStr, '\n' );
 int last = lines.getLast();
 
-mData.showStatus( "Links: " + last );
+// mData.showStatus( "Links: " + last );
 
 for( int count = 0; count < last; count++ )
   {
@@ -260,115 +260,26 @@ for( int count = 0; count < last; count++ )
 
 
 
-
-internal void titleSearch()
-{
-mData.showStatus( "Doing title search." );
-
-int howMany = 0;
-
-// string toFind = "trump";
-// string toFind = "biden";
-
-// string toFindUrl = "msnbc";
-string toFindUrl = "foxnews";
-
-URLFile urlFile = new URLFile( mData );
-TimeEC timeEC = new TimeEC();
-
-for( int count = 0; count < keySize; count++ )
-  {
-  if( (count % 10) == 0 )
-    {
-    if( !mData.checkEvents())
-      return;
-
-    }
-
-  if( howMany > 50 )
-    break;
-
-  int last = lineArray[count].getArrayLast();
-  if( last < 1 )
-    continue;
-
-  // mData.showStatus( "Last: " + last );
-  for( int countR = 0; countR < last; countR++ )
-    {
-    lineArray[count].getCopyURLFileAt(
-                                    urlFile,
-                                    countR );
-
-    // string linkDate = urlFile.
-     //                    getDateTimeStr();
-
-    // string showS = urlFile.toString();
-    // mData.showStatus( showS );
-
-    if( urlFile.getYear() < 2024 )
-      continue;
-
-    if( urlFile.getMonth() < 6 )
-      continue;
-
-    // if( urlFile.getDay() < 15 )
-      // continue;
-
-    string url = urlFile.getUrl();
-    string showUrl = url;
-    url = Str.toLower( url );
-    if( !Str.contains( url, toFindUrl ))
-      continue;
-
-    string linkText = urlFile.getLinkText();
-    string showLinkText = linkText;
-    linkText = Str.toLower( linkText );
-    // if( !Str.contains( linkText, toFind ))
-      // continue;
-
-    mData.showStatus( " " );
-    mData.showStatus( " " );
-    mData.showStatus( " " );
-    // mData.showStatus( "Year: " +
-    //                      urlFile.getYear());
-
-    mData.showStatus( showLinkText );
-    mData.showStatus( showUrl );
-    // lineArray[count].showDateAt( countR );
-
-    howMany++;
-    if( howMany > 50 )
-      break;
-
-    }
-  }
-
-mData.showStatus( "\r\nMatching links: " +
-                                     howMany );
-}
-
-
-
-
 internal void htmlSearch( string toFindUrl,
-                          string toFind )
+                          string toFind,
+                          double daysBack )
 {
 // mData.showStatus( "Doing HTML search." );
 
 int howMany = 0;
 
-// string toFind = "trump";
-// string toFind = "biden";
-
-// string toFindUrl = "msnbc";
-// string toFindUrl = "foxnews";
-
 URLFile urlFile = new URLFile( mData );
 TimeEC timeEC = new TimeEC();
+TimeEC oldTime = new TimeEC();
+oldTime.setToNow();
+oldTime.addDays( daysBack );
+// addHours()
+ulong oldIndex = oldTime.getIndex();
 
+int paraCount = 0;
 for( int count = 0; count < keySize; count++ )
   {
-  if( (count % 10) == 0 )
+  if( (count % 20) == 0 )
     {
     if( !mData.checkEvents())
       return;
@@ -389,17 +300,15 @@ for( int count = 0; count < keySize; count++ )
                                     urlFile,
                                     countR );
 
-    // string linkDate = urlFile.
-     //                    getDateTimeStr();
+======
+    string linkDate = urlFile.
+                           getDateTimeStr();
 
-    if( urlFile.getYear() < 2024 )
+    if( urlFile.getDateIndex() < oldIndex )
       continue;
 
-    if( urlFile.getMonth() < 7 )
-      continue;
-
-    if( urlFile.getDay() < 14 )
-      continue;
+    // if( urlFile.getYear() < 2024 )
+      // continue;
 
     string url = urlFile.getUrl();
     string urlFrom = url;
@@ -410,13 +319,6 @@ for( int count = 0; count < keySize; count++ )
 
 
     string linkText = urlFile.getLinkText();
-    string showLinkText = linkText;
-
-/*
-    linkText = Str.toLower( linkText );
-    // if( !Str.contains( linkText, toFind ))
-      // continue;
-    */
 
     string fileName = urlFile.getFileName();
     string fullPath = mData.
@@ -428,19 +330,17 @@ for( int count = 0; count < keySize; count++ )
 
     HtmlFile htmlFile = new HtmlFile( mData,
                                       urlFrom,
-                                      fullPath );
+                                      fullPath,
+                                      linkDate,
+                                      linkText );
 
     htmlFile.readFileS();
     htmlFile.markupSections();
     // htmlFile.processNewAnchorTags();
 
-// ===== Give it the linkText.
-// There is no title.
     Story story = new Story( mData, urlFrom );
-    htmlFile.makeStory( story, toFind );
-
-    // mData.showStatus(
-    //            "\r\nFinished Html file." );
+    paraCount += htmlFile.makeStory( story,
+                                     toFind );
 
     howMany++;
 
@@ -448,8 +348,8 @@ for( int count = 0; count < keySize; count++ )
     }
   }
 
-mData.showStatus( "\r\nMatching links: " +
-                                     howMany );
+mData.showStatus( "\r\nParagraph count: " +
+                                 paraCount );
 }
 
 

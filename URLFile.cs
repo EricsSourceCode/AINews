@@ -84,7 +84,9 @@ return urlFrom;
 
 internal string getDateTimeStr()
 {
-return dateTime.getLocalYear() + ";"; // +
+return dateTime.getLocalYear() + "/" +
+       dateTime.getLocalMonth() + "/" +
+       dateTime.getLocalDay(); // +
 
 // 2024;3;7;10;13;17;877828000;
 }
@@ -260,6 +262,11 @@ if( last < 6 )
 urlFrom = Str.trim( fields.getStrAt( 5 ));
 }
 
+
+internal ulong getDateIndex()
+{
+return dateTime.getIndex();
+}
 
 
 internal int getYear()

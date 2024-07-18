@@ -27,19 +27,15 @@ using System.Windows.Forms;
 public class MainFormComp
 {
 private MainForm mForm;
-internal Panel mainPanel;
-internal TextBox mainTextBox;
-internal TextBox searchTextBox;
+internal System.Windows.Forms.Panel mainPanel;
+internal System.Windows.Forms.TextBox
+                               mainTextBox;
+internal System.Windows.Forms.TextBox
+                               searchTextBox;
+internal System.Windows.Forms.TextBox
+                               daysBackTextBox;
 
-// internal System.Windows.Forms.
-//              MenuStrip menuStrip1;
-// internal System.Windows.Forms.
-//     ToolStripMenuItem fileToolStripMenuItem;
-// internal System.Windows.Forms.
-//    ToolStripMenuItem exitToolStripMenuItem;
-// internal System.Windows.Forms.
-//   ToolStripMenuItem testToolStripMenuItem;
-
+internal System.Windows.Forms.Label searchLabel;
 internal System.Windows.Forms.Panel guiPanel;
 internal System.Windows.Forms.Panel
                                mainTextPanel;
@@ -48,6 +44,10 @@ internal System.Windows.Forms.Panel
 
 internal System.Windows.Forms.PictureBox
                                 guiPictureBox;
+internal System.Drawing.Font mainFont;
+
+
+
 
 
 internal MainFormComp( MainForm UseForm )
@@ -65,24 +65,30 @@ mForm.SuspendLayout();
 
 mainPanel = new System.Windows.Forms.Panel();
 mainTextBox = new System.Windows.Forms.TextBox();
-searchTextBox = new System.Windows.Forms.TextBox();
-
-/*
-menuStrip1 = new System.Windows.Forms.MenuStrip();
-fileToolStripMenuItem = new System.Windows.
-                      Forms.ToolStripMenuItem();
-exitToolStripMenuItem = new System.Windows.
-                      Forms.ToolStripMenuItem();
-testToolStripMenuItem = new System.Windows.
-                      Forms.ToolStripMenuItem();
-*/
-
+searchTextBox = new System.Windows.
+                            Forms.TextBox();
+daysBackTextBox = new System.Windows.
+                            Forms.TextBox();
+searchLabel = new System.Windows.Forms.Label();
 guiPanel = new System.Windows.Forms.Panel();
 searchTextPanel = new System.Windows.Forms.Panel();
 mainTextPanel = new System.Windows.Forms.Panel();
-
 guiPictureBox = new System.Windows.
                            Forms.PictureBox();
+
+// Font mainFont = new Font(
+//                   FontFamily.GenericSansSerif,
+//                   36.0F,
+//                   FontStyle.Regular, // Bold
+//                   GraphicsUnit.Pixel );
+
+mainFont = new System.Drawing.Font(
+              "Consolas", 40.0F,
+              System.Drawing.FontStyle.Regular,
+              System.Drawing.GraphicsUnit.Pixel,
+              ((byte)(0)) );
+
+
 ((System.ComponentModel.ISupportInitialize)
               (guiPictureBox)).BeginInit();
 
@@ -133,63 +139,6 @@ mainPanel.BackColor = System.Drawing.Color.Black;
 
 mainPanel.SuspendLayout();
 
-/*
-menuStrip1.ImageScalingSize = new
-                    System.Drawing.Size(20, 20);
-menuStrip1.Items.AddRange(new
-         System.Windows.Forms.ToolStripItem[] {
-            fileToolStripMenuItem // ,
-            // this.userSetupToolStripMenuItem,
-            // this.helpToolStripMenuItem
-            });
-
-menuStrip1.Location = new System.
-                           Drawing.Point(0, 0);
-menuStrip1.Name = "menuStrip1";
-menuStrip1.Size = new System.Drawing.
-                                Size(962, 40);
-menuStrip1.TabIndex = 0;
-menuStrip1.Text = "menuStrip1";
-
-menuStrip1.Font = new System.Drawing.Font(
-             "Microsoft Sans Serif", 36F,
-             System.Drawing.FontStyle.Regular,
-             System.Drawing.GraphicsUnit.Pixel,
-             ((byte)(0)));
-
-fileToolStripMenuItem.DropDownItems.AddRange(
-  new System.Windows.Forms.ToolStripItem[] {
-            testToolStripMenuItem,
-            exitToolStripMenuItem
-            });
-
-fileToolStripMenuItem.Name =
-                    "fileToolStripMenuItem";
-fileToolStripMenuItem.Size = new
-                    System.Drawing.Size(64, 36);
-fileToolStripMenuItem.Text = "&File";
-
-
-exitToolStripMenuItem.Name =
-                      "exitToolStripMenuItem";
-exitToolStripMenuItem.Size = new
-                   System.Drawing.Size(433, 36);
-exitToolStripMenuItem.Text = "E&xit";
-exitToolStripMenuItem.Click += new
-             System.EventHandler(
-             exitToolStripMenuItem_Click);
-
-
-testToolStripMenuItem.Name =
-                      "testToolStripMenuItem";
-testToolStripMenuItem.Size = new
-                   System.Drawing.Size(433, 36);
-testToolStripMenuItem.Text = "&Test";
-testToolStripMenuItem.Click += new
-             System.EventHandler(
-             testToolStripMenuItem_Click );
-*/
-
 
 mainTextBox.Dock = System.Windows.Forms.
                           DockStyle.Fill;
@@ -203,38 +152,49 @@ mainTextBox.ScrollBars = System.Windows.Forms.
 mainTextBox.Size = new System.Drawing.
                             Size(715, 383);
 mainTextBox.TabIndex = 1;
-
-mainTextBox.Font = new System.Drawing.
-                    Font( "Consolas", 40.0F,
-                    System.Drawing.FontStyle.
-                    Regular, System.Drawing.
-                    GraphicsUnit.Pixel,
-                    ((byte)(0)));
+mainTextBox.Font = mainFont;
 
 
 searchTextBox.Dock = System.Windows.Forms.
-                          DockStyle.Fill;
+                          DockStyle.None;
 searchTextBox.Location = new System.Drawing.
-                         Point(0, 28);
-
-// Make it fill the panel space.
-searchTextBox.Multiline = true;
-
-
-searchTextBox.Name = "SearchTextBox";
+                         Point( 170, 10 );
+searchTextBox.Multiline = false;
+searchTextBox.Name = "searchTextBox";
 searchTextBox.ReadOnly = false;
 searchTextBox.ScrollBars = System.Windows.Forms.
                             ScrollBars.None;
-// searchTextBox.Size = new System.Drawing.
-//                             Size( 5, 5 );
+searchTextBox.Size = new System.Drawing.
+                             Size( 350, 50 );
 searchTextBox.TabIndex = 1;
+searchTextBox.Font = mainFont;
 
-searchTextBox.Font = new System.Drawing.
-                    Font( "Consolas", 40.0F,
-                    System.Drawing.FontStyle.
-                    Regular, System.Drawing.
-                    GraphicsUnit.Pixel,
-                    ((byte)(0)));
+
+daysBackTextBox.Dock = System.Windows.Forms.
+                          DockStyle.None;
+daysBackTextBox.Location = new System.Drawing.
+                         Point( 570, 10 );
+daysBackTextBox.Multiline = false;
+daysBackTextBox.Name = "daysBackTextBox";
+daysBackTextBox.ReadOnly = false;
+daysBackTextBox.ScrollBars = System.Windows.Forms.
+                            ScrollBars.None;
+daysBackTextBox.Size = new System.Drawing.
+                             Size( 140, 50 );
+daysBackTextBox.TabIndex = 2;
+daysBackTextBox.Font = mainFont;
+daysBackTextBox.Text = "2.0";
+
+searchLabel.AutoSize = true;
+searchLabel.Font = mainFont;
+searchLabel.Location = new System.Drawing.
+                          Point( 5, 12 );
+searchLabel.Name = "searchLabel";
+// searchLabel.Size = new System.Drawing.
+                         // Size(110, 20);
+searchLabel.TabIndex = 1;
+searchLabel.Text = "Search:";
+
 
 
 guiPanel.BackColor = System.Drawing.
@@ -256,7 +216,7 @@ guiPanel.Controls.Add( guiPictureBox );
 
 
 searchTextPanel.BackColor = System.Drawing.
-                           Color.Red;
+                           Color.Black;
 searchTextPanel.BorderStyle = System.Windows.
                    Forms.BorderStyle.FixedSingle;
 
@@ -266,11 +226,13 @@ searchTextPanel.Location = new System.Drawing.
                               Point(0, 72);
 searchTextPanel.Name = "searchTextPanel";
 searchTextPanel.Size = new System.Drawing.
-                               Size(62, 68);
+                               Size( 10, 76 );
 searchTextPanel.TabIndex = 2;
 
+searchTextPanel.Controls.Add( 
+                          daysBackTextBox );
 searchTextPanel.Controls.Add( searchTextBox );
-
+searchTextPanel.Controls.Add( searchLabel );
 
 
 mainTextPanel.BackColor = System.Drawing.
@@ -340,13 +302,14 @@ mForm.PerformLayout();
 
 internal void freeAll()
 {
-// menuStrip1.Dispose();
-// fileToolStripMenuItem.Dispose();
-// exitToolStripMenuItem.Dispose();
-
+searchLabel.Dispose();
+guiPictureBox.Dispose();
+mainFont.Dispose();
 guiPanel.Dispose();
 mainTextBox.Dispose();
 searchTextBox.Dispose();
+daysBackTextBox.Dispose();
+searchLabel.Dispose();
 mainTextPanel.Dispose();
 searchTextPanel.Dispose();
 mainPanel.Dispose();
@@ -387,7 +350,14 @@ mForm.mainData.test();
 
 internal string getSearchText()
 {
-return searchTextBox.Text.Trim();
+return Str.toLower( Str.trim(
+              searchTextBox.Text ));
+}
+
+
+internal string getDaysBackText()
+{
+return Str.trim( daysBackTextBox.Text );
 }
 
 

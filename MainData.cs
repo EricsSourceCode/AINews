@@ -8,6 +8,18 @@
 // https://www.gnu.org/licenses/gpl-3.0.html
 
 
+// C# Integer types:
+// sbyte: signed byte
+// byte: unsigned byte
+// short: signed two bytes
+// ushort: unsigned two bytes
+// int
+// uint
+// long signed 64 bit
+// ulong
+
+
+
 
 using System;
 // For Application.
@@ -21,7 +33,7 @@ using System.Windows.Forms;
 public class MainData
 {
 internal const string VersionDate =
-                              "7/12/2024";
+                              "7/18/2024";
 // internal const int VersionNumber = 09; // 0.9
 private string dataDirectory = "";
 // internal Configure config;
@@ -139,8 +151,9 @@ mForm.clearStatus();
 
 
 
-internal void test( string toFindUrl,
-                    string toFind )
+internal void paraSearch( string toFindUrl,
+                          string toFind,
+                          double daysBack )
 {
 // string toFindUrl = "msnbc";
 // string toFindUrl = "foxnews";
@@ -150,10 +163,11 @@ internal void test( string toFindUrl,
 
 uRLFileDct.readFromFile( getOldUrlFileName() );
 // uRLFileDct.titleSearch();
-uRLFileDct.htmlSearch( toFindUrl, toFind );
+uRLFileDct.htmlSearch( toFindUrl, toFind, 
+                                  daysBack );
 
 mForm.showStatus( " " );
-mForm.showStatus( "Finished test." );
+mForm.showStatus( "Finished search." );
 }
 
 

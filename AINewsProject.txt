@@ -6,11 +6,11 @@ recentfile2	\Eric\Main\AINews\MainData.cs
 recentfile3	\Eric\Main\AINews\AINews.csproj
 recentfile4	\Eric\Main\AINews\MainForm.cs
 recentfile5	\Eric\Main\AINews\MainFormComp.cs
-recentfile6	\Eric\Main\CsGui\GuiMain.cs
-recentfile7	\Eric\Main\CsGui\RecBtn.cs
-recentfile8	\Eric\Main\AINews\URLFileDct.cs
-recentfile9	\Eric\Main\CsHtml\HtmlFile.cs
+recentfile6	\Eric\Main\AINews\URLFileDct.cs
+recentfile7	\Eric\Main\CsHtml\HtmlFile.cs
+recentfile8	\Eric\Main\AINews\URLFile.cs
 recentfile10	
+recentfile9	
 recentfile11	
 recentfile12	
 recentfile13	

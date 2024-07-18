@@ -307,8 +307,8 @@ guiBitmap = new Bitmap(
            // PixelFormat.Canonical );
 
 drawToBitmap();
-
 mFormComp.guiPictureBox.Image = guiBitmap;
+mFormComp.searchTextBox.Focus(); // Select()
 }
 
 
@@ -321,6 +321,20 @@ if( e.Button == MouseButtons.Left )
   // showStatus( "Left button." );
   mouseX = e.X;
   mouseY = e.Y;
+  double daysBack = 0;
+
+  try
+  {
+  daysBack = Double.Parse( mFormComp.
+                            getDaysBackText());
+  daysBack = -daysBack;
+  }
+  catch( Exception )
+    {
+    clearStatus();
+    showStatus( "Bad days back string." );
+    return;
+    }
 
   if( guiMain.isInsideDemocratBtn( mouseX,
                                    mouseY ))
@@ -328,8 +342,11 @@ if( e.Button == MouseButtons.Left )
     clearStatus();
     showStatus( " " );
     showStatus( "Searching MSNBC." );
-    mainData.test( "msnbc", 
-                    mFormComp.getSearchText());
+    mainData.paraSearch( "msnbc",
+                    mFormComp.getSearchText(),
+                    daysBack );
+
+    mFormComp.mainTextBox.Focus(); // Select()
     }
 
   if( guiMain.isInsideRepubBtn( mouseX,
@@ -338,8 +355,11 @@ if( e.Button == MouseButtons.Left )
     clearStatus();
     showStatus( " " );
     showStatus( "Searching FOXNEWS." );
-    mainData.test( "foxnews",
-                   mFormComp.getSearchText());
+    mainData.paraSearch( "foxnews",
+                   mFormComp.getSearchText(),
+                   daysBack );
+
+    mFormComp.mainTextBox.Focus(); // Select()
     }
   }
 
