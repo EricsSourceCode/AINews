@@ -229,7 +229,7 @@ searchTextPanel.Size = new System.Drawing.
                                Size( 10, 76 );
 searchTextPanel.TabIndex = 2;
 
-searchTextPanel.Controls.Add( 
+searchTextPanel.Controls.Add(
                           daysBackTextBox );
 searchTextPanel.Controls.Add( searchTextBox );
 searchTextPanel.Controls.Add( searchLabel );

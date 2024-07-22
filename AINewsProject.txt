@@ -9,8 +9,8 @@ recentfile5	\Eric\Main\AINews\MainFormComp.cs
 recentfile6	\Eric\Main\AINews\URLFileDct.cs
 recentfile7	\Eric\Main\CsHtml\HtmlFile.cs
 recentfile8	\Eric\Main\AINews\URLFile.cs
+recentfile9	\Eric\Main\CsHtml\Story.cs
 recentfile10	
-recentfile9	
 recentfile11	
 recentfile12	
 recentfile13	

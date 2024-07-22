@@ -299,8 +299,6 @@ for( int count = 0; count < keySize; count++ )
     lineArray[count].getCopyURLFileAt(
                                     urlFile,
                                     countR );
-
-======
     string linkDate = urlFile.
                            getDateTimeStr();
 
@@ -339,8 +337,16 @@ for( int count = 0; count < keySize; count++ )
     // htmlFile.processNewAnchorTags();
 
     Story story = new Story( mData, urlFrom );
-    paraCount += htmlFile.makeStory( story,
+    int paraCountOne = htmlFile.makeStory( story,
                                      toFind );
+    paraCount += paraCountOne;
+
+    // if( paraCountOne > 0 )
+      // {
+      // mData.showStatus( "linkDate: " + linkDate );
+      // mData.showStatus( "urlFrom: " + urlFrom );
+      // mData.showStatus( " " );
+      // }
 
     howMany++;
 

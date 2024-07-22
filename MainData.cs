@@ -33,7 +33,7 @@ using System.Windows.Forms;
 public class MainData
 {
 internal const string VersionDate =
-                              "7/18/2024";
+                              "7/22/2024";
 // internal const int VersionNumber = 09; // 0.9
 private string dataDirectory = "";
 // internal Configure config;
@@ -163,7 +163,7 @@ internal void paraSearch( string toFindUrl,
 
 uRLFileDct.readFromFile( getOldUrlFileName() );
 // uRLFileDct.titleSearch();
-uRLFileDct.htmlSearch( toFindUrl, toFind, 
+uRLFileDct.htmlSearch( toFindUrl, toFind,
                                   daysBack );
 
 mForm.showStatus( " " );
