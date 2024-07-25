@@ -33,8 +33,7 @@ using System.Windows.Forms;
 public class MainData
 {
 internal const string VersionDate =
-                              "7/22/2024";
-// internal const int VersionNumber = 09; // 0.9
+                              "7/25/2024";
 private string dataDirectory = "";
 // internal Configure config;
 private MainForm mForm;
@@ -131,8 +130,6 @@ return true;
 
 internal void freeAll()
 {
-
-
 }
 
 
@@ -147,7 +144,6 @@ internal void clearStatus()
 {
 mForm.clearStatus();
 }
-
 
 
 
@@ -168,6 +164,15 @@ uRLFileDct.htmlSearch( toFindUrl, toFind,
 
 mForm.showStatus( " " );
 mForm.showStatus( "Finished search." );
+}
+
+
+
+internal void neuralTest()
+{
+NeuralNet net = new NeuralNet( this );
+net.test();
+
 }
 
 

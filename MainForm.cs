@@ -34,7 +34,7 @@ private int mouseY = 0;
 internal MainFormComp mFormComp;
 private System.Windows.Forms.Timer
                           SingleInstanceTimer;
-internal MainData mainData;
+internal MainData mData;
 private Bitmap guiBitmap;
 private int mainScreenWidth = 1024; // Default
 private int mainScreenHeight = 768;
@@ -75,8 +75,8 @@ isSingleInstance = true;
 mFormComp = new MainFormComp( this );
 this.Controls.Add( mFormComp.mainPanel );
 
-mainData = new MainData( this );
-guiMain = new GuiMain( mainData );
+mData = new MainData( this );
+guiMain = new GuiMain( mData );
 // Not here.  guiMain.drawToBitmap();
 }
 
@@ -190,8 +190,8 @@ SingleInstanceTimer.Dispose();
 if( !isSingleInstance )
   return;
 
-if( mainData != null )
-  mainData.freeAll();
+if( mData != null )
+  mData.freeAll();
 
 if( mFormComp != null )
   mFormComp.freeAll();
@@ -342,7 +342,7 @@ if( e.Button == MouseButtons.Left )
     clearStatus();
     showStatus( " " );
     showStatus( "Searching MSNBC." );
-    mainData.paraSearch( "msnbc",
+    mData.paraSearch( "msnbc",
                     mFormComp.getSearchText(),
                     daysBack );
 
@@ -355,12 +355,21 @@ if( e.Button == MouseButtons.Left )
     clearStatus();
     showStatus( " " );
     showStatus( "Searching FOXNEWS." );
-    mainData.paraSearch( "foxnews",
+    mData.paraSearch( "foxnews",
                    mFormComp.getSearchText(),
                    daysBack );
 
     mFormComp.mainTextBox.Focus(); // Select()
     }
+
+  if( guiMain.isInsideTestBtn( mouseX,
+                                mouseY ))
+    {
+    clearStatus();
+    mData.neuralTest();
+    showStatus( "Test finished." );
+    }
+
   }
 
 if( e.Button == MouseButtons.Right )
