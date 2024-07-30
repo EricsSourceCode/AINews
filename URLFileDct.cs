@@ -286,7 +286,7 @@ for( int count = 0; count < keySize; count++ )
 
     }
 
-  if( howMany > 50000 )
+  if( howMany > 500 )
     break;
 
   int last = lineArray[count].getArrayLast();
