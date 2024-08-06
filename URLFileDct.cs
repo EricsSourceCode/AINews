@@ -299,10 +299,10 @@ for( int count = 0; count < keySize; count++ )
     lineArray[count].getCopyURLFileAt(
                                     urlFile,
                                     countR );
-    string linkDate = urlFile.
-                           getDateTimeStr();
 
-    if( urlFile.getDateIndex() < oldIndex )
+    ulong linkDateIndex = urlFile.getDateIndex();
+
+    if( linkDateIndex < oldIndex )
       continue;
 
     // if( urlFile.getYear() < 2024 )
@@ -327,19 +327,27 @@ for( int count = 0; count < keySize; count++ )
       continue;
 
     HtmlFile htmlFile = new HtmlFile( mData,
-                                      urlFrom,
-                                      fullPath,
-                                      linkDate,
-                                      linkText );
+                                urlFrom,
+                                fullPath,
+                                linkDateIndex,
+                                linkText );
 
     htmlFile.readFileS();
     htmlFile.markupSections();
     // htmlFile.processNewAnchorTags();
 
-    Story story = new Story( mData, urlFrom );
+    Story story = new Story( mData, urlFrom,
+                  linkDateIndex, linkText );
+
+
     int paraCountOne = htmlFile.makeStory( story,
                                      toFind );
+
+
     paraCount += paraCountOne;
+
+=====
+    story.showStory();
 
     // if( paraCountOne > 0 )
       // {

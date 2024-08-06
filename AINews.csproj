@@ -49,7 +49,6 @@
     <Compile Include="\Eric\Main\CsGui\GuiMain.cs" />
     <Compile Include="\Eric\Main\CsHtml\Story.cs" />
     <Compile Include="\Eric\Main\CsHtml\Ampersand.cs" />
-    <Compile Include="\Eric\Main\CsHtml\Paragraph.cs" />
     <Compile Include="\Eric\Main\CsHtml\GoodLink.cs" />
     <Compile Include="UrlParse.cs" />
     <Compile Include="\Eric\Main\CsBase\SBuilder.cs" />

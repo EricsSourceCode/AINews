@@ -5,9 +5,9 @@ recentfile1	\Eric\Main\Docs\Notes.txt
 recentfile2	\Eric\Main\AINews\MainData.cs
 recentfile3	\Eric\Main\AINews\AINews.csproj
 recentfile4	\Eric\Main\AINews\MainForm.cs
-recentfile5	\Eric\Main\CsNeural\Neuron.cs
-recentfile6	\Eric\Main\CsNeural\NeuronLayer.cs
-recentfile7	\Eric\Main\CsNeural\NeuralNet.cs
+recentfile5	\Eric\Main\AINews\URLFileDct.cs
+recentfile6	\Eric\Main\CsHtml\Story.cs
+recentfile7	\Eric\Main\CsHtml\HtmlFile.cs
 recentfile8	
 recentfile9	
 recentfile10	
