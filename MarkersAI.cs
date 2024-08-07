@@ -60,9 +60,8 @@ public const char EndParagraphTag = '\x270A';
 public const char BeginAnchorTag = '\x270B';
 public const char EndAnchorTag = '\x270C';
 public const char BeginSpanTag = '\x270D';
-
-//  '\x270E';
-//  '\x270F';
+public const char StoryDelim = '\x270E';
+public const char StoryParagDelim = '\x270F';
 
 //                        0x2710;
 //                        0x2711;

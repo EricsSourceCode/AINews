@@ -262,9 +262,14 @@ for( int count = 0; count < last; count++ )
 
 internal void htmlSearch( string toFindUrl,
                           string toFind,
-                          double daysBack )
+                          double daysBack,
+                          StoryDct storyDct )
 {
 // mData.showStatus( "Doing HTML search." );
+
+toFindUrl = Str.toLower( toFindUrl );
+toFind = Str.toLower( toFind );
+
 
 int howMany = 0;
 
@@ -276,7 +281,6 @@ oldTime.addDays( daysBack );
 // addHours()
 ulong oldIndex = oldTime.getIndex();
 
-int paraCount = 0;
 for( int count = 0; count < keySize; count++ )
   {
   if( (count % 20) == 0 )
@@ -286,7 +290,7 @@ for( int count = 0; count < keySize; count++ )
 
     }
 
-  if( howMany > 500 )
+  if( howMany > 20 )
     break;
 
   int last = lineArray[count].getArrayLast();
@@ -311,12 +315,19 @@ for( int count = 0; count < keySize; count++ )
     string url = urlFile.getUrl();
     string urlFrom = url;
     url = Str.toLower( url );
+    if( !Str.contains( url, toFindUrl ))
+      continue;
+
+    string linkText = urlFile.getLinkText();
+    string linkTextLower = 
+                      Str.toLower( linkText );
 
     if( !Str.contains( url, toFindUrl ))
       continue;
 
 
-    string linkText = urlFile.getLinkText();
+   if( !Str.contains( linkTextLower, toFind ))
+      continue;
 
     string fileName = urlFile.getFileName();
     string fullPath = mData.
@@ -336,25 +347,15 @@ for( int count = 0; count < keySize; count++ )
     htmlFile.markupSections();
     // htmlFile.processNewAnchorTags();
 
+
     Story story = new Story( mData, urlFrom,
                   linkDateIndex, linkText );
 
-
-    int paraCountOne = htmlFile.makeStory( story,
-                                     toFind );
-
-
-    paraCount += paraCountOne;
-
-=====
-    story.showStory();
-
-    // if( paraCountOne > 0 )
-      // {
-      // mData.showStatus( "linkDate: " + linkDate );
-      // mData.showStatus( "urlFrom: " + urlFrom );
-      // mData.showStatus( " " );
-      // }
+    if( htmlFile.makeStory( story ))
+      {
+      storyDct.setValue( story.getUrl(), story );
+      story.showStory();
+      }
 
     howMany++;
 
@@ -362,8 +363,8 @@ for( int count = 0; count < keySize; count++ )
     }
   }
 
-mData.showStatus( "\r\nParagraph count: " +
-                                 paraCount );
+// mData.showStatus( "\r\nParagraph count: " +
+//                                 paraCount );
 }
 
 

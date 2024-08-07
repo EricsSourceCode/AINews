@@ -47,6 +47,8 @@
     <Compile Include="\Eric\Main\CsNeural\Neuron.cs" />
     <Compile Include="\Eric\Main\CsGui\RecBtn.cs" />
     <Compile Include="\Eric\Main\CsGui\GuiMain.cs" />
+    <Compile Include="\Eric\Main\CsHtml\StoryDct.cs" />
+    <Compile Include="\Eric\Main\CsHtml\StoryDctLine.cs" />
     <Compile Include="\Eric\Main\CsHtml\Story.cs" />
     <Compile Include="\Eric\Main\CsHtml\Ampersand.cs" />
     <Compile Include="\Eric\Main\CsHtml\GoodLink.cs" />

@@ -8,17 +8,6 @@
 // https://www.gnu.org/licenses/gpl-3.0.html
 
 
-// C# Integer types:
-// sbyte: signed byte
-// byte: unsigned byte
-// short: signed two bytes
-// ushort: unsigned two bytes
-// int
-// uint
-// long signed 64 bit
-// ulong
-
-
 
 
 using System;
@@ -33,14 +22,15 @@ using System.Windows.Forms;
 public class MainData
 {
 internal const string VersionDate =
-                              "8/5/2024";
+                              "8/7/2024";
 private string dataDirectory = "";
 // internal Configure config;
 private MainForm mForm;
 private bool cancelled = false;
 private bool isClosing = false;
 internal Sha256 sha256;
-internal URLFileDct uRLFileDct;
+internal URLFileDct urlFileDct;
+internal StoryDct storyDct;
 
 
 
@@ -55,7 +45,8 @@ setupDirectories();
 // config.clearAllOptions();
 
 sha256 = new Sha256( this );
-uRLFileDct = new URLFileDct( this );
+urlFileDct = new URLFileDct( this );
+storyDct = new StoryDct( this );
 
 showStatus( "Programming by Eric Chauvin." );
 showStatus( "Version Date: " + VersionDate );
@@ -157,10 +148,10 @@ internal void paraSearch( string toFindUrl,
 // mForm.showStatus( "Testing here." );
 // sha256.test();
 
-uRLFileDct.readFromFile( getOldUrlFileName() );
+urlFileDct.readFromFile( getOldUrlFileName() );
 // uRLFileDct.titleSearch();
-uRLFileDct.htmlSearch( toFindUrl, toFind,
-                                  daysBack );
+urlFileDct.htmlSearch( toFindUrl, toFind,
+                       daysBack, storyDct );
 
 mForm.showStatus( " " );
 mForm.showStatus( "Finished search." );
