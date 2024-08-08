@@ -319,12 +319,11 @@ for( int count = 0; count < keySize; count++ )
       continue;
 
     string linkText = urlFile.getLinkText();
-    string linkTextLower = 
+    string linkTextLower =
                       Str.toLower( linkText );
 
     if( !Str.contains( url, toFindUrl ))
       continue;
-
 
    if( !Str.contains( linkTextLower, toFind ))
       continue;
@@ -363,8 +362,7 @@ for( int count = 0; count < keySize; count++ )
     }
   }
 
-// mData.showStatus( "\r\nParagraph count: " +
-//                                 paraCount );
+storyDct.writeAllToFile();
 }
 
 
