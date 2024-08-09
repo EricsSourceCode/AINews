@@ -22,7 +22,7 @@ using System.Windows.Forms;
 public class MainData
 {
 internal const string VersionDate =
-                              "8/8/2024";
+                              "8/9/2024";
 private string dataDirectory = "";
 // internal Configure config;
 private MainForm mForm;
@@ -51,6 +51,8 @@ storyDct = new StoryDct( this );
 showStatus( "Programming by Eric Chauvin." );
 showStatus( "Version Date: " + VersionDate );
 showStatus( " " );
+
+// storyDct.readAllFromFile();
 }
 
 
@@ -145,6 +147,7 @@ mForm.clearStatus();
 
 
 
+/*
 internal void paraSearch( string toFindUrl,
                           string toFind,
                           double daysBack )
@@ -162,6 +165,22 @@ urlFileDct.htmlSearch( toFindUrl, toFind,
 
 mForm.showStatus( " " );
 mForm.showStatus( "Finished search." );
+}
+*/
+
+
+
+internal void readAllStories()
+{
+mForm.showStatus( "Reading all stories." );
+
+urlFileDct.readFromFile( getOldUrlFileName() );
+
+urlFileDct.readAllStories( storyDct );
+
+mForm.showStatus( " " );
+mForm.showStatus(
+             "Finished reading all stories." );
 }
 
 

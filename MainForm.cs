@@ -342,9 +342,9 @@ if( e.Button == MouseButtons.Left )
     clearStatus();
     showStatus( " " );
     showStatus( "Searching MSNBC." );
-    mData.paraSearch( "msnbc",
-                    mFormComp.getSearchText(),
-                    daysBack );
+    // mData.paraSearch( "msnbc",
+    //                mFormComp.getSearchText(),
+    //                daysBack );
 
     mFormComp.mainTextBox.Focus(); // Select()
     }
@@ -355,9 +355,9 @@ if( e.Button == MouseButtons.Left )
     clearStatus();
     showStatus( " " );
     showStatus( "Searching FOXNEWS." );
-    mData.paraSearch( "foxnews",
-                   mFormComp.getSearchText(),
-                   daysBack );
+    // mData.paraSearch( "foxnews",
+    //               mFormComp.getSearchText(),
+    //               daysBack );
 
     mFormComp.mainTextBox.Focus(); // Select()
     }
@@ -366,7 +366,9 @@ if( e.Button == MouseButtons.Left )
                                 mouseY ))
     {
     clearStatus();
-    mData.neuralTest();
+
+    mData.readAllStories();
+    // mData.neuralTest();
     showStatus( "Test finished." );
     }
 

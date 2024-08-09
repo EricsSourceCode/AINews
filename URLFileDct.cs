@@ -57,8 +57,10 @@ catch( Exception Except )
 }
 
 
+
 void freeAll()
 {
+clear();
 // lineArray = null;
 }
 
@@ -89,6 +91,9 @@ index |= resultHash.getU8( 1 );
 
 index = index & keySize;
 if( index == keySize )
+  index = keySize - 1;
+
+/*
   {
   // Distribute those last two at keySize
   // and keySize - 1 more evenly.
@@ -97,6 +102,7 @@ if( index == keySize )
   byte lastByte = message.getU8( lastB - 1 );
   index = index - lastByte;
   }
+*/
 
 return index;
 }
@@ -270,8 +276,9 @@ internal void htmlSearch( string toFindUrl,
 toFindUrl = Str.toLower( toFindUrl );
 toFind = Str.toLower( toFind );
 
+storyDct.clear();
 
-int howMany = 0;
+// int howMany = 0;
 
 URLFile urlFile = new URLFile( mData );
 TimeEC timeEC = new TimeEC();
@@ -290,8 +297,8 @@ for( int count = 0; count < keySize; count++ )
 
     }
 
-  if( howMany > 20 )
-    break;
+  // if( howMany > 20 )
+    // break;
 
   int last = lineArray[count].getArrayLast();
   if( last < 1 )
@@ -356,11 +363,86 @@ for( int count = 0; count < keySize; count++ )
       story.showStory();
       }
 
-    howMany++;
+    // howMany++;
 
     // return;
     }
   }
+
+storyDct.writeAllToFile();
+}
+
+
+
+
+internal void readAllStories(
+                       StoryDct storyDct )
+{
+mData.showStatus( "Reading all stories." );
+
+storyDct.clear();
+
+URLFile urlFile = new URLFile( mData );
+
+int howMany = 0;
+for( int count = 0; count < keySize; count++ )
+  {
+  if( (count % 20) == 0 )
+    {
+    if( !mData.checkEvents())
+      return;
+
+    }
+
+  // if( howMany > 50 )
+    // break;
+
+  int last = lineArray[count].getArrayLast();
+  if( last < 1 )
+    continue;
+
+  // mData.showStatus( "Last: " + last );
+  for( int countR = 0; countR < last; countR++ )
+    {
+    lineArray[count].getCopyURLFileAt(
+                                    urlFile,
+                                    countR );
+
+    string urlFrom = urlFile.getUrl();
+    string fileName = urlFile.getFileName();
+    string fullPath = mData.
+                    getOldDataDirectory() +
+                    "URLFiles\\" + fileName;
+
+    if( !SysIO.fileExists( fullPath ))
+      continue;
+
+    ulong linkDateIndex = urlFile.getDateIndex();
+    string linkText = urlFile.getLinkText();
+
+    HtmlFile htmlFile = new HtmlFile( mData,
+                                urlFrom,
+                                fullPath,
+                                linkDateIndex,
+                                linkText );
+
+    htmlFile.readFileS();
+    htmlFile.markupSections();
+
+    Story story = new Story( mData, urlFrom,
+                  linkDateIndex, linkText );
+
+    if( htmlFile.makeStory( story ))
+      {
+      storyDct.setValue( story.getUrl(), story );
+      // story.showStory();
+      howMany++;
+      }
+    }
+  }
+
+mData.showStatus(
+        "Stories from old data: " + howMany );
 
 storyDct.writeAllToFile();
 }

@@ -62,8 +62,8 @@ public const char EndAnchorTag = '\x270C';
 public const char BeginSpanTag = '\x270D';
 public const char StoryDelim = '\x270E';
 public const char StoryParagDelim = '\x270F';
+public const char StoryListDelim = '\x2710';
 
-//                        0x2710;
 //                        0x2711;
 
 public const char URLFileDelimit = '\x2712';
