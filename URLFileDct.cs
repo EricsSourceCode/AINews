@@ -380,7 +380,7 @@ internal void readAllStories(
 {
 mData.showStatus( "Reading all stories." );
 
-storyDct.clear();
+storyDct.readAllFromFile();
 
 URLFile urlFile = new URLFile( mData );
 
@@ -409,6 +409,12 @@ for( int count = 0; count < keySize; count++ )
                                     countR );
 
     string urlFrom = urlFile.getUrl();
+
+    // If it already has this story.
+    if( storyDct.keyExists( urlFrom ))
+      continue;
+
+
     string fileName = urlFile.getFileName();
     string fullPath = mData.
                     getOldDataDirectory() +

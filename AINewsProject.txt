@@ -10,9 +10,9 @@ recentfile6	\Eric\Main\CsHtml\Story.cs
 recentfile7	\Eric\Main\CsHtml\HtmlFile.cs
 recentfile8	\Eric\Main\CsHtml\StoryDctLine.cs
 recentfile9	\Eric\Main\AINews\URLFileDct.cs
-recentfile10	
-recentfile11	
-recentfile12	
+recentfile10	\Eric\Main\AINews\URLFileDctLine.cs
+recentfile11	\Eric\Main\AINews\URLFile.cs
+recentfile12	\Eric\Main\CsHtml\GoodParag.cs
 recentfile13	
 recentfile14	
 recentfile15	

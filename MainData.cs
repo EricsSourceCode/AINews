@@ -147,26 +147,27 @@ mForm.clearStatus();
 
 
 
-/*
+
 internal void paraSearch( string toFindUrl,
                           string toFind,
                           double daysBack )
 {
+readAllStories(); // In to storyDct.
+
 // string toFindUrl = "msnbc";
 // string toFindUrl = "foxnews";
 
 // mForm.showStatus( "Testing here." );
 // sha256.test();
 
-urlFileDct.readFromFile( getOldUrlFileName() );
-// uRLFileDct.titleSearch();
-urlFileDct.htmlSearch( toFindUrl, toFind,
-                       daysBack, storyDct );
+storyDct.storySearch( toFindUrl,
+                      toFind,
+                      daysBack );
 
 mForm.showStatus( " " );
 mForm.showStatus( "Finished search." );
 }
-*/
+
 
 
 
