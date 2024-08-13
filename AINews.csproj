@@ -40,6 +40,9 @@
 
 
   <ItemGroup>
+    <Compile Include="\Eric\Main\CsHtml\WordDct.cs" />
+    <Compile Include="\Eric\Main\CsHtml\WordDctLine.cs" />
+    <Compile Include="\Eric\Main\CsHtml\Word.cs" />
     <Compile Include="\Eric\Main\CsHtml\GoodParag.cs" />
     <Compile Include="\Eric\Main\CsBase\MathF.cs" />
     <Compile Include="\Eric\Main\CsMem\Float32Array.cs" />
