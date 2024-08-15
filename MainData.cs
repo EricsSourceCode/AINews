@@ -22,7 +22,7 @@ using System.Windows.Forms;
 public class MainData
 {
 internal const string VersionDate =
-                              "8/13/2024";
+                              "8/15/2024";
 private string dataDirectory = "";
 // internal Configure config;
 private MainForm mForm;
@@ -31,6 +31,7 @@ private bool isClosing = false;
 internal Sha256 sha256;
 internal URLFileDct urlFileDct;
 internal StoryDct storyDct;
+internal WordDct wordDct;
 
 
 
@@ -47,12 +48,11 @@ setupDirectories();
 sha256 = new Sha256( this );
 urlFileDct = new URLFileDct( this );
 storyDct = new StoryDct( this );
+wordDct = new WordDct( this );
 
 showStatus( "Programming by Eric Chauvin." );
 showStatus( "Version Date: " + VersionDate );
 showStatus( " " );
-
-// storyDct.readAllFromFile();
 }
 
 
@@ -75,6 +75,12 @@ return "\\AINewsData\\UrlDictionary.txt";
 internal string getStoriesFileName()
 {
 return "\\AIData\\Stories.txt";
+}
+
+
+internal string getWordsFileName()
+{
+return "\\AIData\\WordsDct.txt";
 }
 
 
