@@ -65,6 +65,7 @@ public const char StoryParagDelim = '\x270F';
 public const char StoryListDelim = '\x2710';
 public const char WordDelim = '\x2711';
 public const char URLFileDelimit = '\x2712';
+public const char WordListDelim = '\x2713';
 
 
 

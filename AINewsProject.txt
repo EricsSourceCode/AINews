@@ -11,7 +11,7 @@ recentfile7	\Eric\Main\CsHtml\WordDctLine.cs
 recentfile8	\Eric\Main\CsHtml\StoryDct.cs
 recentfile9	\Eric\Main\AINews\URLFileDct.cs
 recentfile10	\Eric\Main\AINews\MarkersAI.cs
-recentfile11	
+recentfile11	\Eric\Main\CsHtml\Story.cs
 recentfile12	
 recentfile13	
 recentfile14	

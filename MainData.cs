@@ -168,7 +168,8 @@ readAllStories(); // In to storyDct.
 
 storyDct.storySearch( toFindUrl,
                       toFind,
-                      daysBack );
+                      daysBack,
+                      wordDct );
 
 mForm.showStatus( " " );
 mForm.showStatus( "Finished search." );
