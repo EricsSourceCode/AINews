@@ -22,7 +22,7 @@ using System.Windows.Forms;
 public class MainData
 {
 internal const string VersionDate =
-                              "8/15/2024";
+                              "8/19/2024";
 private string dataDirectory = "";
 // internal Configure config;
 private MainForm mForm;
@@ -158,6 +158,8 @@ internal void paraSearch( string toFindUrl,
                           string toFind,
                           double daysBack )
 {
+wordDct.readAllFromFile();
+
 readAllStories(); // In to storyDct.
 
 // string toFindUrl = "msnbc";
@@ -170,6 +172,8 @@ storyDct.storySearch( toFindUrl,
                       toFind,
                       daysBack,
                       wordDct );
+
+wordDct.writeAllToFile();
 
 mForm.showStatus( " " );
 mForm.showStatus( "Finished search." );
