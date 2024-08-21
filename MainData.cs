@@ -175,6 +175,8 @@ storyDct.storySearch( toFindUrl,
 
 wordDct.writeAllToFile();
 
+// wordDct.showSortedWords();
+
 mForm.showStatus( " " );
 mForm.showStatus( "Finished search." );
 }
