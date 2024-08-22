@@ -22,7 +22,7 @@ using System.Windows.Forms;
 public class MainData
 {
 internal const string VersionDate =
-                              "8/19/2024";
+                              "8/22/2024";
 private string dataDirectory = "";
 // internal Configure config;
 private MainForm mForm;
@@ -176,6 +176,9 @@ storyDct.storySearch( toFindUrl,
 wordDct.writeAllToFile();
 
 // wordDct.showSortedWords();
+wordDct.showSortByCount();
+
+// wordDct.checkUniqueID();
 
 mForm.showStatus( " " );
 mForm.showStatus( "Finished search." );

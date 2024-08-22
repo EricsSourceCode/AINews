@@ -1,4 +1,4 @@
-Build started 8/21/2024 1:16:54 PM.
+Build started 8/22/2024 2:45:39 PM.
 Project "C:\Eric\Main\AINews\AINews.csproj" on node 1 (default targets).
 GenerateTargetFrameworkMonikerAttribute:
 Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
@@ -13,4 +13,4 @@ Build succeeded.
     0 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:00.63
+Time Elapsed 00:00:00.51
