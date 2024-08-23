@@ -44,8 +44,9 @@
     <Compile Include="\Eric\Main\CsHtml\WordDctLine.cs" />
     <Compile Include="\Eric\Main\CsHtml\Word.cs" />
     <Compile Include="\Eric\Main\CsHtml\GoodParag.cs" />
-    <Compile Include="\Eric\Main\CsBase\MathF.cs" />
-    <Compile Include="\Eric\Main\CsMem\Float32Array.cs" />
+    <Compile Include="\Eric\Main\CsMath\MathF.cs" />
+    <Compile Include="\Eric\Main\CsMath\FloatMatrix.cs" />
+    <Compile Include="\Eric\Main\CsMath\FloatVec.cs" />
     <Compile Include="\Eric\Main\CsNeural\NeuralNet.cs" />
     <Compile Include="\Eric\Main\CsNeural\NeuronLayer.cs" />
     <Compile Include="\Eric\Main\CsNeural\Neuron.cs" />

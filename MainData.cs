@@ -22,7 +22,7 @@ using System.Windows.Forms;
 public class MainData
 {
 internal const string VersionDate =
-                              "8/22/2024";
+                              "8/23/2024";
 private string dataDirectory = "";
 // internal Configure config;
 private MainForm mForm;
@@ -32,6 +32,8 @@ internal Sha256 sha256;
 internal URLFileDct urlFileDct;
 internal StoryDct storyDct;
 internal WordDct wordDct;
+internal WordDct wordDctDem;
+internal WordDct wordDctRep;
 
 
 
@@ -49,6 +51,8 @@ sha256 = new Sha256( this );
 urlFileDct = new URLFileDct( this );
 storyDct = new StoryDct( this );
 wordDct = new WordDct( this );
+wordDctDem = new WordDct( this );
+wordDctRep = new WordDct( this );
 
 showStatus( "Programming by Eric Chauvin." );
 showStatus( "Version Date: " + VersionDate );
@@ -171,12 +175,26 @@ readAllStories(); // In to storyDct.
 storyDct.storySearch( toFindUrl,
                       toFind,
                       daysBack,
-                      wordDct );
+                      wordDct,
+                      wordDctDem,
+                      wordDctRep );
 
 wordDct.writeAllToFile();
 
 // wordDct.showSortedWords();
-wordDct.showSortByCount();
+
+
+mForm.showStatus( " " );
+mForm.showStatus( "All words:" );
+wordDct.showSortByCount( 500 );
+
+mForm.showStatus( " " );
+mForm.showStatus( "Democrat words:" );
+wordDctDem.showSortByCount( 10 );
+
+mForm.showStatus( " " );
+mForm.showStatus( "Republican words:" );
+wordDctRep.showSortByCount( 10 );
 
 // wordDct.checkUniqueID();
 
