@@ -91,48 +91,51 @@ I will be parsing Javascript:
 */
 
 
+
+internal static bool isMarker( char testChar )
+{
+// Reserve these symbols for markers.
+// Miscellaneous Symbols (0x2600 to 0x26FF)
+// Dingbats (0x2700 to 0x27BF)
+// Miscellaneous Symbols and Arrows
+//                  (0x2B00 to 0x2BFF)
+
+int value = (int)testChar;
+if( (value >= 0x2600) && (value <= 0x2BFF))
+  return true;
+
+return false;
+}
+
+
+
+
+internal static string removeAllMarkers(
+                               string inS )
+{
+if( inS == null )
+  return "";
+
+int max = inS.Length;
+if( max == 0 )
+  return "";
+
+SBuilder sbuild = new SBuilder();
+for( int count = 0; count < max; count++ )
+  {
+  char testChar = inS[count];
+  if( isMarker( testChar ))
+    continue;
+
+  sbuild.appendChar( testChar );
+  }
+
+return sbuild.toString();
+}
+
+
+
 /*
-  public static boolean isMarker( char testChar )
-    {
-    // Reserve these symbols for markers.
-    // Miscellaneous Symbols (0x2600 to 0x26FF)
-    // Dingbats (0x2700 to 0x27BF)
-    // Miscellaneous Symbols and Arrows
-    //                  (0x2B00 to 0x2BFF)
-
-    int value = (int)testChar;
-    if( (value >= 0x2600) && (value <= 0x2BFF))
-      return true;
-
-    return false;
-    }
-
-
-
-  public static StrA removeAllMarkers( StrA in )
-    {
-    if( in == null )
-      return StrA.Empty;
-
-    final int max = in.length();
-    if( max == 0 )
-      return StrA.Empty;
-
-    StrABld sBuilder = new StrABld( in.length());
-    for( int count = 0; count < max; count++ )
-      {
-      char testChar = in.charAt( count );
-      if( isMarker( testChar ))
-        continue;
-
-      sBuilder.appendChar( testChar );
-      }
-
-    return sBuilder.toStrA();
-    }
-
-
-
   public static int countMarkers( StrA in )
     {
     if( in == null )
