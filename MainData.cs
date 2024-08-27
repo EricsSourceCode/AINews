@@ -22,7 +22,7 @@ using System.Windows.Forms;
 public class MainData
 {
 internal const string VersionDate =
-                              "8/26/2024";
+                              "8/27/2024";
 private string dataDirectory = "";
 // internal Configure config;
 private MainForm mForm;
@@ -31,9 +31,6 @@ private bool isClosing = false;
 internal Sha256 sha256;
 internal URLFileDct urlFileDct;
 internal StoryDct storyDct;
-internal WordDct wordDct;
-// internal WordDct wordDctDem;
-// internal WordDct wordDctRep;
 
 
 
@@ -50,9 +47,6 @@ setupDirectories();
 sha256 = new Sha256( this );
 urlFileDct = new URLFileDct( this );
 storyDct = new StoryDct( this );
-wordDct = new WordDct( this );
-// wordDctDem = new WordDct( this );
-// wordDctRep = new WordDct( this );
 
 showStatus( "Programming by Eric Chauvin." );
 showStatus( "Version Date: " + VersionDate );
@@ -162,8 +156,6 @@ internal void paraSearch( string toFindUrl,
                           string toFind,
                           double daysBack )
 {
-wordDct.readAllFromFile();
-
 readAllStories(); // In to storyDct.
 
 // string toFindUrl = "msnbc";
@@ -174,19 +166,7 @@ readAllStories(); // In to storyDct.
 
 storyDct.storySearch( toFindUrl,
                       toFind,
-                      daysBack,
-                      wordDct );
-
-wordDct.writeAllToFile();
-
-// wordDct.showSortedWords();
-
-
-// mForm.showStatus( " " );
-// mForm.showStatus( "All words:" );
-// wordDct.showSortByCount( 500 );
-
-// wordDct.checkUniqueID();
+                      daysBack );
 
 mForm.showStatus( " " );
 mForm.showStatus( "Finished search." );
