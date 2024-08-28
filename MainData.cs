@@ -22,7 +22,7 @@ using System.Windows.Forms;
 public class MainData
 {
 internal const string VersionDate =
-                              "8/27/2024";
+                              "8/28/2024";
 private string dataDirectory = "";
 // internal Configure config;
 private MainForm mForm;
@@ -31,6 +31,7 @@ private bool isClosing = false;
 internal Sha256 sha256;
 internal URLFileDct urlFileDct;
 internal StoryDct storyDct;
+internal FloatMatrix paragMatrix;
 
 
 
@@ -47,6 +48,10 @@ setupDirectories();
 sha256 = new Sha256( this );
 urlFileDct = new URLFileDct( this );
 storyDct = new StoryDct( this );
+paragMatrix = new FloatMatrix( this );
+
+//                   rows, columns
+paragMatrix.setSize( 10, 100 );
 
 showStatus( "Programming by Eric Chauvin." );
 showStatus( "Version Date: " + VersionDate );
@@ -166,7 +171,17 @@ readAllStories(); // In to storyDct.
 
 storyDct.storySearch( toFindUrl,
                       toFind,
-                      daysBack );
+                      daysBack,
+                      paragMatrix );
+
+
+showStatus( "paragMatrix rows: " +
+                       paragMatrix.getRows());
+
+showStatus( "paragMatrix last: " +
+                   paragMatrix.getLastAppend());
+
+
 
 mForm.showStatus( " " );
 mForm.showStatus( "Finished search." );
@@ -179,7 +194,8 @@ internal void readAllStories()
 {
 mForm.showStatus( "Reading all stories." );
 
-urlFileDct.readFromFile( getOldUrlFileName() );
+urlFileDct.readFromOldJavaFile(
+                      getOldUrlFileName() );
 
 urlFileDct.readAllStories( storyDct );
 

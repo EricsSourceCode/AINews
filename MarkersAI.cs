@@ -66,6 +66,7 @@ public const char StoryListDelim = '\x2710';
 public const char WordDelim = '\x2711';
 public const char URLFileDelimit = '\x2712';
 public const char WordListDelim = '\x2713';
+public const char DateTimeDelim = '\x2714';
 
 
 
@@ -89,6 +90,7 @@ I will be parsing Javascript:
   ShowOddChar
 
 */
+
 
 
 

@@ -198,8 +198,8 @@ urlFrom = toCopy.urlFrom;
 */
 
 
-
-internal string toString()
+/*
+internal string toOldJavaString()
 {
 string anchors = "f";
 if( anchorsPulled )
@@ -220,10 +220,10 @@ string result = Str.trim( url ) +
 
 return result;
 }
+*/
 
 
-
-internal void setFromStr( string setFrom )
+internal void setFromOldJavaStr( string setFrom )
 {
 clear();
 
@@ -246,9 +246,8 @@ if( last < 4 )
   return;
 
 string timeS = fields.getStrAt( 3 );
-// mData.showStatus( "setFromDelim: " + timeS );
 
-dateTime.setFromDelim( timeS );
+dateTime.setFromOldJavaDelim( timeS );
 if( last < 5 )
   return;
 

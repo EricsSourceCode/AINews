@@ -223,7 +223,8 @@ lineArray[index].getValue( key, toGet );
 
 
 
-internal void readFromFile( string fileName )
+internal void readFromOldJavaFile(
+                             string fileName )
 {
 // mData.showStatus(
 //         "Reading from URL index file." );
@@ -245,7 +246,7 @@ for( int count = 0; count < last; count++ )
   line = Str.trim( line );
 
   URLFile urlFile = new URLFile( mData );
-  urlFile.setFromStr( line );
+  urlFile.setFromOldJavaStr( line );
 
   string url = urlFile.getUrl();
   // mData.showStatus( urlFile.toString());
@@ -267,9 +268,10 @@ for( int count = 0; count < last; count++ )
 
 
 internal void htmlSearch( string toFindUrl,
-                          string toFind,
-                          double daysBack,
-                          StoryDct storyDct )
+                   string toFind,
+                   double daysBack,
+                   StoryDct storyDct,
+                   FloatMatrix paragMatrix )
 {
 // mData.showStatus( "Doing HTML search." );
 
@@ -376,7 +378,7 @@ storyDct.writeAllToFile();
 
 
 internal void readAllStories(
-                       StoryDct storyDct )
+                     StoryDct storyDct )
 {
 mData.showStatus( "Reading all stories." );
 

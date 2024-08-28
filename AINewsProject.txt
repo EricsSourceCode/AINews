@@ -11,7 +11,6 @@ recentfile10	\Eric\Main\CsMath\FloatVec.cs
 recentfile7	\Eric\Main\CsNeural\Neuron.cs
 recentfile11	\Eric\Main\CsMath\FloatMatrix.cs
 recentfile8	\Eric\Main\CsNeural\NeuronLayer.cs
-recentfile12	\Eric\Main\CsBase\TimeEC.cs
+recentfile12	\Eric\Main\AINews\URLFileDct.cs
 recentfile9	\Eric\Main\CsNeural\NeuralNet.cs
-recentfile13	\Eric\Main\AINews\URLFileDct.cs
-recentfile14	\Eric\Main\AINews\URLFile.cs
+recentfile13	\Eric\Main\CsHtml\StoryDctLine.cs
