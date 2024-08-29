@@ -363,11 +363,11 @@ if( e.Button == MouseButtons.Left )
     }
 
   if( guiMain.isInsideTestBtn( mouseX,
-                                mouseY ))
+                               mouseY ))
     {
     clearStatus();
-    mData.readAllStories();
-    // mData.neuralTest();
+    // mData.readAllStories();
+    mData.neuralTest();
     showStatus( "Test finished." );
     }
 

@@ -22,7 +22,7 @@ using System.Windows.Forms;
 public class MainData
 {
 internal const string VersionDate =
-                              "8/28/2024";
+                              "8/29/2024";
 private string dataDirectory = "";
 // internal Configure config;
 private MainForm mForm;
@@ -49,9 +49,6 @@ sha256 = new Sha256( this );
 urlFileDct = new URLFileDct( this );
 storyDct = new StoryDct( this );
 paragMatrix = new FloatMatrix( this );
-
-//                   rows, columns
-paragMatrix.setSize( 10, 100 );
 
 showStatus( "Programming by Eric Chauvin." );
 showStatus( "Version Date: " + VersionDate );
@@ -171,17 +168,7 @@ readAllStories(); // In to storyDct.
 
 storyDct.storySearch( toFindUrl,
                       toFind,
-                      daysBack,
-                      paragMatrix );
-
-
-showStatus( "paragMatrix rows: " +
-                       paragMatrix.getRows());
-
-showStatus( "paragMatrix last: " +
-                   paragMatrix.getLastAppend());
-
-
+                      daysBack );
 
 mForm.showStatus( " " );
 mForm.showStatus( "Finished search." );
@@ -205,13 +192,48 @@ mForm.showStatus(
 }
 
 
-
+====
 internal void neuralTest()
 {
-NeuralNet net = new NeuralNet( this );
-net.test();
+mForm.showStatus( "Neural Net Test." );
 
+/*
+
+//                   rows, columns
+paragMatrix.setSize( 10, 100 );
+paragMatrix.clearLastAppend();
+
+readAllStories(); // In to storyDct.
+
+int daysBack = -100;
+string toFindUrl = "";
+string toFind = ""; // Like the word "Trump".
+// string toFindUrl = "msnbc";
+// string toFindUrl = "foxnews";
+
+// sha256.test();
+
+storyDct.storySearch( toFindUrl,
+                      toFind,
+                      daysBack,
+                      paragMatrix );
+
+showStatus( "paragMatrix rows: " +
+                       paragMatrix.getRows());
+
+showStatus( "paragMatrix last: " +
+                   paragMatrix.getLastAppend());
+
+
+mForm.showStatus( " " );
+
+NeuralNet net = new NeuralNet( this,
+                               paragMatrix );
+net.test();
+*/
+mForm.showStatus( "Neural net test finished." );
 }
+
 
 
 
