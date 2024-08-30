@@ -21,8 +21,8 @@ using System.Windows.Forms;
 
 public class MainData
 {
-internal const string VersionDate =
-                              "8/29/2024";
+internal const string versionDate =
+                              "8/30/2024";
 private string dataDirectory = "";
 // internal Configure config;
 private MainForm mForm;
@@ -32,7 +32,7 @@ internal Sha256 sha256;
 internal URLFileDct urlFileDct;
 internal StoryDct storyDct;
 internal FloatMatrix paragMatrix;
-
+internal FloatVec testLabelVec;
 
 
 internal MainData( MainForm useForm )
@@ -49,9 +49,11 @@ sha256 = new Sha256( this );
 urlFileDct = new URLFileDct( this );
 storyDct = new StoryDct( this );
 paragMatrix = new FloatMatrix( this );
+testLabelVec = new FloatVec( this );
+
 
 showStatus( "Programming by Eric Chauvin." );
-showStatus( "Version Date: " + VersionDate );
+showStatus( "Version Date: " + versionDate );
 showStatus( " " );
 }
 
@@ -192,12 +194,9 @@ mForm.showStatus(
 }
 
 
-====
 internal void neuralTest()
 {
 mForm.showStatus( "Neural Net Test." );
-
-/*
 
 //                   rows, columns
 paragMatrix.setSize( 10, 100 );
@@ -213,10 +212,11 @@ string toFind = ""; // Like the word "Trump".
 
 // sha256.test();
 
-storyDct.storySearch( toFindUrl,
-                      toFind,
-                      daysBack,
-                      paragMatrix );
+storyDct.neuralSearch( toFindUrl,
+                       toFind,
+                       daysBack,
+                       paragMatrix,
+                       testLabelVec );
 
 showStatus( "paragMatrix rows: " +
                        paragMatrix.getRows());
@@ -228,9 +228,10 @@ showStatus( "paragMatrix last: " +
 mForm.showStatus( " " );
 
 NeuralNet net = new NeuralNet( this,
-                               paragMatrix );
+                               paragMatrix,
+                               testLabelVec );
 net.test();
-*/
+
 mForm.showStatus( "Neural net test finished." );
 }
 
