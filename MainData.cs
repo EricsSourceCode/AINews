@@ -22,7 +22,7 @@ using System.Windows.Forms;
 public class MainData
 {
 internal const string versionDate =
-                              "8/30/2024";
+                              "9/4/2024";
 private string dataDirectory = "";
 // internal Configure config;
 private MainForm mForm;
@@ -32,7 +32,7 @@ internal Sha256 sha256;
 internal URLFileDct urlFileDct;
 internal StoryDct storyDct;
 internal FloatMatrix paragMatrix;
-internal FloatVec testLabelVec;
+internal FloatMatrix labelMatrix;
 
 
 internal MainData( MainForm useForm )
@@ -49,7 +49,7 @@ sha256 = new Sha256( this );
 urlFileDct = new URLFileDct( this );
 storyDct = new StoryDct( this );
 paragMatrix = new FloatMatrix( this );
-testLabelVec = new FloatVec( this );
+labelMatrix = new FloatMatrix( this );
 
 
 showStatus( "Programming by Eric Chauvin." );
@@ -194,13 +194,17 @@ mForm.showStatus(
 }
 
 
+
 internal void neuralTest()
 {
 mForm.showStatus( "Neural Net Test." );
 
 //                   rows, columns
 paragMatrix.setSize( 10, 100 );
+labelMatrix.setSize( 10, 100 );
 paragMatrix.clearLastAppend();
+labelMatrix.clearLastAppend();
+
 
 readAllStories(); // In to storyDct.
 
@@ -216,7 +220,7 @@ storyDct.neuralSearch( toFindUrl,
                        toFind,
                        daysBack,
                        paragMatrix,
-                       testLabelVec );
+                       labelMatrix );
 
 showStatus( "paragMatrix rows: " +
                        paragMatrix.getRows());
@@ -229,7 +233,8 @@ mForm.showStatus( " " );
 
 NeuralNet net = new NeuralNet( this,
                                paragMatrix,
-                               testLabelVec );
+                               labelMatrix );
+
 net.test();
 
 mForm.showStatus( "Neural net test finished." );
