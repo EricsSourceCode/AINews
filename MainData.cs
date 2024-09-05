@@ -22,7 +22,7 @@ using System.Windows.Forms;
 public class MainData
 {
 internal const string versionDate =
-                              "9/4/2024";
+                              "9/5/2024";
 private string dataDirectory = "";
 // internal Configure config;
 private MainForm mForm;
@@ -204,7 +204,6 @@ paragMatrix.setSize( 10, 100 );
 labelMatrix.setSize( 10, 100 );
 paragMatrix.clearLastAppend();
 labelMatrix.clearLastAppend();
-
 
 readAllStories(); // In to storyDct.
 
