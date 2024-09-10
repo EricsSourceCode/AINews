@@ -11,5 +11,23 @@ recentfile6	\Eric\Main\CsHtml\HtmlFile.cs
 recentfile11	\Eric\Main\CsMath\FloatMatrix.cs
 recentfile7	\Eric\Main\CsNeural\Neuron.cs
 recentfile8	\Eric\Main\CsNeural\NeuronLayer.cs
-recentfile12	\Eric\Main\AINews\MainForm.cs
+recentfile12	
 recentfile9	\Eric\Main\CsNeural\NeuralNet.cs
+recentfile13	
+recentfile14	
+recentfile15	
+recentfile16	
+recentfile17	
+recentfile18	
+recentfile19	
+recentfile20	
+recentfile21	
+recentfile22	
+recentfile23	
+recentfile24	
+recentfile25	
+recentfile26	
+recentfile27	
+recentfile28	
+recentfile29	
+recentfile30	
