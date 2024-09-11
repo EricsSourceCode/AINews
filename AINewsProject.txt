@@ -6,13 +6,13 @@ recentfile2	\Eric\Main\AINews\MainData.cs
 recentfile3	\Eric\Main\AINews\AINews.csproj
 recentfile4	\Eric\Main\CsHtml\StoryDct.cs
 recentfile5	\Eric\Main\CsHtml\Story.cs
-recentfile10	\Eric\Main\CsMath\FloatVec.cs
-recentfile6	\Eric\Main\CsHtml\HtmlFile.cs
-recentfile11	\Eric\Main\CsMath\FloatMatrix.cs
+recentfile6	\Eric\Main\CsHtml\Html.cs
 recentfile7	\Eric\Main\CsNeural\Neuron.cs
+recentfile10	\Eric\Main\AINews\URLFileDct.cs
 recentfile8	\Eric\Main\CsNeural\NeuronLayer.cs
-recentfile12	
+recentfile11	
 recentfile9	\Eric\Main\CsNeural\NeuralNet.cs
+recentfile12	
 recentfile13	
 recentfile14	
 recentfile15	

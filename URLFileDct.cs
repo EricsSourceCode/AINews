@@ -267,115 +267,6 @@ for( int count = 0; count < last; count++ )
 
 
 
-internal void htmlSearch( string toFindUrl,
-                   string toFind,
-                   double daysBack,
-                   StoryDct storyDct,
-                   FloatMatrix paragMatrix )
-{
-// mData.showStatus( "Doing HTML search." );
-
-toFindUrl = Str.toLower( toFindUrl );
-toFind = Str.toLower( toFind );
-
-storyDct.clear();
-
-// int howMany = 0;
-
-URLFile urlFile = new URLFile( mData );
-TimeEC timeEC = new TimeEC();
-TimeEC oldTime = new TimeEC();
-oldTime.setToNow();
-oldTime.addDays( daysBack );
-// addHours()
-ulong oldIndex = oldTime.getIndex();
-
-for( int count = 0; count < keySize; count++ )
-  {
-  if( (count % 20) == 0 )
-    {
-    if( !mData.checkEvents())
-      return;
-
-    }
-
-  // if( howMany > 20 )
-    // break;
-
-  int last = lineArray[count].getArrayLast();
-  if( last < 1 )
-    continue;
-
-  // mData.showStatus( "Last: " + last );
-  for( int countR = 0; countR < last; countR++ )
-    {
-    lineArray[count].getCopyURLFileAt(
-                                    urlFile,
-                                    countR );
-
-    ulong linkDateIndex = urlFile.getDateIndex();
-
-    if( linkDateIndex < oldIndex )
-      continue;
-
-    // if( urlFile.getYear() < 2024 )
-      // continue;
-
-    string url = urlFile.getUrl();
-    string urlFrom = url;
-    url = Str.toLower( url );
-    if( !Str.contains( url, toFindUrl ))
-      continue;
-
-    string linkText = urlFile.getLinkText();
-    string linkTextLower =
-                      Str.toLower( linkText );
-
-    if( !Str.contains( url, toFindUrl ))
-      continue;
-
-   if( !Str.contains( linkTextLower, toFind ))
-      continue;
-
-    string fileName = urlFile.getFileName();
-    string fullPath = mData.
-                    getOldDataDirectory() +
-                    "URLFiles\\" + fileName;
-
-    if( !SysIO.fileExists( fullPath ))
-      continue;
-
-    HtmlFile htmlFile = new HtmlFile( mData,
-                                urlFrom,
-                                fullPath,
-                                linkDateIndex,
-                                linkText );
-
-    htmlFile.readFileS();
-    htmlFile.markupSections();
-    // htmlFile.processNewAnchorTags();
-
-
-    Story story = new Story( mData, urlFrom,
-                  linkDateIndex, linkText );
-
-    if( htmlFile.makeStory( story ))
-      {
-      storyDct.setValue( story.getUrl(), story );
-      story.showStory();
-      }
-
-    // howMany++;
-
-    // return;
-    }
-  }
-
-storyDct.writeAllToFile();
-}
-
-
-
 
 internal void readAllStories(
                      StoryDct storyDct )
@@ -396,8 +287,8 @@ for( int count = 0; count < keySize; count++ )
 
     }
 
-  // if( howMany > 50 )
-    // break;
+  if( howMany > 10 )
+    break;
 
   int last = lineArray[count].getArrayLast();
   if( last < 1 )
@@ -428,19 +319,22 @@ for( int count = 0; count < keySize; count++ )
     ulong linkDateIndex = urlFile.getDateIndex();
     string linkText = urlFile.getLinkText();
 
-    HtmlFile htmlFile = new HtmlFile( mData,
-                                urlFrom,
-                                fullPath,
-                                linkDateIndex,
-                                linkText );
+    Html html = new Html( mData,
+                          urlFrom,
+                          fullPath,
+                          linkDateIndex,
+                          linkText );
 
-    htmlFile.readFileS();
-    htmlFile.markupSections();
+    html.readFileS();
+    html.markupSections();
+    html.markupTags();
+
+    howMany++;
 
     Story story = new Story( mData, urlFrom,
                   linkDateIndex, linkText );
 
-    if( htmlFile.makeStory( story ))
+    if( html.makeStory( story ))
       {
       storyDct.setValue( story.getUrl(), story );
       // story.showStory();

@@ -60,7 +60,9 @@
     <Compile Include="\Eric\Main\CsHtml\GoodLink.cs" />
     <Compile Include="UrlParse.cs" />
     <Compile Include="\Eric\Main\CsBase\SBuilder.cs" />
-    <Compile Include="\Eric\Main\CsHtml\HtmlFile.cs" />
+
+    <Compile Include="\Eric\Main\CsHtml\Html.cs" />
+
     <Compile Include="\Eric\Main\CsBase\TimeEC.cs" />
     <Compile Include="Configure.cs" />
     <Compile Include="\Eric\Main\CsBase\ByteHex.cs" />
