@@ -7,12 +7,12 @@ recentfile3	\Eric\Main\AINews\AINews.csproj
 recentfile4	\Eric\Main\CsHtml\StoryDct.cs
 recentfile5	\Eric\Main\CsHtml\Story.cs
 recentfile6	\Eric\Main\CsHtml\Html.cs
-recentfile7	\Eric\Main\CsNeural\Neuron.cs
 recentfile10	\Eric\Main\AINews\URLFileDct.cs
+recentfile7	\Eric\Main\CsNeural\Neuron.cs
 recentfile8	\Eric\Main\CsNeural\NeuronLayer.cs
-recentfile11	
+recentfile11	\Eric\Main\CsHtml\GoodParag.cs
 recentfile9	\Eric\Main\CsNeural\NeuralNet.cs
-recentfile12	
+recentfile12	\Eric\Main\CsHtml\Ampersand.cs
 recentfile13	
 recentfile14	
 recentfile15	

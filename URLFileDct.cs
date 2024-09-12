@@ -277,18 +277,18 @@ storyDct.readAllFromFile();
 
 URLFile urlFile = new URLFile( mData );
 
-int howMany = 0;
+// int howMany = 0;
 for( int count = 0; count < keySize; count++ )
   {
-  if( (count % 20) == 0 )
+  if( (count % 2) == 0 )
     {
     if( !mData.checkEvents())
       return;
 
     }
 
-  if( howMany > 10 )
-    break;
+  // if( howMany > 5 )
+    // break;
 
   int last = lineArray[count].getArrayLast();
   if( last < 1 )
@@ -327,9 +327,6 @@ for( int count = 0; count < keySize; count++ )
 
     html.readFileS();
     html.markupSections();
-    html.markupTags();
-
-    howMany++;
 
     Story story = new Story( mData, urlFrom,
                   linkDateIndex, linkText );
@@ -338,13 +335,13 @@ for( int count = 0; count < keySize; count++ )
       {
       storyDct.setValue( story.getUrl(), story );
       // story.showStory();
-      howMany++;
+      // howMany++;
       }
     }
   }
 
-mData.showStatus(
-        "Stories from old data: " + howMany );
+// mData.showStatus(
+//        "Stories from old data: " + howMany );
 
 storyDct.writeAllToFile();
 }

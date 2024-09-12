@@ -22,7 +22,7 @@ using System.Windows.Forms;
 public class MainData
 {
 internal const string versionDate =
-                              "9/11/2024";
+                              "9/12/2024";
 private string dataDirectory = "";
 // internal Configure config;
 private MainForm mForm;
@@ -134,6 +134,18 @@ if( cancelled )
 return true;
 }
 
+
+
+internal void setCancelled( bool setTo )
+{
+cancelled = setTo;
+}
+
+
+internal bool getCancelled()
+{
+return cancelled;
+}
 
 
 internal void freeAll()

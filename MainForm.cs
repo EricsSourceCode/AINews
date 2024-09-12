@@ -59,13 +59,11 @@ FormClosing += new System.Windows.
 Shown += new System.EventHandler(
                        MainForm_Shown);
 
-/*
 KeyDown += new System.Windows.Forms.
       KeyEventHandler( MainForm_KeyDown );
-Resize += new System.EventHandler(
-                     MainForm_Resize);
-*/
 
+// Resize += new System.EventHandler(
+//                     MainForm_Resize);
 
 if( !CheckSingleInstance())
   return;
@@ -109,6 +107,24 @@ MessageBox.Show( showS, "AINews",
 finally
   {
   Application.Exit();
+  }
+}
+
+
+
+internal void MainForm_KeyDown( object sender,
+                                KeyEventArgs e )
+{
+// See KeyEventArgs and Keys.enum
+
+// if( e.Control )
+// if( e.Shift )
+// if( e.KeyCode == Keys.E ) // The letter E.
+
+if( e.KeyCode == Keys.Escape )
+  {
+  mData.setCancelled( true );
+  showStatus( "Cancelled." );
   }
 }
 
