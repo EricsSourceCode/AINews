@@ -10,10 +10,10 @@ recentfile6	\Eric\Main\CsHtml\Html.cs
 recentfile10	\Eric\Main\AINews\URLFileDct.cs
 recentfile7	\Eric\Main\CsNeural\Neuron.cs
 recentfile8	\Eric\Main\CsNeural\NeuronLayer.cs
-recentfile11	\Eric\Main\CsHtml\GoodParag.cs
+recentfile11	\Eric\Main\CsHtml\Ampersand.cs
 recentfile9	\Eric\Main\CsNeural\NeuralNet.cs
-recentfile12	\Eric\Main\CsHtml\Ampersand.cs
-recentfile13	
+recentfile12	\Eric\Main\CsHtml\NonAscii.cs
+recentfile13	\Eric\Main\CsHtml\WordDct.cs
 recentfile14	
 recentfile15	
 recentfile16	

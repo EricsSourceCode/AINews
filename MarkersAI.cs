@@ -67,6 +67,12 @@ public const char WordDelim = '\x2711';
 public const char URLFileDelimit = '\x2712';
 public const char WordListDelim = '\x2713';
 public const char DateTimeDelim = '\x2714';
+public const char StyleTagStart = '\x2715';
+public const char StyleTagEnd = '\x2716';
+
+// public const char LinkTagStart = '\x2717';
+// There is no ending link tag.
+// public const char LinkTagEnd = '\x2718';
 
 
 
