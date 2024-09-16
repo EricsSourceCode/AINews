@@ -22,7 +22,7 @@ using System.Windows.Forms;
 public class MainData
 {
 internal const string versionDate =
-                              "9/13/2024";
+                              "9/16/2024";
 private string dataDirectory = "";
 // internal Configure config;
 private MainForm mForm;
@@ -33,6 +33,7 @@ internal URLFileDct urlFileDct;
 internal StoryDct storyDct;
 internal FloatMatrix paragMatrix;
 internal FloatMatrix labelMatrix;
+internal WordDct paragDct;
 
 
 internal MainData( MainForm useForm )
@@ -50,6 +51,7 @@ urlFileDct = new URLFileDct( this );
 storyDct = new StoryDct( this );
 paragMatrix = new FloatMatrix( this );
 labelMatrix = new FloatMatrix( this );
+paragDct = new WordDct( this );
 
 
 showStatus( "Programming by Eric Chauvin." );
@@ -195,10 +197,12 @@ internal void readAllStories()
 {
 mForm.showStatus( "Reading all stories." );
 
+paragDct.readAllFromFile();
+
 urlFileDct.readFromOldJavaFile(
                       getOldUrlFileName() );
 
-urlFileDct.readAllStories( storyDct );
+urlFileDct.readAllStories( storyDct, paragDct );
 
 mForm.showStatus( " " );
 mForm.showStatus(

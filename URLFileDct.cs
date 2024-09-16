@@ -269,7 +269,8 @@ for( int count = 0; count < last; count++ )
 
 
 internal void readAllStories(
-                     StoryDct storyDct )
+                     StoryDct storyDct,
+                     WordDct paragDct )
 {
 mData.showStatus( "Reading all stories." );
 
@@ -331,7 +332,7 @@ for( int count = 0; count < keySize; count++ )
     Story story = new Story( mData, urlFrom,
                   linkDateIndex, linkText );
 
-    if( html.makeStory( story ))
+    if( html.makeStory( story, paragDct ))
       {
       storyDct.setValue( story.getUrl(), story );
       // story.showStory();
@@ -344,6 +345,10 @@ for( int count = 0; count < keySize; count++ )
 //        "Stories from old data: " + howMany );
 
 storyDct.writeAllToFile();
+paragDct.writeAllToFile();
+======
+paragDct.showSortByCount( 50 );
+
 }
 
 
