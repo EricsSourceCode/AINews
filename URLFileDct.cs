@@ -346,8 +346,8 @@ for( int count = 0; count < keySize; count++ )
 
 storyDct.writeAllToFile();
 paragDct.writeAllToFile();
-======
-paragDct.showSortByCount( 50 );
+
+paragDct.showSortByCount( 500 );
 
 }
 

@@ -15,19 +15,3 @@ recentfile9	\Eric\Main\CsNeural\NeuralNet.cs
 recentfile12	\Eric\Main\CsHtml\WordDctLine.cs
 recentfile13	\Eric\Main\CsHtml\Word.cs
 recentfile14	\Eric\Main\CsHtml\NonAscii.cs
-recentfile15	
-recentfile16	
-recentfile17	
-recentfile18	
-recentfile19	
-recentfile20	
-recentfile21	
-recentfile22	
-recentfile23	
-recentfile24	
-recentfile25	
-recentfile26	
-recentfile27	
-recentfile28	
-recentfile29	
-recentfile30	
