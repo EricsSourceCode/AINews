@@ -46,8 +46,9 @@
     <Compile Include="\Eric\Main\CsHtml\WordDctLine.cs" />
     <Compile Include="\Eric\Main\CsHtml\Word.cs" />
     <Compile Include="\Eric\Main\CsMath\MathF.cs" />
-    <Compile Include="\Eric\Main\CsMath\FloatMatrix.cs" />
-    <Compile Include="\Eric\Main\CsMath\FloatVec.cs" />
+    <Compile Include="\Eric\Main\CsMath\VectorArray.cs" />
+    <Compile Include="\Eric\Main\CsMath\MatrixFlt.cs" />
+    <Compile Include="\Eric\Main\CsMath\VectorFlt.cs" />
     <Compile Include="\Eric\Main\CsNeural\NeuralNet.cs" />
     <Compile Include="\Eric\Main\CsNeural\NeuronLayer.cs" />
     <Compile Include="\Eric\Main\CsNeural\Neuron.cs" />
@@ -60,9 +61,7 @@
     <Compile Include="\Eric\Main\CsHtml\GoodLink.cs" />
     <Compile Include="UrlParse.cs" />
     <Compile Include="\Eric\Main\CsBase\SBuilder.cs" />
-
     <Compile Include="\Eric\Main\CsHtml\Html.cs" />
-
     <Compile Include="\Eric\Main\CsBase\TimeEC.cs" />
     <Compile Include="Configure.cs" />
     <Compile Include="\Eric\Main\CsBase\ByteHex.cs" />

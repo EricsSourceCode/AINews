@@ -22,7 +22,7 @@ using System.Windows.Forms;
 public class MainData
 {
 internal const string versionDate =
-                              "9/17/2024";
+                              "9/19/2024";
 private string dataDirectory = "";
 // internal Configure config;
 private MainForm mForm;
@@ -31,8 +31,8 @@ private bool isClosing = false;
 internal Sha256 sha256;
 internal URLFileDct urlFileDct;
 internal StoryDct storyDct;
-internal FloatMatrix paragMatrix;
-internal FloatMatrix labelMatrix;
+internal VectorArray paragMatrix;
+internal VectorArray labelMatrix;
 internal WordDct paragDct;
 
 
@@ -49,8 +49,8 @@ setupDirectories();
 sha256 = new Sha256( this );
 urlFileDct = new URLFileDct( this );
 storyDct = new StoryDct( this );
-paragMatrix = new FloatMatrix( this );
-labelMatrix = new FloatMatrix( this );
+paragMatrix = new VectorArray( this );
+labelMatrix = new VectorArray( this );
 paragDct = new WordDct( this );
 
 

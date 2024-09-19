@@ -281,11 +281,17 @@ URLFile urlFile = new URLFile( mData );
 // int howMany = 0;
 for( int count = 0; count < keySize; count++ )
   {
-  if( (count % 2) == 0 )
+  // if( (count % 5) == 0 )
+  if( !mData.checkEvents())
+    return;
+
+  if( (count % 5) == 0 )
     {
     if( !mData.checkEvents())
       return;
 
+    mData.showStatus(
+              "readAllStories(): " + count );
     }
 
   // if( howMany > 5 )
@@ -345,9 +351,9 @@ for( int count = 0; count < keySize; count++ )
 //        "Stories from old data: " + howMany );
 
 storyDct.writeAllToFile();
-paragDct.writeAllToFile();
+paragDct.writeAllToFile( 100 );
 
-paragDct.showSortByCount( 500 );
+paragDct.showSortByCount( 100 );
 
 }
 
