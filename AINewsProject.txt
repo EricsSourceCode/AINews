@@ -8,11 +8,11 @@ recentfile4	\Eric\Main\CsHtml\StoryDct.cs
 recentfile10	\Eric\Main\AINews\URLFileDct.cs
 recentfile5	\Eric\Main\CsHtml\Story.cs
 recentfile6	\Eric\Main\CsHtml\Html.cs
-recentfile11	\Eric\Main\CsHtml\WordDct.cs
+recentfile11	
 recentfile7	\Eric\Main\CsNeural\Neuron.cs
-recentfile12	\Eric\Main\CsHtml\WordDctLine.cs
+recentfile12	
 recentfile8	\Eric\Main\CsNeural\NeuronLayer.cs
-recentfile13	\Eric\Main\CsMath\VectorArray.cs
+recentfile13	
 recentfile9	\Eric\Main\CsNeural\NeuralNet.cs
 recentfile14	
 recentfile15	
