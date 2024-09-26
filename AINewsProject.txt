@@ -12,7 +12,7 @@ recentfile7	\Eric\Main\CsNeural\Neuron.cs
 recentfile8	\Eric\Main\CsNeural\NeuronLayer.cs
 recentfile9	\Eric\Main\CsNeural\NeuralNet.cs
 recentfile11	\Eric\Main\CsMath\VectorFlt.cs
-recentfile12	\Eric\Main\CsMath\MathF.cs
+recentfile12	
 recentfile13	
 recentfile14	
 recentfile15	
