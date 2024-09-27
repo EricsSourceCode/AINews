@@ -49,9 +49,9 @@
     <Compile Include="\Eric\Main\CsMath\VectorArray.cs" />
     <Compile Include="\Eric\Main\CsMath\MatrixFlt.cs" />
     <Compile Include="\Eric\Main\CsMath\VectorFlt.cs" />
-    <Compile Include="\Eric\Main\CsNeural\NeuralNet.cs" />
-    <Compile Include="\Eric\Main\CsNeural\NeuronLayer.cs" />
-    <Compile Include="\Eric\Main\CsNeural\Neuron.cs" />
+    <Compile Include="\Eric\Main\CsNeural\NeuralNet1.cs" />
+    <Compile Include="\Eric\Main\CsNeural\NeuronLayer1.cs" />
+    <Compile Include="\Eric\Main\CsNeural\Neuron1.cs" />
     <Compile Include="\Eric\Main\CsGui\RecBtn.cs" />
     <Compile Include="\Eric\Main\CsGui\GuiMain.cs" />
     <Compile Include="\Eric\Main\CsHtml\StoryDct.cs" />

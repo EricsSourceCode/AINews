@@ -22,7 +22,7 @@ using System.Windows.Forms;
 public class MainData
 {
 internal const string versionDate =
-                              "9/26/2024";
+                              "9/27/2024";
 private string dataDirectory = "";
 // internal Configure config;
 private MainForm mForm;
@@ -246,9 +246,9 @@ showStatus( "paragMatrix last: " +
 
 mForm.showStatus( " " );
 
-NeuralNet net = new NeuralNet( this,
-                               paragMatrix,
-                               labelMatrix );
+NeuralNet1 net = new NeuralNet1( this,
+                                paragMatrix,
+                                labelMatrix );
 
 net.test();
 
