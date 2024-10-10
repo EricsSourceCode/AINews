@@ -22,7 +22,7 @@ using System.Windows.Forms;
 public class MainData
 {
 internal const string versionDate =
-                              "10/1/2024";
+                              "10/10/2024";
 private string dataDirectory = "";
 // internal Configure config;
 private MainForm mForm;
@@ -216,8 +216,8 @@ internal void neuralTest()
 mForm.showStatus( "Neural Net Test." );
 
 //                   rows, columns
-paragMatrix.setSize( 10, 100 );
-labelMatrix.setSize( 10, 100 );
+paragMatrix.setSize( 10, 10 );
+labelMatrix.setSize( 10, 10 );
 paragMatrix.clearLastAppend();
 labelMatrix.clearLastAppend();
 
