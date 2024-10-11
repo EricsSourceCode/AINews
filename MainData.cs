@@ -22,7 +22,7 @@ using System.Windows.Forms;
 public class MainData
 {
 internal const string versionDate =
-                              "10/10/2024";
+                              "10/11/2024";
 private string dataDirectory = "";
 // internal Configure config;
 private MainForm mForm;
