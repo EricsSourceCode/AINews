@@ -22,7 +22,7 @@ using System.Windows.Forms;
 public class MainData
 {
 internal const string versionDate =
-                              "10/11/2024";
+                              "10/15/2024";
 private string dataDirectory = "";
 // internal Configure config;
 private MainForm mForm;
@@ -215,9 +215,13 @@ internal void neuralTest()
 {
 mForm.showStatus( "Neural Net Test." );
 
+// Set the paragMatrix size to one less
+// than some number, like 99 for 100 columns
+// in the vectors.
+
 //                   rows, columns
-paragMatrix.setSize( 10, 10 );
-labelMatrix.setSize( 10, 10 );
+paragMatrix.setSize( 10, 4 );
+labelMatrix.setSize( 10, 4 );
 paragMatrix.clearLastAppend();
 labelMatrix.clearLastAppend();
 
