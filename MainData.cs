@@ -22,7 +22,7 @@ using System.Windows.Forms;
 public class MainData
 {
 internal const string versionDate =
-                              "10/15/2024";
+                              "10/24/2024";
 private string dataDirectory = "";
 // internal Configure config;
 private MainForm mForm;
@@ -31,8 +31,8 @@ private bool isClosing = false;
 internal Sha256 sha256;
 internal URLFileDct urlFileDct;
 internal StoryDct storyDct;
-internal VectorArray paragMatrix;
-internal VectorArray labelMatrix;
+private VectorArray paragMatrix;
+private VectorArray labelMatrix;
 internal WordDct paragDct;
 
 
@@ -220,23 +220,23 @@ mForm.showStatus( "Neural Net Test." );
 // in the vectors.
 
 //                   rows, columns
-paragMatrix.setSize( 10, 4 );
-labelMatrix.setSize( 10, 4 );
+paragMatrix.setSize( 10, 499 );
+labelMatrix.setSize( 10, 3 );
 paragMatrix.clearLastAppend();
 labelMatrix.clearLastAppend();
 
 readAllStories(); // In to storyDct.
 
 int daysBack = -100;
-string toFindUrl = "";
-string toFind = ""; // Like the word "Trump".
+// string toFindUrl = "";
+// string toFind = ""; // Like the word "Trump".
 // string toFindUrl = "msnbc";
 // string toFindUrl = "foxnews";
 
 // sha256.test();
 
-storyDct.neuralSearch( toFindUrl,
-                       toFind,
+storyDct.neuralSearch( // toFindUrl,
+                       // toFind,
                        daysBack,
                        paragMatrix,
                        labelMatrix );
