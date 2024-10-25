@@ -2,16 +2,16 @@ buildfile	\Eric\Main\AINews\BuildProj.bat
 executablefile	\Eric\Main\AINews\bin\Release\AINews.exe
 projectdirectory	\Eric\Main\AINews
 recentfile1	\Eric\Main\Docs\Notes.txt
-recentfile10	
 recentfile2	\Eric\Main\AINews\MainData.cs
 recentfile3	\Eric\Main\AINews\AINews.csproj
 recentfile4	\Eric\Main\CsHtml\StoryDct.cs
-recentfile5	\Eric\Main\CsNeural\NeuralNet1.cs
-recentfile6	\Eric\Main\CsNeural\Neuron1.cs
-recentfile7	\Eric\Main\CsNeural\NeuronLayer1.cs
+recentfile5	\Eric\Main\CsTls\MsSslStream.cs
+recentfile6	\Eric\Main\AINews\URLFileDct.cs
+recentfile7	\Eric\Main\CsHtml\Html.cs
+recentfile8	\Eric\Main\CsHtml\TagSplit.cs
+recentfile9	
+recentfile10	
 recentfile11	
-recentfile8	\Eric\Main\Docs\Chapter2.txt
-recentfile9	\Eric\Main\Docs\AIExample2.txt
 recentfile12	
 recentfile13	
 recentfile14	

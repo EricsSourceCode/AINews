@@ -22,7 +22,7 @@ using System.Windows.Forms;
 public class MainData
 {
 internal const string versionDate =
-                              "10/24/2024";
+                              "10/25/2024";
 private string dataDirectory = "";
 // internal Configure config;
 private MainForm mForm;
@@ -33,7 +33,7 @@ internal URLFileDct urlFileDct;
 internal StoryDct storyDct;
 private VectorArray paragMatrix;
 private VectorArray labelMatrix;
-internal WordDct paragDct;
+// internal WordDct paragDct;
 
 
 internal MainData( MainForm useForm )
@@ -51,7 +51,7 @@ urlFileDct = new URLFileDct( this );
 storyDct = new StoryDct( this );
 paragMatrix = new VectorArray( this );
 labelMatrix = new VectorArray( this );
-paragDct = new WordDct( this );
+// paragDct = new WordDct( this );
 
 
 showStatus( "Programming by Eric Chauvin." );
@@ -197,12 +197,13 @@ internal void readAllStories()
 {
 mForm.showStatus( "Reading all stories." );
 
-paragDct.readAllFromFile();
+// paragDct.readAllFromFile();
 
 urlFileDct.readFromOldJavaFile(
                       getOldUrlFileName() );
 
-urlFileDct.readAllStories( storyDct, paragDct );
+urlFileDct.readAllStories( storyDct );
+                           // , paragDct );
 
 mForm.showStatus( " " );
 mForm.showStatus(
@@ -220,7 +221,7 @@ mForm.showStatus( "Neural Net Test." );
 // in the vectors.
 
 //                   rows, columns
-paragMatrix.setSize( 10, 499 );
+paragMatrix.setSize( 10, 999 );
 labelMatrix.setSize( 10, 3 );
 paragMatrix.clearLastAppend();
 labelMatrix.clearLastAppend();

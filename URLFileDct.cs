@@ -269,8 +269,8 @@ for( int count = 0; count < last; count++ )
 
 
 internal void readAllStories(
-                     StoryDct storyDct,
-                     WordDct paragDct )
+                     StoryDct storyDct ) // ,
+                     // WordDct paragDct )
 {
 mData.showStatus( "Reading all stories." );
 
@@ -281,15 +281,11 @@ URLFile urlFile = new URLFile( mData );
 // int howMany = 0;
 for( int count = 0; count < keySize; count++ )
   {
-  // if( (count % 5) == 0 )
   if( !mData.checkEvents())
     return;
 
   if( (count % 5) == 0 )
     {
-    if( !mData.checkEvents())
-      return;
-
     mData.showStatus(
               "readAllStories(): " + count );
     }
@@ -338,7 +334,7 @@ for( int count = 0; count < keySize; count++ )
     Story story = new Story( mData, urlFrom,
                   linkDateIndex, linkText );
 
-    if( html.makeStory( story, paragDct ))
+    if( html.makeStory( story )) // , paragDct ))
       {
       storyDct.setValue( story.getUrl(), story );
       // story.showStory();
@@ -351,9 +347,9 @@ for( int count = 0; count < keySize; count++ )
 //        "Stories from old data: " + howMany );
 
 storyDct.writeAllToFile();
-paragDct.writeAllToFile( 100 );
+// paragDct.writeAllToFile( 100 );
 
-paragDct.showSortByCount( 100 );
+// paragDct.showSortByCount( 100 );
 
 }
 

@@ -55,6 +55,7 @@
     <Compile Include="\Eric\Main\CsNeural\Neuron1.cs" />
     <Compile Include="\Eric\Main\CsGui\RecBtn.cs" />
     <Compile Include="\Eric\Main\CsGui\GuiMain.cs" />
+    <Compile Include="\Eric\Main\CsHtml\TagSplit.cs" />
     <Compile Include="\Eric\Main\CsHtml\StoryDct.cs" />
     <Compile Include="\Eric\Main\CsHtml\StoryDctLine.cs" />
     <Compile Include="\Eric\Main\CsHtml\Story.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="\Eric\Main\CsBase\RangeT.cs" />
     <Compile Include="\Eric\Main\CsBase\Str.cs" />
     <Compile Include="\Eric\Main\CsBase\StrAr.cs" />
+    <Compile Include="\Eric\Main\CsBase\UTF8Str.cs" />
     <Compile Include="MarkersAI.cs" />
     <Compile Include="URLFileDct.cs" />
     <Compile Include="URLFileDctLine.cs" />
