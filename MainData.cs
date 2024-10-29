@@ -22,7 +22,7 @@ using System.Windows.Forms;
 public class MainData
 {
 internal const string versionDate =
-                              "10/25/2024";
+                              "10/29/2024";
 private string dataDirectory = "";
 // internal Configure config;
 private MainForm mForm;
@@ -30,7 +30,7 @@ private bool cancelled = false;
 private bool isClosing = false;
 internal Sha256 sha256;
 internal URLFileDct urlFileDct;
-internal StoryDct storyDct;
+internal WebPageDct webPageDct;
 private VectorArray paragMatrix;
 private VectorArray labelMatrix;
 // internal WordDct paragDct;
@@ -48,7 +48,7 @@ setupDirectories();
 
 sha256 = new Sha256( this );
 urlFileDct = new URLFileDct( this );
-storyDct = new StoryDct( this );
+webPageDct = new WebPageDct( this );
 paragMatrix = new VectorArray( this );
 labelMatrix = new VectorArray( this );
 // paragDct = new WordDct( this );
@@ -182,7 +182,7 @@ readAllStories(); // In to storyDct.
 // mForm.showStatus( "Testing here." );
 // sha256.test();
 
-storyDct.storySearch( toFindUrl,
+webPageDct.webPageSearch( toFindUrl,
                       toFind,
                       daysBack );
 
@@ -202,7 +202,7 @@ mForm.showStatus( "Reading all stories." );
 urlFileDct.readFromOldJavaFile(
                       getOldUrlFileName() );
 
-urlFileDct.readAllStories( storyDct );
+urlFileDct.readAllWebPages( webPageDct );
                            // , paragDct );
 
 mForm.showStatus( " " );
@@ -236,7 +236,7 @@ int daysBack = -100;
 
 // sha256.test();
 
-storyDct.neuralSearch( // toFindUrl,
+webPageDct.neuralSearch( // toFindUrl,
                        // toFind,
                        daysBack,
                        paragMatrix,

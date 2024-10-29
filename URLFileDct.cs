@@ -268,13 +268,13 @@ for( int count = 0; count < last; count++ )
 
 
 
-internal void readAllStories(
-                     StoryDct storyDct ) // ,
+internal void readAllWebPages(
+                     WebPageDct webPageDct ) // ,
                      // WordDct paragDct )
 {
-mData.showStatus( "Reading all stories." );
+mData.showStatus( "Reading all web pages." );
 
-storyDct.readAllFromFile();
+webPageDct.readAllFromFile();
 
 URLFile urlFile = new URLFile( mData );
 
@@ -287,7 +287,7 @@ for( int count = 0; count < keySize; count++ )
   if( (count % 5) == 0 )
     {
     mData.showStatus(
-              "readAllStories(): " + count );
+              "readAllWebPages(): " + count );
     }
 
   // if( howMany > 5 )
@@ -307,7 +307,7 @@ for( int count = 0; count < keySize; count++ )
     string urlFrom = urlFile.getUrl();
 
     // If it already has this story.
-    if( storyDct.keyExists( urlFrom ))
+    if( webPageDct.keyExists( urlFrom ))
       continue;
 
 
@@ -331,12 +331,14 @@ for( int count = 0; count < keySize; count++ )
     html.readFileS();
     html.markupSections();
 
-    Story story = new Story( mData, urlFrom,
+    WebPage webPage = new WebPage( mData, urlFrom,
                   linkDateIndex, linkText );
 
-    if( html.makeStory( story )) // , paragDct ))
+    if( html.makeWebPage( webPage ))
+                           // , paragDct ))
       {
-      storyDct.setValue( story.getUrl(), story );
+      webPageDct.setValue( webPage.getUrl(),
+                           webPage );
       // story.showStory();
       // howMany++;
       }
@@ -346,7 +348,7 @@ for( int count = 0; count < keySize; count++ )
 // mData.showStatus(
 //        "Stories from old data: " + howMany );
 
-storyDct.writeAllToFile();
+webPageDct.writeAllToFile();
 // paragDct.writeAllToFile( 100 );
 
 // paragDct.showSortByCount( 100 );
