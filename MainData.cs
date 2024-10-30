@@ -22,7 +22,7 @@ using System.Windows.Forms;
 public class MainData
 {
 internal const string versionDate =
-                              "10/29/2024";
+                              "10/30/2024";
 private string dataDirectory = "";
 // internal Configure config;
 private MainForm mForm;
@@ -31,8 +31,10 @@ private bool isClosing = false;
 internal Sha256 sha256;
 internal URLFileDct urlFileDct;
 internal WebPageDct webPageDct;
-private VectorArray paragMatrix;
-private VectorArray labelMatrix;
+private VectorArray demParagArray;
+private VectorArray repubParagArray;
+private VectorArray batchParagArray;
+private VectorArray labelArray;
 // internal WordDct paragDct;
 
 
@@ -49,8 +51,10 @@ setupDirectories();
 sha256 = new Sha256( this );
 urlFileDct = new URLFileDct( this );
 webPageDct = new WebPageDct( this );
-paragMatrix = new VectorArray( this );
-labelMatrix = new VectorArray( this );
+demParagArray = new VectorArray( this );
+repubParagArray = new VectorArray( this );
+batchParagArray = new VectorArray( this );
+labelArray = new VectorArray( this );
 // paragDct = new WordDct( this );
 
 
@@ -216,46 +220,27 @@ internal void neuralTest()
 {
 mForm.showStatus( "Neural Net Test." );
 
-// Set the paragMatrix size to one less
-// than some number, like 99 for 100 columns
-// in the vectors.
 
 //                   rows, columns
-paragMatrix.setSize( 10, 999 );
-labelMatrix.setSize( 10, 3 );
-paragMatrix.clearLastAppend();
-labelMatrix.clearLastAppend();
+batchParagArray.setSize( 10, 100 );
+labelArray.setSize( 10, 3 );
+batchParagArray.clearLastAppend();
+labelArray.clearLastAppend();
 
 readAllStories(); // In to storyDct.
 
-int daysBack = -100;
-// string toFindUrl = "";
-// string toFind = ""; // Like the word "Trump".
-// string toFindUrl = "msnbc";
-// string toFindUrl = "foxnews";
+webPageDct.neuralSearch( demParagArray,
+                         repubParagArray );
 
-// sha256.test();
-
-webPageDct.neuralSearch( // toFindUrl,
-                       // toFind,
-                       daysBack,
-                       paragMatrix,
-                       labelMatrix );
-
-showStatus( "paragMatrix rows: " +
-                       paragMatrix.getRows());
-
-showStatus( "paragMatrix last: " +
-                   paragMatrix.getLastAppend());
+showStatus( "demParagArray last: " +
+                demParagArray.getLastAppend());
+showStatus( "repubParagArray last: " +
+                repubParagArray.getLastAppend());
 
 
-mForm.showStatus( " " );
+NeuralNet1 net = new NeuralNet1( this );
 
-NeuralNet1 net = new NeuralNet1( this,
-                                paragMatrix,
-                                labelMatrix );
-
-net.test();
+net.test( demParagArray, repubParagArray );
 
 mForm.showStatus( "Neural net test finished." );
 }

@@ -5,11 +5,11 @@ recentfile1	\Eric\Main\Docs\Notes.txt
 recentfile2	\Eric\Main\AINews\MainData.cs
 recentfile3	\Eric\Main\AINews\AINews.csproj
 recentfile4	\Eric\Main\AINews\URLFileDct.cs
-recentfile5	\Eric\Main\CsHtml\Html.cs
-recentfile6	\Eric\Main\CsHtml\TagSplit.cs
-recentfile7	\Eric\Main\CsHtml\WebPage.cs
-recentfile8	\Eric\Main\CsHtml\WebPageDct.cs
-recentfile9	\Eric\Main\CsHtml\WebPageDctLine.cs
+recentfile5	\Eric\Main\CsNeural\NeuralNet1.cs
+recentfile6	\Eric\Main\CsNeural\NeuronLayer1.cs
+recentfile7	\Eric\Main\CsNeural\Neuron1.cs
+recentfile8	
+recentfile9	
 recentfile10	
 recentfile11	
 recentfile12	
