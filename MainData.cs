@@ -22,7 +22,7 @@ using System.Windows.Forms;
 public class MainData
 {
 internal const string versionDate =
-                              "10/30/2024";
+                              "11/8/2024";
 private string dataDirectory = "";
 // internal Configure config;
 private MainForm mForm;
@@ -33,8 +33,7 @@ internal URLFileDct urlFileDct;
 internal WebPageDct webPageDct;
 private VectorArray demParagArray;
 private VectorArray repubParagArray;
-private VectorArray batchParagArray;
-private VectorArray labelArray;
+
 // internal WordDct paragDct;
 
 
@@ -53,8 +52,8 @@ urlFileDct = new URLFileDct( this );
 webPageDct = new WebPageDct( this );
 demParagArray = new VectorArray( this );
 repubParagArray = new VectorArray( this );
-batchParagArray = new VectorArray( this );
-labelArray = new VectorArray( this );
+// batchParagArray = new VectorArray( this );
+// labelArray = new VectorArray( this );
 // paragDct = new WordDct( this );
 
 
@@ -221,11 +220,11 @@ internal void neuralTest()
 mForm.showStatus( "Neural Net Test." );
 
 
+int inputColumns = 1000;
+
 //                   rows, columns
-batchParagArray.setSize( 10, 100 );
-labelArray.setSize( 10, 3 );
-batchParagArray.clearLastAppend();
-labelArray.clearLastAppend();
+demParagArray.setSize( 10, inputColumns );
+repubParagArray.setSize( 10, inputColumns );
 
 readAllStories(); // In to storyDct.
 
@@ -236,7 +235,6 @@ showStatus( "demParagArray last: " +
                 demParagArray.getLastAppend());
 showStatus( "repubParagArray last: " +
                 repubParagArray.getLastAppend());
-
 
 NeuralNet1 net = new NeuralNet1( this );
 
