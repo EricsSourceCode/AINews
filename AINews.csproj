@@ -51,7 +51,7 @@
     <Compile Include="\Eric\Main\CsMath\VectorArray.cs" />
     <Compile Include="\Eric\Main\CsMath\MatrixFlt.cs" />
     <Compile Include="\Eric\Main\CsMath\VectorFlt.cs" />
-    <Compile Include="\Eric\Main\CsNeural\Activation.cs" />
+    <Compile Include="\Eric\Main\CsNeural\Activ.cs" />
     <Compile Include="\Eric\Main\CsNeural\NeuralNet1.cs" />
     <Compile Include="\Eric\Main\CsNeural\NeuronLayer1.cs" />
     <Compile Include="\Eric\Main\CsNeural\Neuron1.cs" />
