@@ -51,11 +51,18 @@
     <Compile Include="\Eric\Main\CsMath\VectorArray.cs" />
     <Compile Include="\Eric\Main\CsMath\MatrixFlt.cs" />
     <Compile Include="\Eric\Main\CsMath\VectorFlt.cs" />
-    <Compile Include="\Eric\Main\CsNeural\Batch.cs" />
     <Compile Include="\Eric\Main\CsNeural\Activ.cs" />
+
+    <Compile Include="\Eric\Main\CsNeural\Batch1.cs" />
     <Compile Include="\Eric\Main\CsNeural\NeuralNet1.cs" />
     <Compile Include="\Eric\Main\CsNeural\NeuronLayer1.cs" />
     <Compile Include="\Eric\Main\CsNeural\Neuron1.cs" />
+
+    <Compile Include="\Eric\Main\CsNeural\Batch2.cs" />
+    <Compile Include="\Eric\Main\CsNeural\NeuralNet2.cs" />
+    <Compile Include="\Eric\Main\CsNeural\NeuronLayer2.cs" />
+    <Compile Include="\Eric\Main\CsNeural\Neuron2.cs" />
+
     <Compile Include="\Eric\Main\CsGui\RecBtn.cs" />
     <Compile Include="\Eric\Main\CsGui\GuiMain.cs" />
     <Compile Include="\Eric\Main\CsHtml\TagSplit.cs" />

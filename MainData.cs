@@ -22,7 +22,7 @@ using System.Windows.Forms;
 public class MainData
 {
 internal const string versionDate =
-                              "11/20/2024";
+                              "11/22/2024";
 private string dataDirectory = "";
 // internal Configure config;
 private MainForm mForm;
@@ -237,6 +237,7 @@ showStatus( "repubParagArray last: " +
                 repubParagArray.getLastAppend());
 
 NeuralNet1 net = new NeuralNet1( this );
+// NeuralNet2 net = new NeuralNet2( this );
 
 net.test( demParagArray, repubParagArray );
 

@@ -4,14 +4,14 @@ projectdirectory	\Eric\Main\AINews
 recentfile1	\Eric\Main\Docs\Notes.txt
 recentfile2	\Eric\Main\AINews\MainData.cs
 recentfile3	\Eric\Main\AINews\AINews.csproj
-recentfile4	\Eric\Main\CsNeural\NeuralNet1.cs
-recentfile5	\Eric\Main\CsNeural\Neuron1.cs
-recentfile6	\Eric\Main\CsNeural\NeuronLayer1.cs
-recentfile7	\Eric\Main\CsHtml\WebPageDct.cs
-recentfile8	\Eric\Main\CsNeural\Batch.cs
-recentfile9	\Eric\Main\Docs\GentleIntro.txt
-recentfile10	
-recentfile11	
+recentfile4	\Eric\Main\CsNeural\Batch2.cs
+recentfile5	\Eric\Main\CsNeural\NeuralNet2.cs
+recentfile6	\Eric\Main\CsNeural\Neuron2.cs
+recentfile7	\Eric\Main\CsNeural\NeuronLayer2.cs
+recentfile8	\Eric\Main\CsNeural\Batch1.cs
+recentfile9	\Eric\Main\CsNeural\NeuralNet1.cs
+recentfile10	\Eric\Main\CsNeural\Neuron1.cs
+recentfile11	\Eric\Main\CsNeural\NeuronLayer1.cs
 recentfile12	
 recentfile13	
 recentfile14	
