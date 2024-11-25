@@ -18,6 +18,8 @@ using System.Drawing.Imaging;
 using System.Text;
 using System.Windows.Forms;
 // using System.Resources;
+using System.Windows.Controls;
+using System.Windows.Forms.Integration;
 
 
 
@@ -27,6 +29,9 @@ using System.Windows.Forms;
 public class MainFormComp
 {
 private MainForm mForm;
+private ElementHost mainElementHost;
+private Viewport3D viewPort;
+
 internal System.Windows.Forms.Panel mainPanel;
 internal System.Windows.Forms.TextBox
                                mainTextBox;
@@ -62,6 +67,14 @@ InitializeComponents();
 private void InitializeComponents()
 {
 mForm.SuspendLayout();
+
+mainElementHost = new System.Windows.Forms.
+                       Integration.ElementHost();
+viewPort = new Viewport3D();
+mainElementHost.Child = viewPort;
+====
+// Now fix up this screen.
+// Where is this viewport and how big is it?
 
 mainPanel = new System.Windows.Forms.Panel();
 mainTextBox = new System.Windows.Forms.TextBox();

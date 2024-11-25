@@ -32,6 +32,12 @@
   </PropertyGroup>
 
  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="System.Xaml" />
+
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,6 +47,9 @@
 
 
   <ItemGroup>
+    <Compile Include="\Eric\Main\ThreeD\ThreeDScene.cs" />
+    <Compile Include="\Eric\Main\ThreeD\ThreeDForm.cs" />
+
     <Compile Include="\Eric\Main\CsTls\TlsClient.cs" />
     <Compile Include="\Eric\Main\CsTls\MsSslStream.cs" />
     <Compile Include="\Eric\Main\CsHtml\NonAscii.cs" />
