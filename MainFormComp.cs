@@ -29,8 +29,13 @@ using System.Windows.Forms.Integration;
 public class MainFormComp
 {
 private MainForm mForm;
+
+// ElementHost is needed to set the screen
+// scale when the program first starts.
+// Not later when the 3D window opens.
+
 private ElementHost mainElementHost;
-private Viewport3D viewPort;
+
 
 internal System.Windows.Forms.Panel mainPanel;
 internal System.Windows.Forms.TextBox
@@ -70,11 +75,6 @@ mForm.SuspendLayout();
 
 mainElementHost = new System.Windows.Forms.
                        Integration.ElementHost();
-viewPort = new Viewport3D();
-mainElementHost.Child = viewPort;
-====
-// Now fix up this screen.
-// Where is this viewport and how big is it?
 
 mainPanel = new System.Windows.Forms.Panel();
 mainTextBox = new System.Windows.Forms.TextBox();
@@ -96,7 +96,7 @@ guiPictureBox = new System.Windows.
 //                   GraphicsUnit.Pixel );
 
 mainFont = new System.Drawing.Font(
-              "Consolas", 40.0F,
+              "Consolas", 50.0F,
               System.Drawing.FontStyle.Regular,
               System.Drawing.GraphicsUnit.Pixel,
               ((byte)(0)) );
@@ -114,7 +114,7 @@ guiPictureBox.Location = new System.
                            Drawing.Point(0, 0);
 guiPictureBox.Name = "mainPictureBox";
 guiPictureBox.Size = new System.
-                   Drawing.Size(372, 208);
+                   Drawing.Size(472, 308);
 guiPictureBox.TabIndex = 0;
 guiPictureBox.TabStop = false;
 
@@ -171,7 +171,7 @@ mainTextBox.Font = mainFont;
 searchTextBox.Dock = System.Windows.Forms.
                           DockStyle.None;
 searchTextBox.Location = new System.Drawing.
-                         Point( 170, 10 );
+                         Point( 204, 10 );
 searchTextBox.Multiline = false;
 searchTextBox.Name = "searchTextBox";
 searchTextBox.ReadOnly = false;
@@ -221,7 +221,7 @@ guiPanel.Location = new System.Drawing.
                               Point(0, 72);
 guiPanel.Name = "guiPanel";
 guiPanel.Size = new System.Drawing.
-                               Size(962, 68);
+                               Size(962, 90);
 guiPanel.TabIndex = 2;
 
 guiPanel.Controls.Add( guiPictureBox );
@@ -239,7 +239,7 @@ searchTextPanel.Location = new System.Drawing.
                               Point(0, 72);
 searchTextPanel.Name = "searchTextPanel";
 searchTextPanel.Size = new System.Drawing.
-                               Size( 10, 76 );
+                               Size( 10, 90 );
 searchTextPanel.TabIndex = 2;
 
 searchTextPanel.Controls.Add(
