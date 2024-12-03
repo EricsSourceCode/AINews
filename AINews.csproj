@@ -47,6 +47,7 @@
 
 
   <ItemGroup>
+    <Compile Include="\Eric\Main\ThreeD\GeomModel.cs" />
     <Compile Include="\Eric\Main\ThreeD\ThreeDScene.cs" />
     <Compile Include="\Eric\Main\ThreeD\ThreeDForm.cs" />
 
@@ -56,6 +57,9 @@
     <Compile Include="\Eric\Main\CsHtml\WordDct.cs" />
     <Compile Include="\Eric\Main\CsHtml\WordDctLine.cs" />
     <Compile Include="\Eric\Main\CsHtml\Word.cs" />
+  
+    <Compile Include="\Eric\Main\CsMath\Vector3.cs" />
+    <Compile Include="\Eric\Main\CsMath\Quatern.cs" />
     <Compile Include="\Eric\Main\CsMath\MathF.cs" />
     <Compile Include="\Eric\Main\CsMath\VectorArray.cs" />
     <Compile Include="\Eric\Main\CsMath\MatrixFlt.cs" />
