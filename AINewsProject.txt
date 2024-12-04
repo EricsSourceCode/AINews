@@ -7,10 +7,10 @@ recentfile3	\Eric\Main\AINews\AINews.csproj
 recentfile4	\Eric\Main\ThreeD\ThreeDForm.cs
 recentfile5	\Eric\Main\ThreeD\ThreeDScene.cs
 recentfile6	\Eric\Main\ThreeD\GeomModel.cs
-recentfile7	\Eric\Main\AINews\MainForm.cs
-recentfile8	\Eric\Main\AINews\MainFormComp.cs
-recentfile9	\Eric\Main\CsMath\Quatern.cs
-recentfile10	\Eric\Main\CsMath\Vector3.cs
+recentfile7	
+recentfile8	
+recentfile9	
+recentfile10	
 recentfile11	
 recentfile12	
 recentfile13	

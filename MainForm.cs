@@ -39,6 +39,7 @@ private Bitmap guiBitmap;
 private int mainScreenWidth = 1024; // Default
 private int mainScreenHeight = 768;
 private GuiMain guiMain;
+private ThreeDForm threeDForm;
 
 
 
@@ -216,31 +217,6 @@ if( mFormComp != null )
 
 
 
-private void MainForm_FormClosing(
-         object sender, FormClosingEventArgs e )
-{
-/*
-if( isSingleInstance )
-  {
-  if( DialogResult.Yes != MessageBox.Show(
-            "Close the program?",
-            "AINews",
-            MessageBoxButtons.YesNo,
-            MessageBoxIcon.Question ))
-    {
-    e.Cancel = true;
-    return;
-    }
-  }
-*/
-
-// Do freeAll() instead of a ~Destructor or
-// Finalize.  Call Dispose() from there.
-
-freeAll();
-}
-
-
 
 
 internal void showStatus( string status )
@@ -387,6 +363,12 @@ if( e.Button == MouseButtons.Left )
     showStatus( "Test finished." );
     }
 
+  if( guiMain.isInsideThreeDBtn( mouseX,
+                                 mouseY ))
+    {
+    // clearStatus();
+    openThreeDForm();
+    }
   }
 
 if( e.Button == MouseButtons.Right )
@@ -402,6 +384,43 @@ if( e.Button == MouseButtons.Right )
 
 }
 
+
+
+private void openThreeDForm()
+{
+if( threeDForm == null )
+  threeDForm = new ThreeDForm( mData );
+
+if( threeDForm.IsDisposed )
+  threeDForm = new ThreeDForm( mData );
+
+threeDForm.Show();
+threeDForm.WindowState =
+                    FormWindowState.Maximized;
+threeDForm.BringToFront();
+}
+
+
+
+private void MainForm_FormClosing(
+          object sender, FormClosingEventArgs e)
+{
+// isClosing = true;
+
+if( threeDForm != null )
+  {
+  if( !threeDForm.IsDisposed )
+    {
+    threeDForm.Hide();
+    threeDForm.FreeEverything();
+    threeDForm.Dispose();
+    }
+
+  threeDForm = null;
+  }
+
+freeAll();
+}
 
 
 
