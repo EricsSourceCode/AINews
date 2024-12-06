@@ -1,4 +1,4 @@
-Build started 12/4/2024 1:23:56 PM.
+Build started 12/6/2024 11:29:30 AM.
 Overriding target "GetFrameworkPaths" in project "C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.targets" with target "GetFrameworkPaths" from project "C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.NETFramework.targets".
 Overriding target "SatelliteDllsProjectOutputGroup" in project "C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.targets" with target "SatelliteDllsProjectOutputGroup" from project "C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.WinFX.targets".
 Project "C:\Eric\Main\AINews\AINews.csproj" on node 1 (default targets).
@@ -334,10 +334,10 @@ Done building target "PreXsdCodeGen" in project "AINews.csproj".
 Target "XsdCodeGen" skipped, due to false condition; ( '$(XsdCodeGenPreCondition)' == 'True' ) was evaluated as ( 'False' == 'True' ).
 Target "CoreCompile" in file "C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.CSharp.targets" from project "C:\Eric\Main\AINews\AINews.csproj" (target "Compile" depends on it):
 Building target "CoreCompile" completely.
-Input file "\Eric\Main\ThreeD\GeomModel.cs" is newer than output file "obj\Release\AINews.exe".
+Input file "\Eric\Main\ThreeD\Surface.cs" is newer than output file "obj\Release\AINews.exe".
 Using "Csc" task from assembly "Microsoft.Build.Tasks.v4.0, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
 Task "Csc"
-  C:\Windows\Microsoft.NET\Framework\v4.0.30319\Csc.exe /noconfig /nowarn:1701,1702 /nostdlib+ /platform:x64 /errorreport:prompt /warn:4 /highentropyva+ /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\Microsoft.CSharp.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\mscorlib.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\PresentationCore.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\PresentationFramework.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Core.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Drawing.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Windows.Forms.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Xaml.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\WindowsBase.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\WindowsFormsIntegration.dll" /debug- /filealign:512 /optimize+ /out:obj\Release\AINews.exe /subsystemversion:6.00 /target:winexe /utf8output \Eric\Main\ThreeD\GeomModel.cs \Eric\Main\ThreeD\ThreeDScene.cs \Eric\Main\ThreeD\ThreeDForm.cs \Eric\Main\CsTls\TlsClient.cs \Eric\Main\CsTls\MsSslStream.cs \Eric\Main\CsHtml\NonAscii.cs \Eric\Main\CsHtml\WordDct.cs \Eric\Main\CsHtml\WordDctLine.cs \Eric\Main\CsHtml\Word.cs \Eric\Main\CsMath\Vector3.cs \Eric\Main\CsMath\Quatern.cs \Eric\Main\CsMath\MathF.cs \Eric\Main\CsMath\VectorArray.cs \Eric\Main\CsMath\MatrixFlt.cs \Eric\Main\CsMath\VectorFlt.cs \Eric\Main\CsNeural\Activ.cs \Eric\Main\CsNeural\Batch1.cs \Eric\Main\CsNeural\NeuralNet1.cs \Eric\Main\CsNeural\NeuronLayer1.cs \Eric\Main\CsNeural\Neuron1.cs \Eric\Main\CsNeural\Batch2.cs \Eric\Main\CsNeural\NeuralNet2.cs \Eric\Main\CsNeural\NeuronLayer2.cs \Eric\Main\CsNeural\Neuron2.cs \Eric\Main\CsGui\RecBtn.cs \Eric\Main\CsGui\GuiMain.cs \Eric\Main\CsHtml\TagSplit.cs \Eric\Main\CsHtml\WebPageDct.cs \Eric\Main\CsHtml\WebPageDctLine.cs \Eric\Main\CsHtml\WebPage.cs \Eric\Main\CsHtml\Ampersand.cs \Eric\Main\CsHtml\GoodLink.cs UrlParse.cs \Eric\Main\CsBase\SBuilder.cs \Eric\Main\CsHtml\Html.cs \Eric\Main\CsBase\TimeEC.cs Configure.cs \Eric\Main\CsBase\ByteHex.cs \Eric\Main\CsBase\ByteBuf.cs \Eric\Main\CsMem\ByteArray.cs \Eric\Main\CsMem\Uint32Array.cs \Eric\Main\CsCrypto\Sha256.cs \Eric\Main\CsBase\RangeT.cs \Eric\Main\CsBase\Str.cs \Eric\Main\CsBase\StrAr.cs \Eric\Main\CsBase\UTF8Str.cs MarkersAI.cs URLFileDct.cs URLFileDctLine.cs URLFile.cs \Eric\Main\CsBase\SysIO.cs MainData.cs MainFormComp.cs Program.cs MainForm.cs "C:\Users\EricC\AppData\Local\Temp\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs"
+  C:\Windows\Microsoft.NET\Framework\v4.0.30319\Csc.exe /noconfig /nowarn:1701,1702 /nostdlib+ /platform:x64 /errorreport:prompt /warn:4 /highentropyva+ /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\Microsoft.CSharp.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\mscorlib.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\PresentationCore.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\PresentationFramework.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Core.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Drawing.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Windows.Forms.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Xaml.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\WindowsBase.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\WindowsFormsIntegration.dll" /debug- /filealign:512 /optimize+ /out:obj\Release\AINews.exe /subsystemversion:6.00 /target:winexe /utf8output \Eric\Main\ThreeD\Surface.cs \Eric\Main\ThreeD\SpaceObject.cs \Eric\Main\ThreeD\GeomModel.cs \Eric\Main\ThreeD\ThreeDScene.cs \Eric\Main\ThreeD\ThreeDForm.cs \Eric\Main\CsTls\TlsClient.cs \Eric\Main\CsTls\MsSslStream.cs \Eric\Main\CsHtml\NonAscii.cs \Eric\Main\CsHtml\WordDct.cs \Eric\Main\CsHtml\WordDctLine.cs \Eric\Main\CsHtml\Word.cs \Eric\Main\CsMath\Vector3.cs \Eric\Main\CsMath\Quatern.cs \Eric\Main\CsMath\MathF.cs \Eric\Main\CsMath\VectorArray.cs \Eric\Main\CsMath\MatrixFlt.cs \Eric\Main\CsMath\VectorFlt.cs \Eric\Main\CsNeural\Activ.cs \Eric\Main\CsNeural\Batch1.cs \Eric\Main\CsNeural\NeuralNet1.cs \Eric\Main\CsNeural\NeuronLayer1.cs \Eric\Main\CsNeural\Neuron1.cs \Eric\Main\CsNeural\Batch2.cs \Eric\Main\CsNeural\NeuralNet2.cs \Eric\Main\CsNeural\NeuronLayer2.cs \Eric\Main\CsNeural\Neuron2.cs \Eric\Main\CsGui\RecBtn.cs \Eric\Main\CsGui\GuiMain.cs \Eric\Main\CsHtml\TagSplit.cs \Eric\Main\CsHtml\WebPageDct.cs \Eric\Main\CsHtml\WebPageDctLine.cs \Eric\Main\CsHtml\WebPage.cs \Eric\Main\CsHtml\Ampersand.cs \Eric\Main\CsHtml\GoodLink.cs UrlParse.cs \Eric\Main\CsBase\SBuilder.cs \Eric\Main\CsHtml\Html.cs \Eric\Main\CsBase\TimeEC.cs Configure.cs \Eric\Main\CsBase\ByteHex.cs \Eric\Main\CsBase\ByteBuf.cs \Eric\Main\CsMem\ByteArray.cs \Eric\Main\CsMem\Uint32Array.cs \Eric\Main\CsCrypto\Sha256.cs \Eric\Main\CsBase\RangeT.cs \Eric\Main\CsBase\Str.cs \Eric\Main\CsBase\StrAr.cs \Eric\Main\CsBase\UTF8Str.cs MarkersAI.cs URLFileDct.cs URLFileDctLine.cs URLFile.cs \Eric\Main\CsBase\SysIO.cs MainData.cs MainFormComp.cs Program.cs MainForm.cs "C:\Users\EricC\AppData\Local\Temp\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs"
   Microsoft (R) Visual C# Compiler version 4.8.9232.0
   
   for C# 5
@@ -347,84 +347,14 @@ Task "Csc"
   
   This compiler is provided as part of the Microsoft (R) .NET Framework, but only supports language versions up to C# 5, which is no longer the latest version. For compilers that support newer versions of the C# programming language, see http://go.microsoft.com/fwlink/?LinkID=533240
   
-Done executing task "Csc".
-Task "CallTarget" skipped, due to false condition; ('$(TargetsTriggeredByCompilation)' != '') was evaluated as ('' != '').
-Done building target "CoreCompile" in project "AINews.csproj".
-Target "_TimeStampAfterCompile" skipped, due to false condition; ('$(RunPostBuildEvent)'=='OnOutputUpdated' or ('$(RegisterForComInterop)'=='true' and '$(OutputType)'=='library')) was evaluated as (''=='OnOutputUpdated' or (''=='true' and 'WinExe'=='library')).
-Target "AfterCompile" in file "C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.targets" from project "C:\Eric\Main\AINews\AINews.csproj" (target "Compile" depends on it):
-Done building target "AfterCompile" in project "AINews.csproj".
-Target "PrepareResourcesForSatelliteAssemblies" skipped, due to false condition; ('$(UICulture)' != '') was evaluated as ('' != '').
-Target "MergeLocalizationDirectives" skipped, due to false condition; ('@(GeneratedLocalizationFiles)' !='') was evaluated as ('' !='').
-Target "AfterCompileWinFX" in file "C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.WinFX.targets" from project "C:\Eric\Main\AINews\AINews.csproj" (target "_AfterCompileWinFXInternal" depends on it):
-Done building target "AfterCompileWinFX" in project "AINews.csproj".
-Target "_AfterCompileWinFXInternal" in file "C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.WinFX.targets" from project "C:\Eric\Main\AINews\AINews.csproj" (target "Compile" depends on it):
-Done building target "_AfterCompileWinFXInternal" in project "AINews.csproj".
-Target "Compile" in file "C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.targets" from project "C:\Eric\Main\AINews\AINews.csproj" (target "CoreBuild" depends on it):
-Done building target "Compile" in project "AINews.csproj".
-Target "DeferredValidation" skipped, due to false condition; ('$(SkipWorkflowValidation)' != 'true' and ('@(XamlPage)' != '' or '@(XamlAppDef)' != '')) was evaluated as ('' != 'true' and ('' != '' or '' != '')).
-Target "ExportWindowsMDFile" skipped, due to false condition; ('$(ExportWinMDFile)' == 'true') was evaluated as ('' == 'true').
-Target "UnmanagedUnregistration" skipped, due to false condition; ((('$(_AssemblyTimestampBeforeCompile)' != '$(_AssemblyTimestampAfterCompile)' or '$(RegisterForComInterop)' != 'true' or '$(OutputType)' != 'library') or
-                    ('$(_AssemblyTimestampBeforeCompile)' == '')) and
-                   Exists('@(_UnmanagedRegistrationCache)')) was evaluated as ((('' != '' or '' != 'true' or 'WinExe' != 'library') or
-                    ('' == '')) and
-                   Exists('obj\AINews.csproj.UnmanagedRegistration.cache')).
-Target "GenerateSerializationAssemblies" skipped, due to false condition; ('$(_SGenGenerateSerializationAssembliesConfig)' == 'On' or ('@(WebReferenceUrl)'!='' and '$(_SGenGenerateSerializationAssembliesConfig)' == 'Auto')) was evaluated as ('Auto' == 'On' or (''!='' and 'Auto' == 'Auto')).
-Target "_GenerateSatelliteAssemblyInputs" in file "C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.targets" from project "C:\Eric\Main\AINews\AINews.csproj" (target "CreateSatelliteAssemblies" depends on it):
-Task "Warning" skipped, due to false condition; ('@(ManifestResourceWithCulture)'!='' and '%(ManifestResourceWithCulture.EmittedForCompatibilityOnly)'=='') was evaluated as (''!='' and ''=='').
-Task "Warning" skipped, due to false condition; ('@(ManifestNonResxWithCultureOnDisk)'!='' and '%(ManifestNonResxWithCultureOnDisk.EmittedForCompatibilityOnly)'=='') was evaluated as (''!='' and ''=='').
-Done building target "_GenerateSatelliteAssemblyInputs" in project "AINews.csproj".
-Target "ComputeIntermediateSatelliteAssemblies" skipped, due to false condition; (@(EmbeddedResource->'%(WithCulture)') != '') was evaluated as ( != '').
-Target "GenerateSatelliteAssemblies" skipped, due to false condition; ('@(_SatelliteAssemblyResourceInputs)' != '') was evaluated as ('' != '').
-Target "CreateSatelliteAssemblies" in file "C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.targets" from project "C:\Eric\Main\AINews\AINews.csproj" (target "CoreBuild" depends on it):
-Done building target "CreateSatelliteAssemblies" in project "AINews.csproj".
-Target "GenerateManifests" skipped, due to false condition; ('$(GenerateClickOnceManifests)'=='true' or '@(NativeReference)'!='' or '@(ResolvedIsolatedComModules)'!='' or '$(GenerateAppxManifest)' == 'true') was evaluated as (''=='true' or ''!='' or ''!='' or '' == 'true').
-Target "GetTargetPath" in file "C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.targets" from project "C:\Eric\Main\AINews\AINews.csproj" (target "CoreBuild" depends on it):
-Done building target "GetTargetPath" in project "AINews.csproj".
-Target "ComputeIntermediateSatelliteAssemblies" skipped, due to false condition; (@(EmbeddedResource->'%(WithCulture)') != '') was evaluated as ( != '').
-Target "_CopyFilesMarkedCopyLocal" skipped, due to false condition; ('@(ReferenceCopyLocalPaths)' != '') was evaluated as ('' != '').
-Target "AssignTargetPaths" skipped. Previously built successfully.
-Target "_SplitProjectReferencesByFileExistence" skipped. Previously built successfully.
-Target "GetCopyToOutputDirectoryXamlAppDefs" in file "C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Xaml.targets" from project "C:\Eric\Main\AINews\AINews.csproj" (target "GetCopyToOutputDirectoryItems" depends on it):
-Task "AssignTargetPath"
-Done executing task "AssignTargetPath".
-Done building target "GetCopyToOutputDirectoryXamlAppDefs" in project "AINews.csproj".
-Target "GetCopyToOutputDirectoryItems" in file "C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.targets" from project "C:\Eric\Main\AINews\AINews.csproj" (target "_CopySourceItemsToOutputDirectory" depends on it):
-Task "MSBuild" skipped, due to false condition; ('@(_MSBuildProjectReferenceExistent)' != '' and '$(_GetChildProjectCopyToOutputDirectoryItems)' == 'true' and '%(_MSBuildProjectReferenceExistent.Private)' != 'false' and '$(UseCommonOutputDirectory)' != 'true') was evaluated as ('' != '' and 'true' == 'true' and '' != 'false' and 'false' != 'true').
-Task "AssignTargetPath"
-Done executing task "AssignTargetPath".
-Done building target "GetCopyToOutputDirectoryItems" in project "AINews.csproj".
-Target "_CopyOutOfDateSourceItemsToOutputDirectory" skipped, due to false condition; ( '@(_SourceItemsToCopyToOutputDirectory)' != '' ) was evaluated as ( '' != '' ).
-Target "_CopyOutOfDateSourceItemsToOutputDirectoryAlways" skipped, due to false condition; ( '@(_SourceItemsToCopyToOutputDirectoryAlways)' != '' ) was evaluated as ( '' != '' ).
-Target "_CopySourceItemsToOutputDirectory" in file "C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.targets" from project "C:\Eric\Main\AINews\AINews.csproj" (target "CopyFilesToOutputDirectory" depends on it):
-Done building target "_CopySourceItemsToOutputDirectory" in project "AINews.csproj".
-Target "_CopyAppConfigFile" skipped, due to false condition; ( '@(AppConfigWithTargetPath)' != '' ) was evaluated as ( '' != '' ).
-Target "_CopyManifestFiles" skipped, due to false condition; ( '$(_DeploymentCopyApplicationManifest)'=='true' or '$(GenerateClickOnceManifests)'=='true' ) was evaluated as ( ''=='true' or ''=='true' ).
-Target "_CheckForCompileOutputs" in file "C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.targets" from project "C:\Eric\Main\AINews\AINews.csproj" (target "CopyFilesToOutputDirectory" depends on it):
+c:\Eric\Main\ThreeD\ThreeDScene.cs(343,1): error CS1519: Invalid token '*' in class, struct, or interface member declaration [C:\Eric\Main\AINews\AINews.csproj]
+  The command exited with code 1.
+Done executing task "Csc" -- FAILED.
+Done building target "CoreCompile" in project "AINews.csproj" -- FAILED.
+Target "_CheckForCompileOutputs" in file "C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.targets" from project "C:\Eric\Main\AINews\AINews.csproj" (target "_CleanGetCurrentAndPriorFileWrites" depends on it):
 Done building target "_CheckForCompileOutputs" in project "AINews.csproj".
 Target "_SGenCheckForOutputs" skipped, due to false condition; ('$(_SGenGenerateSerializationAssembliesConfig)' == 'On' or ('@(WebReferenceUrl)'!='' and '$(_SGenGenerateSerializationAssembliesConfig)' == 'Auto')) was evaluated as ('Auto' == 'On' or (''!='' and 'Auto' == 'Auto')).
-Target "CopyFilesToOutputDirectory" in file "C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.targets" from project "C:\Eric\Main\AINews\AINews.csproj" (target "PrepareForRun" depends on it):
-Using "Copy" task from assembly "Microsoft.Build.Tasks.v4.0, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
-Task "Copy"
-  Copying file from "obj\Release\AINews.exe" to "bin\Release\AINews.exe".
-Done executing task "Copy".
-Task "Message"
-  AINews -> C:\Eric\Main\AINews\bin\Release\AINews.exe
-Done executing task "Message".
-Task "Copy" skipped, due to false condition; ('@(AddModules)' != '') was evaluated as ('' != '').
-Task "Copy" skipped, due to false condition; ('$(_SGenDllCreated)'=='true') was evaluated as ('false'=='true').
-Task "Copy" skipped, due to false condition; ('$(_DebugSymbolsProduced)'=='true' and '$(SkipCopyingSymbolsToOutputDirectory)' != 'true' and '$(CopyOutputSymbolsToOutputDirectory)'=='true') was evaluated as ('false'=='true' and '' != 'true' and 'true'=='true').
-Task "Copy" skipped, due to false condition; ('$(_DocumentationFileProduced)'=='true') was evaluated as ('false'=='true').
-Task "Copy" skipped, due to false condition; ('@(IntermediateSatelliteAssembliesWithTargetPath)' != '') was evaluated as ('' != '').
-Task "Copy" skipped, due to false condition; ('@(ReferenceComWrappersToCopyLocal)' != '' or '@(ResolvedIsolatedComModules)' != '' or '@(_DeploymentLooseManifestFile)' != '' or '@(NativeReferenceFile)' != '' ) was evaluated as ('' != '' or '' != '' or '' != '' or '' != '' ).
-Task "Copy" skipped, due to false condition; ('$(SkipCopyWinMDArtifact)' != 'true' and '@(WinMDExpArtifacts)' != '') was evaluated as ('' != 'true' and '' != '').
-Task "Message" skipped, due to false condition; ('$(SkipCopyWinMDArtifact)' != 'true' and '$(_WindowsMetadataOutputPath)' != '') was evaluated as ('' != 'true' and '' != '').
-Done building target "CopyFilesToOutputDirectory" in project "AINews.csproj".
-Target "PrepareForRun" in file "C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.targets" from project "C:\Eric\Main\AINews\AINews.csproj" (target "CoreBuild" depends on it):
-Done building target "PrepareForRun" in project "AINews.csproj".
-Target "UnmanagedRegistration" skipped, due to false condition; ('$(RegisterForComInterop)'=='true' and '$(OutputType)'=='library') was evaluated as (''=='true' and 'WinExe'=='library').
-Target "_CheckForCompileOutputs" skipped. Previously built successfully.
-Target "_SGenCheckForOutputs" skipped, due to false condition; ('$(_SGenGenerateSerializationAssembliesConfig)' == 'On' or ('@(WebReferenceUrl)'!='' and '$(_SGenGenerateSerializationAssembliesConfig)' == 'Auto')) was evaluated as ('Auto' == 'On' or (''!='' and 'Auto' == 'Auto')).
-Target "_CleanGetCurrentAndPriorFileWrites" in file "C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.targets" from project "C:\Eric\Main\AINews\AINews.csproj" (target "IncrementalClean" depends on it):
+Target "_CleanGetCurrentAndPriorFileWrites" in file "C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.targets" from project "C:\Eric\Main\AINews\AINews.csproj" (target "_CleanRecordFileWrites" depends on it):
 Using "ReadLinesFromFile" task from assembly "Microsoft.Build.Tasks.v4.0, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
 Task "ReadLinesFromFile"
 Done executing task "ReadLinesFromFile".
@@ -445,30 +375,24 @@ Using "RemoveDuplicates" task from assembly "Microsoft.Build.Tasks.v4.0, Version
 Task "RemoveDuplicates"
 Done executing task "RemoveDuplicates".
 Done building target "_CleanGetCurrentAndPriorFileWrites" in project "AINews.csproj".
-Target "IncrementalClean" in file "C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.targets" from project "C:\Eric\Main\AINews\AINews.csproj" (target "CoreBuild" depends on it):
-Task "FindUnderPath"
-  Comparison path is "bin\Release\".
-Done executing task "FindUnderPath".
-Task "FindUnderPath"
-  Comparison path is "obj\Release\".
-Done executing task "FindUnderPath".
-Task "Delete"
-Done executing task "Delete".
+Target "_CleanRecordFileWrites" in file "C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.targets" from project "C:\Eric\Main\AINews\AINews.csproj" (target "CoreBuild" depends on it):
 Task "RemoveDuplicates"
 Done executing task "RemoveDuplicates".
-Task "WriteLinesToFile" skipped, due to false condition; ('@(_CleanUnfilteredPriorFileWrites)'!='@(_CleanUniqueRemainingFileWritesAfterIncrementalClean)') was evaluated as ('C:\Eric\Main\AINews\obj\Release\AINews.csprojResolveAssemblyReference.cache;C:\Eric\Main\AINews\bin\Release\AINews.exe;C:\Eric\Main\AINews\obj\Release\AINews.exe'!='C:\Eric\Main\AINews\obj\Release\AINews.csprojResolveAssemblyReference.cache;C:\Eric\Main\AINews\bin\Release\AINews.exe;C:\Eric\Main\AINews\obj\Release\AINews.exe').
-Done building target "IncrementalClean" in project "AINews.csproj".
-Target "PostBuildEvent" skipped, due to false condition; ('$(PostBuildEvent)' != '' and ('$(RunPostBuildEvent)' != 'OnOutputUpdated' or '$(_AssemblyTimestampBeforeCompile)' != '$(_AssemblyTimestampAfterCompile)')) was evaluated as ('' != '' and ('' != 'OnOutputUpdated' or '' != '')).
-Target "CoreBuild" in file "C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.targets" from project "C:\Eric\Main\AINews\AINews.csproj" (target "Build" depends on it):
-Done building target "CoreBuild" in project "AINews.csproj".
-Target "AfterBuild" in file "C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.targets" from project "C:\Eric\Main\AINews\AINews.csproj" (target "Build" depends on it):
-Done building target "AfterBuild" in project "AINews.csproj".
-Target "Build" in file "C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.targets" from project "C:\Eric\Main\AINews\AINews.csproj" (entry point):
-Done building target "Build" in project "AINews.csproj".
-Done Building Project "C:\Eric\Main\AINews\AINews.csproj" (default targets).
+Task "MakeDir"
+Done executing task "MakeDir".
+Using "WriteLinesToFile" task from assembly "Microsoft.Build.Tasks.v4.0, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
+Task "WriteLinesToFile"
+Done executing task "WriteLinesToFile".
+Done building target "_CleanRecordFileWrites" in project "AINews.csproj".
+Done Building Project "C:\Eric\Main\AINews\AINews.csproj" (default targets) -- FAILED.
 
-Build succeeded.
+Build FAILED.
+
+"C:\Eric\Main\AINews\AINews.csproj" (default target) (1) ->
+(CoreCompile target) -> 
+  c:\Eric\Main\ThreeD\ThreeDScene.cs(343,1): error CS1519: Invalid token '*' in class, struct, or interface member declaration [C:\Eric\Main\AINews\AINews.csproj]
+
     0 Warning(s)
-    0 Error(s)
+    1 Error(s)
 
-Time Elapsed 00:00:00.53
+Time Elapsed 00:00:00.51

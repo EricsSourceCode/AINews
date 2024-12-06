@@ -7,27 +7,7 @@ recentfile3	\Eric\Main\AINews\AINews.csproj
 recentfile4	\Eric\Main\ThreeD\ThreeDForm.cs
 recentfile5	\Eric\Main\ThreeD\ThreeDScene.cs
 recentfile6	\Eric\Main\ThreeD\GeomModel.cs
-recentfile7	
-recentfile8	
-recentfile9	
-recentfile10	
-recentfile11	
-recentfile12	
-recentfile13	
-recentfile14	
-recentfile15	
-recentfile16	
-recentfile17	
-recentfile18	
-recentfile19	
-recentfile20	
-recentfile21	
-recentfile22	
-recentfile23	
-recentfile24	
-recentfile25	
-recentfile26	
-recentfile27	
-recentfile28	
-recentfile29	
-recentfile30	
+recentfile7	\Eric\Main\ThreeD\SpaceObject.cs
+recentfile8	\Eric\Main\ThreeD\Surface.cs
+recentfile9	\Eric\Main\CsMath\Vector3.cs
+recentfile10	\Eric\Main\CsMath\Quatern.cs
