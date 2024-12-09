@@ -13,6 +13,9 @@
 using System;
 // For Application.
 using System.Windows.Forms;
+using System.Windows.Media;
+using System.Windows.Media.Media3D;
+// using System.Windows.Media.Imaging;
 
 
 
@@ -22,7 +25,7 @@ using System.Windows.Forms;
 public class MainData
 {
 internal const string versionDate =
-                              "12/6/2024";
+                              "12/9/2024";
 private string dataDirectory = "";
 // internal Configure config;
 private MainForm mForm;
@@ -34,7 +37,13 @@ internal WebPageDct webPageDct;
 private VectorArray demParagArray;
 private VectorArray repubParagArray;
 
+// The model that is specific to this app.
+
+private GeomModel geomModel;
+private Model3DGroup main3DGroup;
+
 // internal WordDct paragDct;
+
 
 
 internal MainData( MainForm useForm )
@@ -46,6 +55,9 @@ setupDirectories();
 //                   "Config.txt" );
 
 // config.clearAllOptions();
+
+main3DGroup = new Model3DGroup();
+geomModel = new GeomModel( this, main3DGroup );
 
 sha256 = new Sha256( this );
 urlFileDct = new URLFileDct( this );
@@ -60,6 +72,20 @@ repubParagArray = new VectorArray( this );
 showStatus( "Programming by Eric Chauvin." );
 showStatus( "Version Date: " + versionDate );
 showStatus( " " );
+}
+
+
+
+
+internal Model3DGroup getMain3DGroup()
+{
+return main3DGroup;
+}
+ 
+
+internal GeomModel getGeomModel()
+{
+return geomModel;
 }
 
 

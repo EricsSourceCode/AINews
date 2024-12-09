@@ -6,8 +6,10 @@ recentfile2	\Eric\Main\AINews\MainData.cs
 recentfile3	\Eric\Main\AINews\AINews.csproj
 recentfile4	\Eric\Main\ThreeD\ThreeDForm.cs
 recentfile5	\Eric\Main\ThreeD\ThreeDScene.cs
-recentfile6	\Eric\Main\ThreeD\GeomModel.cs
-recentfile7	\Eric\Main\ThreeD\SpaceObject.cs
-recentfile8	\Eric\Main\ThreeD\Surface.cs
-recentfile9	\Eric\Main\CsMath\Vector3.cs
-recentfile10	\Eric\Main\CsMath\Quatern.cs
+recentfile6	\Eric\Main\ThreeD\SpaceObject.cs
+recentfile7	\Eric\Main\ThreeD\Surface.cs
+recentfile8	\Eric\Main\CsMath\Vector3.cs
+recentfile10	\Eric\Main\CsMath\MathF.cs
+recentfile9	\Eric\Main\CsMath\Quatern.cs
+recentfile11	\Eric\Main\AINews\GeomModel.cs
+recentfile12	\Eric\Main\AINews\MainForm.cs

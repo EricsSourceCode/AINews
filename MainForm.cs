@@ -389,10 +389,19 @@ if( e.Button == MouseButtons.Right )
 private void openThreeDForm()
 {
 if( threeDForm == null )
-  threeDForm = new ThreeDForm( mData );
+  {
+  threeDForm = new ThreeDForm( mData,
+======
+                mData.getMain3DGroup(),
+                mData.getGeomModel());
+  }
 
 if( threeDForm.IsDisposed )
-  threeDForm = new ThreeDForm( mData );
+  {
+  threeDForm = new ThreeDForm( mData,
+                mData.getMain3DGroup(),
+                mData.getGeomModel());
+  }
 
 threeDForm.Show();
 threeDForm.WindowState =
