@@ -49,7 +49,7 @@
   <ItemGroup>
     <Compile Include="\Eric\Main\ThreeD\Surface.cs" />
     <Compile Include="\Eric\Main\ThreeD\SpaceObject.cs" />
-    <Compile Include="\Eric\Main\AINews\GeomModel.cs" />
+    <Compile Include="\Eric\Main\AINews\VisualModel.cs" />
     <Compile Include="\Eric\Main\ThreeD\ThreeDScene.cs" />
     <Compile Include="\Eric\Main\ThreeD\ThreeDForm.cs" />
 

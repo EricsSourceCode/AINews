@@ -25,7 +25,7 @@ using System.Windows.Media.Media3D;
 public class MainData
 {
 internal const string versionDate =
-                              "12/9/2024";
+                              "12/11/2024";
 private string dataDirectory = "";
 // internal Configure config;
 private MainForm mForm;
@@ -37,10 +37,12 @@ internal WebPageDct webPageDct;
 private VectorArray demParagArray;
 private VectorArray repubParagArray;
 
-// The model that is specific to this app.
+private ThreeDScene scene;
 
-private GeomModel geomModel;
-private Model3DGroup main3DGroup;
+// The Visual model that is specific
+// to this app.
+
+private VisualModel visModel;
 
 // internal WordDct paragDct;
 
@@ -56,8 +58,9 @@ setupDirectories();
 
 // config.clearAllOptions();
 
-main3DGroup = new Model3DGroup();
-geomModel = new GeomModel( this, main3DGroup );
+visModel = new VisualModel( this );
+scene = new ThreeDScene( this, visModel );
+
 
 sha256 = new Sha256( this );
 urlFileDct = new URLFileDct( this );
@@ -76,16 +79,9 @@ showStatus( " " );
 
 
 
-
-internal Model3DGroup getMain3DGroup()
+internal ThreeDScene getScene()
 {
-return main3DGroup;
-}
- 
-
-internal GeomModel getGeomModel()
-{
-return geomModel;
+return scene;
 }
 
 
