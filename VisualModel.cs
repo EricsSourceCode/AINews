@@ -81,7 +81,7 @@ weights1 = new Surface( mData, "weights1" );
 
 addSpaceObject( weights1 );
 
-makeNewGeomModels();
+getNewGeomModels();
 }
 catch( Exception ) // Except )
   {
@@ -109,7 +109,7 @@ if( spaceObjLast >= length )
 
 
 
-internal void makeNewGeomModels()
+internal void getNewGeomModels()
 {
 if( main3DGroup == null )
   {
@@ -122,7 +122,8 @@ main3DGroup.Children.Clear();
 int last = spaceObjLast;
 for( int count = 0; count < last; count++ )
   {
-  spaceObjAr[count].makeNewGeomModel();
+  // spaceObjAr[count].makeNewGeomModel();
+
   GeometryModel3D geomMod = spaceObjAr[
                     count].getGeometryModel();
 

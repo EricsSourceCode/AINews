@@ -47,6 +47,8 @@
 
 
   <ItemGroup>
+    <Compile Include="\Eric\Main\AINews\WeightSurface.cs" />
+
     <Compile Include="\Eric\Main\ThreeD\Surface.cs" />
     <Compile Include="\Eric\Main\ThreeD\SpaceObject.cs" />
     <Compile Include="\Eric\Main\AINews\VisualModel.cs" />
