@@ -1,4 +1,4 @@
-// Copyright Eric Chauvin 2018 - 2024.
+// Copyright Eric Chauvin 2024.
 
 
 
@@ -36,7 +36,7 @@ private Model3DGroup main3DGroup;
 
 // Objects specific to this app.
 
-private Surface weights1;
+private Weights3D weights1;
 
 
 
@@ -75,13 +75,13 @@ if( main3DGroup == null )
 
 try
 {
-weights1 = new Surface( mData, "weights1" );
+weights1 = new Weights3D( mData );
 
 // Sun.TextureFileName = "C:\\Eric\\
 
 addSpaceObject( weights1 );
 
-getNewGeomModels();
+makeNewGeomModels();
 }
 catch( Exception ) // Except )
   {
@@ -109,7 +109,7 @@ if( spaceObjLast >= length )
 
 
 
-internal void getNewGeomModels()
+internal void makeNewGeomModels()
 {
 if( main3DGroup == null )
   {
@@ -122,7 +122,7 @@ main3DGroup.Children.Clear();
 int last = spaceObjLast;
 for( int count = 0; count < last; count++ )
   {
-  // spaceObjAr[count].makeNewGeomModel();
+  spaceObjAr[count].makeNewGeomModel();
 
   GeometryModel3D geomMod = spaceObjAr[
                     count].getGeometryModel();
@@ -137,6 +137,7 @@ for( int count = 0; count < last; count++ )
 setupAmbientLight();
 setupMainLight();
 }
+
 
 
 
@@ -239,3 +240,5 @@ catch( Exception ) //  Except )
 
 
 } // Class
+
+
