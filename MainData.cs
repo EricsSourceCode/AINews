@@ -25,18 +25,21 @@ using System.Windows.Media.Media3D;
 public class MainData
 {
 internal const string versionDate =
-                              "12/16/2024";
+                              "12/17/2024";
 private string dataDirectory = "";
 // internal Configure config;
 private MainForm mForm;
 private bool cancelled = false;
 private bool isClosing = false;
 internal Sha256 sha256;
+
+// NeuralNet1 neuralNet;
+NeuralNet2 neuralNet;
+
 internal URLFileDct urlFileDct;
 internal WebPageDct webPageDct;
 private VectorArray demParagArray;
 private VectorArray repubParagArray;
-
 private ThreeDScene scene;
 
 // The Visual model that is specific
@@ -57,6 +60,9 @@ setupDirectories();
 //                   "Config.txt" );
 
 // config.clearAllOptions();
+
+// neuralNet = new NeuralNet1( this );
+neuralNet = new NeuralNet2( this );
 
 visModel = new VisualModel( this );
 scene = new ThreeDScene( this, visModel );
@@ -258,12 +264,20 @@ showStatus( "demParagArray last: " +
 showStatus( "repubParagArray last: " +
                 repubParagArray.getLastAppend());
 
-NeuralNet1 net = new NeuralNet1( this );
-// NeuralNet2 net = new NeuralNet2( this );
 
-net.test( demParagArray, repubParagArray );
+neuralNet.test( demParagArray, repubParagArray );
 
 mForm.showStatus( "Neural net test finished." );
+}
+
+
+
+
+internal void setFromWeightVecs(
+                             VectorFlt vec1,
+                             VectorFlt vec2 )
+{
+visModel.setFromWeightVecs( vec1, vec2 );
 }
 
 

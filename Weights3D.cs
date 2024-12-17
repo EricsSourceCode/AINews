@@ -44,12 +44,11 @@ surface = new Surface( mData );
 
 
 
-internal override void makeNewGeomModel()
+internal void makeTestTriangle()
 {
 surface.clear();
 surface.setMaterialBlue();
 
-// Counter clockwise.
 surface.addVertex( 0, 0, 0 );
 surface.addVertex( 1, 0, 0 );
 surface.addVertex( 0, 1, 0 );
@@ -65,6 +64,73 @@ surface.addNormal( 0, 0, 1 );
 
 surface.addTriangleIndex( 0, 1, 2 );
 }
+
+
+
+
+internal void setFromWeightVecs(
+                             VectorFlt vec1,
+                             VectorFlt vec2 )
+{
+surface.clear();
+surface.setMaterialBlue();
+
+// makeTestTriangle();
+
+float scale = 2.0F;
+float scaleZ = 1000.0F;
+float x = 0;
+float y = 0;
+float z = 0;
+
+int last = vec1.getSize();
+x = 1 * scale;
+for( int count = 0; count < last; count++ )
+  {
+  y = count * scale;
+  z = -100 + vec1.getVal( count ) * scaleZ;
+  surface.addVertex( x, y, z );
+  surface.addNormal( 0, 0, 1 );
+  }
+
+last = vec2.getSize();
+x = 2 * scale;
+for( int count = 0; count < last; count++ )
+  {
+  y = count * scale;
+  z = -100 + vec2.getVal( count ) * scaleZ;
+  surface.addVertex( x, y, z );
+  surface.addNormal( 0, 0, 1 );
+  }
+
+// surface.addTriangleIndex( last, last + 1, 0 );
+// surface.addTriangleIndex( last + 1, 1, 0 );
+
+for( int count = 0; count < last; count++ )
+  {
+  surface.addTriangleIndex( last + count,
+                            last + 1 + count,
+                            0 + count );
+
+  surface.addTriangleIndex( last + 1 + count,
+                            1 + count,
+                            0 + count );
+  }
+
+/*
+surface.addNormal( 0, 0, 1 );
+surface.addNormal( 0, 0, 1 );
+surface.addNormal( 0, 0, 1 );
+
+// surface.addTexturePnt( double x, double y )
+
+// Make it face backwards (clockwise winding).
+// surface.addTriangleIndex( 2, 1, 0 );
+
+surface.addTriangleIndex( 0, 1, 2 );
+*/
+}
+
 
 
 internal override GeometryModel3D

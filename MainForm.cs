@@ -22,6 +22,7 @@ using System.Drawing.Imaging;
 // namespace
 
 
+
 public class MainForm : Form
 {
 private System.Threading.Mutex
@@ -357,6 +358,7 @@ if( e.Button == MouseButtons.Left )
   if( guiMain.isInsideTestBtn( mouseX,
                                mouseY ))
     {
+    openThreeDForm();
     clearStatus();
     // mData.readAllStories();
     mData.neuralTest();
@@ -395,8 +397,8 @@ if( threeDForm.IsDisposed )
   threeDForm = new ThreeDForm( mData );
 
 threeDForm.Show();
-threeDForm.WindowState =
-                    FormWindowState.Maximized;
+// threeDForm.WindowState =
+//                 FormWindowState.Maximized;
 threeDForm.BringToFront();
 }
 
