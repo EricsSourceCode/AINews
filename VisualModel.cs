@@ -36,7 +36,7 @@ private Model3DGroup main3DGroup;
 
 // Objects specific to this app.
 
-private Weights3D weights1;
+private MatrixSurface weights1;
 
 
 
@@ -75,7 +75,7 @@ if( main3DGroup == null )
 
 try
 {
-weights1 = new Weights3D( mData );
+weights1 = new MatrixSurface( mData );
 
 // Sun.TextureFileName = "C:\\Eric\\
 
@@ -107,14 +107,58 @@ if( spaceObjLast >= length )
 }
 
 
+
+
 internal void setFromWeightVecs(
                              VectorFlt vec1,
                              VectorFlt vec2 )
 {
-weights1.setFromWeightVecs( vec1, vec2 );
+int columns = vec1.getSize();
+weights1.setSize( 2, columns );
+
+float scaleX = 1.0F;
+float scaleY = 1.0F;
+float scaleZ = 100.0F;
+
+MatrixSurface.SurfacePos pos;
+
+// Struct values have to be set so you can
+// use it?  Not like with a contructor?
+
+// public int Index;
+// public double Latitude;
+// public double Longitude;
+pos.x = 0;
+pos.y = 0;
+pos.z = 0;
+//    public Vector3.Vect SurfaceNormal;
+//    public double TextureX;
+//    public double TextureY;
+==== What?
+
+
+for( int col = 0; col < columns; col++ )
+  {
+  pos.x = 0 * scaleX;
+  pos.y = col * scaleY;
+  pos.z = -100 + (vec1.getVal( col ) * scaleZ);
+  weights1.setVal( 0, col, pos );
+  }
+
+for( int col = 0; col < columns; col++ )
+  {
+  pos.x = 1 * scaleX;
+  pos.y = col * scaleY;
+  pos.z = -100 + (vec2.getVal( col ) * scaleZ);
+  weights1.setVal( 1, col, pos );
+  }
+
+weights1.setFromTwoColumns();
+
 getNewGeomModels();
 // mData.showStatus( "New weight vecs." );
 }
+
 
 
 
