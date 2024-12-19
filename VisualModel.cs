@@ -31,7 +31,6 @@ private MainData mData;
 
 private SpaceObject[] spaceObjAr;
 private int spaceObjLast = 0;
-// private const double scale = 300.0;
 private Model3DGroup main3DGroup;
 
 // Objects specific to this app.
@@ -116,8 +115,8 @@ internal void setFromWeightVecs(
 int columns = vec1.getSize();
 weights1.setSize( 2, columns );
 
-float scaleX = 1.0F;
-float scaleY = 1.0F;
+float scaleX = 5.0F;
+float scaleY = 0.5F;
 float scaleZ = 100.0F;
 
 MatrixSurface.SurfacePos pos;
@@ -134,7 +133,6 @@ pos.z = 0;
 //    public Vector3.Vect SurfaceNormal;
 //    public double TextureX;
 //    public double TextureY;
-==== What?
 
 
 for( int col = 0; col < columns; col++ )

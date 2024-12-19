@@ -25,7 +25,7 @@ using System.Windows.Media.Media3D;
 public class MainData
 {
 internal const string versionDate =
-                              "12/17/2024";
+                              "12/19/2024";
 private string dataDirectory = "";
 // internal Configure config;
 private MainForm mForm;
@@ -33,8 +33,8 @@ private bool cancelled = false;
 private bool isClosing = false;
 internal Sha256 sha256;
 
-// NeuralNet1 neuralNet;
-NeuralNet2 neuralNet;
+NeuralNet1 neuralNet;
+// NeuralNet2 neuralNet;
 
 internal URLFileDct urlFileDct;
 internal WebPageDct webPageDct;
@@ -61,8 +61,8 @@ setupDirectories();
 
 // config.clearAllOptions();
 
-// neuralNet = new NeuralNet1( this );
-neuralNet = new NeuralNet2( this );
+neuralNet = new NeuralNet1( this );
+// neuralNet = new NeuralNet2( this );
 
 visModel = new VisualModel( this );
 scene = new ThreeDScene( this, visModel );
