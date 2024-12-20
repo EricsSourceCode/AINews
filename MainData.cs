@@ -1,4 +1,4 @@
-// Copyright Eric Chauvin 2024.
+// Copyright Eric Chauvin 2024 - 2025.
 
 
 
@@ -25,7 +25,7 @@ using System.Windows.Media.Media3D;
 public class MainData
 {
 internal const string versionDate =
-                              "12/19/2024";
+                              "12/20/2024";
 private string dataDirectory = "";
 // internal Configure config;
 private MainForm mForm;

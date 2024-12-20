@@ -116,8 +116,8 @@ int columns = vec1.getSize();
 weights1.setSize( 2, columns );
 
 float scaleX = 5.0F;
-float scaleY = 0.5F;
-float scaleZ = 100.0F;
+float scaleY = 0.05F;
+float scaleZ = 500.0F;
 
 MatrixSurface.SurfacePos pos;
 
@@ -139,7 +139,7 @@ for( int col = 0; col < columns; col++ )
   {
   pos.x = 0 * scaleX;
   pos.y = col * scaleY;
-  pos.z = -100 + (vec1.getVal( col ) * scaleZ);
+  pos.z = -1 + (vec1.getVal( col ) * scaleZ);
   weights1.setVal( 0, col, pos );
   }
 
@@ -147,7 +147,7 @@ for( int col = 0; col < columns; col++ )
   {
   pos.x = 1 * scaleX;
   pos.y = col * scaleY;
-  pos.z = -100 + (vec2.getVal( col ) * scaleZ);
+  pos.z = -1 + (vec2.getVal( col ) * scaleZ);
   weights1.setVal( 1, col, pos );
   }
 
