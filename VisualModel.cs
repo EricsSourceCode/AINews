@@ -119,7 +119,7 @@ float scaleX = 5.0F;
 float scaleY = 0.05F;
 float scaleZ = 500.0F;
 
-MatrixSurface.SurfacePos pos;
+MatrixSurface.SurfacePos surfPos;
 
 // Struct values have to be set so you can
 // use it?  Not like with a contructor?
@@ -127,28 +127,33 @@ MatrixSurface.SurfacePos pos;
 // public int Index;
 // public double Latitude;
 // public double Longitude;
-pos.x = 0;
-pos.y = 0;
-pos.z = 0;
-//    public Vector3.Vect SurfaceNormal;
+surfPos.pos.x = 0;
+surfPos.pos.y = 0;
+surfPos.pos.z = 0;
+surfPos.normal.x = 0;
+surfPos.normal.y = 0;
+surfPos.normal.z = 0;
+
 //    public double TextureX;
 //    public double TextureY;
 
 
 for( int col = 0; col < columns; col++ )
   {
-  pos.x = 0 * scaleX;
-  pos.y = col * scaleY;
-  pos.z = -1 + (vec1.getVal( col ) * scaleZ);
-  weights1.setVal( 0, col, pos );
+  surfPos.pos.x = 0 * scaleX;
+  surfPos.pos.y = col * scaleY;
+  surfPos.pos.z = -1 + (vec1.getVal( col ) *
+                        scaleZ);
+  weights1.setVal( 0, col, surfPos );
   }
 
 for( int col = 0; col < columns; col++ )
   {
-  pos.x = 1 * scaleX;
-  pos.y = col * scaleY;
-  pos.z = -1 + (vec2.getVal( col ) * scaleZ);
-  weights1.setVal( 1, col, pos );
+  surfPos.pos.x = 1 * scaleX;
+  surfPos.pos.y = col * scaleY;
+  surfPos.pos.z = -1 + (vec2.getVal( col ) *
+                                scaleZ);
+  weights1.setVal( 1, col, surfPos );
   }
 
 weights1.setFromTwoColumns();
