@@ -144,7 +144,8 @@ for( int col = 0; col < columns; col++ )
   surfPos.pos.y = col * scaleY;
   surfPos.pos.z = -1 + (vec1.getVal( col ) *
                         scaleZ);
-  weights1.setVal( 0, col, surfPos );
+  int index = weights1.getIndex( 0, col );
+  weights1.setVal( index, surfPos );
   }
 
 for( int col = 0; col < columns; col++ )
@@ -153,7 +154,9 @@ for( int col = 0; col < columns; col++ )
   surfPos.pos.y = col * scaleY;
   surfPos.pos.z = -1 + (vec2.getVal( col ) *
                                 scaleZ);
-  weights1.setVal( 1, col, surfPos );
+
+  int index = weights1.getIndex( 1, col );
+  weights1.setVal( index, surfPos );
   }
 
 weights1.setFromTwoColumns();
