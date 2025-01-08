@@ -121,9 +121,6 @@ float scaleZ = 500.0F;
 
 MatrixSurface.SurfacePos surfPos;
 
-// Struct values have to be set so you can
-// use it?  Not like with a contructor?
-
 // public int Index;
 // public double Latitude;
 // public double Longitude;
@@ -159,7 +156,7 @@ for( int col = 0; col < columns; col++ )
   weights1.setVal( index, surfPos );
   }
 
-weights1.setFromTwoColumns();
+weights1.setFromSurfPos();
 
 getNewGeomModels();
 // mData.showStatus( "New weight vecs." );
