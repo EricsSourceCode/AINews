@@ -25,8 +25,13 @@
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <ErrorReport>prompt</ErrorReport>
+
     <WarningLevel>4</WarningLevel>
+    <AnalysisLevel>4</AnalysisLevel>
+<!--
     <AnalysisLevel>latest</AnalysisLevel>
+-->
+
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants></DefineConstants>
   </PropertyGroup>

@@ -112,6 +112,12 @@ internal void setFromWeightVecs(
                              VectorFlt vec1,
                              VectorFlt vec2 )
 {
+weights1.makeTestPattern();
+weights1.setFromSurfPos();
+
+/*
+Do this as a matrix.
+
 int columns = vec1.getSize();
 weights1.setSize( 2, columns );
 
@@ -135,6 +141,8 @@ surfPos.normal.z = 0;
 //    public double TextureY;
 
 
+
+////////////
 for( int col = 0; col < columns; col++ )
   {
   surfPos.pos.x = 0 * scaleX;
@@ -144,7 +152,11 @@ for( int col = 0; col < columns; col++ )
   int index = weights1.getIndex( 0, col );
   weights1.setVal( index, surfPos );
   }
+//////////
 
+
+
+//////////
 for( int col = 0; col < columns; col++ )
   {
   surfPos.pos.x = 1 * scaleX;
@@ -157,6 +169,7 @@ for( int col = 0; col < columns; col++ )
   }
 
 weights1.setFromSurfPos();
+*/
 
 getNewGeomModels();
 // mData.showStatus( "New weight vecs." );
