@@ -112,7 +112,14 @@ internal void setFromWeightVecs(
                              VectorFlt vec1,
                              VectorFlt vec2 )
 {
-weights1.makeTestPattern();
+MatrixVec3 matrix = new MatrixVec3( mData );
+// matrix.makeTestPattern();
+
+=====
+matrix.setFromTwoVecs( vec1, vec2 );
+weights1.setFromMatrixVec3( matrix );
+
+// weights1.makeTestPattern();
 weights1.setFromSurfPos();
 
 /*
