@@ -7,11 +7,11 @@ recentfile3	\Eric\Main\AINews\AINews.csproj
 recentfile4	\Eric\Main\ThreeD\Surface.cs
 recentfile5	\Eric\Main\AINews\VisualModel.cs
 recentfile6	\Eric\Main\CsMath\MatrixVec3.cs
-recentfile7	\Eric\Main\ThreeD\ThreeDScene.cs
-recentfile8	\Eric\Main\CsMath\Vector3.cs
-recentfile9	\Eric\Main\ThreeD\MatrixSurface.cs
-recentfile10	
-recentfile11	
+recentfile7	\Eric\Main\ThreeD\MatrixSurface.cs
+recentfile8	\Eric\Main\CsNeural\NeuralNet1.cs
+recentfile9	\Eric\Main\CsNeural\NeuronLayer1.cs
+recentfile10	\Eric\Main\CsNeural\Neuron1.cs
+recentfile11	\Eric\Main\CsMath\VectorFlt.cs
 recentfile12	
 recentfile13	
 recentfile14	

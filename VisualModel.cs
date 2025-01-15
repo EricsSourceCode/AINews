@@ -36,6 +36,7 @@ private Model3DGroup main3DGroup;
 // Objects specific to this app.
 
 private MatrixSurface weights1;
+private MatrixSurface bias1;
 
 
 
@@ -75,10 +76,12 @@ if( main3DGroup == null )
 try
 {
 weights1 = new MatrixSurface( mData );
+bias1 = new MatrixSurface( mData );
 
 // Sun.TextureFileName = "C:\\Eric\\
 
 addSpaceObject( weights1 );
+addSpaceObject( bias1 );
 
 getNewGeomModels();
 }
@@ -114,75 +117,51 @@ internal void setFromWeightVecs(
 {
 MatrixVec3 matrix = new MatrixVec3( mData );
 // matrix.makeTestPattern();
-
-=====
 matrix.setFromTwoVecs( vec1, vec2 );
+
 weights1.setFromMatrixVec3( matrix );
 
-// weights1.makeTestPattern();
-weights1.setFromSurfPos();
-
-/*
-Do this as a matrix.
-
-int columns = vec1.getSize();
-weights1.setSize( 2, columns );
-
-float scaleX = 5.0F;
-float scaleY = 0.05F;
+float scaleX = 1; // 5.0F;
+float scaleY = 1; // 0.05F;
 float scaleZ = 500.0F;
 
-MatrixSurface.SurfacePos surfPos;
+weights1.scalePosition( scaleX, scaleY, scaleZ );
 
-// public int Index;
-// public double Latitude;
-// public double Longitude;
-surfPos.pos.x = 0;
-surfPos.pos.y = 0;
-surfPos.pos.z = 0;
-surfPos.normal.x = 0;
-surfPos.normal.y = 0;
-surfPos.normal.z = 0;
-
-//    public double TextureX;
-//    public double TextureY;
-
-
-
-////////////
-for( int col = 0; col < columns; col++ )
-  {
-  surfPos.pos.x = 0 * scaleX;
-  surfPos.pos.y = col * scaleY;
-  surfPos.pos.z = -1 + (vec1.getVal( col ) *
-                        scaleZ);
-  int index = weights1.getIndex( 0, col );
-  weights1.setVal( index, surfPos );
-  }
-//////////
-
-
-
-//////////
-for( int col = 0; col < columns; col++ )
-  {
-  surfPos.pos.x = 1 * scaleX;
-  surfPos.pos.y = col * scaleY;
-  surfPos.pos.z = -1 + (vec2.getVal( col ) *
-                                scaleZ);
-
-  int index = weights1.getIndex( 1, col );
-  weights1.setVal( index, surfPos );
-  }
+// weights1.makeTestPattern();
 
 weights1.setFromSurfPos();
-*/
 
 getNewGeomModels();
+
 // mData.showStatus( "New weight vecs." );
 }
 
 
+=====
+internal void setFromBiasVecs(
+                             VectorFlt vec1,
+                             VectorFlt vec2 )
+{
+MatrixVec3 matrix = new MatrixVec3( mData );
+// matrix.makeTestPattern();
+matrix.setFromTwoVecs( vec1, vec2 );
+
+bias1.setFromMatrixVec3( matrix );
+
+float scaleX = 1; // 5.0F;
+float scaleY = 1; // 0.05F;
+float scaleZ = 500.0F;
+
+bias1.scalePosition( scaleX, scaleY, scaleZ );
+
+// bias1.makeTestPattern();
+
+bias1.setFromSurfPos();
+
+getNewGeomModels();
+
+// mData.showStatus( "New bias vecs." );
+}
 
 
 

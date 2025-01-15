@@ -271,6 +271,15 @@ mForm.showStatus( "Neural net test finished." );
 }
 
 
+internal void setFromBiasVecs(
+                             VectorFlt vec0,
+                             VectorFlt vec1 )
+{
+visModel.setFromBiasVecs( vec0, vec1 );
+}
+
+
+
 
 
 internal void setFromWeightVecs(
