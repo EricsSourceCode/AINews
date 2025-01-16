@@ -119,7 +119,7 @@ MatrixVec3 matrix = new MatrixVec3( mData );
 // matrix.makeTestPattern();
 matrix.setFromTwoVecs( vec1, vec2 );
 
-weights1.setFromMatrixVec3( matrix );
+weights1.setFromMatrixVec3( matrix, 0, 0, 0 );
 
 float scaleX = 1; // 5.0F;
 float scaleY = 1; // 0.05F;
@@ -137,16 +137,13 @@ getNewGeomModels();
 }
 
 
-=====
-internal void setFromBiasVecs(
-                             VectorFlt vec1,
-                             VectorFlt vec2 )
+internal void setFromBiasVec1( VectorFlt vec1 )
 {
 MatrixVec3 matrix = new MatrixVec3( mData );
 // matrix.makeTestPattern();
-matrix.setFromTwoVecs( vec1, vec2 );
+matrix.setFromDoubledVec( vec1 );
 
-bias1.setFromMatrixVec3( matrix );
+bias1.setFromMatrixVec3( matrix, -10, 0, 0 );
 
 float scaleX = 1; // 5.0F;
 float scaleY = 1; // 0.05F;
@@ -259,7 +256,7 @@ main3DGroup.Children.Add( pLight1 );
 
 private void setupAmbientLight()
 {
-byte RGB = 0x0F;
+byte RGB = 0x7F;
 setupAmbientLightColors( RGB, RGB, RGB );
 }
 
