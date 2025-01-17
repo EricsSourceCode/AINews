@@ -25,7 +25,7 @@ using System.Windows.Media.Media3D;
 public class MainData
 {
 internal const string versionDate =
-                              "1/14/2025";
+                              "1/17/2025";
 private string dataDirectory = "";
 // internal Configure config;
 private MainForm mForm;
@@ -248,7 +248,7 @@ internal void neuralTest()
 mForm.showStatus( "Neural Net Test." );
 
 
-int inputColumns = 1000;
+int inputColumns = 100;
 
 //                   rows, columns
 demParagArray.setSize( 10, inputColumns );
@@ -271,11 +271,17 @@ mForm.showStatus( "Neural net test finished." );
 }
 
 
-internal void setFromBiasVec1( VectorFlt vec1 )
+internal void setFromBiasVecOut( VectorFlt vec )
 {
-visModel.setFromBiasVec1( vec1 );
+visModel.setFromBiasVecOut( vec );
 }
 
+
+internal void setFromBiasVecHidden(
+                                VectorFlt vec )
+{
+visModel.setFromBiasVecHidden( vec );
+}
 
 
 
@@ -284,9 +290,16 @@ internal void setFromWeightVecs(
                              VectorFlt vec1,
                              VectorFlt vec2 )
 {
-visModel.setFromWeightVecs( vec1, vec2 );
+visModel.setFromWeightOutVecs( vec1, vec2 );
 }
 
+
+
+internal void setFromWeightHidden(
+                            VectorArray vecAr )
+{
+visModel.setFromWeightHidden( vecAr );
+}
 
 
 

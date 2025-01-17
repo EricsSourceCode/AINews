@@ -1,4 +1,4 @@
-// Copyright Eric Chauvin 2024.
+// Copyright Eric Chauvin 2024 - 2025.
 
 
 
@@ -35,8 +35,10 @@ private Model3DGroup main3DGroup;
 
 // Objects specific to this app.
 
-private MatrixSurface weights1;
-private MatrixSurface bias1;
+private MatrixSurface weightsOut;
+private MatrixSurface weightsHidden;
+private MatrixSurface biasOut;
+private MatrixSurface biasHidden;
 
 
 
@@ -75,13 +77,17 @@ if( main3DGroup == null )
 
 try
 {
-weights1 = new MatrixSurface( mData );
-bias1 = new MatrixSurface( mData );
+weightsOut = new MatrixSurface( mData );
+weightsHidden = new MatrixSurface( mData );
+biasOut = new MatrixSurface( mData );
+biasHidden = new MatrixSurface( mData );
 
 // Sun.TextureFileName = "C:\\Eric\\
 
-addSpaceObject( weights1 );
-addSpaceObject( bias1 );
+addSpaceObject( weightsOut );
+addSpaceObject( weightsHidden );
+addSpaceObject( biasOut );
+addSpaceObject( biasHidden );
 
 getNewGeomModels();
 }
@@ -111,7 +117,7 @@ if( spaceObjLast >= length )
 
 
 
-internal void setFromWeightVecs(
+internal void setFromWeightOutVecs(
                              VectorFlt vec1,
                              VectorFlt vec2 )
 {
@@ -119,46 +125,100 @@ MatrixVec3 matrix = new MatrixVec3( mData );
 // matrix.makeTestPattern();
 matrix.setFromTwoVecs( vec1, vec2 );
 
-weights1.setFromMatrixVec3( matrix, 0, 0, 0 );
+weightsOut.setFromMatrixVec3( matrix, 0, 0, 0 );
 
 float scaleX = 1; // 5.0F;
 float scaleY = 1; // 0.05F;
 float scaleZ = 500.0F;
 
-weights1.scalePosition( scaleX, scaleY, scaleZ );
+weightsOut.scalePosition(
+                     scaleX, scaleY, scaleZ );
 
-// weights1.makeTestPattern();
+// weightsOut.makeTestPattern();
 
-weights1.setFromSurfPos();
+weightsOut.setFromSurfPos();
 
 getNewGeomModels();
-
-// mData.showStatus( "New weight vecs." );
 }
 
 
-internal void setFromBiasVec1( VectorFlt vec1 )
+
+internal void setFromWeightHidden(
+                            VectorArray vecAr )
 {
 MatrixVec3 matrix = new MatrixVec3( mData );
 // matrix.makeTestPattern();
-matrix.setFromDoubledVec( vec1 );
+matrix.setFromVecArray( vecAr );
 
-bias1.setFromMatrixVec3( matrix, -10, 0, 0 );
+weightsHidden.setFromMatrixVec3( matrix,
+                                 0, 20, 0 );
 
 float scaleX = 1; // 5.0F;
 float scaleY = 1; // 0.05F;
 float scaleZ = 500.0F;
 
-bias1.scalePosition( scaleX, scaleY, scaleZ );
+weightsHidden.scalePosition(
+                     scaleX, scaleY, scaleZ );
+
+// weightsHidden.makeTestPattern();
+
+weightsHidden.setFromSurfPos();
+
+getNewGeomModels();
+}
+
+
+
+
+internal void setFromBiasVecOut( VectorFlt vec )
+{
+MatrixVec3 matrix = new MatrixVec3( mData );
+// matrix.makeTestPattern();
+matrix.setFromDoubledVec( vec );
+
+biasOut.setFromMatrixVec3( matrix, -10, 0, 0 );
+
+float scaleX = 1; // 5.0F;
+float scaleY = 1; // 0.05F;
+float scaleZ = 500.0F;
+
+biasOut.scalePosition( scaleX, scaleY, scaleZ );
 
 // bias1.makeTestPattern();
 
-bias1.setFromSurfPos();
+biasOut.setFromSurfPos();
 
 getNewGeomModels();
 
 // mData.showStatus( "New bias vecs." );
 }
+
+
+
+
+internal void setFromBiasVecHidden(
+                             VectorFlt vec )
+{
+MatrixVec3 matrix = new MatrixVec3( mData );
+// matrix.makeTestPattern();
+matrix.setFromDoubledVec( vec );
+
+biasHidden.setFromMatrixVec3(
+                        matrix, -10, 10, 0 );
+
+float scaleX = 1; // 5.0F;
+float scaleY = 1; // 0.05F;
+float scaleZ = 5000.0F;
+
+biasHidden.scalePosition( scaleX, scaleY, scaleZ );
+
+// biasHidden.makeTestPattern();
+
+biasHidden.setFromSurfPos();
+
+getNewGeomModels();
+}
+
 
 
 
