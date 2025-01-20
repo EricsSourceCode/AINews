@@ -151,7 +151,7 @@ MatrixVec3 matrix = new MatrixVec3( mData );
 matrix.setFromVecArray( vecAr );
 
 weightsHidden.setFromMatrixVec3( matrix,
-                                 0, 20, 0 );
+                                 0, 10, 0 );
 
 float scaleX = 1; // 5.0F;
 float scaleY = 1; // 0.05F;
@@ -176,11 +176,11 @@ MatrixVec3 matrix = new MatrixVec3( mData );
 // matrix.makeTestPattern();
 matrix.setFromDoubledVec( vec );
 
-biasOut.setFromMatrixVec3( matrix, -10, 0, 0 );
+biasOut.setFromMatrixVec3( matrix, -10, -10, 0 );
 
 float scaleX = 1; // 5.0F;
 float scaleY = 1; // 0.05F;
-float scaleZ = 500.0F;
+float scaleZ = 10.0F;
 
 biasOut.scalePosition( scaleX, scaleY, scaleZ );
 
@@ -204,11 +204,11 @@ MatrixVec3 matrix = new MatrixVec3( mData );
 matrix.setFromDoubledVec( vec );
 
 biasHidden.setFromMatrixVec3(
-                        matrix, -10, 10, 0 );
+                        matrix, 0, -10, 0 );
 
 float scaleX = 1; // 5.0F;
 float scaleY = 1; // 0.05F;
-float scaleZ = 5000.0F;
+float scaleZ = 50000.0F;
 
 biasHidden.scalePosition( scaleX, scaleY, scaleZ );
 

@@ -25,7 +25,7 @@ using System.Windows.Media.Media3D;
 public class MainData
 {
 internal const string versionDate =
-                              "1/17/2025";
+                              "1/20/2025";
 private string dataDirectory = "";
 // internal Configure config;
 private MainForm mForm;
@@ -41,9 +41,6 @@ internal WebPageDct webPageDct;
 private VectorArray demParagArray;
 private VectorArray repubParagArray;
 private ThreeDScene scene;
-
-// The Visual model that is specific
-// to this app.
 
 private VisualModel visModel;
 
@@ -113,16 +110,19 @@ return "\\AIData\\Stories.txt";
 }
 
 
+
 internal string getWordsFileName()
 {
 return "\\AIData\\WordsDct.txt";
 }
 
 
+
 internal string getOldDataDirectory()
 {
 return "\\AINewsData\\";
 }
+
 
 
 private void setupDirectories()
@@ -173,6 +173,7 @@ internal void setCancelled( bool setTo )
 {
 cancelled = setTo;
 }
+
 
 
 internal bool getCancelled()
@@ -248,7 +249,7 @@ internal void neuralTest()
 mForm.showStatus( "Neural Net Test." );
 
 
-int inputColumns = 100;
+int inputColumns = 150;
 
 //                   rows, columns
 demParagArray.setSize( 10, inputColumns );
