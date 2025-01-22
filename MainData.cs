@@ -25,7 +25,7 @@ using System.Windows.Media.Media3D;
 public class MainData
 {
 internal const string versionDate =
-                              "1/20/2025";
+                              "1/21/2025";
 private string dataDirectory = "";
 // internal Configure config;
 private MainForm mForm;
@@ -104,9 +104,9 @@ return "\\AINewsData\\UrlDictionary.txt";
 
 
 
-internal string getStoriesFileName()
+internal string getWebPageDctFileName()
 {
-return "\\AIData\\Stories.txt";
+return "\\AIData\\WebPages.txt";
 }
 
 

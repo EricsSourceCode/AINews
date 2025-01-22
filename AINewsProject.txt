@@ -5,29 +5,6 @@ recentfile1	\Eric\Main\Docs\Notes.txt
 recentfile2	\Eric\Main\AINews\MainData.cs
 recentfile3	\Eric\Main\AINews\AINews.csproj
 recentfile4	\Eric\Main\AINews\URLFileDct.cs
-recentfile5	
-recentfile6	
-recentfile7	
-recentfile8	
-recentfile9	
-recentfile10	
-recentfile11	
-recentfile12	
-recentfile13	
-recentfile14	
-recentfile15	
-recentfile16	
-recentfile17	
-recentfile18	
-recentfile19	
-recentfile20	
-recentfile21	
-recentfile22	
-recentfile23	
-recentfile24	
-recentfile25	
-recentfile26	
-recentfile27	
-recentfile28	
-recentfile29	
-recentfile30	
+recentfile5	\Eric\Main\CsHtml\WebPageDct.cs
+recentfile6	\Eric\Main\CsHtml\Html.cs
+recentfile7	\Eric\Main\CsHtml\TagSplit.cs
