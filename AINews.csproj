@@ -62,9 +62,9 @@
     <Compile Include="\Eric\Main\CsTls\TlsClient.cs" />
     <Compile Include="\Eric\Main\CsTls\MsSslStream.cs" />
     <Compile Include="\Eric\Main\CsHtml\NonAscii.cs" />
-    <Compile Include="\Eric\Main\CsHtml\WordDct.cs" />
-    <Compile Include="\Eric\Main\CsHtml\WordDctLine.cs" />
-    <Compile Include="\Eric\Main\CsHtml\Word.cs" />
+    <Compile Include="\Eric\Main\CsBase\WordDct.cs" />
+    <Compile Include="\Eric\Main\CsBase\WordDctLine.cs" />
+    <Compile Include="\Eric\Main\CsBase\Word.cs" />
 
     <Compile Include="\Eric\Main\CsMath\MatrixVec3.cs" />
     <Compile Include="\Eric\Main\CsMath\Vector3.cs" />
@@ -86,7 +86,9 @@
 
     <Compile Include="\Eric\Main\CsGui\RecBtn.cs" />
     <Compile Include="\Eric\Main\CsGui\GuiMain.cs" />
-    <Compile Include="\Eric\Main\CsHtml\TagSplit.cs" />
+
+    <Compile Include="\Eric\Main\AINews\BadNewsTags.cs" />
+
     <Compile Include="\Eric\Main\CsHtml\WebPageDct.cs" />
     <Compile Include="\Eric\Main\CsHtml\WebPageDctLine.cs" />
     <Compile Include="\Eric\Main\CsHtml\WebPage.cs" />

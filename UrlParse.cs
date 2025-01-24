@@ -1,3 +1,5 @@
+/*
+
 // Copyright Eric Chauvin 2024.
 
 
@@ -256,3 +258,6 @@ return result;
 
 
 } // Class
+
+*/
+

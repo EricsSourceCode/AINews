@@ -25,7 +25,7 @@ using System.Windows.Media.Media3D;
 public class MainData
 {
 internal const string versionDate =
-                              "1/21/2025";
+                              "1/24/2025";
 private string dataDirectory = "";
 // internal Configure config;
 private MainForm mForm;
@@ -44,7 +44,8 @@ private ThreeDScene scene;
 
 private VisualModel visModel;
 
-// internal WordDct paragDct;
+internal WordDct tagsDct;
+internal WordDct urlDct;
 
 
 
@@ -72,7 +73,9 @@ demParagArray = new VectorArray( this );
 repubParagArray = new VectorArray( this );
 // batchParagArray = new VectorArray( this );
 // labelArray = new VectorArray( this );
-// paragDct = new WordDct( this );
+
+tagsDct = new WordDct( this );
+urlDct = new WordDct( this );
 
 
 showStatus( "Programming by Eric Chauvin." );
@@ -99,7 +102,8 @@ return dataDirectory;
 
 internal string getOldUrlFileName()
 {
-return "\\AINewsData\\UrlDictionary.txt";
+return getOldDataDirectory() +
+                   "UrlDictionary.txt";
 }
 
 
@@ -111,16 +115,17 @@ return "\\AIData\\WebPages.txt";
 
 
 
-internal string getWordsFileName()
-{
-return "\\AIData\\WordsDct.txt";
-}
+// internal string getWordsFileName()
+// {
+// return "\\AIData\\WordsDct.txt";
+// }
 
 
 
 internal string getOldDataDirectory()
 {
-return "\\AINewsData\\";
+// return "\\AINewsData\\";
+return "\\CityData\\";
 }
 
 
@@ -234,12 +239,13 @@ mForm.showStatus( "Reading all stories." );
 urlFileDct.readFromOldJavaFile(
                       getOldUrlFileName() );
 
-urlFileDct.readAllWebPages( webPageDct );
-                           // , paragDct );
+urlFileDct.readAllWebPages( webPageDct,
+                            tagsDct,
+                            urlDct );
 
 mForm.showStatus( " " );
 mForm.showStatus(
-             "Finished reading all stories." );
+          "Finished reading all web pages." );
 }
 
 

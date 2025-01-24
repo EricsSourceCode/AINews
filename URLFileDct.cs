@@ -269,8 +269,9 @@ for( int count = 0; count < last; count++ )
 
 
 internal void readAllWebPages(
-                     WebPageDct webPageDct ) // ,
-                     // WordDct paragDct )
+                     WebPageDct webPageDct,
+                     WordDct tagsDct,
+                     WordDct urlDct )
 {
 mData.showStatus( "Reading all web pages." );
 
@@ -305,11 +306,11 @@ for( int count = 0; count < keySize; count++ )
                                     countR );
 
     string urlFrom = urlFile.getUrl();
+    urlDct.addWord( urlFrom );
 
     // If it already has this story.
     if( webPageDct.keyExists( urlFrom ))
       continue;
-
 
     string fileName = urlFile.getFileName();
     string fullPath = mData.
@@ -334,8 +335,8 @@ for( int count = 0; count < keySize; count++ )
     WebPage webPage = new WebPage( mData, urlFrom,
                   linkDateIndex, linkText );
 
-    if( html.makeWebPage( webPage ))
-                           // , paragDct ))
+    if( html.makeWebPage( webPage,
+                          tagsDct ))
       {
       webPageDct.setValue( webPage.getUrl(),
                            webPage );
@@ -349,9 +350,21 @@ for( int count = 0; count < keySize; count++ )
 //        "Stories from old data: " + howMany );
 
 webPageDct.writeAllToFile();
-// paragDct.writeAllToFile( 100 );
 
-// paragDct.showSortByCount( 100 );
+tagsDct.writeAllToFile(
+      mData.getDataDirectory() + "TagsDct.txt",
+                                  0 );
+urlDct.writeAllToFile(
+      mData.getDataDirectory() + "URLsDct.txt",
+                                  0 );
+
+mData.showStatus( " " );
+mData.showStatus( "Tags:" );
+tagsDct.showSortByCount( 50 );
+
+mData.showStatus( " " );
+mData.showStatus( "URLs:" );
+urlDct.showSortedWords();
 
 }
 
