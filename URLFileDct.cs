@@ -270,12 +270,18 @@ for( int count = 0; count < last; count++ )
 
 internal void readAllWebPages(
                      WebPageDct webPageDct,
-                     WordDct tagsDct,
-                     WordDct urlDct )
+                     WordDct tagsDct // ,
+                     // WordDct urlDct
+                     )
 {
 mData.showStatus( "Reading all web pages." );
 
 webPageDct.readAllFromFile();
+
+// ========
+// tagsDct.readAllFromFile(
+//                mData.getDataDirectory() +
+//                "TagsDct.txt" );
 
 URLFile urlFile = new URLFile( mData );
 
@@ -306,7 +312,7 @@ for( int count = 0; count < keySize; count++ )
                                     countR );
 
     string urlFrom = urlFile.getUrl();
-    urlDct.addWord( urlFrom );
+    // urlDct.addWord( urlFrom );
 
     // If it already has this story.
     if( webPageDct.keyExists( urlFrom ))
@@ -354,18 +360,17 @@ webPageDct.writeAllToFile();
 tagsDct.writeAllToFile(
       mData.getDataDirectory() + "TagsDct.txt",
                                   0 );
-urlDct.writeAllToFile(
-      mData.getDataDirectory() + "URLsDct.txt",
-                                  0 );
+// urlDct.writeAllToFile(
+//  mData.getDataDirectory() + "URLsDct.txt",
+//                                 0 );
 
 mData.showStatus( " " );
 mData.showStatus( "Tags:" );
 tagsDct.showSortByCount( 50 );
 
-mData.showStatus( " " );
-mData.showStatus( "URLs:" );
-urlDct.showSortedWords();
-
+// mData.showStatus( " " );
+// mData.showStatus( "URLs:" );
+// urlDct.showSortedWords();
 }
 
 
