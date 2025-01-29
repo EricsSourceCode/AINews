@@ -8,4 +8,26 @@ recentfile4	\Eric\Main\AINews\URLFileDct.cs
 recentfile5	\Eric\Main\CsHtml\WebPageDct.cs
 recentfile6	\Eric\Main\CsHtml\Html.cs
 recentfile7	\Eric\Main\AINews\BadNewsTags.cs
-recentfile8	\Eric\Main\CsBase\WordDct.cs
+recentfile8	
+recentfile9	
+recentfile10	
+recentfile11	
+recentfile12	
+recentfile13	
+recentfile14	
+recentfile15	
+recentfile16	
+recentfile17	
+recentfile18	
+recentfile19	
+recentfile20	
+recentfile21	
+recentfile22	
+recentfile23	
+recentfile24	
+recentfile25	
+recentfile26	
+recentfile27	
+recentfile28	
+recentfile29	
+recentfile30	

@@ -25,7 +25,7 @@ using System.Windows.Media.Media3D;
 public class MainData
 {
 internal const string versionDate =
-                              "1/27/2025";
+                              "1/29/2025";
 private string dataDirectory = "";
 // internal Configure config;
 private MainForm mForm;

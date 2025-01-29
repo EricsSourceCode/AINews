@@ -278,15 +278,18 @@ mData.showStatus( "Reading all web pages." );
 
 webPageDct.readAllFromFile();
 
-// ========
-// tagsDct.readAllFromFile(
-//                mData.getDataDirectory() +
-//                "TagsDct.txt" );
+tagsDct.readAllFromFile(
+                mData.getDataDirectory() +
+                "TagsDct.txt" );
 
 URLFile urlFile = new URLFile( mData );
 
 // int howMany = 0;
-for( int count = 0; count < keySize; count++ )
+// int max = keySize
+int max = 20;
+if( max > keySize )
+  max = keySize;
+for( int count = 0; count < max; count++ )
   {
   if( !mData.checkEvents())
     return;
@@ -366,7 +369,7 @@ tagsDct.writeAllToFile(
 
 mData.showStatus( " " );
 mData.showStatus( "Tags:" );
-tagsDct.showSortByCount( 50 );
+tagsDct.showSortByCount( 1000 );
 
 // mData.showStatus( " " );
 // mData.showStatus( "URLs:" );
