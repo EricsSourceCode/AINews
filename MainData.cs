@@ -25,7 +25,7 @@ using System.Windows.Media.Media3D;
 public class MainData
 {
 internal const string versionDate =
-                              "1/29/2025";
+                              "1/31/2025";
 private string dataDirectory = "";
 // internal Configure config;
 private MainForm mForm;
@@ -44,7 +44,7 @@ private ThreeDScene scene;
 
 private VisualModel visModel;
 
-internal WordDct tagsDct;
+// internal WordDct tagsDct;
 // internal WordDct urlDct;
 
 
@@ -74,7 +74,7 @@ repubParagArray = new VectorArray( this );
 // batchParagArray = new VectorArray( this );
 // labelArray = new VectorArray( this );
 
-tagsDct = new WordDct( this );
+// tagsDct = new WordDct( this );
 // urlDct = new WordDct( this );
 
 
@@ -239,8 +239,8 @@ mForm.showStatus( "Reading all stories." );
 urlFileDct.readFromOldJavaFile(
                       getOldUrlFileName() );
 
-urlFileDct.readAllWebPages( webPageDct,
-                            tagsDct // ,
+urlFileDct.readAllWebPages( webPageDct // ,
+                            // tagsDct // ,
                             // urlDct
                             );
 
