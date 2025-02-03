@@ -1,3 +1,5 @@
+/*
+
 // Copyright Eric Chauvin 2025.
 
 
@@ -21,7 +23,7 @@ using System;
 public class BadNewsTags
 {
 private MainData mData;
-private string tagText = "";
+// private string tagText = "";
 private StrAr tagsAr;
 
 
@@ -42,21 +44,7 @@ setupBadTags();
 
 
 
-internal void setTagText( string inS )
-{
-tagText = inS;
-}
-
-
-
-internal string getTagText()
-{
-return tagText;
-}
-
-
-
-internal bool isBadTag()
+internal bool isBadTag( string tagText )
 {
 int last = tagsAr.getLast();
 
@@ -125,7 +113,7 @@ tagsAr.append( "<h2 class=\"title" );
 
 tagsAr.append( "<a aria-label=" );
 
-tagsAr.append( "<option" ); 
+tagsAr.append( "<option" );
 
 tagsAr.append( "<label class=\"label" );
 
@@ -148,3 +136,5 @@ tagsAr.append( "<a href=\"#\" class=" );
 
 
 } // Class
+
+*/

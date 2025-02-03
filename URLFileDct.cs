@@ -269,8 +269,8 @@ for( int count = 0; count < last; count++ )
 
 
 internal void readAllWebPages(
-                     WebPageDct webPageDct // ,
-                     // WordDct tagsDct // ,
+                     WebPageDct webPageDct,
+                     WordDct tagsDct // ,
                      // WordDct urlDct
                      )
 {
@@ -278,15 +278,15 @@ mData.showStatus( "Reading all web pages." );
 
 webPageDct.readAllFromFile();
 
-// tagsDct.readAllFromFile(
-//                mData.getDataDirectory() +
-//                "TagsDct.txt" );
+tagsDct.readAllFromFile(
+                mData.getDataDirectory() +
+                "TagsDct.txt" );
 
 URLFile urlFile = new URLFile( mData );
 
 // int howMany = 0;
 // int max = keySize
-int max = 20;
+int max = 150;
 if( max > keySize )
   max = keySize;
 for( int count = 0; count < max; count++ )
@@ -344,8 +344,8 @@ for( int count = 0; count < max; count++ )
     WebPage webPage = new WebPage( mData, urlFrom,
                   linkDateIndex, linkText );
 
-    if( html.makeWebPage( webPage // ,
-                          // tagsDct
+    if( html.makeWebPage( webPage,
+                          tagsDct
                           ))
       {
       webPageDct.setValue( webPage.getUrl(),
@@ -361,17 +361,17 @@ for( int count = 0; count < max; count++ )
 
 webPageDct.writeAllToFile();
 
-// tagsDct.writeAllToFile(
-//    mData.getDataDirectory() + "TagsDct.txt",
-//                                  0 );
+tagsDct.writeAllToFile(
+    mData.getDataDirectory() + "TagsDct.txt",
+                                  0 );
 
 // urlDct.writeAllToFile(
 //  mData.getDataDirectory() + "URLsDct.txt",
 //                                 0 );
 
-// mData.showStatus( " " );
-// mData.showStatus( "Tags:" );
-// tagsDct.showSortByCount( 1000 );
+mData.showStatus( " " );
+mData.showStatus( "Tags:" );
+tagsDct.showSortByCount( 500 );
 
 // mData.showStatus( " " );
 // mData.showStatus( "URLs:" );

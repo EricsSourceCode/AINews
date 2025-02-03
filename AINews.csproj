@@ -52,7 +52,6 @@
 
 
   <ItemGroup>
-    <Compile Include="\Eric\Main\AINews\BadText.cs" />
     <Compile Include="\Eric\Main\ThreeD\MatrixSurface.cs" />
     <Compile Include="\Eric\Main\ThreeD\Surface.cs" />
     <Compile Include="\Eric\Main\ThreeD\SpaceObject.cs" />
